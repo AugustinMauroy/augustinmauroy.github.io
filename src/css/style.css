@@ -10,8 +10,9 @@ header{
     display: flex;
     flex-direction: wrap;
 }
-header > *{
+header > p{
     padding: 10px;
+    font-size: 21px;
 }
 img.profil{
     border-radius: 50%;

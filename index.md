@@ -1,0 +1,3 @@
+---
+permalink: /content/index.html
+---
