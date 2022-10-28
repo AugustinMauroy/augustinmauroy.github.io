@@ -4,9 +4,38 @@
         <meta charset="Utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="src/css/style.css" rel="stylesheet"/>
-        <title>Augustin's Gitub page</title>
+        <link href="src/css/color.css" rel="stylesheet"/>
+        <title>portfolio</title>
+        <script src="./src/js/index.js"></script>
     </head>
-    <body>
-        <h1>Hello world</h1>
+    <body onload="age()">
+        <header>
+            <img src="./src/img/profil.svg" style="height: 64px;" class="profil">
+            <p>Augustin<br>Mauroy<br><span id="age"></span> ans</p>
+        </header>
+        <svg class="vague" width="100%" height="70" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0,0  L110,0C35,150 35,0 0,100z"></path>
+        </svg>
+        <main>
+            <article>
+                <h2>&#127979; Mes étude, mon apprentissage &#128218;</h2>
+                <li>J'étudier de puis ma première secondaire à l'athénée royale de Gembloux.</li>
+                <li>Je me suis formé au montage en autodidact sur final cul pro et motion.</li>
+                <li>Je me suis aussi formé au web développement full-stack en autodidact grace à W3school mais aussi mdn docs.</li>
+            </article>
+            <article>
+                <h2>Mes compétence en web développement</h2>
+                <p>Je suis très bon en html<br>J'ai des bonne basse en css. Je sait faire du responsive web design.</p>
+                <p>En se qu'il s'agit du Javascript je suis très compétant.<br>Qu se soit un front-end (le client) ou en back-end (le serveur)</p>
+                <p>Pour le back-end j'utilise nodejs.</p>
+            </article>
+            <article>
+                <h2>Mes hobbies</h2>
+                <p>Lors de mon temps libre fait plusieurs chose.<br>Codé, que se soit pour la <a href="https://nodejs.dev/fr">Fondation Node.js</a> ou  encore pour moi même (apprendre, comprendre ...)<br>Et bien sur comme beaucoup de gens aujourd’hui je joue à des jeux vidéo et j'écoute de la music.</p>
+            </article>
+        </main>
+        <footer>
+            <noscript>Votre browser ne support pas le Javascript.</noscript>
+        </footer>
     </body>
 </html>
