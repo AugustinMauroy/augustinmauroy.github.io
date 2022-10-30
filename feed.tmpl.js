@@ -20,7 +20,7 @@ export default function ({ site, search }, { md, url, date, htmlUrl }) {
       url: url(post.data.url, true),
       title: post.data.title,
       content_html: htmlUrl(md(post.data.content), true),
-      date_published: date(post.data.date, "ATOM"),
+      date_published: date(post.data.date, "MY_FORMAT"),
     });
   }
 

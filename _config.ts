@@ -15,7 +15,7 @@ site
   .ignore("README.md")
   .copy("img")
   .use(postcss())
-  .use(date())
+  .use(date({formats: {"MY_FORMAT": "dd-MM-yyyy",}}))
   .use(codeHighlight())
   .use(basePath())
   .use(pageFind({
@@ -25,8 +25,5 @@ site
   }))
   .use(slugifyUrls({ alphanumeric: false }))
   .use(resolveUrls())
-  .use(date({
-    formats: {"MY_FORMAT": "dd-MM-yyyy",}
-    }))
 
 export default site;
