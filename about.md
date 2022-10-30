@@ -1,5 +1,5 @@
 ---
-layout: layouts/post.njk
+layout: layouts/page.njk
 title: À propos de moi
 templateClass: tmpl-post
 menu:
@@ -28,3 +28,11 @@ Pour le back-end j'utilise nodejs.
 Lors de mon temps libre fait plusieurs chose.
 Codé, que ce soit pour la [Fondation Node.js](https://nodejs.dev/fr) ou  encore pour moi-même (apprendre, comprendre ...)
 Et bien sûr comme beaucoup de gens aujourd’hui je joue à des jeux vidéo et j'écoute de la musique.
+
+## Mes capacités linguistiques
+
+Ma langue maternelle est le français. Je sais donc lire, écrite, parler.
+Mes langues apprises sont :
+
+* L’anglais que je peux écrire comprendre mais lorsque je dois parler c’est plus compliquer.
+* Le néerlandais, je n’ai vus que les base à l’école.
