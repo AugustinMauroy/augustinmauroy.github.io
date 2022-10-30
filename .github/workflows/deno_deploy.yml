@@ -22,8 +22,7 @@ jobs:
 
       - name: Build site
         run: |
-          deno task build --location=https://lume-blog.deno.dev
-
+          deno task build --location=https://augustinmauroy.github.io/page/
       - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
         with:
