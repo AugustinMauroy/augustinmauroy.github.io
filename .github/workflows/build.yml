@@ -2,7 +2,7 @@ name: Publish on GitHub Pages
 
 on:
   push:
-    branches: [ Lume ]
+    branches: [ lume ]
 
 jobs:
   build:
@@ -20,6 +20,7 @@ jobs:
       - name: Build site
         run: |
           deno task build --location=https://augustinmauroy.github.io/page/
+
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v2.0.1
         with:
