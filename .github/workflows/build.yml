@@ -19,7 +19,7 @@ jobs:
 
       - name: Build site
         run: |
-          deno task build --location=https://lumeland.github.io/base-blog/
+          deno task build --location=https://augustinmauroy.github.io/page/
 
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v2.0.1
