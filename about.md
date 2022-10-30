@@ -10,7 +10,7 @@ menu:
 ## &#127979; Mes études, mon apprentissage &#128218;
 
 * J'étudie depuis ma première secondaire à l'athénée royale de Gembloux.
-* Je me suis formé au montage en autodidacte sur final cul pro et motion.</li>
+* Je me suis formé au montage en autodidacte sur Final Cut Pro et Motion.
 * Je me suis aussi formé au web développement full-stack en autodidacte grâce à W3school mais aussi mdn docs
 
 ## Mes compétences en web développement

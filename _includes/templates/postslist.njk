@@ -9,8 +9,8 @@
       {% endif %}
     </a>
     <br>
-    <time class="postList-date" datetime="{{ post.data.date | date('DATETIME') }}">
-      {{ post.data.date | date('HUMAN_DATE') }}
+    <time class="postList-date" datetime="{{ post.data.date | date('MY_FORMAT') }}">
+      {{ post.data.date | date('MY_FORMAT') }}
     </time>
 
     {% for tag in post.data.tags %}

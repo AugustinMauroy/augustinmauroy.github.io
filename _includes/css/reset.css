@@ -1,18 +1,31 @@
-:root {
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --red: #B03A2E;
+    --lightgray: #e6e6e6;
+    --darkgray: #0d1117;
+    --green: #145A32  ;
+    --white: #fff;
+    --font-family: -apple-system, system-ui, sans-serif;
+    --text: black;
+  }
+}
+@media (prefers-color-scheme: dark) {:root {
   --red: #B03A2E;
   --lightgray: #e6e6e6;
   --darkgray: #0d1117;
-  --blue: #145A32  ;
-  --white: #fff;
+  --green: #145A32  ;
+  --white: black;
   --font-family: -apple-system, system-ui, sans-serif;
-}
+  --text: #fff;
+}}
 
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: var(--font-family);
-  color: var(--darkgray);
+  color: var(--text);
   background-color: var(--white);
 
   /** Pagefind variables */
@@ -38,7 +51,7 @@ main {
 }
 
 a {
-  color: var(--blue);
+  color: var(--green);
 }
 
 /* Warning */

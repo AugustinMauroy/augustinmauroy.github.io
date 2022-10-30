@@ -12,7 +12,7 @@ bodyClass: body-post
     {% endfor %}
     </nav>
 
-    <time class="post-date" datetime="{{ date | date('DATETIME') }}">
+    <time class="post-date" datetime="{{ date | date('MY_FORMAT') }}">
       {{ date | date('HUMAN_DATE') }}
     </time>
   </div>

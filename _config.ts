@@ -25,5 +25,8 @@ site
   }))
   .use(slugifyUrls({ alphanumeric: false }))
   .use(resolveUrls())
+  .use(date({
+    formats: {"MY_FORMAT": "dd-MM-yyyy",}
+    }))
 
 export default site;

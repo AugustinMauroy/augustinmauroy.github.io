@@ -56,6 +56,6 @@
     color: var(--green);
   }
   & .pagefind-ui__result-excerpt {
-    color: var(--darkgray);
+    color: var(--text);
   }
 }
