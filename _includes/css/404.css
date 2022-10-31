@@ -1,0 +1,12 @@
+path.error{
+    fill: var(--color-text);
+}
+.flex_error{
+    display:flex;
+    flex-wrap: wrap;
+}
+.flex_error>*{
+    width: 300px;
+    padding: 20px;
+    flex-flow: row;
+}
