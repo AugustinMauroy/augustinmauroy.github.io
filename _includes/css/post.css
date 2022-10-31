@@ -1,45 +1,30 @@
 .post-header {
-  padding: 5vh 0;
+  margin-bottom: var(--row-gap-medium);
 }
 .post-title {
-  font-size: 4rem;
-  font-size: clamp(2rem, 10vw, 4rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font: var(--font-display);
+  letter-spacing: var(--font-display-spacing);
   margin: 0 0 0.25em;
 }
-.post-tags {
-  display: inline;
+.post-details {
+  font: var(--font-ui);
+  color: var(--color-dim);
+
+  & p {
+    margin: 0;
+  }
+  & a {
+    color: inherit;
+  }
 }
+.post-excerpt,
 .post-body {
-  font-size: 1.2em;
-  line-height: 1.4;
+  font: var(--font-body);
+  letter-spacing: var(--font-body-spacing);
+  color: var(--color-text);
 
-  & p,
-  & ul,
-  & ol {
-    max-width: 45em;
-  }
-
-  & h2,
-  & h3,
-  & h4,
-  & h5,
-  & h6 {
-    max-width: 20em;
-    margin-bottom: 0;
-  }
-}
-.post-navigation {
-  & ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  & li {
-    padding: 1em;
+  & h2, & h3, & h4, & h5, & h6 {
+    color: var(--color-base);
+    margin: 1.5em 0 .5em 0;
   }
 }
