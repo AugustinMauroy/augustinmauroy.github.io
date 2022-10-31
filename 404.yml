@@ -1,0 +1,12 @@
+layout: layouts/404.njk
+lang: [fr,en]
+title: Contenu non trouvé
+subtitle: Une erreur est survenu.
+paraphe: Nous vous invitons à retourner à la
+link: page d’accueil
+
+#en content
+title.en: Content not found
+subtitle.en: An error has occurred.
+paraphe.en: We invite you to return to the
+link.en: homepage

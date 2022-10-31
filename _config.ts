@@ -6,6 +6,7 @@ import basePath from "lume/plugins/base_path.ts";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
 import pageFind from "lume/plugins/pagefind.ts";
+import multilanguage from "lume/plugins/multilanguage.ts";
 
 const site = lume({
   location: new URL("https://example.com/"),
@@ -25,5 +26,6 @@ site
   }))
   .use(slugifyUrls({ alphanumeric: false }))
   .use(resolveUrls())
+  .use(multilanguage())
 
 export default site;
