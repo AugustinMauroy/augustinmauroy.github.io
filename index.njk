@@ -7,14 +7,21 @@ menu:
 ---
 
 <div>
- <h1>Bienvenu sur mon site web!</h1>
+ <h1>Bienvenue &#128075; sur mon site web!</h1>
  <p>Sur ce portfolio vous pouvez trouver des informations à mon sujet.<br>Mais aussi des tutoriel/news grâce aux articles</p>
 </div>
 
 {% set postslist = search.pages("type=posts", "date=desc", 3) %}
 
-<h1>Dernier {% if postslist.length == 1 %}Post{% else %}{{ postslist.length }} article{% endif %}</h1>
+<h2>Les dernier articles:</h2>
 
 {% include "templates/postslist.njk" %}
+
+<hr>
+
+<h2>Les post épinglé:</h1>
+
+{% set pinnedpost = search.pages("'pinned'") %}
+{% include "templates/pinnedpost.njk" %}
 
 <hr>
