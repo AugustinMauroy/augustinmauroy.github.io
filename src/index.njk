@@ -1,0 +1,70 @@
+---
+layout: layouts/base.njk
+bodyClass: body-home
+title: Home
+---
+
+{% set postslist = search.pages("type=post", "date=desc", 4) %}
+{% set pinnedpostslist =  search.pages("type=post 'pinned'") %}
+
+<header class="page-header">
+  <h1 class="page-title">&#128075; Bienvenue sur mon site web !</h1>
+  <p>Sur ce portfolio vous pouvez trouver des informations à mon sujet.<br>Mais aussi des tutoriel/news grâce aux articles.</p>
+  <div class="search" id="search"></div>
+</header>
+
+<hr>
+
+<section class="postList">
+  <h2>Les post épinglé:</h2>
+  {% asyncEach post in pinnedpostslist %}
+  <article class="post">
+    <header class="post-header">
+      <h2 class="post-title">
+        <a href="{{ post.data.url }}" {% if post.data.url == url %} aria-current="page"{% endif %}>
+          {{ post.data.title or post.data.url }}
+        </a>
+      </h2>
+
+      {% set date = post.data.date %}
+      {% set tags = post.data.tags %}
+      {% set author = post.data.author %}
+      {% include "templates/post-details.njk" %}
+    </header>
+
+    <div class="post-excerpt">
+      {{ post.data.description | md | safe }}
+    </div>
+  </article>
+{% endeach %}
+</section>
+
+<hr>
+
+<section class="postList">
+  <h2>Les dernier post:</h2>
+  {% asyncEach post in postslist %}
+  <article class="post">
+    <header class="post-header">
+      <h2 class="post-title">
+        <a href="{{ post.data.url }}" {% if post.data.url == url %} aria-current="page"{% endif %}>
+          {{ post.data.title or post.data.url }}
+        </a>
+      </h2>
+
+      {% set date = post.data.date %}
+      {% set tags = post.data.tags %}
+      {% set author = post.data.author %}
+      {% include "templates/post-details.njk" %}
+    </header>
+    
+    <div class="post-excerpt">
+      {{ post.data.description | md | safe }}
+    </div>
+  </article>
+{% endeach %}
+</section>
+
+<hr>
+
+<p>Vous trouverez d'autres articles dans <a href="/archive/">la liste de tous les posts</a>.</p>

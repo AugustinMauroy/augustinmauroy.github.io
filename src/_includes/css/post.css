@@ -1,0 +1,37 @@
+.post-header {
+  margin-bottom: var(--row-gap-medium);
+}
+.post-title {
+  font: var(--font-display);
+  letter-spacing: var(--font-display-spacing);
+  margin: 0 0 0.25em;
+}
+.post-details {
+  font: var(--font-ui);
+  color: var(--color-dim);
+
+  & p {
+    margin: 0;
+  }
+  & a {
+    color: inherit;
+    
+  }
+  & a.tag {
+    background-color: var(--red);
+    border-radius: 2px;
+    padding: 3px;
+    color: var( --color-background);
+  }
+}
+.post-excerpt,
+.post-body {
+  font: var(--font-body);
+  letter-spacing: var(--font-body-spacing);
+  color: var(--color-text);
+
+  & h2, & h3, & h4, & h5, & h6 {
+    color: var(--color-base);
+    margin: 1.5em 0 .5em 0;
+  }
+}
