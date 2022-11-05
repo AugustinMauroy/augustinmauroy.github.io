@@ -5,7 +5,7 @@ title: Home
 ---
 
 {% set postslist = search.pages("type=post", "date=desc", 4) %}
-{% set pinnedpostslist =  search.pages("type=post 'pinned'") %}
+{% set pinned_posts_list =  search.pages("pinned=true") %}
 
 <header class="page-header">
   <h1 class="page-title">&#128075; Bienvenue sur mon site web !</h1>
@@ -15,31 +15,32 @@ title: Home
 
 <hr>
 
-<section class="postList">
-  <h2>Les post épinglé:</h2>
-  {% asyncEach post in pinnedpostslist %}
-  <article class="post">
-    <header class="post-header">
-      <h2 class="post-title">
-        <a href="{{ post.data.url }}" {% if post.data.url == url %} aria-current="page"{% endif %}>
-          {{ post.data.title or post.data.url }}
-        </a>
-      </h2>
+{% if pinned_posts_list.length %}
+  <section class="postList">
+    <h2>Les post épinglé:</h2>
+    {% asyncEach post in pinned_posts_list %}
+    <article class="post">
+      <header class="post-header">
+        <h2 class="post-title">
+          <a href="{{ post.data.url }}" {% if post.data.url == url %} aria-current="page"{% endif %}>
+            {{ post.data.title or post.data.url }}
+          </a>
+        </h2>
 
-      {% set date = post.data.date %}
-      {% set tags = post.data.tags %}
-      {% set author = post.data.author %}
-      {% include "templates/post-details.njk" %}
-    </header>
+        {% set date = post.data.date %}
+        {% set tags = post.data.tags %}
+        {% set author = post.data.author %}
+        {% include "templates/post-details.njk" %}
+      </header>
 
-    <div class="post-excerpt">
-      {{ post.data.description | md | safe }}
-    </div>
-  </article>
-{% endeach %}
-</section>
-
-<hr>
+      <div class="post-excerpt">
+        {{ post.data.description | md | safe }}
+      </div>
+    </article>
+  {% endeach %}
+  </section>
+  <hr>
+{% endif %}
 
 <section class="postList">
   <h2>Les dernier post:</h2>

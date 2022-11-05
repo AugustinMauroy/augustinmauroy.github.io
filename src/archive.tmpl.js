@@ -1,5 +1,5 @@
 export const layout = "layouts/archive.njk";
-export const title = "Liste des Posts";
+export const title = "Liste des posts";
 
 export default function* ({ search, paginate }) {
   const posts = search.pages("type=post", "date=desc");
