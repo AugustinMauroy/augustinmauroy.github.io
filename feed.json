@@ -1,0 +1,33 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "Mon portfolio",
+  "home_page_url": "https://augustinmauroy.github.io/",
+  "feed_url": "https://augustinmauroy.github.io/feed.json",
+  "description": "Le portfolio d'Augustin Mauroy",
+  "items": [
+    {
+      "id": "https://augustinmauroy.github.io/posts/deno/",
+      "url": "https://augustinmauroy.github.io/posts/deno/",
+      "title": "Qu'est-ce que Deno ?",
+      "date_published": "01-11-2022"
+    },
+    {
+      "id": "https://augustinmauroy.github.io/posts/employ/",
+      "url": "https://augustinmauroy.github.io/posts/employ/",
+      "title": "Je recherche un emploi.",
+      "date_published": "31-10-2022"
+    },
+    {
+      "id": "https://augustinmauroy.github.io/posts/how-to-blog/",
+      "url": "https://augustinmauroy.github.io/posts/how-to-blog/",
+      "title": "Comment j'ai crée mon blog.",
+      "date_published": "30-10-2022"
+    },
+    {
+      "id": "https://augustinmauroy.github.io/posts/lume/",
+      "url": "https://augustinmauroy.github.io/posts/lume/",
+      "title": "Qu’est ce que Lume ?",
+      "date_published": "30-10-2022"
+    }
+  ]
+}

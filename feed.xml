@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Mon portfolio</title>
+	<subtitle>Le portfolio d&#39;Augustin Mauroy</subtitle>
+	<link href="https://augustinmauroy.github.io/feed.xml" rel="self"/>
+	<link href="https://augustinmauroy.github.io/"/>
+	
+	<updated>05-11-2022</updated>
+	<id>https://augustinmauroy.github.io/</id>
+	<entry>
+		<title>Qu&#39;est-ce que Deno ?</title>
+		<link href="https://augustinmauroy.github.io/posts/deno/"/>
+		<updated>01-11-2022</updated>
+		<id>https://augustinmauroy.github.io/posts/deno/</id>
+		
+		<content type="html">&lt;p&gt;Deno est un runtime moderne pour JavaScript et TypeScript.
+Deno est un moteur d&#39;exécution simple, moderne et sécurisé pour JavaScript, TypeScript et WebAssembly qui utilise V8 et est construit en Rust.&lt;/p&gt;
+&lt;p&gt;-Fournit des fonctionnalités de plateforme web et adopte les normes de plateforme web.
+-Sécurisé par défaut. Aucun accès aux fichiers, au réseau ou à l&#39;environnement, sauf si cela est explicitement autorisé.
+-Prend en charge TypeScript dès le départ.
+-Livré avec un seul fichier exécutable.
+-Possède des outils de développement intégrés comme un inspecteur de dépendances (deno info) et un formateur de code (deno fmt).
+-Possède un ensemble de modules standard révisés (audités) dont le fonctionnement avec Deno est garanti : deno.land/std.
+-Un certain nombre d&#39;entreprises sont intéressées par l&#39;utilisation et l&#39;exploration de Deno.&lt;/p&gt;
+&lt;h2&gt;Comment installer Deno ?&lt;/h2&gt;
+&lt;p&gt;Il vous suffit d’aller sur ce &lt;a href=&quot;https://deno.land/#installation&quot;&gt;site&lt;/a&gt; et de suivre les instruction.&lt;/p&gt;</content>
+	</entry>
+	<entry>
+		<title>Je recherche un emploi.</title>
+		<link href="https://augustinmauroy.github.io/posts/employ/"/>
+		<updated>31-10-2022</updated>
+		<id>https://augustinmauroy.github.io/posts/employ/</id>
+		
+		<content type="html">&lt;p&gt;Je suis à la recherche d&#39;un emploi de web développeur en Freelance. Cela peut être du front-end comme du back-end.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Si vous avez un poste qui correspond à mes compétences et qui est dans mon secteur d’activités vous pouvez me &lt;a href=&quot;https://augustinmauroy.github.io/contact/&quot;&gt;contacter&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</content>
+	</entry>
+	<entry>
+		<title>Comment j&#39;ai crée mon blog.</title>
+		<link href="https://augustinmauroy.github.io/posts/how-to-blog/"/>
+		<updated>30-10-2022</updated>
+		<id>https://augustinmauroy.github.io/posts/how-to-blog/</id>
+		
+		<content type="html">&lt;p&gt;Pour faire ce blog j’utilise &lt;a href=&quot;https://augustinmauroy.github.io/posts/deno/&quot;&gt;Deno&lt;/a&gt; avec &lt;a href=&quot;https://augustinmauroy.github.io/posts/lume/&quot;&gt;Lume&lt;/a&gt; Comme framework.
+J’ai utilisé le Template fourni par &lt;code&gt;Lume.land&lt;/code&gt; que vous pouvez trouver juste &lt;a href=&quot;https://github.com/lumeland/base-blog&quot; :target=&quot;_blank&quot;&gt;ici&lt;/a&gt;.
+Ensuite je l’ai adapté à ma guise.
+Si vous souhaiter en apprendre plus sur Lume je vous conseille d’aller voir ce &lt;a href=&quot;https://lume.land/&quot; :target=&quot;_blank&quot;&gt;site&lt;/a&gt;.&lt;/p&gt;</content>
+	</entry>
+	<entry>
+		<title>Qu’est ce que Lume ?</title>
+		<link href="https://augustinmauroy.github.io/posts/lume/"/>
+		<updated>30-10-2022</updated>
+		<id>https://augustinmauroy.github.io/posts/lume/</id>
+		
+		<content type="html">&lt;p&gt;Lume est un générateur de sites statique rapide et flexible pour Deno&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Il supporte n&#39;importe quel moteur de template
+Créez des pages en utilisant Markdown, Nunjucks, Liquid, JSX, TSX, JavaScript, TypeScript, Pug, Eta... ou ajoutez facilement votre propre moteur.&lt;/li&gt;
+&lt;li&gt;Vous pouvez stocker les données dans votre format préféré
+Stockez vos données dans des formats statiques comme JSON ou YAML. Utilisez JavaScript ou TypeScript pour obtenir les données d&#39;une base de données ou d&#39;une API&lt;/li&gt;
+&lt;li&gt;Lume permet de rraiter les pages et les ressources HTML
+Les processeurs peuvent compiler et optimiser des ressources telles que CSS ou JavaScript. Ils peuvent également transformer le code HTML en utilisant l&#39;API DOM.&lt;/li&gt;
+&lt;li&gt;Vous pouvez exécuter vos scripts et écouter les événements
+Vous pouvez créer des scripts personnalisés comme dans NPM et les exécuter à partir du CLI ou après un événement quelconque.&lt;/li&gt;
+&lt;li&gt;Et tout cela avec une API propre et intuitive
+Configurez la construction de votre site dans un seul fichier &lt;code&gt;_config.ts&lt;/code&gt; ou &lt;code&gt;_config.js&lt;/code&gt; avec des &lt;a href=&quot;https://lume.land/plugins/?status=all&quot;&gt;plugins&lt;/a&gt; et une API simple et propre.&lt;/li&gt;
+&lt;li&gt;Déployer n&#39;importe où
+Les sites statiques peuvent être hébergés (gratuitement) n&#39;importe où GitHub/GitLab Pages, Deno Deploy, Vercel, Netlify... &lt;a href=&quot;https://lume.land/docs/advanced/deployment/&quot;&gt;Explorez les possibilités de déploiement&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Comment l&#39;installer ?&lt;/h2&gt;
+&lt;p&gt;Il vous suffit d’aller sur ce site et de suivre l’instruction donné. Et puis vous pouvez codé votre site et le mettre en ligne.&lt;/p&gt;</content>
+	</entry>
+</feed>
