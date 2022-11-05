@@ -1,6 +1,6 @@
 url: "./404.html"
 layout: layouts/404.njk
-title: Contenu non trouvé
+title: Contenu non trouvé!
 subtitle: Une erreur est survenu.
 paraphe: Nous vous invitons à retourner à la
 link: page d’accueil

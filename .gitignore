@@ -1,4 +1,9 @@
+# Lume File
 _site
 _bin
 
+# Deno File
+deno.lock
+
+# Other File
 .DS_store
