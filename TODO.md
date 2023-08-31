@@ -1,0 +1,2 @@
+- design TOC
+- toc on article pages when [this pr](https://github.com/hashicorp/next-mdx-remote/pull/396) will be merged

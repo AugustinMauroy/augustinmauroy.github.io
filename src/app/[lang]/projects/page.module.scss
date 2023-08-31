@@ -1,0 +1,9 @@
+.container {
+	margin: 1rem 10%;
+
+	.cardContainer {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+}

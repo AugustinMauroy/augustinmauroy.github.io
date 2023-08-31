@@ -1,0 +1,14 @@
+.link {
+	color: inherit;
+	text-decoration: inherit;
+	cursor: pointer;
+
+	&:active,
+	&:focus,
+	&:visited,
+	&:hover {
+		color: inherit;
+		text-decoration: inherit;
+		outline: none;
+	}
+}

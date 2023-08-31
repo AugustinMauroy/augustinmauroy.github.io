@@ -1,0 +1,170 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Restore Cache
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+            node_modules/.cache
+          key: cache-${{ hashFiles('package-lock.json') }}-
+          restore-keys: cache-
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install NPM packages
+        run: npm ci
+
+      - name: Run Linting
+        run: npx turbo lint
+
+      - name: Save Cache
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+            node_modules/.cache
+          key: cache-${{ hashFiles('package-lock.json') }}
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Restore Cache
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+            node_modules/.cache
+          key: cache-${{ hashFiles('package-lock.json') }}-
+          restore-keys: cache-
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install NPM packages
+        run: npm ci
+
+      - name: Build
+        run: npx turbo build
+
+      - name: Save Cache
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+            node_modules/.cache
+          key: cache-${{ hashFiles('package-lock.json') }}
+
+  unit-test:
+    name: Unit Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Restore Cache
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+            node_modules/.cache
+          key: cache-${{ hashFiles('package-lock.json') }}-
+          restore-keys: cache-
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install NPM packages
+        run: npm ci
+
+      - name: Run Unit Tests
+        run: npx turbo test
+
+      - name: Save Cache
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+            node_modules/.cache
+          key: cache-${{ hashFiles('package-lock.json') }}
+
+  format:
+    name: Code Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Restore Cache
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+            node_modules/.cache
+          key: cache-${{ hashFiles('package-lock.json') }}-
+          restore-keys: cache-
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install NPM packages
+        run: npm ci
+
+      - name: Run Format
+        run: npx turbo format
+
+      - name: Save Cache
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+            node_modules/.cache
+          key: cache-${{ hashFiles('package-lock.json') }}

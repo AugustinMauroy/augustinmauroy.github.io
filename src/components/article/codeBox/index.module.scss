@@ -1,0 +1,22 @@
+.codeBox {
+	background-color: var(--black1);
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--black1);
+	border-radius: 5px;
+
+	.codeLabel {
+		font-weight: 700;
+		font-size: 1rem;
+		color: var(--text-color-invert);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.5rem 1rem;
+	}
+	.code {
+		border-radius: 0 0 5px 5px !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+}

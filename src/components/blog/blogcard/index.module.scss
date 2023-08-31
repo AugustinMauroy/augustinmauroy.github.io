@@ -1,0 +1,15 @@
+.card {
+	border: 1px solid var(--text-color);
+	border-radius: 10px;
+	width: 200px;
+
+	h3 {
+		margin: 0 3px 0 3px;
+		flex: 1;
+	}
+
+	img {
+		border-bottom: 1px solid var(--text-color);
+		border-radius: 10px 10px 0 0;
+	}
+}
