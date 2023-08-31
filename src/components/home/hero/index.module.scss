@@ -14,6 +14,10 @@
 		flex-direction: column;
 		padding: 3rem 0;
 		text-align: center;
+
+		.content {
+			animation: slideInFromTop 1.5s ease-out;
+		}
 	}
 }
 
@@ -24,6 +28,17 @@
 	}
 	100% {
 		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slideInFromTop {
+	0% {
+		transform: translateY(-25%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
 		opacity: 1;
 	}
 }
