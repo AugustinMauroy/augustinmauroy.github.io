@@ -42,21 +42,19 @@ const Dropdown: FC<DropdownProps> = ({
 			<div className={styles.dropdownHeader} onClick={toggleDropdown}>
 				{title}
 			</div>
-			{isOpen && (
-				<ul className={styles.dropdownList}>
-					{options.map((option, index) => (
-						<li
-							key={index}
-							className={`${styles.dropdownItem} ${
-								option === activeItem ? styles.active : ''
-							}`}
-							onClick={() => onItemClick && onItemClick(option)}
-						>
-							<ListItem>{option}</ListItem>
-						</li>
-					))}
-				</ul>
-			)}
+			<ul className={`${styles.dropdownList} ${isOpen ? styles.open : ''}`}>
+				{options.map((option, index) => (
+					<li
+						key={index}
+						className={`${styles.dropdownItem} ${
+							option === activeItem ? styles.active : ''
+						}`}
+						onClick={() => onItemClick && onItemClick(option)}
+					>
+						<ListItem>{option}</ListItem>
+					</li>
+				))}
+			</ul>
 		</div>
 	);
 };
