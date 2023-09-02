@@ -53,7 +53,6 @@ const FindMe: FC = () => (
 					target='_blank'
 				>
 					{icon}
-					{title}
 				</Link>
 			))}
 		</div>
