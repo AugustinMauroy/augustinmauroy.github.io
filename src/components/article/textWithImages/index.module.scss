@@ -1,0 +1,36 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	position: relative;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 50%;
+
+		font-size: 1.5rem;
+
+		@media (max-width: 768px) {
+			width: 100%;
+			font-size: 1rem;
+		}
+	}
+
+	.image {
+		border-radius: 1rem;
+		width: 50%;
+		height: auto;
+
+		@media (max-width: 768px) {
+			width: 100%;
+		}
+	}
+}

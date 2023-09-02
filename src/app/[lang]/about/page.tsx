@@ -2,6 +2,7 @@ import { compileMDX } from 'next-mdx-remote/rsc';
 import * as Icons from 'react-icons/fa';
 import { getContentBySlug } from '@/lib/getcontent';
 import ArticleLayout from '@/components/layouts/article';
+import TextWithImages from '@/components/article/textWithImages';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
 import type { Params } from '@/types/params';
@@ -43,7 +44,10 @@ const Page: FC<PageProps> = async ({ params }) => {
 		description: string;
 	}>({
 		source: rawContent,
-		components: Icons,
+		components: {
+			TextWithImages,
+			...Icons,
+		},
 		options: { parseFrontmatter: true },
 	});
 

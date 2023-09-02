@@ -7,7 +7,9 @@ type ThemeProviderProps = {
 };
 
 const ThemeProviderWrapper: FC<ThemeProviderProps> = ({ children }) => (
-	<ThemeProvider enableSystem={true} enableColorScheme={true}>{children}</ThemeProvider>
+	<ThemeProvider enableSystem={true} enableColorScheme={true}>
+		{children}
+	</ThemeProvider>
 );
 
 export default ThemeProviderWrapper;
