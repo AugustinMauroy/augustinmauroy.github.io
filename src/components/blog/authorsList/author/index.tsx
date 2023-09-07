@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
-import styles from './index.module.scss';
 import type { FC } from 'react';
 
 type AthorProps = {
@@ -31,13 +30,15 @@ const Author: FC<AthorProps> = ({ githubUserName }) => {
 			rel='noopener noreferrer'
 		>
 			<Image
-				className={styles.img}
+				style={{
+					borderRadius: '50%',
+				}}
 				alt={githubUserName}
 				src={authorImg}
-				placeholder='blur'
+				//placeholder='blur'
 				width={40}
 				height={40}
-				blurDataURL='/static/author-placeholder.jpg'
+				//blurDataURL='/static/author-placeholder.jpg'
 				onError={() => setAuthorImg('/static/author-placeholder.jpg')}
 			/>
 		</Link>
