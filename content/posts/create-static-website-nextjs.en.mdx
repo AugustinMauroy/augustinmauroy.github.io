@@ -1,0 +1,352 @@
+---
+title: Creating a Static Website with Next.js and MDX
+description: In this tutorial, we're going to create a static website using Next.js and MDX. And we're going to deploy it using GitHub Pages.
+date: 2023-08-16
+authors: AugustinMauroy
+thumbnail: '/images/blog/blog thumbnail nextjs.svg'
+---
+
+You may have already heard of Next.js, a React framework for building web applications. But did you know that you can also create static websites with Next.js? In this tutorial, we will learn how to create a static website with Next.js and MDX, and we will deploy it using GitHub Pages.
+
+## Prerequisites
+
+- Knowledge of React.
+- Understanding of the difference between client-side rendering and server-side rendering.
+- Next.js 13
+- React 18
+- Node.js 18
+
+## What is a static website?
+
+A static website is a website whose content is fixed, meaning that the content does not change based on the user. For example, a static website can be a blog, a portfolio, a showcase website, etc.
+
+However, it can be generated dynamically, which means that the content is generated in advance and is stored in HTML, CSS, and JavaScript files. That's what we'll explore in this tutorial.
+
+## Project Creation
+
+To get started, we will create a Next.js project. To do this, we will use the following command:"
+
+```bash
+npx create-next-app
+```
+
+A CLI will then open and ask you to choose a name for your project. You can choose any name you like. For me, I chose 'nextjs-mdx-blog.'
+
+Next, it will ask you if you want to use TypeScript. You can choose 'yes' to use TypeScript or 'no' to use JavaScript. I chose 'yes' because TypeScript allows me to better type my code and, by extension, make it more robust.
+
+Finally, it will ask if you want to use ESLint. You can choose 'yes' to use ESLint or 'no' to not use it. I chose 'yes' because ESLint is a great linter and helps maintain consistent code. It's up to you whether you want to use ESLint or not, but I recommend using it because it makes your code cleaner and more readable. There are also code formatters like Prettier that can make your code more readable.
+
+Afterward, it will offer to use Tailwind CSS. I strongly advise against using Tailwind CSS as it doesn't contribute to a good developer experience with its 'class coding.' In our case, we will use Next.js CSS modules.
+
+Finally, it will suggest using import aliases. I recommend using them as they make your code more readable.
+
+Installing Dependencies
+
+We will use other dependencies for our project. To do this, we will use the following command:
+
+```bash
+npm install sass next-themes next-mdx-remote
+```
+
+You can also install `react-icons` if you want to use icons in your project. I encourage you to check out the [documentation](https://react-icons.github.io/react-icons) for more information.
+
+## Configuring Next.js
+
+To start, we will configure Next.js. To do this, we will modify the `next.config.js` file at the root of our project. We will rename it to `next.config.mjs` to use ES modules.
+
+```js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+	output: 'export',
+	images: { unoptimized: true },
+	trailingSlash: false,
+};
+
+export default nextConfig;
+```
+
+## Creating Folders and Files
+
+### `content` Directory
+
+This is where you can store the content of your pages. It can be in [MDX](https://mdxjs.com/) format, allowing you to write React code within Markdown. This avoids the need to write JSX to create a page.
+
+For metadata, I use the [YAML](https://yaml.org) format, but you can use any format you prefer to store metadata.
+
+For example, the [project](/project) page on my site is based on a YAML file, while the [about](/about) page is based on MDX.
+
+### `src/app` Directory
+
+In this directory, you will create `page.tsx` files for defined URLs like `/about` or `/contact`. To do this, create a `page.tsx` file in the "about" directory to create the `/about` page.
+
+As mentioned earlier, we want to write our content in MDX, so we will need a `page.tsx` that allows us to lay out our pages. However, you can also use plain JSX if Markdown is not needed, as on my [homepage](/).
+
+### Other Standard Folders
+
+In addition to the mentioned directories above, you can use folders such as `src/components`, `src/styles`, and `src/utils` to organize your code in a clean and modular way.
+
+### How to Retrieve Data for Pages
+
+As mentioned earlier, we want to write pages in Markdown or other file formats. To achieve this, we will use Next.js React Server Components (RSC).
+
+For this, we'll need a small piece of code that I've written (if you want to support me for this code, follow me on [GitHub](https://github.com/augustinmauroy)).
+
+`getContent.tsx`:
+
+```tsx
+import fs from 'node:fs';
+import path from 'node:path';
+
+const basePath = path.join(process.cwd(), 'content');
+
+function getContentBySlug(
+	slug: string,
+	lang: string,
+	ext: string = 'mdx',
+): string | undefined {
+	try {
+		const filePath = path.join(basePath, `${slug}.${lang}.${ext}`);
+		return fs.readFileSync(filePath, 'utf8');
+	} catch (e) {
+		try {
+			const defaultFilePath = path.join(basePath, `${slug}.en.${ext}`);
+			return fs.readFileSync(defaultFilePath, 'utf8');
+		} catch (e) {
+			return undefined;
+		}
+	}
+}
+```
+
+### How to Create a Page
+
+To create a page, you need to create a `page.tsx` file in the `src/app` directory and add the following code:
+In this example, the language is set to English and is not changeable because this tutorial does not cover localization (i18n).
+
+```tsx
+import { compileMDX } from 'next-mdx-remote/rsc';
+import { getContentBySlug } from '@/lib/getcontent';
+import ArticleLayout from '@/components/layouts/article';
+import type { FC } from 'react';
+import type { Metadata } from 'next';
+
+const generateMetadata = async (): Promise<Metadata> => {
+	const rawContent = getContentBySlug('about', 'en');
+
+	if (!rawContent) {
+		return {
+			title: '404',
+		};
+	}
+
+	const { frontmatter } = await compileMDX<{
+		title: string;
+		description: string;
+	}>({
+		source: rawContent,
+		options: { parseFrontmatter: true },
+	});
+
+	return {
+		title: frontmatter.title,
+		description: frontmatter.description,
+	};
+};
+
+const Page: FC = async () => {
+	const rawContent = getContentBySlug('about', 'en');
+
+	if (!rawContent) return null;
+
+	const { content, frontmatter } = await compileMDX<{
+		title: string;
+		description: string;
+	}>({
+		source: rawContent,
+		options: { parseFrontmatter: true },
+	});
+
+	return (
+		<ArticleLayout
+			title={frontmatter.title}
+			description={frontmatter.description}
+		>
+			{content}
+		</ArticleLayout>
+	);
+};
+
+export { generateMetadata };
+export default Page;
+```
+
+### Creating a Dynamic Page
+
+To create a dynamic page, you need to create a file `src/app/path/[slug]/page.tsx`.
+
+For the dynamic aspect of the page, you need to generate the [`generateStaticParams`](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params).
+
+The `generateStaticParams` function looks like this (in this case, it generates all the slugs for my blog):
+
+```tsx
+const generateStaticParams = () => {
+	const slugs = getAllSlugs('posts');
+	return slugs.map((data) => ({
+		slug: data.slug,
+	}));
+};
+```
+
+Let's look at how `getAllSlugs` is done:
+
+```tsx
+function getAllSlugs(dir: string): AllSlug[] {
+	const files = fs.readdirSync(path.join(basePath, dir));
+	const slugs = files.map((file) => {
+		const slug = file.replace('.mdx', '');
+		return slug;
+	});
+	const allSlugs: AllSlug[] = [];
+	slugs.forEach((slug) => {
+		const lang = slug.split('.')[1];
+		const slugName = slug.split('.')[0];
+		const allSlug: AllSlug = {
+			slug: slugName,
+			lang,
+		};
+		if (lang === undefined || slug === undefined) return;
+		allSlugs.push(allSlug);
+	});
+	return allSlugs;
+}
+```
+
+Next, to make the page dynamic, you need the page itself.
+
+Here's how to use these static params:
+
+```tsx
+type PageProps = {
+	params: BlogParams;
+};
+
+const Page: FC<PageProps> = async ({ params }) => {
+	const rawContent = getContentBySlug(`posts/${params.slug}`, params.lang);
+
+	if (!rawContent) return notFound();
+
+	const { content, frontmatter } = await compileMDX<BlogFrontMatter>({
+		source: rawContent,
+		components: MDXComponents,
+		options: { parseFrontmatter: true },
+	});
+
+	const authors = frontmatter.authors.split(',').map((author) => author.trim());
+
+	return (
+		<BlogPostLayout
+			title={frontmatter.title}
+			description={frontmatter.description}
+			date={frontmatter.date}
+			authors={authors}
+			thumbnail={frontmatter.thumbnail}
+		>
+			{content}
+		</BlogPostLayout>
+	);
+};
+```
+
+### Deploying the Site
+
+To do this, we use a GitHub action that deploys the site to GitHub Pages.
+
+Here is the code for the action:
+
+It assumes that the project is on npm and that you are using [turborepo](https://turbo.build/repo).
+
+```yml
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build for GitHub Pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install NPM packages
+        run: npm ci
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v3
+
+      - name: Restore Cache
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            .next/cache
+            node_modules/.cache
+          key: build-${{ hashFiles('**/package-lock.json') }}-
+          restore-keys: |
+            build-${{ hashFiles('**/package-lock.json') }}-
+          enableCrossOsArchive: true
+
+      - name: Build Next.js
+        run: npx turbo build
+
+      - name: Save Cache
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            .next/cache
+            node_modules/.cache
+          key: build-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('node_modules/.cache') }}
+          enableCrossOsArchive: true
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: out
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+```
+
+## Conclusion
+
+There you have it; now you know how to create a static website using Next.js and MDX. You also know how to deploy it using GitHub Pages.
