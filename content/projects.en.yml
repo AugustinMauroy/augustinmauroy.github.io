@@ -3,6 +3,8 @@
   link: https://augustin.mauroy.github.io/
   linkText: augustin.mauroy.github.io
 - title: My-AI
-  description: My AI written in javascript and without library
+  description: 'My AI written in javascript and without library. To do: update it to use code as library, and pulish it on npm.'
   link: https://github.com/AugustinMauroy/my-ai
   linkText: augustinMayroy/my-ai
+- title: Rewrite of Mineflayer
+  description: 'Rewrite of Mineflayer in TypeScript. For the moment, there is only the idea. I am looking for motivated people to launch the project.'
