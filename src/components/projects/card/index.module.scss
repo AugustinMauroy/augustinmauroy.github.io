@@ -10,6 +10,8 @@
 	img {
 		border-radius: 10px 0 0 10px;
 		border-right: 1px solid var(--text-color);
+		width: 50%;
+		height: auto;
 	}
 
 	.content {
@@ -19,5 +21,19 @@
 		align-items: center;
 		text-align: left;
 		width: 100%;
+	}
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		height: auto;
+
+		img {
+			display: none;
+		}
+
+		.content {
+			text-align: center;
+			padding-bottom: 1rem;
+		}
 	}
 }

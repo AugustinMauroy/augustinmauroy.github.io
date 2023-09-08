@@ -8,5 +8,11 @@
 		justify-content: flex-start;
 		align-items: stretch;
 		gap: 1rem;
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 }

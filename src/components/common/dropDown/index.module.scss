@@ -12,7 +12,6 @@
 	position: absolute;
 	top: 100%;
 	left: 50%;
-	transform: translateX(-50%);
 	width: fit-content;
 	max-width: 200px;
 	background-color: var(--app-fill);
@@ -33,7 +32,7 @@
 
 .open {
 	opacity: 1;
-	transform: translateX(-50%) translateY(0);
+	transform: translateX(-50%) translateY(10px);
 }
 
 .dropdownItem {

@@ -41,6 +41,7 @@ html {
 	--black-main: var(--black6);
 	--green_main: var(--green6);
 	--yellow_main: var(--yellow6);
+	--white: var(--black0);
 
 	&[data-theme='dark'] {
 		--app-fill: var(--black8);

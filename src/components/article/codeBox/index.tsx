@@ -30,7 +30,9 @@ export const replaceLanguages = (language: string) =>
 const CodeBox: FC<CodeBoxProps> = ({ codeData }) => (
 	<div className={styles.codeBox}>
 		<div className={styles.codeLabel}>
-			<strong>{replaceLabelLanguages(codeData.props.className)}</strong>
+			<strong className={styles.label}>
+				{replaceLabelLanguages(codeData.props.className)}
+			</strong>
 			<CopyButton code={codeData.props.children} />
 		</div>
 		<Code
