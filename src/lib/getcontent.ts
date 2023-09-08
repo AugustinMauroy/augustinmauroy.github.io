@@ -54,6 +54,7 @@ type BlogMetadata = {
 	thumbnail?: string;
 	title: string;
 	description: string;
+	date: Date;
 };
 
 async function getBlogMetadata(lang: string): Promise<BlogMetadata[]> {
@@ -72,6 +73,7 @@ async function getBlogMetadata(lang: string): Promise<BlogMetadata[]> {
 				thumbnail: frontmatter.thumbnail,
 				title: frontmatter.title,
 				description: frontmatter.description,
+				date: frontmatter.date,
 			};
 			blogMetadata.push(blogMeta);
 		}
@@ -93,11 +95,10 @@ async function getBlogMetadata(lang: string): Promise<BlogMetadata[]> {
 	});
 
 	uniqueBlogMetadata.sort((a, b) => {
-		const dateA = new Date(a.slug.split('-')[0]);
-		const dateB = new Date(b.slug.split('-')[0]);
+		const dateA = new Date(a.date);
+		const dateB = new Date(b.date);
 		return dateB.getTime() - dateA.getTime();
 	});
-
 	return uniqueBlogMetadata;
 }
 

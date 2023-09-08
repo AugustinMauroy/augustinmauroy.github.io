@@ -1,0 +1,70 @@
+---
+title: Using React Server Components
+description: React Server Components are a new React feature that allow server-side rendering of React components. So what's the point of this feature? And how do you use it?
+date: 2023-09-08
+authors: AugustinMauroy
+thumbnail: '/images/blog/blog thumbnail react.svg'
+---
+
+React Server Components are a new feature in React that allow server-side rendering of React components. So what's the point of this feature? And how do you use it?
+
+## What are React Server Components?
+
+React Server Components are a new React feature that allow server-side rendering of React components. This allows server-side rendering of React components, so you don't have to wait for JavaScript to load before displaying the page content. This improves the user experience by reducing page load times.
+
+## How do I use React Server Components?
+
+To use React Server Components, you first need to install React 18. In this case we will use `create-react-app` to create our React application. But you can also use (Nextjs.js, remix...)
+
+```bash
+npx create-next-app
+```
+
+### Creating a React Server Component
+
+To create a React Server Component, you need to use React's `createRoot` function. This function takes a React component and an HTML element as parameters. In this case, we'll use React's `renderToString` function to convert our React component into HTML.
+
+```jsx
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+
+const App = () => {
+	return <h1>Hello World</h1>;
+};
+
+const html = renderToString(<App />);
+```
+
+### Using a React Server Component
+
+To use a React Server Component, you need to use React's `hydrateRoot` function. This function takes a React component and an HTML element as parameters. In this case we'll use React's `renderToString` function to convert our React component into HTML.
+
+```jsx
+import React from 'react';
+import { hydrateRoot } from 'react-dom';
+
+const App = () => {
+	return <h1>Hello World</h1>;
+};
+
+hydrateRoot(document.getElementById('root'), <App />);
+```
+
+### Using a React Server Component with a React component
+
+To use a React Server Component with a React component, you need to use React's `createRoot` function. This function takes a React component and an HTML element as parameters. In this case we'll use React's `renderToString` function to convert our React component into HTML.
+
+```jsx
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+
+const App = () => {
+	return <h1>Hello World</h1>;
+};
+
+const html = renderToString(<App />);
+```
+
+## Conclusion
+
+React Server Components are a new React feature that allow server-side rendering of React components. They enable server-side rendering of React components, so you don't have to wait for the JavaScript to load to display the page content. This improves the user experience by reducing page load times.
