@@ -27,7 +27,6 @@ const BlogCard: FC<BlogCardProps> = ({ title, thumbnail, slug, lang }) => {
 				width={2000}
 				height={1060}
 				quality={100}
-				layout='responsive'
 				onError={() => setThumbnailUrl('/static/blog-thumbnail.svg')}
 			/>
 			<Link href={`/${lang}/blog/${slug}`}>
