@@ -7,7 +7,6 @@ import type { FC } from 'react';
 
 type BlogCardProps = {
 	title: string;
-	description: string;
 	thumbnail?: string;
 	slug: string;
 	lang: string;

@@ -37,7 +37,6 @@ const Page: FC<PageProps> = async ({ params }) => {
 											key={data.slug}
 											slug={data.slug}
 											title={data.title}
-											description={data.description}
 											lang={params.lang}
 											thumbnail={data.thumbnail}
 										/>
