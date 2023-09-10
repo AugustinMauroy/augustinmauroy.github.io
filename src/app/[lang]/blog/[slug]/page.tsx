@@ -49,6 +49,7 @@ const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
 		title: frontmatter.title,
 		description: frontmatter.description,
 		authors: authors(),
+		keywords: frontmatter.keywords ?? [],
 	};
 };
 

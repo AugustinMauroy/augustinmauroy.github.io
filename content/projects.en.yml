@@ -8,3 +8,5 @@
   linkText: augustinMayroy/my-ai
 - title: Rewrite of Mineflayer
   description: 'Rewrite of Mineflayer in TypeScript. For the moment, there is only the idea. I am looking for motivated people to launch the project.'
+  link: blog/redstonejs
+  linkText: Read the article

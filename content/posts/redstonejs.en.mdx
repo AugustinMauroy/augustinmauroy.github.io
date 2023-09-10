@@ -1,0 +1,76 @@
+---
+title: '"Iron-golem" the project to rewrite mineflayer in typescript'
+description: My project to rewrite mineflayer in typescript.
+date: 2023-09-10
+authors: AugustinMauroy
+keywords:
+  - mineflayer
+  - typescript
+  - iron-golem
+  - redstoneJS
+---
+
+Why did I come up with this idea? Quite simply because I find mineflayer to have several faults. I've already contacted the maintainer to change things but to no avail.
+
+## Flaws in mineflayer
+
+### The documentation
+
+There are several points that make the documentation difficult to read.
+
+1. The choice to use docsify, it's not very flexible compared to other alternatives which are a bit more complex in terms of infrastructure but which offer a better user experience. (like [docusaurus](https://docusaurus.io/)) or [nextra](https://nextra.site/) _the latter is not very well maintained_.
+2. The docs aren't complete, missing things like events, methods, properties, etc...
+
+### Library typing
+
+The typing of the library is very bad, there are many things that are not typed, and the things that are typed are badly typed. This is because the typing is done by hand and not generated automatically.
+
+For the moment it's starting to use JSdoc to type the project but JSdocs isn't as powerful as typescript.
+
+### CJS and ESM
+
+Mineflayer uses `CJS` but doesn't support `ESM` which is a problem because `ESM` is the future of nodejs. And there are a lot of problems with `CJS` like the fact that imports aren't typed, and imports aren't asynchronous.
+
+## Organisation problem
+
+The structure of the different projects isn't the same, which is a problem because the different projects need to be organised in the same way so that users don't get lost.
+
+Also there is a lack of invitation to join the organisation. As I said in [this article](https://opensource.guide/fr/building-community/#partager-la-propriété-de-votre-projet) inviting people into the project as collaborators is a good way of growing the community.
+
+## The solution
+
+The solution is simple, rewrite mineflayer in typescript. This would allow better documentation, better typing, and a better user experience.
+
+### How?
+
+To do this, I need to create a github organisation called `redstoneJS` and create a project called `iron-golem`.
+
+### Unit testing
+
+For the major `1` version of the project, the unit tests need to be exactly the same as those for mineflayer. To do this, I need to create a github script/action which checks if there are any differences between the mineflayer tests and the iron-golem tests.
+
+### Migrate to typescript
+
+Someone will have to write the iron-golem init commit. Then put all the files in typescript and `esm` for export `esm` and `cjs`grace to the typescript compiler. But all non-typed files will have a `@ts-nocheck` so that the compiler doesn't check the types.
+
+Issues will be opened for each untyped file so that people can type them. Each time a file is updated, the docs and unit tests will have to be updated.
+
+### CI, CD
+
+We also need to set up a ci, cd like on mineflayer. To do this, use github action.
+
+### The docs
+
+For this I was going to write it in [MDX](https://mdxjs.com/) and generate it with [docusaurus](https://docusaurus.io/).
+
+### CII best practice and OSSF scorecard
+
+The project must also comply with [CII best practice](https://bestpractices.coreinfrastructure.org/fr) and [OSSF scorecard](https://github.com/ossf/scorecard).
+
+And also respect all the open source best practices.
+
+## Conclusion
+
+I hope you like this project. If you want to help me you can contact me on [twitter](https://twitter.com/AugustinMauroy).
+
+There are still some grey areas in this project, but I think it's a good start. For example, on the subject of dependencies, should we fork them or leave them as they are? I think forking them is the best solution because it gives you better control over the dependencies.

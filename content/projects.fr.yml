@@ -8,3 +8,5 @@
   linkText: augustinMayroy/mon-ia
 - title: Réecriture de Mineflayer
   description: "Réecriture de Mineflayer en TypeScript. Pour le moment, il n'y a que l'idée. Je suis en train de chercher des gens motivés pour lancé le projet."
+  link: blog/redstonejs
+  linkText: Lire l'article

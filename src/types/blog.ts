@@ -14,6 +14,7 @@ export type BlogFrontMatter = {
 	date: Date;
 	thumbnail?: string;
 	authors: string;
+	keywords?: string[];
 };
 
 export type BlogParams = Params & {
