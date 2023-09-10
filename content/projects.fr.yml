@@ -1,9 +1,9 @@
 - title: Site Personnel
-  description: Ce site génial !!!
+  description: Ce site génial !!! Fait avec react, nextjs app dir et github pages. Et avec beaucoup d'amour.
   link: https://augustin.mauroy.github.io/
   linkText: augustin.mauroy.github.io
 - title: Mon IA
-  description: 'Mes IA écrite en JavaScript et sans librairie.A faire : le mettre à jour pour utiliser le code comme bibliothèque, et le publier sur npm.'
+  description: 'Mes IA écrite en Typescript et sans librairie.A faire : le mettre à jour pour utiliser le code comme bibliothèque, et le publier sur npm.'
   link: https://github.com/AugustinMauroy/my-ai
   linkText: augustinMayroy/mon-ia
 - title: Réecriture de Mineflayer

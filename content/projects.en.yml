@@ -1,9 +1,9 @@
 - title: Personal Website
-  description: This awesome website !!!
+  description: This awesome website !!! Made with react, nextjs app dir and github pages. And with a lot of love.
   link: https://augustin.mauroy.github.io/
   linkText: augustin.mauroy.github.io
 - title: My-AI
-  description: 'My AI written in javascript and without library. To do: update it to use code as library, and pulish it on npm.'
+  description: 'My AI written in Typescript and without library. To do: update it to use code as library, and pulish it on npm.'
   link: https://github.com/AugustinMauroy/my-ai
   linkText: augustinMayroy/my-ai
 - title: Rewrite of Mineflayer
