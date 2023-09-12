@@ -2,10 +2,10 @@
   description: This awesome website !!! Made with react, nextjs app dir and github pages. And with a lot of love.
   link: https://augustin.mauroy.github.io/
   linkText: augustin.mauroy.github.io
-- title: My-AI
-  description: 'My AI written in Typescript and without library. To do: update it to use code as library, and pulish it on npm.'
-  link: https://github.com/AugustinMauroy/my-ai
-  linkText: augustinMayroy/my-ai
+- title: neuralnetwork
+  description: 'AI lib written in typescript and without library. À faire: fixé le bug. Et realeser la version 1.0.0. And realese version 1.0.0.'
+  link: https://github.com/AugustinMauroy/neuralnetwork
+  linkText: augustinMayroy/neuralnetwork
 - title: Rewrite of Mineflayer
   description: 'Rewrite of Mineflayer in TypeScript. For the moment, there is only the idea. I am looking for motivated people to launch the project.'
   link: blog/redstonejs
