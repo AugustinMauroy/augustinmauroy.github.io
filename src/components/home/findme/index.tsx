@@ -2,10 +2,10 @@ import Link from 'next/link';
 import {
 	FaGithub,
 	FaTwitch,
-	FaTwitter,
+	FaXTwitter,
 	FaMastodon,
 	FaLinkedin,
-} from 'react-icons/fa';
+} from 'react-icons/fa6';
 import LocalizedMessage from '@/components/i18n/localizedMessage';
 import styles from './index.module.scss';
 import type { FC } from 'react';
@@ -22,7 +22,7 @@ const metaData = [
 		title: 'augustin_ma',
 	},
 	{
-		icon: <FaTwitter />,
+		icon: <FaXTwitter />,
 		link: 'https://twitter.com/_August1_',
 		title: '@_August1_',
 	},
