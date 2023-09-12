@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { FaRss } from 'react-icons/fa6';
 import { getBlogMetadata } from '@/lib/getcontent';
 import LocalizedMessage from '@/components/i18n/localizedMessage';
 import BlogCard from '@/components/blog/blogcard';
@@ -18,9 +20,14 @@ const Page: FC<PageProps> = async ({ params }) => {
 	const metaDataBlog = await getBlogMetadata(params.lang);
 	return (
 		<div className={styles.container}>
-			<h1>
-				<LocalizedMessage id='app.blog.tilte' />
-			</h1>
+			<header>
+				<h1>
+					<LocalizedMessage id='app.blog.tilte' />
+				</h1>
+				<Link href='/feed/blog.xml' passHref>
+					<FaRss />
+				</Link>
+			</header>
 			{metaDataBlog.length === 0 ? (
 				<LocalizedMessage id='app.blog.empty' />
 			) : (

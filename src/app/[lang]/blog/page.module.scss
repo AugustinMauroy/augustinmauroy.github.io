@@ -1,6 +1,18 @@
 .container {
 	margin: 1rem 10%;
 
+	header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+
+		svg {
+			width: 32px;
+			height: 32px;
+		}
+	}
+
 	.cardContainer {
 		display: flex;
 		flex-wrap: wrap;

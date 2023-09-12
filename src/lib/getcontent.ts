@@ -102,4 +102,40 @@ async function getBlogMetadata(lang: string): Promise<BlogMetadata[]> {
 	return uniqueBlogMetadata;
 }
 
-export { getContentBySlug, getAllSlugs, getBlogMetadata };
+async function getRssData() {
+	// same as getBlogMetadata but all items have an en lang
+	const allSlugs = getAllSlugs('posts');
+
+	const blogMetadata: BlogMetadata[] = [];
+
+	for (const slug of allSlugs) {
+		const rawContent = getContentBySlug(`posts/${slug.slug}`, slug.lang);
+		if (rawContent) {
+			const { frontmatter } = await compileMDX<BlogFrontMatter>({
+				source: rawContent,
+				options: { parseFrontmatter: true },
+			});
+
+			const blogMeta: BlogMetadata = {
+				slug: slug.slug,
+				lang: slug.lang,
+				thumbnail: frontmatter.thumbnail,
+				title: frontmatter.title,
+				description: frontmatter.description,
+				date: frontmatter.date,
+			};
+
+			blogMetadata.push(blogMeta);
+		}
+	}
+
+	blogMetadata.sort((a, b) => {
+		const dateA = new Date(a.date);
+		const dateB = new Date(b.date);
+		return dateB.getTime() - dateA.getTime();
+	});
+
+	return blogMetadata;
+}
+
+export { getContentBySlug, getAllSlugs, getBlogMetadata, getRssData };
