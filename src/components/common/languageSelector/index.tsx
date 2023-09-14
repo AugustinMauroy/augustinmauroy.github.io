@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
-import { IoLanguage } from 'react-icons/io5';
+import { FaLanguage } from 'react-icons/fa6';
 import { useIntl } from 'react-intl';
 import { availableLocales } from '@/utils/i18n';
 import Dropdown from '../dropDown';
@@ -40,7 +40,7 @@ const Language: FC = () => {
 	return (
 		<Dropdown
 			title={
-				<IoLanguage
+				<FaLanguage
 					aria-label={intl.formatMessage({
 						id: 'components.common.languageSelector.language',
 					})}

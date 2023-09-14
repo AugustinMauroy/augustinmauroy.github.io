@@ -1,5 +1,5 @@
 import { compileMDX } from 'next-mdx-remote/rsc';
-import * as Icons from 'react-icons/fa';
+import * as Icons from 'react-icons/fa6';
 import { getContentBySlug } from '@/lib/getcontent';
 import ArticleLayout from '@/components/layouts/article';
 import TextWithImages from '@/components/article/textWithImages';
