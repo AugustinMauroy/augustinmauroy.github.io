@@ -6,13 +6,22 @@ import {
 	FaMastodon,
 	FaLinkedin,
 } from 'react-icons/fa6';
+import { cloneElement } from 'react';
 import LocalizedMessage from '@/components/i18n/localizedMessage';
 import styles from './index.module.scss';
-import type { FC } from 'react';
+import type { FC, ReactElement } from 'react';
+
+const iconify = (icon: ReactElement, title: string): ReactElement =>
+  cloneElement(icon, {
+    alt: title,
+	ariaLabel: title,
+	title,
+  });
+
 
 const metaData = [
 	{
-		icon: <FaGithub />,
+		icon: <FaGithub/>,
 		link: 'https://github.com/AugustinMauroy',
 		title: 'AugustinMauroy',
 	},
@@ -51,8 +60,9 @@ const FindMe: FC = () => (
 					href={link}
 					rel='noopener noreferrer'
 					target='_blank'
+					aria-label={title}
 				>
-					{icon}
+					{iconify(icon, title)}
 				</Link>
 			))}
 		</div>
