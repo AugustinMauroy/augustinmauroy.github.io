@@ -26,14 +26,13 @@ const BlogHeader: FC<BlogMetaData> = ({
 			<AuthorsList authors={authors} />
 		</div>
 		{thumbnail && (
-			<div className={styles.thumbnail}>
-				<Image
-					src={`/static/${thumbnail}`}
-					alt={title}
-					height={169}
-					width={300}
-				/>
-			</div>
+			<Image
+				src={`/static/${thumbnail}`}
+				alt={title}
+				height={169}
+				width={300}
+				className={styles.thumbnail}
+			/>
 		)}
 	</section>
 );

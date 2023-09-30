@@ -12,16 +12,15 @@ import styles from './index.module.scss';
 import type { FC, ReactElement } from 'react';
 
 const iconify = (icon: ReactElement, title: string): ReactElement =>
-  cloneElement(icon, {
-    alt: title,
-	ariaLabel: title,
-	title,
-  });
-
+	cloneElement(icon, {
+		alt: title,
+		ariaLabel: title,
+		title,
+	});
 
 const metaData = [
 	{
-		icon: <FaGithub/>,
+		icon: <FaGithub />,
 		link: 'https://github.com/AugustinMauroy',
 		title: 'AugustinMauroy',
 	},
