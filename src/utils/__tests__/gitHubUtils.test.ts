@@ -1,4 +1,4 @@
-import { githubProfileAvatarUrl } from '../githubUtils';
+import { githubProfileAvatarUrl } from '../gitHubUtils';
 
 describe('Github utils', () => {
   it('githubProfileAvatarUrl returns the correct URL', () => {
