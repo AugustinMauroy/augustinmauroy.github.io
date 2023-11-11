@@ -1,0 +1,23 @@
+.card {
+  @apply w-80 rounded-md
+    border-2
+    border-neutral-200
+    shadow-md
+    dark:border-neutral-700
+    dark:shadow-none;
+
+  h3 {
+    @apply mx-1
+    my-2
+    flex-1;
+  }
+
+  img {
+    @apply h-auto
+      w-full
+      rounded-t-md
+      border-b-2
+      border-neutral-200
+      dark:border-neutral-700;
+  }
+}

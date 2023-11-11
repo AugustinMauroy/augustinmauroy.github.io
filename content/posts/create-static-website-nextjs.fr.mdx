@@ -57,9 +57,9 @@ Pour commencer, nous allons configurer Next.js. Pour cela, nous allons modifier 
 ```js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	output: 'export',
-	images: { unoptimized: true },
-	trailingSlash: false,
+  output: 'export',
+  images: { unoptimized: true },
+  trailingSlash: false,
 };
 
 export default nextConfig;
@@ -101,21 +101,21 @@ import path from 'node:path';
 const basePath = path.join(process.cwd(), 'content');
 
 function getContentBySlug(
-	slug: string,
-	lang: string,
-	ext: string = 'mdx',
+  slug: string,
+  lang: string,
+  ext: string = 'mdx'
 ): string | undefined {
-	try {
-		const filePath = path.join(basePath, `${slug}.${lang}.${ext}`);
-		return fs.readFileSync(filePath, 'utf8');
-	} catch (e) {
-		try {
-			const defaultFilePath = path.join(basePath, `${slug}.en.${ext}`);
-			return fs.readFileSync(defaultFilePath, 'utf8');
-		} catch (e) {
-			return undefined;
-		}
-	}
+  try {
+    const filePath = path.join(basePath, `${slug}.${lang}.${ext}`);
+    return fs.readFileSync(filePath, 'utf8');
+  } catch (e) {
+    try {
+      const defaultFilePath = path.join(basePath, `${slug}.en.${ext}`);
+      return fs.readFileSync(defaultFilePath, 'utf8');
+    } catch (e) {
+      return undefined;
+    }
+  }
 }
 ```
 
@@ -132,49 +132,49 @@ import type { FC } from 'react';
 import type { Metadata } from 'next';
 
 const generateMetadata = async (): Promise<Metadata> => {
-	const rawContent = getContentBySlug('about', 'en');
+  const rawContent = getContentBySlug('about', 'en');
 
-	if (!rawContent) {
-		return {
-			title: '404',
-		};
-	}
+  if (!rawContent) {
+    return {
+      title: '404',
+    };
+  }
 
-	const { frontmatter } = await compileMDX<{
-		title: string;
-		description: string;
-	}>({
-		source: rawContent,
-		options: { parseFrontmatter: true },
-	});
+  const { frontmatter } = await compileMDX<{
+    title: string;
+    description: string;
+  }>({
+    source: rawContent,
+    options: { parseFrontmatter: true },
+  });
 
-	return {
-		title: frontmatter.title,
-		description: frontmatter.description,
-	};
+  return {
+    title: frontmatter.title,
+    description: frontmatter.description,
+  };
 };
 
 const Page: FC = async () => {
-	const rawContent = getContentBySlug('about', 'en');
+  const rawContent = getContentBySlug('about', 'en');
 
-	if (!rawContent) return null;
+  if (!rawContent) return null;
 
-	const { content, frontmatter } = await compileMDX<{
-		title: string;
-		description: string;
-	}>({
-		source: rawContent,
-		options: { parseFrontmatter: true },
-	});
+  const { content, frontmatter } = await compileMDX<{
+    title: string;
+    description: string;
+  }>({
+    source: rawContent,
+    options: { parseFrontmatter: true },
+  });
 
-	return (
-		<ArticleLayout
-			title={frontmatter.title}
-			description={frontmatter.description}
-		>
-			{content}
-		</ArticleLayout>
-	);
+  return (
+    <ArticleLayout
+      title={frontmatter.title}
+      description={frontmatter.description}
+    >
+      {content}
+    </ArticleLayout>
+  );
 };
 
 export { generateMetadata };
@@ -191,10 +191,10 @@ La fonction generateStaticParams ressemble à ceci (dans ce cas, elle génère t
 
 ```tsx
 const generateStaticParams = () => {
-	const slugs = getAllSlugs('posts');
-	return slugs.map((data) => ({
-		slug: data.slug,
-	}));
+  const slugs = getAllSlugs('posts');
+  return slugs.map(data => ({
+    slug: data.slug,
+  }));
 };
 ```
 
@@ -202,23 +202,23 @@ Regardons comment est fait `getAllSlugs` :
 
 ```tsx
 function getAllSlugs(dir: string): AllSlug[] {
-	const files = fs.readdirSync(path.join(basePath, dir));
-	const slugs = files.map((file) => {
-		const slug = file.replace('.mdx', '');
-		return slug;
-	});
-	const allSlugs: AllSlug[] = [];
-	slugs.forEach((slug) => {
-		const lang = slug.split('.')[1];
-		const slugName = slug.split('.')[0];
-		const allSlug: AllSlug = {
-			slug: slugName,
-			lang,
-		};
-		if (lang === undefined || slug === undefined) return;
-		allSlugs.push(allSlug);
-	});
-	return allSlugs;
+  const files = fs.readdirSync(path.join(basePath, dir));
+  const slugs = files.map(file => {
+    const slug = file.replace('.mdx', '');
+    return slug;
+  });
+  const allSlugs: AllSlug[] = [];
+  slugs.forEach(slug => {
+    const lang = slug.split('.')[1];
+    const slugName = slug.split('.')[0];
+    const allSlug: AllSlug = {
+      slug: slugName,
+      lang,
+    };
+    if (lang === undefined || slug === undefined) return;
+    allSlugs.push(allSlug);
+  });
+  return allSlugs;
 }
 ```
 
@@ -228,33 +228,33 @@ Voici donc comment utiliser ces static params :
 
 ```tsx
 type PageProps = {
-	params: BlogParams;
+  params: BlogParams;
 };
 
 const Page: FC<PageProps> = async ({ params }) => {
-	const rawContent = getContentBySlug(`posts/${params.slug}`, params.lang);
+  const rawContent = getContentBySlug(`posts/${params.slug}`, params.lang);
 
-	if (!rawContent) return notFound();
+  if (!rawContent) return notFound();
 
-	const { content, frontmatter } = await compileMDX<BlogFrontMatter>({
-		source: rawContent,
-		components: MDXComponents,
-		options: { parseFrontmatter: true },
-	});
+  const { content, frontmatter } = await compileMDX<BlogFrontMatter>({
+    source: rawContent,
+    components: MDXComponents,
+    options: { parseFrontmatter: true },
+  });
 
-	const authors = frontmatter.authors.split(',').map((author) => author.trim());
+  const authors = frontmatter.authors.split(',').map(author => author.trim());
 
-	return (
-		<BlogPostLayout
-			title={frontmatter.title}
-			description={frontmatter.description}
-			date={frontmatter.date}
-			authors={authors}
-			thumbnail={frontmatter.thumbnail}
-		>
-			{content}
-		</BlogPostLayout>
-	);
+  return (
+    <BlogPostLayout
+      title={frontmatter.title}
+      description={frontmatter.description}
+      date={frontmatter.date}
+      authors={authors}
+      thumbnail={frontmatter.thumbnail}
+    >
+      {content}
+    </BlogPostLayout>
+  );
 };
 ```
 

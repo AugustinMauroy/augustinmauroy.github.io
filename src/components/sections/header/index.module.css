@@ -1,0 +1,43 @@
+.header {
+  @apply sticky
+  top-0
+    z-10
+    flex
+    flex-col
+    items-center
+    justify-center
+    border-b-2
+    border-b-neutral-950
+    bg-neutral-100
+    bg-opacity-95
+    p-4
+    dark:border-b-neutral-50
+    dark:bg-neutral-800
+    lg:flex-row
+    lg:justify-between;
+
+  a {
+    @apply text-neutral-950
+      no-underline
+      hover:underline
+      dark:text-neutral-50;
+
+    &.active {
+      @apply border-b-4
+        border-b-neutral-950
+        dark:border-b-neutral-50;
+    }
+  }
+
+  .links {
+    @apply flex
+      flex-row
+      items-center
+      gap-4;
+
+    svg {
+      @apply h-6
+        w-6;
+    }
+  }
+}

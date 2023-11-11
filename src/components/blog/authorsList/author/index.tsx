@@ -6,43 +6,39 @@ import { useIntl } from 'react-intl';
 import type { FC } from 'react';
 
 type AthorProps = {
-	githubUserName: string;
+  githubUserName: string;
 };
 
 const Author: FC<AthorProps> = ({ githubUserName }) => {
-	const githubLink = `https://github.com/${githubUserName}`;
-	const githubImgLink = `https://github.com/${githubUserName}.png?size=240`;
+  const githubLink = `https://github.com/${githubUserName}`;
+  const githubImgLink = `https://github.com/${githubUserName}.png?size=240`;
 
-	const intl = useIntl();
-	const [authorImg, setAuthorImg] = useState(githubImgLink);
+  const intl = useIntl();
+  const [authorImg, setAuthorImg] = useState(githubImgLink);
 
-	const translation = intl.formatMessage(
-		{ id: 'components.blog.authorsList.githubLinkLabel' },
-		{ username: githubUserName },
-	);
+  const translation = intl.formatMessage(
+    { id: 'components.blog.authorsList.githubLinkLabel' },
+    { username: githubUserName }
+  );
 
-	return (
-		<Link
-			href={githubLink}
-			aria-label={translation}
-			key={githubUserName}
-			target='_blank'
-			rel='noopener noreferrer'
-		>
-			<Image
-				style={{
-					borderRadius: '50%',
-				}}
-				alt={githubUserName}
-				src={authorImg}
-				//placeholder='blur'
-				width={40}
-				height={40}
-				//blurDataURL='/static/author-placeholder.jpg'
-				onError={() => setAuthorImg('/static/author-placeholder.jpg')}
-			/>
-		</Link>
-	);
+  return (
+    <Link
+      href={githubLink}
+      aria-label={translation}
+      key={githubUserName}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Image
+        className="rounded-full"
+        alt={githubUserName}
+        src={authorImg}
+        width={40}
+        height={40}
+        onError={() => setAuthorImg('/static/author-placeholder.jpg')}
+      />
+    </Link>
+  );
 };
 
 export default Author;

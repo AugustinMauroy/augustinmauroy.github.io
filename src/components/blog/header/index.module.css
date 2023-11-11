@@ -1,0 +1,17 @@
+.header {
+  @apply flex
+    flex-row
+    justify-between
+    gap-10;
+
+  .thumbnail {
+    @apply hidden
+    h-fit
+    w-80
+    rounded-t-md
+    border-2
+    border-neutral-200
+    dark:border-neutral-700
+    md:block;
+  }
+}

@@ -1,0 +1,25 @@
+.findMe {
+  @apply my-20
+    flex
+    w-full
+    flex-col
+    items-center
+    justify-center
+    gap-8;
+
+  h2 {
+    @apply text-3xl font-extrabold;
+  }
+  .links {
+    @apply flex flex-row flex-wrap justify-center gap-6;
+
+    svg {
+      @apply h-16
+        w-16
+        transition-transform
+        duration-200
+        ease-in-out
+        hover:scale-125;
+    }
+  }
+}

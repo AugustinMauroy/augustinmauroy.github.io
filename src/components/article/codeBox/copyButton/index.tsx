@@ -1,34 +1,30 @@
 'use client';
 import { FormattedMessage } from 'react-intl';
+import Button from '@/components/common/button';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
-import styles from './index.module.scss';
 import type { FC, MouseEvent } from 'react';
 
 type copyButtoProps = {
-	code: string;
+  code: string;
 };
 
 const CopyButton: FC<copyButtoProps> = ({ code }) => {
-	const [copied, copyText] = useCopyToClipboard();
+  const [copied, copyText] = useCopyToClipboard();
 
-	const handleCopyCode = (event: MouseEvent<HTMLButtonElement>) => {
-		event.preventDefault();
+  const handleCopyCode = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
 
-		copyText(code);
-	};
+    copyText(code);
+  };
 
-	return (
-		<button
-			className={styles.copyButton}
-			type='button'
-			onClick={handleCopyCode}
-		>
-			<FormattedMessage
-				id='components.article.codeBox.copy'
-				values={{ copied }}
-			/>
-		</button>
-	);
+  return (
+    <Button onClick={handleCopyCode}>
+      <FormattedMessage
+        id="components.article.codeBox.copy"
+        values={{ copied }}
+      />
+    </Button>
+  );
 };
 
 export default CopyButton;

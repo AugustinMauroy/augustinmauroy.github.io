@@ -1,0 +1,21 @@
+.container {
+  @apply flex
+    w-full
+    flex-col
+    items-center
+    justify-center
+    lg:flex-row;
+
+  .text {
+    @apply w-full
+      text-xl
+      font-semibold
+      lg:w-1/2
+      lg:pr-8;
+  }
+  .image {
+    @apply w-full
+      rounded-md
+      lg:w-1/2;
+  }
+}

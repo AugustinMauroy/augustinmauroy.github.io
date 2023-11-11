@@ -1,27 +1,27 @@
 import { getRssData } from '@/lib/getcontent';
 
 export async function GET(request: Request) {
-	try {
-		const rssData = await getRssData();
+  try {
+    const rssData = await getRssData();
 
-		const xmlItems = rssData
-			.map(
-				(item) => `
+    const xmlItems = rssData
+      .map(
+        item => `
             <item>
                 <title xml:lang="${item.lang}">${item.title}</title>
                 <link>https://augustinmauroy.github.io/${item.lang}/blog/${
-									item.slug
-								}</link>
+                  item.slug
+                }</link>
                 <pubDate>${item.date.toUTCString()}</pubDate>
                 <description xml:lang="${item.lang}">${
-									item.description
-								}</description>
+                  item.description
+                }</description>
             </item>
-        `,
-			)
-			.join('\n');
+        `
+      )
+      .join('\n');
 
-		const rssContent = `
+    const rssContent = `
             <?xml version="1.0" encoding="UTF-8"?>
             <rss version="2.0">
                 <channel>
@@ -33,14 +33,14 @@ export async function GET(request: Request) {
             </rss>
         `;
 
-		return new Response(rssContent, {
-			headers: {
-				'content-type': 'application/xml;charset=UTF-8',
-			},
-		});
-	} catch (error) {
-		return new Response('error', {
-			status: 500,
-		});
-	}
+    return new Response(rssContent, {
+      headers: {
+        'content-type': 'application/xml;charset=UTF-8',
+      },
+    });
+  } catch (error) {
+    return new Response('error', {
+      status: 500,
+    });
+  }
 }

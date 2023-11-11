@@ -1,22 +1,22 @@
 import type { Params } from './params';
 
 export type BlogMetaData = {
-	title: string;
-	description: string;
-	date: Date;
-	thumbnail?: string;
-	authors: string[];
+  title: string;
+  description: string;
+  date: Date;
+  thumbnail?: string;
+  authors: string[];
 };
 
 export type BlogFrontMatter = {
-	title: string;
-	description: string;
-	date: Date;
-	thumbnail?: string;
-	authors: string;
-	keywords?: string[];
+  title: string;
+  description: string;
+  date: Date;
+  thumbnail?: string;
+  authors: string;
+  keywords?: string[];
 };
 
 export type BlogParams = Params & {
-	slug: string;
+  slug: string;
 };

@@ -1,0 +1,6 @@
+.article {
+  @apply w-full
+    p-8
+    md:mx-auto
+    md:w-3/4;
+}

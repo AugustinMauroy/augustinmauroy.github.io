@@ -1,0 +1,11 @@
+.container {
+  @apply mx-auto
+  max-w-7xl;
+
+  .cardContainer {
+    @apply my-4
+      flex
+      flex-col
+      gap-8;
+  }
+}

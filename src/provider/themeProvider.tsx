@@ -3,13 +3,13 @@ import { ThemeProvider } from 'next-themes';
 import type { FC, ReactNode } from 'react';
 
 type ThemeProviderProps = {
-	children: ReactNode;
+  children: ReactNode;
 };
 
 const ThemeProviderWrapper: FC<ThemeProviderProps> = ({ children }) => (
-	<ThemeProvider enableSystem={true} enableColorScheme={true}>
-		{children}
-	</ThemeProvider>
+  <ThemeProvider enableSystem={true} enableColorScheme={true}>
+    {children}
+  </ThemeProvider>
 );
 
 export default ThemeProviderWrapper;

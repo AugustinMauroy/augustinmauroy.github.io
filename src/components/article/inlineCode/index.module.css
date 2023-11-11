@@ -1,0 +1,9 @@
+.inlineCode {
+  @apply rounded-sm
+    bg-green-200
+    px-1
+    py-px
+    text-green-600
+    dark:bg-green-800
+    dark:text-green-50;
+}

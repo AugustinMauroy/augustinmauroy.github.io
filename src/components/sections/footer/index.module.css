@@ -1,0 +1,15 @@
+.footer {
+  @apply flex
+    flex-col
+    items-center
+    justify-center
+    border-t-2
+    border-t-neutral-950
+    bg-neutral-100
+    bg-opacity-95
+    p-4
+    dark:border-t-neutral-50
+    dark:bg-neutral-800
+    lg:flex-row
+    lg:justify-between;
+}

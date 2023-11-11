@@ -1,64 +1,64 @@
 import { compileMDX } from 'next-mdx-remote/rsc';
 import * as Icons from 'react-icons/fa6';
-import { getContentBySlug } from '@/lib/getcontent';
-import ArticleLayout from '@/components/layouts/article';
 import TextWithImages from '@/components/article/textWithImages';
-import type { FC } from 'react';
-import type { Metadata } from 'next';
+import ArticleLayout from '@/components/layouts/article';
+import { getContentBySlug } from '@/lib/getcontent';
 import type { Params } from '@/types/params';
+import type { Metadata } from 'next';
+import type { FC } from 'react';
 
 type PageProps = {
-	params: Params;
+  params: Params;
 };
 
 const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
-	const rawContent = getContentBySlug('about', params.lang);
+  const rawContent = getContentBySlug('about', params.lang);
 
-	if (!rawContent) {
-		return {
-			title: '404',
-		};
-	}
+  if (!rawContent) {
+    return {
+      title: '404',
+    };
+  }
 
-	const { frontmatter } = await compileMDX<{
-		title: string;
-		description: string;
-	}>({
-		source: rawContent,
-		options: { parseFrontmatter: true },
-	});
+  const { frontmatter } = await compileMDX<{
+    title: string;
+    description: string;
+  }>({
+    source: rawContent,
+    options: { parseFrontmatter: true },
+  });
 
-	return {
-		title: frontmatter.title,
-		description: frontmatter.description,
-	};
+  return {
+    title: frontmatter.title,
+    description: frontmatter.description,
+  };
 };
 
 const Page: FC<PageProps> = async ({ params }) => {
-	const rawContent = getContentBySlug('about', params.lang);
+  const rawContent = getContentBySlug('about', params.lang);
 
-	if (!rawContent) return null;
+  if (!rawContent) return null;
 
-	const { content, frontmatter } = await compileMDX<{
-		title: string;
-		description: string;
-	}>({
-		source: rawContent,
-		components: {
-			TextWithImages,
-			...Icons,
-		},
-		options: { parseFrontmatter: true },
-	});
+  const { content, frontmatter } = await compileMDX<{
+    title: string;
+    description: string;
+  }>({
+    source: rawContent,
+    components: {
+      TextWithImages,
+      ...Icons,
+    },
+    options: { parseFrontmatter: true },
+  });
 
-	return (
-		<ArticleLayout
-			title={frontmatter.title}
-			description={frontmatter.description}
-		>
-			{content}
-		</ArticleLayout>
-	);
+  return (
+    <ArticleLayout
+      title={frontmatter.title}
+      description={frontmatter.description}
+    >
+      {content}
+    </ArticleLayout>
+  );
 };
 
 export { generateMetadata };

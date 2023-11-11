@@ -1,15 +1,55 @@
 {
-	"extends": "next/core-web-vitals",
-	"rules": {
-		"no-console": ["error", { "allow": ["warn", "error"] }],
-		"no-undef": "error"
-	},
-	"overrides": [
-		{
-			"files": ["**/*.test.ts", "**/*.test.tsx"],
-			"env": {
-				"jest": true
-			}
-		}
-	]
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
+    "no-undef": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "type"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "~/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "./*.css",
+            "group": "index",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "newlines-between": "never",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.ts", "**/*.test.tsx"],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }

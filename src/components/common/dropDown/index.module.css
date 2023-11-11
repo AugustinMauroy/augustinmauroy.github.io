@@ -1,0 +1,50 @@
+.dropdown {
+  @apply relative inline-block;
+}
+
+.dropdownList {
+  @apply absolute
+    left-1/2
+    top-full
+    z-10
+    m-0
+    w-fit
+    max-w-[200px]
+    -translate-x-1/2
+    -translate-y-4
+    transform
+    list-none
+    rounded-md
+    border-2
+    border-neutral-200
+    bg-neutral-50
+    p-0
+    opacity-0
+    shadow-sm
+    transition-all
+    duration-300
+    ease-in-out
+    dark:border-neutral-700
+    dark:bg-neutral-800;
+
+  &.open {
+    @apply translate-y-0
+    opacity-100;
+  }
+}
+
+.dropdownItem {
+  @apply cursor-pointer
+  border-b-2
+  border-b-neutral-200
+  p-2
+  text-center
+  last:border-none
+  hover:bg-neutral-100
+  dark:border-b-neutral-700
+  dark:hover:bg-neutral-700;
+
+  &.active {
+    @apply font-bold;
+  }
+}

@@ -1,0 +1,10 @@
+.container {
+  @apply flex
+    flex-col;
+
+  .authors {
+    @apply flex
+      flex-row
+      gap-4;
+  }
+}
