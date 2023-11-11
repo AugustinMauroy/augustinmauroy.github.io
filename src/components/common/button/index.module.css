@@ -36,9 +36,9 @@
     hover:bg-green-50
     active:bg-green-100
     disabled:opacity-90
-    dark:border-green-400
-    dark:bg-gray-800
-    dark:text-green-400
-    dark:hover:bg-gray-700
-    dark:active:bg-gray-600;
+    dark:border-green-200
+    dark:bg-green-700
+    dark:text-green-200
+    dark:hover:bg-green-600
+    dark:active:bg-green-500;
 }

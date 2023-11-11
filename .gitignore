@@ -37,3 +37,6 @@ next-env.d.ts
 
 # Turbo
 .turbo
+
+# storybook
+storybook-static
