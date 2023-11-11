@@ -9,7 +9,7 @@ export const Default: Story = {
     title: 'Blog Title of an article',
     description: 'Description of the article',
     date: new Date(),
-    authors: ['AugustinMauroy', 'ovflowd'],
+    authors: ['github:AugustinMauroy', 'github:ovflowd'],
   },
 };
 

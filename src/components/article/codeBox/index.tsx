@@ -30,7 +30,7 @@ const replaceLanguages = (language: string) =>
 const CodeBox: FC<CodeBoxProps> = ({ codeData }) => (
   <div className={styles.codeBox}>
     <div className={styles.codeLabel}>
-      <strong className={styles.label}>
+      <strong className={styles.label} data-state="active">
         {replaceLabelLanguages(codeData.props.className)}
       </strong>
       <CopyButton code={codeData.props.children} />
