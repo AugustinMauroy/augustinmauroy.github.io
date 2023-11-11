@@ -12,7 +12,6 @@ export const Default: Story = {
     title: 'Select an option',
     options,
     activeItem: undefined,
-    customChildren: undefined,
   },
 };
 
@@ -21,7 +20,6 @@ export const WithActiveItem: Story = {
     title: 'Select an option',
     options,
     activeItem: 'Option 2',
-    customChildren: undefined,
   },
 };
 

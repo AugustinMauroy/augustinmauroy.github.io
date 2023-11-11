@@ -1,4 +1,5 @@
 'use client';
+import classNames from 'classnames';
 import { useState } from 'react';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import styles from './index.module.css';
@@ -9,11 +10,6 @@ type DropdownProps = {
   options: string[];
   activeItem?: string;
   onItemClick?: (item: string) => void;
-  customChildren?: ({
-    children,
-  }: {
-    children: ReactNode | string;
-  }) => ReactNode;
 };
 
 const Dropdown: FC<DropdownProps> = ({
@@ -21,17 +17,12 @@ const Dropdown: FC<DropdownProps> = ({
   options,
   activeItem,
   onItemClick,
-  customChildren,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-
-  const ListItem =
-    customChildren ||
-    (({ children }: { children: ReactNode }) => <>{children}</>);
 
   const dropdownRef = useClickOutside<HTMLDivElement>(() => {
     setIsOpen(false);
@@ -42,7 +33,11 @@ const Dropdown: FC<DropdownProps> = ({
       <button type="button" onClick={toggleDropdown}>
         {title}
       </button>
-      <ul className={`${styles.dropdownList} ${isOpen ? styles.open : ''}`}>
+      <ul
+        className={classNames(styles.dropdownList, {
+          [styles.open]: isOpen,
+        })}
+      >
         {options.map((option, index) => (
           <li
             key={index}
@@ -51,7 +46,7 @@ const Dropdown: FC<DropdownProps> = ({
             }`}
             onClick={() => onItemClick && onItemClick(option)}
           >
-            <ListItem>{option}</ListItem>
+            {option}
           </li>
         ))}
       </ul>
