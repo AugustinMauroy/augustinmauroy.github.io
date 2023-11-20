@@ -60,46 +60,40 @@ type BlogMetadata = {
 async function getBlogMetadata(lang: string): Promise<BlogMetadata[]> {
   const allSlugs = getAllSlugs('posts');
   const blogMetadata: BlogMetadata[] = [];
-  for (const slug of allSlugs) {
+
+  const langSpecificSlugs = allSlugs.filter(slug => slug.lang === lang);
+
+  const uniqueSlugs = langSpecificSlugs.filter(
+    (v, i, a) => a.findIndex(t => t.slug === v.slug) === i
+  );
+  const enSlugs = allSlugs.filter(slug => slug.lang === 'en');
+  uniqueSlugs.push(...enSlugs);
+
+  for (const slug of uniqueSlugs) {
     const rawContent = getContentBySlug(`posts/${slug.slug}`, slug.lang);
+
     if (rawContent) {
       const { frontmatter } = await compileMDX<BlogFrontMatter>({
         source: rawContent,
         options: { parseFrontmatter: true },
       });
-      const blogMeta: BlogMetadata = {
+
+      blogMetadata.push({
         slug: slug.slug,
         lang: slug.lang,
         thumbnail: frontmatter.thumbnail,
         title: frontmatter.title,
         description: frontmatter.description,
         date: frontmatter.date,
-      };
-      blogMetadata.push(blogMeta);
+      });
     }
   }
 
-  const uniqueBlogMetadata: BlogMetadata[] = [];
-  blogMetadata.forEach(blogMeta => {
-    const isExist = uniqueBlogMetadata.find(
-      meta => meta.slug === blogMeta.slug
-    );
-    if (isExist) {
-      const index = uniqueBlogMetadata.findIndex(
-        meta => meta.slug === blogMeta.slug
-      );
-      uniqueBlogMetadata[index].lang = lang;
-    } else {
-      uniqueBlogMetadata.push(blogMeta);
-    }
-  });
-
-  uniqueBlogMetadata.sort((a, b) => {
+  return blogMetadata.sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
     return dateB.getTime() - dateA.getTime();
   });
-  return uniqueBlogMetadata;
 }
 
 async function getRssData() {
