@@ -66,8 +66,6 @@ async function getBlogMetadata(lang: string): Promise<BlogMetadata[]> {
   const uniqueSlugs = langSpecificSlugs.filter(
     (v, i, a) => a.findIndex(t => t.slug === v.slug) === i
   );
-  const enSlugs = allSlugs.filter(slug => slug.lang === 'en');
-  uniqueSlugs.push(...enSlugs);
 
   for (const slug of uniqueSlugs) {
     const rawContent = getContentBySlug(`posts/${slug.slug}`, slug.lang);
