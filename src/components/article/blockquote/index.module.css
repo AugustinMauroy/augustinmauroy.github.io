@@ -1,5 +1,6 @@
 .blockquote {
-  @apply flex
+  @apply mb-4
+  flex
   max-w-2xl
   flex-col
   items-start

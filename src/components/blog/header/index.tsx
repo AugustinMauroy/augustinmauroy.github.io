@@ -2,7 +2,7 @@ import Image from 'next/image';
 import LocalizedDate from '@/components/i18n/localizedDate';
 import LocalizedMessage from '@/components/i18n/localizedMessage';
 import type { BlogMetaData } from '@/types/blog';
-import { getAuthorUrl } from '@/utils/stringUtils';
+import { getAuthorName, getAuthorUrl } from '@/utils/stringUtils';
 import AuthorsList from '../avatarGroup';
 import styles from './index.module.css';
 import type { FC } from 'react';
@@ -16,7 +16,7 @@ const BlogHeader: FC<BlogMetaData> = ({
 }) => {
   const avatars = authors.map(author => ({
     src: getAuthorUrl(author),
-    alt: author,
+    alt: getAuthorName(author),
   }));
 
   return (

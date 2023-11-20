@@ -1,0 +1,99 @@
+---
+title: Pourquoi utiliser Tailwind CSS au lieux du css classique ?
+description: Tailwind CSS est un framework CSS qui permet de créer des sites web rapidement et facilement. Il est très utile pour les développeurs qui veulent créer des sites web sans avoir à écrire du code CSS. Mais est-ce bénéfique de l'utiliser ?
+date: 2023-11-20
+authors: github:AugustinMauroy
+thumbnail: '/images/blog/blog thumbnail tailwind.svg'
+---
+
+## Tailwind CSS, c'est quoi ?
+
+Tailwind CSS, c'est un framework CSS novateur axé sur l'utilisation de classes directement intégrées dans le HTML. Cette approche utilitaire simplifie le développement en offrant des classes préconçues pour divers styles, permettant aux développeurs de créer rapidement des sites web tout en maintenant un code clair et lisible.
+
+> Tailwind CSS a été créé en 2017 par le développeur Adam Wathan pour offrir une approche novatrice du stylage d'interfaces. Axé sur la simplicité et la flexibilité, le framework utilise des classes utilitaires directement dans le code HTML. Son adoption rapide est attribuable à sa conception sans opinion, permettant aux développeurs de personnaliser facilement tout en favorisant la rapidité de développement.
+
+## Rappel sur le CSS
+
+Le CSS est un langage de style utilisé pour définir l'apparence et la mise en page des pages web. Il est utilisé pour définir les couleurs, les polices, les dispositions et d'autres aspects de la présentation d'un site web. Le CSS est un langage de style utilisé pour définir l'apparence et la mise en page des pages web. Il est utilisé pour définir les couleurs, les polices, les dispositions et d'autres aspects de la présentation d'un site web.
+
+## Tailwind CSS, c'est mieux ?
+
+Pour comparer Tailwind CSS au CSS classique, nous allons prendre un exemple concret. Nous allons créer un container avec un titre et un paragraphe.
+
+### Avec CSS classique
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+```
+
+### Avec Tailwind CSS
+
+```html
+<div class="flex flex-col items-center justify-center"></div>
+```
+
+**ou avec la directive `@apply`**
+
+```css
+.container {
+  @apply flex
+    flex-col
+    items-center
+    justify-center;
+}
+```
+
+## Pourquoi Tailwind CSS est-il plus "safe" ?
+
+Tailwind fournit des classes pour le spacing (marges et paddings) ce qui permet d'éviter l'irrégularité des espacements entre les éléments.
+
+## Mon avis personnel
+
+Selon moi Tailwind est bénéfique dans le développement front-end. Tailwind me peremt d'avoir des pallettes de couleurs à porté de mains et pensé pour faire attention au contraste-ratio
+De plus les spacing sont très utiles et permettent de gagner du temps et avoir de la régularité dans les espacements.
+
+Au déubut j'eus haï tailwind car utiliser en `class` on se retrouve en spagétis code.
+Puis dans un second temps je me suis souvenu que l'on pouvait utiliser la directive `@apply` pour créer des classes personnalisées et donc avoir un code plus propre.
+
+## Comment utilis-je Tailwind CSS ?
+
+> Ma stack: pour faire du web, j'utilise [react](htttps://react.dev) et [next.js](https://nextjs.org/) et maintenant tailwind et les module CSS.
+
+Comme dit juste au dessus j'utilise les modules CSS pour avoir un code plus propre et plus lisible.
+
+Donc voici l'example d'un composant react (_vous pouvez utilise votre librairies pérférer_).
+
+```tsx
+import styles from './index.module.css';
+import type { FC, PropsWithChildren } from 'react';
+
+const Container: FC<PropsWithChildren> = ({ children }) => (
+  <div className={styles.container}>{children}</div>
+);
+```
+
+**`index.module.css`**
+
+```css
+.container {
+  @apply flex
+    flex-col
+    items-center
+    justify-center
+    rounded-lg
+    border
+    border-gray-300
+    p-4
+    shadow-lg;
+}
+```
+
+## Lien utiles
+
+- [Tailwind CSS](https://tailwindcss.com/)
+- [CSS MDN DOC](https://developer.mozilla.org/fr/docs/Web/CSS)

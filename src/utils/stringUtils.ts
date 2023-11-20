@@ -20,3 +20,5 @@ export const getAuthorUrl = (author: string) => {
     return '';
   }
 };
+
+export const getAuthorName = (author: string) => author.split(':')[1];

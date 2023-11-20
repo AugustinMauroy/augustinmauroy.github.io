@@ -1,4 +1,4 @@
-function getAge(birthday: Date) {
+export function getAge(birthday: Date) {
   const today = new Date();
   const birthDate = new Date(birthday);
   let age = today.getFullYear() - birthDate.getFullYear();
@@ -9,7 +9,7 @@ function getAge(birthday: Date) {
   return age;
 }
 
-function isBirthday(birthday: Date): boolean {
+export function isBirthday(birthday: Date): boolean {
   const today = new Date();
   const birthDate = new Date(birthday);
   return (
@@ -18,4 +18,9 @@ function isBirthday(birthday: Date): boolean {
   );
 }
 
-export { getAge, isBirthday };
+export function isBetweenDates(startDate: string, endDate: string): boolean {
+  const today = new Date();
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  return today >= start && today <= end;
+}
