@@ -1,4 +1,4 @@
-import path from 'path';
+import withNextIntl from 'next-intl/plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,4 +7,6 @@ const nextConfig = {
   trailingSlash: false,
 };
 
-export default nextConfig;
+const nextWithIntl = withNextIntl('./src/utils/i18n/config.ts')(nextConfig);
+
+export default nextWithIntl;

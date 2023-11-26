@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { cloneElement } from 'react';
 import {
   FaGithub,
@@ -7,7 +8,6 @@ import {
   FaMastodon,
   FaLinkedin,
 } from 'react-icons/fa6';
-import LocalizedMessage from '@/components/i18n/localizedMessage';
 import styles from './index.module.css';
 import type { FC, ReactElement } from 'react';
 
@@ -46,25 +46,26 @@ const metaData = [
   },
 ];
 
-const FindMe: FC = () => (
-  <section className={styles.findMe}>
-    <h2>
-      <LocalizedMessage id="components.home.findme.title" />
-    </h2>
-    <div className={styles.links}>
-      {metaData.map(({ icon, link, title }) => (
-        <Link
-          key={title}
-          href={link}
-          rel="noopener noreferrer"
-          target="_blank"
-          aria-label={title}
-        >
-          {iconify(icon, title)}
-        </Link>
-      ))}
-    </div>
-  </section>
-);
+const FindMe: FC = () => {
+  const t = useTranslations('components.home.findme');
 
+  return (
+    <section className={styles.findMe}>
+      <h2>{t('title')}</h2>
+      <div className={styles.links}>
+        {metaData.map(({ icon, link, title }) => (
+          <Link
+            key={title}
+            href={link}
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label={title}
+          >
+            {iconify(icon, title)}
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+};
 export default FindMe;

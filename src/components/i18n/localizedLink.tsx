@@ -25,7 +25,7 @@ const LocalizedLink: FC<Props> = ({
 }) => {
   const params = useParams();
   const pathname = usePathname();
-  const path = `/${params.lang}${href}`;
+  const path = `/${params.locale}${href}`;
   // if pathname is /en/about/slug and path is /en/about, then it's active
   const isActive = path === pathname.split('/').slice(0, 3).join('/');
 

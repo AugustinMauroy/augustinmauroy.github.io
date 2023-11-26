@@ -1,7 +1,8 @@
 import Link from 'next/link';
+import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { FaRss } from 'react-icons/fa6';
 import BlogCard from '@/components/blog/blogcard';
-import LocalizedMessage from '@/components/i18n/localizedMessage';
 import { getBlogMetadata } from '@/lib/getcontent';
 import type { BlogParams } from '@/types/blog';
 import styles from './page.module.css';
@@ -17,25 +18,25 @@ const metadata = {
 };
 
 const Page: FC<PageProps> = async ({ params }) => {
-  const metaDataBlog = await getBlogMetadata(params.lang);
+  unstable_setRequestLocale(params.locale);
+
+  const metaDataBlog = await getBlogMetadata(params.locale);
+  const t = await getTranslations('app.blog');
+
   return (
     <div className={styles.container}>
       <header>
-        <h1>
-          <LocalizedMessage id="app.blog.tilte" />
-        </h1>
+        <h1>{t('title')}</h1>
         <Link href="/feed/blog.xml" passHref>
           <FaRss />
         </Link>
       </header>
       {metaDataBlog.length === 0 ? (
-        <LocalizedMessage id="app.blog.empty" />
+        t('empty')
       ) : (
         <>
           <section>
-            <h2>
-              <LocalizedMessage id="app.blog.recents" />
-            </h2>
+            <h2>{t('recents')}</h2>
             <div className={styles.cardContainer}>
               {metaDataBlog.map((data, index) => {
                 if (index < 3) {
@@ -44,7 +45,7 @@ const Page: FC<PageProps> = async ({ params }) => {
                       key={data.slug}
                       slug={data.slug}
                       title={data.title}
-                      lang={params.lang}
+                      lang={data.lang}
                       thumbnail={data.thumbnail}
                     />
                   );
@@ -54,9 +55,7 @@ const Page: FC<PageProps> = async ({ params }) => {
           </section>
           {metaDataBlog.length > 3 && (
             <section>
-              <h2>
-                <LocalizedMessage id="app.blog.olders" />
-              </h2>
+              <h2>{t('olders')}</h2>
               <div className={styles.cardContainer}>
                 {metaDataBlog.map((data, index) => {
                   if (index > 2) {

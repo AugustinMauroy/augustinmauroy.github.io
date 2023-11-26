@@ -1,3 +1,3 @@
 export type Params = {
-  lang: string;
+  locale: string;
 };

@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import LocalizedDate from '@/components/i18n/localizedDate';
-import LocalizedMessage from '@/components/i18n/localizedMessage';
+import { useFormatter } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import type { BlogMetaData } from '@/types/blog';
 import { getAuthorName, getAuthorUrl } from '@/utils/stringUtils';
 import AuthorsList from '../avatarGroup';
@@ -14,6 +14,9 @@ const BlogHeader: FC<BlogMetaData> = ({
   authors,
   thumbnail,
 }) => {
+  const format = useFormatter();
+  const t = useTranslations('components.blog.header');
+
   const avatars = authors.map(author => ({
     src: getAuthorUrl(author),
     alt: getAuthorName(author),
@@ -25,10 +28,8 @@ const BlogHeader: FC<BlogMetaData> = ({
         <h1>{title}</h1>
         <p>{description}</p>
         <p>
-          <LocalizedMessage id="components.blog.header.posted" />:{' '}
-          <time dateTime={date.toISOString()}>
-            <LocalizedDate value={date} />
-          </time>
+          {t('posted')}:{' '}
+          <time dateTime={date.toISOString()}>{format.dateTime(date)}</time>
         </p>
         <AuthorsList avatars={avatars} />
       </div>

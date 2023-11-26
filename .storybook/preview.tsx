@@ -2,7 +2,7 @@ import React from 'react';
 import type { Preview, ReactRenderer } from '@storybook/react';
 import '../src/styles/globals.css';
 import messages from '../i18n/locales/en.json';
-import { IntlProvider } from 'react-intl';
+import { NextIntlClientProvider } from 'next-intl';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
 const preview: Preview = {
@@ -22,9 +22,9 @@ const preview: Preview = {
   },
   decorators: [
     Story => (
-      <IntlProvider locale="en" messages={messages}>
+      <NextIntlClientProvider locale="en" messages={messages}>
         <Story />
-      </IntlProvider>
+      </NextIntlClientProvider>
     ),
     withThemeByDataAttribute<ReactRenderer>({
       themes: {

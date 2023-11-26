@@ -12,8 +12,7 @@
     "test:ci": "jest --ci --coverage",
     "prettier:write": "prettier --write .",
     "prettier:check": "prettier --check .",
-    "messageformat": "node ./scripts/messagesCleaner.mjs",
-    "format": "npm run prettier:write && npm run messageformat && npm run lint:fix",
+    "format": "npm run prettier:write && npm run lint:fix",
     "storybook": "storybook dev -p 6006 --quiet --no-open",
     "storybook:build": "storybook build"
   },
@@ -23,12 +22,12 @@
     "classnames": "~2.3.2",
     "js-yaml": "~4.1.0",
     "next": "~14.0.3",
+    "next-intl": "~3.1.4",
     "next-mdx-remote": "~4.4.1",
     "next-themes": "~0.2.1",
     "react": "~18.2.0",
     "react-dom": "~18.2.0",
     "react-icons": "~4.12.0",
-    "react-intl": "~6.5.5",
     "turbo": "~1.10.16"
   },
   "devDependencies": {

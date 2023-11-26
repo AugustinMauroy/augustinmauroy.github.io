@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import MDXComponents from '@/components/article/mdxComponents';
 import BlogPostLayout from '@/components/layouts/blog';
@@ -19,7 +20,7 @@ const generateStaticParams = ({ params }: PageProps) => {
 };
 
 const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
-  const rawContent = getContentBySlug(`posts/${params.slug}`, params.lang);
+  const rawContent = getContentBySlug(`posts/${params.slug}`, params.locale);
 
   if (!rawContent) {
     return {
@@ -54,7 +55,8 @@ const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
 };
 
 const Page: FC<PageProps> = async ({ params }) => {
-  const rawContent = getContentBySlug(`posts/${params.slug}`, params.lang);
+  unstable_setRequestLocale(params.locale);
+  const rawContent = getContentBySlug(`posts/${params.slug}`, params.locale);
 
   if (!rawContent) return notFound();
 

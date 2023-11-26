@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { Open_Sans } from 'next/font/google';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import Footer from '@/components/sections/footer';
 import Header from '@/components/sections/header';
-import getMessages from '@/lib/getMessage';
-import LocalProvider from '@/provider/localProvider';
+import { LocaleProvider } from '@/provider/localeProvider';
 import ThemeProviderWrapper from '@/provider/themeProvider';
 import type { Params } from '@/types/params';
 import { availableLocales } from '@/utils/i18n';
@@ -29,27 +29,24 @@ const metadata: Metadata = {
 };
 
 const generateStaticParams = () => {
-  return availableLocales().map(lang => ({
-    lang: lang.code,
+  return availableLocales.map(lang => ({
+    locale: lang.code,
   }));
 };
 
 const RootLayout: FC<RootLayoutProps> = ({ children, params }) => {
-  const messages = () => ({
-    ...getMessages('en'),
-    ...getMessages(params.lang),
-  });
+  unstable_setRequestLocale(params.locale);
 
   return (
-    <html lang={params.lang} style={{ scrollBehavior: 'smooth' }}>
+    <html lang={params.locale} style={{ scrollBehavior: 'smooth' }}>
       <body className={classNames('font-open-sans', font.variable)}>
-        <LocalProvider lang={params.lang} messages={messages()}>
+        <LocaleProvider>
           <ThemeProviderWrapper>
             <Header />
             <main>{children}</main>
             <Footer />
           </ThemeProviderWrapper>
-        </LocalProvider>
+        </LocaleProvider>
       </body>
     </html>
   );

@@ -1,13 +1,15 @@
-import LocalizedMessage from '@/components/i18n/localizedMessage';
+import { useTranslations } from 'next-intl';
 import styles from './index.module.css';
 import type { FC } from 'react';
 
-const Header: FC = () => (
-  <footer className={styles.footer}>
-    <p>
-      <LocalizedMessage id="component.sections.footer.title" />
-    </p>
-  </footer>
-);
+const Header: FC = () => {
+  const t = useTranslations('components.sections.footer');
+
+  return (
+    <footer className={styles.footer}>
+      <p>{t('title')}</p>
+    </footer>
+  );
+};
 
 export default Header;

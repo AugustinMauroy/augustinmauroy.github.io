@@ -1,5 +1,5 @@
 'use client';
-import { FormattedMessage } from 'react-intl';
+import { useTranslations } from 'next-intl';
 import Button from '@/components/common/button';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 import type { FC, MouseEvent } from 'react';
@@ -9,6 +9,7 @@ type copyButtoProps = {
 };
 
 const CopyButton: FC<copyButtoProps> = ({ code }) => {
+  const t = useTranslations('components.article.codeBox');
   const [copied, copyText] = useCopyToClipboard();
 
   const handleCopyCode = (event: MouseEvent<HTMLButtonElement>) => {
@@ -17,14 +18,7 @@ const CopyButton: FC<copyButtoProps> = ({ code }) => {
     copyText(code);
   };
 
-  return (
-    <Button onClick={handleCopyCode}>
-      <FormattedMessage
-        id="components.article.codeBox.copy"
-        values={{ copied }}
-      />
-    </Button>
-  );
+  return <Button onClick={handleCopyCode}>{t('copy', { copied })}</Button>;
 };
 
 export default CopyButton;

@@ -1,4 +1,5 @@
 import yml from 'js-yaml';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import Card from '@/components/projects/card';
 import { getContentBySlug } from '@/lib/getcontent';
 import type { Params } from '@/types/params';
@@ -11,7 +12,8 @@ type PageProps = {
 };
 
 const Page: FC<PageProps> = ({ params }) => {
-  const RawProjects = getContentBySlug('projects', params.lang, 'yml');
+  unstable_setRequestLocale(params.locale);
+  const RawProjects = getContentBySlug('projects', params.locale, 'yml');
 
   if (!RawProjects) return null;
 

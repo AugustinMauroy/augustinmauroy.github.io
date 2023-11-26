@@ -1,3 +1,4 @@
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import * as Icons from 'react-icons/fa6';
 import TextWithImages from '@/components/article/textWithImages';
@@ -12,7 +13,8 @@ type PageProps = {
 };
 
 const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
-  const rawContent = getContentBySlug('about', params.lang);
+  unstable_setRequestLocale(params.locale);
+  const rawContent = getContentBySlug('about', params.locale);
 
   if (!rawContent) {
     return {
@@ -35,7 +37,7 @@ const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
 };
 
 const Page: FC<PageProps> = async ({ params }) => {
-  const rawContent = getContentBySlug('about', params.lang);
+  const rawContent = getContentBySlug('about', params.locale);
 
   if (!rawContent) return null;
 

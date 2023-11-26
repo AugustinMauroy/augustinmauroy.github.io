@@ -3,7 +3,7 @@
   link: https://augustin.mauroy.github.io/
   linkText: augustin.mauroy.github.io
 - title: neuralnetwork
-  description: 'AI lib written in typescript and without library. À faire: fixé le bug. Et realeser la version 1.0.0. And realese version 1.0.0.'
+  description: 'AI lib written in typescript and without library. TODO: fix alls bug. And realese version 1.0.0.'
   link: https://github.com/AugustinMauroy/neuralnetwork
   linkText: augustinMayroy/neuralnetwork
 - title: Rewrite of Mineflayer

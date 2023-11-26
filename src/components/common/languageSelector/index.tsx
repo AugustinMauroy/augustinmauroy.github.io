@@ -1,7 +1,7 @@
 'use client';
 import { useParams, usePathname, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { FaLanguage } from 'react-icons/fa6';
-import { useIntl } from 'react-intl';
 import { availableLocales } from '@/utils/i18n';
 import Dropdown from '../dropDown';
 import type { FC } from 'react';
@@ -10,18 +10,18 @@ const Language: FC = () => {
   const { lang } = useParams();
   const pathname = usePathname();
   const rooter = useRouter();
-  const intl = useIntl();
+  const t = useTranslations();
 
-  const options: string[] = availableLocales().map(locale => {
+  const options: string[] = availableLocales.map(locale => {
     return locale.localName;
   });
 
-  const currentLang = availableLocales().find(locale => {
+  const currentLang = availableLocales.find(locale => {
     return locale.code === lang;
   });
 
   const getCode = (localName: string) => {
-    return availableLocales().find(locale => {
+    return availableLocales.find(locale => {
       return locale.localName === localName;
     });
   };
@@ -29,11 +29,7 @@ const Language: FC = () => {
   return (
     <Dropdown
       title={
-        <FaLanguage
-          aria-label={intl.formatMessage({
-            id: 'components.common.languageSelector.language',
-          })}
-        />
+        <FaLanguage aria-label={t('components.common.languageSelector')} />
       }
       options={options}
       activeItem={currentLang?.localName}

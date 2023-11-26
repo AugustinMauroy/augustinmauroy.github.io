@@ -1,4 +1,8 @@
-import { getAcronymFromString, getAuthorUrl } from '../stringUtils';
+import {
+  getAcronymFromString,
+  getAuthorUrl,
+  getAuthorName,
+} from '../stringUtils';
 
 describe('String utils', () => {
   // getAcronymFromString
@@ -24,5 +28,10 @@ describe('String utils', () => {
     expect(getAuthorUrl('website:"https://augustinmauroy.github.io"')).toBe(
       'https://augustinmauroy.github.io'
     );
+  });
+
+  // getAuthorName
+  it('getAuthorName returns the correct name for a github profile', () => {
+    expect(getAuthorName('github:"AugustinMauroy"')).toBe('AugustinMauroy');
   });
 });
