@@ -10,7 +10,8 @@
       "title": "Page not found",
       "home": "Take me back to the homepage",
       "description": "The page you are trying to access does not exist. Return to the homepage or find what you're looking for in the menu."
-    }
+    },
+    "projects": "My Projects"
   },
   "components": {
     "sections": {
@@ -51,6 +52,20 @@
     "common": {
       "languageSelector": "Language Selector",
       "themeSelector": "Theme Selector"
+    }
+  },
+  "metadata": {
+    "root": {
+      "title": "Augustin M.' website",
+      "description": "Augustin M. personal website"
+    },
+    "projects": {
+      "title": "My Projects",
+      "description": "List of my projects"
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Augustin M. blog"
     }
   }
 }

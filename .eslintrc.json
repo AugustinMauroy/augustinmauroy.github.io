@@ -8,6 +8,13 @@
       }
     ],
     "no-undef": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "import/order": [
       "error",
       {

@@ -12,7 +12,7 @@ const Images: FC<ImagesProps> = ({ src, alt }) => (
   // eslint-disable-next-line @next/next/no-img-element
   <img
     className={styles.image}
-    src={src || '/static/placeholders-16-9.png'}
+    src={src || '/static/thumbnail withou bg.svg'}
     alt={alt || 'image'}
   />
 );

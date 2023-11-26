@@ -6,6 +6,11 @@
   description: 'AI lib written in typescript and without library. TODO: fix alls bug. And realese version 1.0.0.'
   link: https://github.com/AugustinMauroy/neuralnetwork
   linkText: augustinMayroy/neuralnetwork
+- title: nodejs.org
+  description: 'Official nodejs website. I am a contributor to the project, I am working on the redesign of the site. I am working on the translation into French  🇧🇪.'
+  link: https://github.com/nodejs/nodejs.org
+  linkText: nodejs/nodejs.org
+  thumbnail: '/images/projects/nodejs.svg'
 - title: Rewrite of Mineflayer
   description: 'Rewrite of Mineflayer in TypeScript. For the moment, there is only the idea. I am looking for motivated people to launch the project.'
   link: blog/redstonejs

@@ -3,7 +3,7 @@ import styles from './index.module.css';
 import type { FC, ButtonHTMLAttributes } from 'react';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: 'primary' | 'secondary' | 'special';
+  variant?: 'primary' | 'secondary' | 'special' | 'icon';
 };
 
 const Button: FC<ButtonProps> = ({

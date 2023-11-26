@@ -42,3 +42,10 @@
     dark:hover:bg-green-600
     dark:active:bg-green-500;
 }
+
+.icon {
+  @apply px-3
+    py-2
+    hover:bg-gray-300
+    dark:hover:bg-gray-600;
+}

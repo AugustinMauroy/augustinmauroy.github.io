@@ -6,15 +6,20 @@ import BlogCard from '@/components/blog/blogcard';
 import { getBlogMetadata } from '@/lib/getcontent';
 import type { BlogParams } from '@/types/blog';
 import styles from './page.module.css';
+import type { Metadata } from 'next';
 import type { FC } from 'react';
 
 type PageProps = {
   params: BlogParams;
 };
 
-const metadata = {
-  title: 'Blog',
-  description: 'My blog',
+const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations('metadata.blog');
+
+  return {
+    title: t('title'),
+    description: t('description'),
+  };
 };
 
 const Page: FC<PageProps> = async ({ params }) => {
@@ -24,11 +29,11 @@ const Page: FC<PageProps> = async ({ params }) => {
   const t = await getTranslations('app.blog');
 
   return (
-    <div className={styles.container}>
+    <div className={styles.page}>
       <header>
         <h1>{t('title')}</h1>
-        <Link href="/feed/blog.xml" passHref>
-          <FaRss />
+        <Link href="/feed/blog.xml">
+          <FaRss aria-label="RSS feed" />
         </Link>
       </header>
       {metaDataBlog.length === 0 ? (
@@ -75,5 +80,5 @@ const Page: FC<PageProps> = async ({ params }) => {
   );
 };
 
-export { metadata };
+export { generateMetadata };
 export default Page;

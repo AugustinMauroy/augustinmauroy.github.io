@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { Open_Sans } from 'next/font/google';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 import Footer from '@/components/sections/footer';
 import Header from '@/components/sections/header';
 import { LocaleProvider } from '@/provider/localeProvider';
@@ -22,10 +22,14 @@ type RootLayoutProps = PropsWithChildren<{
   params: Params;
 }>;
 
-const metadata: Metadata = {
-  metadataBase: new URL('https://augustinmauroy.github.io/'),
-  title: "Augustin M.' website",
-  description: 'Augustin M. personal website',
+const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations('metadata.root');
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    metadataBase: new URL(`https://augustinmauroy.github.io/`),
+  };
 };
 
 const generateStaticParams = () => {
@@ -52,5 +56,5 @@ const RootLayout: FC<RootLayoutProps> = ({ children, params }) => {
   );
 };
 
-export { metadata, generateStaticParams };
+export { generateMetadata, generateStaticParams };
 export default RootLayout;

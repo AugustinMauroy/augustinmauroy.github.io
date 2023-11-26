@@ -19,5 +19,4 @@ const Page: FC<PageProps> = ({ params }) => {
     </>
   );
 };
-
 export default Page;

@@ -16,7 +16,8 @@ const Card: FC<CardProps> = ({
   <section className={styles.card}>
     <Image
       src={
-        thumbnail ? `/static/${thumbnail}` : '/static/projects-illustration.svg'
+        thumbnail ? `/static/${thumbnail}` : '/static/thumbnail withou bg.svg'
+        //'/static/projects-illustration.svg'
       }
       alt={thumbnail ? title : 'Illustration'}
       width={400}

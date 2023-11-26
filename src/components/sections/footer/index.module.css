@@ -4,12 +4,12 @@
     items-center
     justify-center
     border-t-2
-    border-t-neutral-950
-    bg-neutral-100
+    border-t-gray-950
+    bg-gray-100
     bg-opacity-95
     p-4
-    dark:border-t-neutral-50
-    dark:bg-neutral-800
+    dark:border-t-gray-50
+    dark:bg-gray-800
     lg:flex-row
     lg:justify-between;
 }

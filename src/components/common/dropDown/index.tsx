@@ -2,6 +2,7 @@
 import classNames from 'classnames';
 import { useState } from 'react';
 import { useClickOutside } from '@/hooks/useClickOutside';
+import Button from '../button';
 import styles from './index.module.css';
 import type { FC, ReactNode } from 'react';
 
@@ -9,7 +10,7 @@ type DropdownProps = {
   title: ReactNode;
   options: string[];
   activeItem?: string;
-  onItemClick?: (item: string) => void;
+  onItemClick?: (_item: string) => void;
 };
 
 const Dropdown: FC<DropdownProps> = ({
@@ -30,9 +31,9 @@ const Dropdown: FC<DropdownProps> = ({
 
   return (
     <div className={styles.dropdown} ref={dropdownRef}>
-      <button type="button" onClick={toggleDropdown}>
+      <Button variant="icon" type="button" onClick={toggleDropdown}>
         {title}
-      </button>
+      </Button>
       <ul
         className={classNames(styles.dropdownList, {
           [styles.open]: isOpen,

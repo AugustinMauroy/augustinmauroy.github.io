@@ -10,8 +10,8 @@
     w-80
     rounded-md
     border-2
-    border-neutral-200
-    dark:border-neutral-700
+    border-gray-200
+    dark:border-gray-700
     md:block;
   }
 }

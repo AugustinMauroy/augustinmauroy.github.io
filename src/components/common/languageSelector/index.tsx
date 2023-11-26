@@ -7,7 +7,7 @@ import Dropdown from '../dropDown';
 import type { FC } from 'react';
 
 const Language: FC = () => {
-  const { lang } = useParams();
+  const { locale } = useParams();
   const pathname = usePathname();
   const rooter = useRouter();
   const t = useTranslations();
@@ -16,8 +16,8 @@ const Language: FC = () => {
     return locale.localName;
   });
 
-  const currentLang = availableLocales.find(locale => {
-    return locale.code === lang;
+  const currentLang = availableLocales.find(lang => {
+    return lang.code === locale;
   });
 
   const getCode = (localName: string) => {

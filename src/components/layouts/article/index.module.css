@@ -1,6 +1,8 @@
 .article {
-  @apply w-full
-    p-8
-    md:mx-auto
-    md:w-3/4;
+  @apply container
+    mx-auto
+    px-4
+    pt-4
+    sm:px-6
+    lg:px-8;
 }

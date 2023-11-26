@@ -10,7 +10,8 @@
       "title": "Page non trouvée",
       "home": "Renvoyez-moi à la page d'accueil",
       "description": "La page que vous essayez d'atteindre n'existe pas. Retournez à la page d'accueil ou trouvez ce que vous cherchez dans le menu."
-    }
+    },
+    "projects": "Mes projets"
   },
   "components": {
     "sections": {
@@ -51,6 +52,20 @@
     "common": {
       "languageSelector": "Sélecteur de langue",
       "themeSelector": "Sélecteur de thème"
+    }
+  },
+  "metadata": {
+    "root": {
+      "title": "Site web d'Augustin M.",
+      "description": "Site web personnel d'Augustin M."
+    },
+    "projects": {
+      "title": "Mes Projets",
+      "description": "Liste de mes projets"
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Blog d'Augustin M."
     }
   }
 }

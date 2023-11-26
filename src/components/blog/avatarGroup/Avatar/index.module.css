@@ -1,24 +1,24 @@
 .avatar {
   @apply flex
-    h-8
-    w-8
+    h-10
+    w-10
     items-center
     justify-center
     gap-4
     rounded-full
     border-2
     border-white
-    bg-neutral-100
+    bg-gray-100
     object-cover
     text-xs
-    text-neutral-800
-    dark:border-neutral-950
-    dark:bg-neutral-800
-    dark:text-neutral-300;
+    text-gray-800
+    dark:border-gray-950
+    dark:bg-gray-800
+    dark:text-gray-300;
 }
 
 .avatarRoot {
-  @apply h-8
-    w-8
+  @apply h-10
+    w-10
     flex-shrink-0;
 }

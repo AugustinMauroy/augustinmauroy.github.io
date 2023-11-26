@@ -34,7 +34,6 @@ const Pictures: FC = () => {
       width={384}
       height={384}
       quality={100}
-      blurDataURL="author-placeholder.jpg"
       onError={() =>
         setCurrentImage(currentImage === PICTURES_NUMBER ? 1 : currentImage + 1)
       }

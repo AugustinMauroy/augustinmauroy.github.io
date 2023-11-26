@@ -1,6 +1,10 @@
-.container {
-  @apply mx-auto
-  max-w-7xl;
+.page {
+  @apply container
+    mx-auto
+    px-4
+    pt-4
+    sm:px-6
+    lg:px-8;
 
   .cardContainer {
     @apply my-4

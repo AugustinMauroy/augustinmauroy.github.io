@@ -12,8 +12,9 @@ type PageProps = {
   params: BlogParams;
 };
 
-const generateStaticParams = ({ params }: PageProps) => {
+const generateStaticParams = () => {
   const slugs = getAllSlugs('posts');
+
   return slugs.map(data => ({
     slug: data.slug,
   }));

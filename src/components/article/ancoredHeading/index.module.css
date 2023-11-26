@@ -1,9 +1,9 @@
 .link {
   @apply cursor-default
     select-none
-    text-neutral-950
+    text-gray-950
     no-underline
-    hover:text-neutral-900
-    dark:text-neutral-50
-    dark:hover:text-neutral-100;
+    hover:text-gray-900
+    dark:text-gray-50
+    dark:hover:text-gray-100;
 }

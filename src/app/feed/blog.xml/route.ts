@@ -1,6 +1,6 @@
 import { getRssData } from '@/lib/getcontent';
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const rssData = await getRssData();
 
@@ -25,9 +25,9 @@ export async function GET(request: Request) {
             <?xml version="1.0" encoding="UTF-8"?>
             <rss version="2.0">
                 <channel>
-                    <title>Votre titre de flux RSS</title>
+                    <title>Augustin Mauroy - Blog</title>
                     <link>https://augustinmauroy.github.io/blog</link>
-                    <description>Votre description de flux RSS</description>
+                    <description>just my blog</description>
                     ${xmlItems}
                 </channel>
             </rss>

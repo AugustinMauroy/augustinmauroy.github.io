@@ -23,7 +23,7 @@ const config: StorybookConfig = {
     '<style>:root { color-scheme: light; } html[data-theme="dark"] { color-scheme: dark; }</style>' +
     // This adds the base styling for dark/light themes within Storybook. This is a Storybook-only style
     // Warning: this should be same as the one in `src/styles/globals.css`
-    '<body class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"></body>',
+    '<body class="bg-gray-50 text-gray-950 dark:bg-gray-900 transition-colors dark:text-gray-50"></body>',
   core: { disableTelemetry: true, disableWhatsNewNotifications: true },
   webpackFinal: async config => {
     // @ts-ignore

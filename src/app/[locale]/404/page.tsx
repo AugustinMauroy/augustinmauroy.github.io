@@ -1,19 +1,24 @@
 // not-found doesn't work with i18n
 import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 import { FC } from 'react';
 import LocalizedLink from '@/components/i18n/localizedLink';
 import type { Params } from '@/types/params';
 import styles from './page.module.css';
+import type { Metadata } from 'next';
 
 type NotFoundPageProps = {
   params: Params;
 };
 
-const metadata = {
-  title: '404',
-};
+const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations('metadata.404');
 
+  return {
+    title: t('title'),
+    description: t('description'),
+  };
+};
 const NotFoundPage: FC<NotFoundPageProps> = ({ params }) => {
   unstable_setRequestLocale(params.locale);
   const t = useTranslations('app.notFound');
@@ -27,5 +32,5 @@ const NotFoundPage: FC<NotFoundPageProps> = ({ params }) => {
   );
 };
 
-export { metadata };
+export { generateMetadata };
 export default NotFoundPage;

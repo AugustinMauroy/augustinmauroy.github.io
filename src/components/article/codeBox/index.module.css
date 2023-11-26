@@ -2,7 +2,7 @@
 .codeBox {
   @apply mb-4
     rounded-lg
-    bg-neutral-300
+    bg-gray-300
     shadow-md
     dark:shadow-none;
 
@@ -20,7 +20,7 @@
       pb-[11px]
       text-base
       font-semibold
-      text-neutral-700
+      text-gray-700
       data-[state=active]:border-b-green-600
       data-[state=active]:text-green-600;
     }
