@@ -10,6 +10,7 @@
   h2 {
     @apply text-3xl font-extrabold;
   }
+
   .links {
     @apply flex flex-row flex-wrap justify-center gap-6;
 

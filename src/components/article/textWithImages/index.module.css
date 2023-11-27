@@ -13,6 +13,7 @@
       lg:w-1/2
       lg:pr-8;
   }
+
   .image {
     @apply w-full
       rounded-md

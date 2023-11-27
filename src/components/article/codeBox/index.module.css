@@ -25,6 +25,7 @@
       data-[state=active]:text-green-600;
     }
   }
+
   .code {
     /* hacky to remove styles from bright */
     @apply !m-0
