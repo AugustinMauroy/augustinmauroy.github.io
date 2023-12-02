@@ -9,4 +9,11 @@
     duration-1000
     dark:border-green-800
     dark:shadow-green-800;
+
+  &:hover {
+    @apply border-green-400
+      shadow-green-400
+      dark:border-green-600
+      dark:shadow-green-600;
+  }
 }

@@ -42,7 +42,7 @@
     "home": {
       "hero": {
         "birthday": "C'est mon anniversaire 🎂!",
-        "description": "Salut 👋, je m'appelle Augustin. J'ai {age} ans. Je suis développeur web.",
+        "description": "Bonjour 👋, je suis Augustin. J'ai {âge} ans. Je suis développeur web et passionné par les logiciels libres !",
         "title": "Je suis Augustin Mauroy"
       },
       "findme": {

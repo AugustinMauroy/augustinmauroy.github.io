@@ -10,7 +10,20 @@
 
   .content {
     @apply -z-10
-      animate-slide-in-top
-      lg:animate-slide-in-left;
+
+      animate-slide-in-top;
+
+    /*
+        this is haky because if i'm using `lg` it will be applied
+      */
+    @media (min-width: 1024px) {
+      @apply animate-slide-in-left;
+    }
+
+    p {
+      @apply w-80
+      text-lg
+      text-gray-500;
+    }
   }
 }

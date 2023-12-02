@@ -9,7 +9,9 @@ const Header: FC = () => {
   const t = useTranslations('components.sections.header');
   return (
     <header className={styles.header}>
-      <LocalizedLink href="/">Augustin M.</LocalizedLink>
+      <LocalizedLink href="/" className="text-xl font-bold">
+        Augustin M.
+      </LocalizedLink>
       <div className={styles.links}>
         <ThemeSwitcher />
         <Language />
