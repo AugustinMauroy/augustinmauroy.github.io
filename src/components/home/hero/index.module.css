@@ -5,8 +5,10 @@
   flex-col
   items-center
   justify-center
-  gap-8
-  py-20
+  lg:gap-8
+  gap-10
+  py-10
+  lg:py-20
   lg:flex-row;
 
   .content {
@@ -28,3 +30,4 @@
     }
   }
 }
+
