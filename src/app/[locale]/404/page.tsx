@@ -1,4 +1,5 @@
 // not-found doesn't work with i18n
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 import { FC } from 'react';
@@ -24,11 +25,17 @@ const NotFoundPage: FC<NotFoundPageProps> = ({ params }) => {
   const t = useTranslations('app.notFound');
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <h1>{t('title')}</h1>
       <p>{t('description')}</p>
       <LocalizedLink href="/">{t('home')}</LocalizedLink>
-    </div>
+      <Image
+        src="/static/404-illustration.svg"
+        alt="404 illustration"
+        width={1600}
+        height={900}
+      />
+    </main>
   );
 };
 

@@ -6,7 +6,7 @@ type Meta = MetaObj<typeof TextWithImages>;
 
 export const Default: Story = {
   args: {
-    images: ['images/rammstein-1.jpeg', 'images/rammstein-2.jpeg'],
+    images: ['images/rammstein-1.webp', 'images/rammstein-2.webp'],
     alt: 'Concert de Rammstein à Bruxelles',
     ratio: '9:16',
     children:

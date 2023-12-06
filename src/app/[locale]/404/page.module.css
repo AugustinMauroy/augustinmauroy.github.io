@@ -5,4 +5,19 @@
     flex-col
     items-center
     justify-center;
+
+  p {
+    @apply w-1/2
+      text-center
+      text-2xl
+      font-bold
+      text-gray-700;
+  }
+
+  img {
+    @apply absolute
+    left-0
+    top-0
+    w-full;
+  }
 }

@@ -6,7 +6,7 @@ type Meta = MetaObj<typeof Images>;
 
 export const Default: Story = {
   args: {
-    src: '/static/images/rammstein-1.jpeg',
+    src: '/static/images/rammstein-1.webp',
     alt: 'Rammstein',
   },
   decorators: [

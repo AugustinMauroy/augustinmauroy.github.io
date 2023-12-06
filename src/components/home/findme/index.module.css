@@ -1,14 +1,15 @@
 .findMe {
-  @apply my-20
-    flex
+  @apply flex
     w-full
     flex-col
     items-center
     justify-center
-    gap-8;
+    gap-8
+    py-40;
 
   h2 {
-    @apply text-3xl font-extrabold;
+    @apply text-4xl
+      font-extrabold;
   }
 
   .links {

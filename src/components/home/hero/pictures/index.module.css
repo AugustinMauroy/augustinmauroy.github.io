@@ -1,5 +1,11 @@
+.container {
+  @apply relative
+    z-0;
+}
+
 .pictures {
-  @apply rounded-full
+  @apply z-10
+    rounded-full
     border-4
     border-green-200
     border-opacity-50
@@ -16,4 +22,11 @@
       dark:border-green-600
       dark:shadow-green-600;
   }
+}
+
+.background {
+  @apply absolute
+    inset-0
+    -z-10
+    w-96;
 }

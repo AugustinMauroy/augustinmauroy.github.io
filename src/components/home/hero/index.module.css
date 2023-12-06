@@ -1,11 +1,12 @@
 .hero {
-  @apply my-20
-  flex
+  @apply flex
+  h-3/4
   w-full
   flex-col
   items-center
   justify-center
   gap-8
+  py-20
   lg:flex-row;
 
   .content {
