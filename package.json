@@ -36,7 +36,7 @@
     "@storybook/addon-essentials": "~7.6.4",
     "@storybook/addon-interactions": "~7.6.5",
     "@storybook/addon-links": "~7.6.4",
-    "@storybook/addon-themes": "~7.5.3",
+    "@storybook/addon-themes": "~7.6.5",
     "@storybook/nextjs": "~7.6.4",
     "@storybook/react": "~7.6.4",
     "@testing-library/jest-dom": "~6.1.4",
