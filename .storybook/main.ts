@@ -1,3 +1,4 @@
+import { resolve } from 'node:path';
 import type { StorybookConfig } from '@storybook/nextjs';
 
 const config: StorybookConfig = {
@@ -8,13 +9,13 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     '@storybook/addon-interactions',
   ],
+  logLevel: 'error',
+  staticDirs: ['../public'],
+  typescript: { reactDocgen: false, check: false },
+  core: { disableTelemetry: true, disableWhatsNewNotifications: true },
   framework: {
     name: '@storybook/nextjs',
-    options: {},
-  },
-  staticDirs: ['../public'],
-  docs: {
-    autodocs: 'tag',
+    options: { builder: { useSWC: true } },
   },
   previewBody:
     // This `<style>` is necessary to simulate what `next-themes` (ThemeProvider) does on real applications
@@ -24,11 +25,18 @@ const config: StorybookConfig = {
     // This adds the base styling for dark/light themes within Storybook. This is a Storybook-only style
     // Warning: this should be same as the one in `src/styles/globals.css`
     '<body class="bg-gray-50 text-gray-950 dark:bg-gray-900 transition-colors dark:text-gray-50"></body>',
-  core: { disableTelemetry: true, disableWhatsNewNotifications: true },
-  webpackFinal: async config => {
-    // @ts-ignore
-    config.resolve.alias['@'] = __dirname + '/../src';
-    return config;
-  },
+  webpack: async config => ({
+    ...config,
+    // Performance Hints do not make sense on Storybook as it is bloated by design
+    performance: { hints: false },
+    // Removes Pesky Critical Dependency Warnings due to `next/font`
+    ignoreWarnings: [e => e.message.includes('Critical dep')],
+    // allows to use `@/` as a shortcut to the `src/` folder
+    resolve: {
+      ...config.resolve,
+      // @ts-ignore
+      alias: { ...config.resolve.alias, '@': resolve(__dirname, '../src') },
+    },
+  }),
 };
 export default config;

@@ -66,6 +66,10 @@
     "blog": {
       "title": "Blog",
       "description": "Augustin M. blog"
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "The page you are trying to access does not exist. Return to the homepage or find what you're looking for in the menu."
     }
   }
 }

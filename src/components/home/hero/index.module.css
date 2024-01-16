@@ -5,11 +5,11 @@
   flex-col
   items-center
   justify-center
-  lg:gap-8
   gap-10
   py-10
-  lg:py-20
-  lg:flex-row;
+  lg:flex-row
+  lg:gap-8
+  lg:py-20;
 
   .content {
     @apply -z-10
@@ -30,4 +30,3 @@
     }
   }
 }
-

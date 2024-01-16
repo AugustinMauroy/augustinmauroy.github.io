@@ -41,5 +41,7 @@ next-env.d.ts
 # storybook
 storybook-static
 
-# styleLint
+# Cache
+.eslintcache
+.prettiercache
 .stylelintcache

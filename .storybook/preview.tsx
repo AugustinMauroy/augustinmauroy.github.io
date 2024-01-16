@@ -1,9 +1,9 @@
 import React from 'react';
-import type { Preview, ReactRenderer } from '@storybook/react';
-import '../src/styles/globals.css';
-import messages from '../i18n/locales/en.json';
 import { NextIntlClientProvider } from 'next-intl';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
+import messages from '../i18n/locales/en.json';
+import type { Preview, ReactRenderer } from '@storybook/react';
+import '../src/styles/globals.css';
 
 const preview: Preview = {
   parameters: {

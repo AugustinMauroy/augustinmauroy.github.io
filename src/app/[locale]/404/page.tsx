@@ -13,7 +13,7 @@ type NotFoundPageProps = {
 };
 
 const generateMetadata = async (): Promise<Metadata> => {
-  const t = await getTranslations('metadata.404');
+  const t = await getTranslations('metadata.notFound');
 
   return {
     title: t('title'),

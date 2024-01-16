@@ -8,20 +8,29 @@
       "outputs": [".next/**", "!.next/cache/**"],
       "cache": true
     },
-    "start": {
-      "cache": false
+    "lint-css": {
+      "outputs": [".stylelintcache"],
+      "cache": true
     },
-    "lint": {
-      "outputMode": "full"
+    "lint-css:fix": {
+      "outputs": [".stylelintcache"],
+      "cache": true
     },
-    "lint:fix": {
-      "outputMode": "full"
+    "lint-js": {
+      "outputs": [".eslintcache"],
+      "cache": true
     },
-    "format": {
-      "outputMode": "full"
+    "lint-js:fix": {
+      "outputs": [".eslintcache"],
+      "cache": true
     },
-    "format:fix": {
-      "outputMode": "full"
+    "prettier:write": {
+      "outputs": [".prettiercache"],
+      "cache": true
+    },
+    "prettier:check": {
+      "outputs": [".prettiercache"],
+      "cache": true
     }
   }
 }
