@@ -21,7 +21,7 @@
   "dependencies": {
     "@radix-ui/react-avatar": "~1.0.4",
     "bright": "~0.8.4",
-    "classnames": "~2.3.2",
+    "classnames": "~2.5.1",
     "js-yaml": "~4.1.0",
     "next": "~14.0.4",
     "next-intl": "~3.4.0",
