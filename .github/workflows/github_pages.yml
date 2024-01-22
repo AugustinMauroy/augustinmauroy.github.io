@@ -39,7 +39,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Restore Cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             .next/cache
@@ -53,7 +53,7 @@ jobs:
         run: npx turbo build
 
       - name: Save Cache
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: |
             .next/cache
