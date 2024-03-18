@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 2
 
       - name: Restore Cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             ~/.npm
@@ -38,7 +38,7 @@ jobs:
         run: npx turbo lint-js
 
       - name: Save Cache
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: |
             ~/.npm
@@ -57,7 +57,7 @@ jobs:
           fetch-depth: 2
 
       - name: Restore Cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             ~/.npm
@@ -79,7 +79,7 @@ jobs:
         run: npx turbo build
 
       - name: Save Cache
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: |
             ~/.npm
@@ -98,7 +98,7 @@ jobs:
           fetch-depth: 2
 
       - name: Restore Cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             ~/.npm
@@ -120,7 +120,7 @@ jobs:
         run: npx turbo test
 
       - name: Save Cache
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: |
             ~/.npm
@@ -139,7 +139,7 @@ jobs:
           fetch-depth: 2
 
       - name: Restore Cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             ~/.npm
@@ -161,7 +161,7 @@ jobs:
         run: npx turbo format
 
       - name: Save Cache
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: |
             ~/.npm
