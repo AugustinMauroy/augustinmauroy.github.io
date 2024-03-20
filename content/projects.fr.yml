@@ -3,7 +3,7 @@
   link: https://augustin.mauroy.github.io/
   linkText: augustin.mauroy.github.io
 - title: neuralnetwork
-  description: "Librairie d'AI écrit en typescript et sans librairie. À faire: fixé le bug. Et realese la version 1.0.0."
+  description: "Librairie d'AI écrit en typescript et sans librairie."
   link: https://github.com/AugustinMauroy/neuralnetwork
   linkText: augustinMayroy/neuralnetwork
 - title: nodejs.org
@@ -11,7 +11,3 @@
   link: https://github.com/nodejs/nodejs.org
   linkText: nodejs/nodejs.org
   thumbnail: '/images/projects/nodejs.svg'
-- title: Réecriture de Mineflayer
-  description: "Réecriture de Mineflayer en TypeScript. Pour le moment, il n'y a que l'idée. Je suis en train de chercher des gens motivés pour lancé le projet."
-  link: blog/redstonejs
-  linkText: Lire l'article

@@ -12,10 +12,12 @@ function getContentBySlug(
 ): string | undefined {
   try {
     const filePath = path.join(basePath, `${slug}.${lang}.${ext}`);
+
     return fs.readFileSync(filePath, 'utf8');
   } catch (e) {
     try {
       const defaultFilePath = path.join(basePath, `${slug}.en.${ext}`);
+
       return fs.readFileSync(defaultFilePath, 'utf8');
     } catch (e) {
       return undefined;
@@ -32,6 +34,7 @@ function getAllSlugs(dir: string): AllSlug[] {
   const files = fs.readdirSync(path.join(basePath, dir));
   const slugs = files.map(file => {
     const slug = file.replace('.mdx', '');
+
     return slug;
   });
   const allSlugs: AllSlug[] = [];
@@ -45,6 +48,7 @@ function getAllSlugs(dir: string): AllSlug[] {
     if (lang === undefined || slug === undefined) return;
     allSlugs.push(allSlug);
   });
+
   return allSlugs;
 }
 
@@ -90,6 +94,7 @@ async function getBlogMetadata(lang: string): Promise<BlogMetadata[]> {
   return blogMetadata.sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
+
     return dateB.getTime() - dateA.getTime();
   });
 }
@@ -124,6 +129,7 @@ async function getRssData() {
   blogMetadata.sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
+
     return dateB.getTime() - dateA.getTime();
   });
 

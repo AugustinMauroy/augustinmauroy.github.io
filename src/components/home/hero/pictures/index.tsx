@@ -5,7 +5,7 @@ import hero_bg from './hero-bg.svg';
 import styles from './index.module.css';
 import type { FC } from 'react';
 
-const PICTURES_NUMBER = 3;
+const PICTURES_NUMBER = 4;
 
 const Pictures: FC = () => {
   const [currentImage, setCurrentImage] = useState(1);

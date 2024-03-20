@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { useFormatter } from 'next-intl';
 import { useTranslations } from 'next-intl';
-import type { BlogMetaData } from '@/types/blog';
 import { getAuthorName, getAuthorUrl } from '@/utils/stringUtils';
 import AuthorsList from '../avatarGroup';
 import styles from './index.module.css';
+import type { BlogMetaData } from '@/types/blog';
 import type { FC } from 'react';
 
 const BlogHeader: FC<BlogMetaData> = ({

@@ -4,9 +4,9 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import Card from '@/components/projects/card';
 import { getContentBySlug } from '@/lib/getcontent';
+import style from './page.module.css';
 import type { Params } from '@/types/params';
 import type { Projects } from '@/types/projects';
-import style from './page.module.css';
 import type { Metadata } from 'next';
 import type { FC } from 'react';
 

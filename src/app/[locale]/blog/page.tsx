@@ -4,8 +4,8 @@ import { getTranslations } from 'next-intl/server';
 import { FaRss } from 'react-icons/fa6';
 import BlogCard from '@/components/blog/blogcard';
 import { getBlogMetadata } from '@/lib/getcontent';
-import type { BlogParams } from '@/types/blog';
 import styles from './page.module.css';
+import type { BlogParams } from '@/types/blog';
 import type { Metadata } from 'next';
 import type { FC } from 'react';
 

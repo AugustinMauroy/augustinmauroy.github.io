@@ -7,6 +7,7 @@ import type { FC } from 'react';
 
 const Header: FC = () => {
   const t = useTranslations('components.sections.header');
+
   return (
     <header className={styles.header}>
       <LocalizedLink href="/" className="text-xl font-bold">

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { cloneElement } from 'react';
 import {
   FaGithub,
   FaTwitch,
@@ -9,14 +8,7 @@ import {
   FaLinkedin,
 } from 'react-icons/fa6';
 import styles from './index.module.css';
-import type { FC, ReactElement } from 'react';
-
-const iconify = (icon: ReactElement, title: string): ReactElement =>
-  cloneElement(icon, {
-    alt: title,
-    ariaLabel: title,
-    title,
-  });
+import type { FC } from 'react';
 
 const metaData = [
   {
@@ -61,7 +53,7 @@ const FindMe: FC = () => {
             target="_blank"
             aria-label={title}
           >
-            {iconify(icon, title)}
+            {icon}
           </Link>
         ))}
       </div>

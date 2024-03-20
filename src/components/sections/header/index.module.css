@@ -22,15 +22,22 @@
     lg:justify-between;
 
   a {
-    @apply text-gray-950
+    @apply rounded
+      px-3
+      py-2
+      text-gray-950
       no-underline
-      hover:underline
-      dark:text-gray-50;
+      transition-colors
+      duration-75
+      hover:bg-gray-300
+      hover:text-gray-950
+      dark:text-gray-50
+      dark:hover:bg-gray-600
+      hover:dark:text-white;
 
     &.active {
-      @apply border-b-4
-        border-b-gray-950
-        dark:border-b-gray-50;
+      @apply bg-cyan-500
+        text-white;
     }
   }
 
@@ -41,8 +48,7 @@
       gap-4;
 
     svg {
-      @apply h-6
-        w-6;
+      @apply size-6;
     }
   }
 }

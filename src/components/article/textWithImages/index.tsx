@@ -11,6 +11,7 @@ type TextWithImagesProps = PropsWithChildren<{
 
 const calculateRatio = (ratio: string): { width: number; height: number } => {
   const [width, height] = ratio.split(':');
+
   return {
     width: parseInt(width) * 30,
     height: parseInt(height) * 30,
@@ -39,6 +40,7 @@ const TextWithImages: FC<TextWithImagesProps> = ({
     const timeout = setTimeout(() => {
       setImages(images[nextIndex]);
     }, 5000);
+
     return () => clearTimeout(timeout);
   });
 

@@ -1,23 +1,22 @@
 {
   "extends": ["next/core-web-vitals", "plugin:storybook/recommended"],
   "rules": {
-    "no-console": [
+    "semi": ["error", "always"],
+    "no-restricted-syntax": [
       "error",
       {
-        "allow": ["warn", "error"]
-      }
-    ],
-    "no-undef": "error",
-    "no-unused-vars": [
-      "error",
+        "selector": "ImportDeclaration[source.value='react'][specifiers.0.type='ImportDefaultSpecifier']",
+        "message": "Default React import not allowed since we use the TypeScript jsx-transform. If you need a global type that collides with a React named export (such as `MouseEvent`), try using `globalThis.MouseHandler`"
+      },
       {
-        "varsIgnorePattern": "^_",
-        "argsIgnorePattern": "^_"
+        "selector": "ImportDeclaration[source.value='react'] :matches(ImportNamespaceSpecifier)",
+        "message": "Named * React import is not allowed. Please import what you need from React with Named Imports"
       }
     ],
     "import/order": [
       "error",
       {
+        "newlines-between": "never",
         "groups": [
           "builtin",
           "external",
@@ -25,38 +24,22 @@
           "parent",
           "sibling",
           "index",
-          "type"
+          "type",
+          "object"
         ],
         "pathGroups": [
           {
-            "pattern": "@/**",
-            "group": "internal"
-          },
-          {
-            "pattern": "~/**",
-            "group": "internal"
-          },
-          {
-            "pattern": "./*.css",
-            "group": "index",
-            "position": "after"
+            "pattern": "*.module.css",
+            "group": "type",
+            "position": "before"
           }
-        ],
-        "pathGroupsExcludedImportTypes": ["builtin"],
-        "newlines-between": "never",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
+        ]
       }
+    ],
+    "react/jsx-no-undef": "off",
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "return" }
     ]
-  },
-  "overrides": [
-    {
-      "files": ["**/*.test.ts", "**/*.test.tsx"],
-      "env": {
-        "jest": true
-      }
-    }
-  ]
+  }
 }

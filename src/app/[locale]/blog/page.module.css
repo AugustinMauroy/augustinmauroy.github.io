@@ -13,8 +13,7 @@
       justify-between;
 
     svg {
-      @apply h-8
-        w-8;
+      @apply size-8;
     }
   }
 

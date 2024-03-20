@@ -4,8 +4,8 @@ import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 import { FC } from 'react';
 import LocalizedLink from '@/components/i18n/localizedLink';
-import type { Params } from '@/types/params';
 import styles from './page.module.css';
+import type { Params } from '@/types/params';
 import type { Metadata } from 'next';
 
 type NotFoundPageProps = {

@@ -6,22 +6,13 @@
 .pictures {
   @apply z-10
     rounded-full
-    border-4
-    border-cyan-200
-    border-opacity-50
     shadow-lg
-    shadow-cyan-200
-    transition
-    duration-1000
-    dark:border-cyan-800
-    dark:shadow-cyan-800;
-
-  &:hover {
-    @apply border-cyan-400
-      shadow-cyan-400
-      dark:border-cyan-600
-      dark:shadow-cyan-600;
-  }
+    shadow-cyan-500
+    transition-shadow
+    duration-500
+    hover:shadow-2xl
+    hover:shadow-cyan-700
+    hover:dark:shadow-cyan-300;
 }
 
 .background {

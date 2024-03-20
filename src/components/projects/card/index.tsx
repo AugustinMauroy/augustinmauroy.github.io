@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Projects } from '@/types/projects';
 import styles from './index.module.css';
+import type { Projects } from '@/types/projects';
 import type { FC } from 'react';
 
 type CardProps = Projects;
