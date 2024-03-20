@@ -6,14 +6,14 @@
 }
 
 .primary {
-  @apply bg-green-500
+  @apply bg-cyan-500
     text-white
-    hover:bg-green-600
-    active:bg-green-700
+    hover:bg-cyan-600
+    active:bg-cyan-700
     disabled:opacity-90
-    dark:bg-green-400
-    dark:hover:bg-green-500
-    dark:active:bg-green-600;
+    dark:bg-cyan-400
+    dark:hover:bg-cyan-500
+    dark:active:bg-cyan-600;
 }
 
 .secondary {
@@ -30,17 +30,17 @@
 
 .special {
   @apply border
-    border-green-500
+    border-cyan-500
     bg-white
-    text-green-500
-    hover:bg-green-50
-    active:bg-green-100
+    text-cyan-500
+    hover:bg-cyan-50
+    active:bg-cyan-100
     disabled:opacity-90
-    dark:border-green-200
-    dark:bg-green-700
-    dark:text-green-200
-    dark:hover:bg-green-600
-    dark:active:bg-green-500;
+    dark:border-cyan-200
+    dark:bg-cyan-700
+    dark:text-cyan-200
+    dark:hover:bg-cyan-600
+    dark:active:bg-cyan-500;
 }
 
 .icon {

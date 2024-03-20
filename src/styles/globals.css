@@ -76,14 +76,14 @@ p {
 }
 
 a {
-  @apply text-green-700
+  @apply text-cyan-700
     underline
-    hover:text-green-700
+    hover:text-cyan-700
     hover:no-underline
-    active:text-green-800
-    dark:text-green-400
-    dark:hover:text-green-500
-    dark:active:text-green-600;
+    active:text-cyan-800
+    dark:text-cyan-400
+    dark:hover:text-cyan-500
+    dark:active:text-cyan-600;
 }
 
 ul {

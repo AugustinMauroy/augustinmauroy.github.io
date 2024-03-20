@@ -21,8 +21,8 @@
       text-base
       font-semibold
       text-gray-700
-      data-[state=active]:border-b-green-600
-      data-[state=active]:text-green-600;
+      data-[state=active]:border-b-cyan-600
+      data-[state=active]:text-cyan-600;
     }
   }
 

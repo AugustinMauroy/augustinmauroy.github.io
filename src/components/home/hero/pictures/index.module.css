@@ -7,20 +7,20 @@
   @apply z-10
     rounded-full
     border-4
-    border-green-200
+    border-cyan-200
     border-opacity-50
     shadow-lg
-    shadow-green-200
+    shadow-cyan-200
     transition
     duration-1000
-    dark:border-green-800
-    dark:shadow-green-800;
+    dark:border-cyan-800
+    dark:shadow-cyan-800;
 
   &:hover {
-    @apply border-green-400
-      shadow-green-400
-      dark:border-green-600
-      dark:shadow-green-600;
+    @apply border-cyan-400
+      shadow-cyan-400
+      dark:border-cyan-600
+      dark:shadow-cyan-600;
   }
 }
 
