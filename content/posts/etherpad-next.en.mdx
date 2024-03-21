@@ -1,0 +1,68 @@
+---
+title: Rewrite of etherpad-lite with next.js
+description: This project is a rewrite of etherpad-lite with next.js and tailwindcss.
+date: 2024-03-21
+authors: github:AugustinMauroy, github:SamTV12345
+---
+
+> **Note:** This project is under development and not ready for production
+> So take attention when this post is published to understand the current state of the project.
+
+## What is Etherpad-lite?
+
+Etherpad is a highly customizable Open Source online editor providing collaborative editing in real-time. It is a web-based editor featuring collaborative editing in real-time.
+
+## How it's actually working?
+
+Etherpad-lite is a Node.js application that uses the `express` framework. It uses the `socket.io` library to handle real-time communication between clients and the server. The front-end is built with `jQuery`.
+
+## Why a rewrite?
+
+On Etherpad-lite V2, [@SamTV12345](https://github.com/SamTV12345) rewrote the back-end in typescript and fixed some bugs **congratulations to him 🎉**. But the front-end is still in jQuery and the codebase is not easy to maintain.
+
+I saw the typescript pr and I thought it was a good opportunity help. So I helped him with reviewing the code.
+
+After that [Sam](https://github.com/SamTV12345) contacted me to propose me to rewrite the front-end in next.js. I accepted because I love next.js and I love Open Source.
+
+So we start to discuss about the project. Frist reseach it's not about the technology but about about the name of the project. First idea i proposed was `etherpad-next`but i also propose `etherpad-under-steroide` but we finally choose `etherpad-next` for logical reason.
+
+On next, I put the basic of the infrastructure and the basic of the front-end. And it's at this moment that we select the technologies that we will use.
+
+## Which technologies are used?
+
+- [Next.js](https://nextjs.org/) as meta-framework it's allow us to do back-end and front-end in the same framework.
+- [Tailwindcss](https://tailwindcss.com/) as css library. It's a utility-first css framework.
+- [TypeScript](https://www.typescriptlang.org/) as language. It's a superset of JavaScript that compiles to plain JavaScript. It's allow us to have a readable and maintainable codebase.
+- [next-ws](https://github.com/apteryxxyz/next-ws) it's a patch for next.js to allow us to use websockets on [route handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers). It's awesome because we didn't have to use express or socket.io. Thanks to [@apteryxxyz](https://github.com/apteryxxyz)
+- [Prisma](https://www.prisma.io/) as ORM. It's allow us to have a better database management and a better codebase. Also it's create typescript types for us.
+
+If you want to have better understanding of the project you can go to the [technical documentation](https://github.com/ether/etherpad-next/blob/main/docs/Techincal.md)
+
+## ⚠️ Backward compatibility ⚠️ ?
+
+It's important to reduce breaking changes bettween etherpad-lite and etherpad-next.
+
+We will try to keep the backward compatibility with etherpad-lite. But it's not a priority. We will focus on the new features and the new design.
+
+### What I want to keep backward compatibility?
+
+- Multiple db support for the project. But now Prisma isn't supporting multiple db. So we will have to find a solution. And for moment we only support MySQL.
+- Plugins support. We will try to keep the same plugin system but we didn't know if it's possible.
+- Moodle integration. Moodle is a popular LMS. We will try to keep the same integration but we didn't know if it's possible.
+
+## OpenSSF Scorecard
+
+We will try to have a good score on the OpenSSF Scorecard. It's important to have a secure project. We will try to have a good score.
+It also proposes a security overview of the project.
+
+[OpenSSF Scorecard](https://github.com/ossf/scorecard)
+
+## Conclusion
+
+I'm very happy to work on this project. I think it's a good opportunity to learn new technologies and to help the Open Source community.
+
+Also big thanks to [@SamTV12345](https://github.com/SamTV12345) for the opportunity to work on this project. And it was a pleasure to meet him.
+
+I hope that this project will be a success and that it will be used by many people.
+
+> **Note:** Your feedback is important to us. So don't hesitate to open an issue on the [github repository](https://github.com/ether/etherpad-next). We will be happy to discuss with you. Also if you want to contribute to the project you can open a PR. We will be happy to review it.
