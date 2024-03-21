@@ -1,14 +1,19 @@
 'use client';
+import Link from 'next/link';
 import classNames from 'classnames';
 import { useState, useMemo } from 'react';
 import { getAcronymFromString } from '@/utils/stringUtils';
 import Avatar from './Avatar';
 import avatarstyles from './Avatar/index.module.css';
 import styles from './index.module.css';
-import type { ComponentProps, FC } from 'react';
+import type { FC } from 'react';
 
 type AvatarGroupProps = {
-  avatars: ComponentProps<typeof Avatar>[];
+  avatars: Array<{
+    src: string;
+    alt: string;
+    href?: string;
+  }>;
   limit?: number;
 };
 
@@ -22,13 +27,19 @@ const AvatarGroup: FC<AvatarGroupProps> = ({ avatars, limit = 10 }) => {
 
   return (
     <div className={styles.avatarGroup}>
-      {renderAvatars.map((avatar, index) => (
-        <Avatar
-          src={avatar.src}
-          alt={getAcronymFromString(avatar.alt)}
-          key={index}
-        />
-      ))}
+      {renderAvatars.map((avatar, index) =>
+        avatar.href ? (
+          <Link href={avatar.href} key={index}>
+            <Avatar src={avatar.src} alt={getAcronymFromString(avatar.alt)} />
+          </Link>
+        ) : (
+          <Avatar
+            src={avatar.src}
+            alt={getAcronymFromString(avatar.alt)}
+            key={index}
+          />
+        )
+      )}
 
       {avatars.length > limit && (
         <span

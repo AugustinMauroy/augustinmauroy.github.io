@@ -2,4 +2,8 @@
   @apply flex
     h-10
     items-center;
+
+  a {
+    @apply cursor-pointer;
+  }
 }

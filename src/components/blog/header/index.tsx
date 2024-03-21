@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { getAuthorName, getAuthorUrl } from '@/utils/stringUtils';
+import { githubProfileAvatarUrl, githubProfileUrl } from '@/utils/gitHubUtils';
 import FormattedTime from '@/components/common/formattedTime';
+import { getAcronymFromString } from '@/utils/stringUtils';
 import AuthorsList from '../avatarGroup';
 import styles from './index.module.css';
 import type { BlogMetaData } from '@/types/blog';
@@ -17,8 +18,9 @@ const BlogHeader: FC<BlogMetaData> = ({
   const t = useTranslations('components.blog.header');
 
   const avatars = authors.map(author => ({
-    src: getAuthorUrl(author),
-    alt: getAuthorName(author),
+    src: githubProfileAvatarUrl(author),
+    alt: getAcronymFromString(author),
+    href: githubProfileUrl(author),
   }));
 
   return (
