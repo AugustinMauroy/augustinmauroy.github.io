@@ -11,3 +11,7 @@
   link: https://github.com/nodejs/nodejs.org
   linkText: nodejs/nodejs.org
   thumbnail: '/images/projects/nodejs.svg'
+- title: etherpad-next
+  description: 'Etherpad is a real-time collaborative text editor. I am working on the rewrite on nextjs.'
+  link: https://github.com/ether/etherpad-next
+  linkText: ether/etherpad-next
