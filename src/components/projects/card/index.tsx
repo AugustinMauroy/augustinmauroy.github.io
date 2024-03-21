@@ -13,7 +13,7 @@ const Card: FC<CardProps> = ({
   linkText,
   thumbnail,
 }) => (
-  <section className={styles.card}>
+  <section className={styles.card} id={title}>
     <Image
       src={
         thumbnail ? `/static/${thumbnail}` : '/static/thumbnail withou bg.svg'
