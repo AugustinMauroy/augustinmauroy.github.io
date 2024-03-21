@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
 import { useTranslations } from 'next-intl';
 import { getAuthorName, getAuthorUrl } from '@/utils/stringUtils';
+import FormattedTime from '@/components/common/formattedTime';
 import AuthorsList from '../avatarGroup';
 import styles from './index.module.css';
 import type { BlogMetaData } from '@/types/blog';
@@ -14,7 +14,6 @@ const BlogHeader: FC<BlogMetaData> = ({
   authors,
   thumbnail,
 }) => {
-  const format = useFormatter();
   const t = useTranslations('components.blog.header');
 
   const avatars = authors.map(author => ({
@@ -28,8 +27,7 @@ const BlogHeader: FC<BlogMetaData> = ({
         <h1>{title}</h1>
         <p>{description}</p>
         <p>
-          {t('posted')}:{' '}
-          <time dateTime={date.toISOString()}>{format.dateTime(date)}</time>
+          {t('posted')}: <FormattedTime date={date} />
         </p>
         <AuthorsList avatars={avatars} />
       </div>
