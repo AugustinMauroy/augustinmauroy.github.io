@@ -8,7 +8,7 @@
     "start": "next start",
     "lint-css": "stylelint \"**/*.css\" --allow-empty-input --cache --cache-strategy=content --cache-location=.stylelintcache",
     "lint-css:fix": "stylelint \"**/*.css\" --allow-empty-input --cache --cache-strategy=content --cache-location=.stylelintcache --fix",
-    "lint-js": "next lint --cache --cache-strategy=content --cache-location=.eslintcache",
+    "lint-js": "next lint --cache-strategy=content --cache-location=.eslintcache",
     "lint-js:fix": "npm run lint-js -- --fix",
     "test": "jest --cache",
     "test:ci": "jest --ci --coverage --cache",
