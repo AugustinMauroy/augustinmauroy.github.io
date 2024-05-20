@@ -1,3 +1,4 @@
+"use client";
 import { useTranslations } from 'next-intl';
 import { getAge, isBirthday } from '@/utils/getAge';
 import Pictures from './pictures';
