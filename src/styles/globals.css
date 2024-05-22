@@ -76,14 +76,14 @@ p {
 }
 
 a {
-  @apply text-cyan-700
+  @apply text-teal-700
     underline
-    hover:text-cyan-700
+    hover:text-teal-700
     hover:no-underline
-    active:text-cyan-800
-    dark:text-cyan-400
-    dark:hover:text-cyan-500
-    dark:active:text-cyan-600;
+    active:text-teal-800
+    dark:text-teal-400
+    dark:hover:text-teal-500
+    dark:active:text-teal-600;
 }
 
 ul {
@@ -107,4 +107,13 @@ hr {
     border-2
     border-gray-300
     dark:border-gray-600;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply inline-flex items-center justify-start;
 }

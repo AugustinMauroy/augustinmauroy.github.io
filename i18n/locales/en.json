@@ -4,7 +4,8 @@
       "empty": "No articles at the moment",
       "olders": "Older Posts",
       "recents": "Recent Posts",
-      "title": "Blog"
+      "title": "Blog",
+      "description": "Augustin M. blog, You will find articles about web development, open-source, and more."
     },
     "notFound": {
       "title": "Page not found",

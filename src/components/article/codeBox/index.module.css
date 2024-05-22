@@ -1,9 +1,9 @@
-/* Not migrated to tailwindcss because it's will refactor */
 .codeBox {
   @apply mb-4
     rounded-lg
     bg-gray-300
     shadow-md
+    dark:bg-gray-800
     dark:shadow-none;
 
   .codeLabel {
@@ -17,12 +17,15 @@
       @apply border-b-2
       border-b-transparent
       px-1
-      pb-[11px]
+      pb-1
       text-base
       font-semibold
       text-gray-700
-      data-[state=active]:border-b-cyan-600
-      data-[state=active]:text-cyan-600;
+      data-[state=active]:border-b-teal-600
+      data-[state=active]:text-teal-600
+      dark:text-gray-300
+      dark:data-[state=active]:border-b-teal-400
+      dark:data-[state=active]:text-teal-400;
     }
   }
 

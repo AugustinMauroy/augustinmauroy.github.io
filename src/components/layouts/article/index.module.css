@@ -2,7 +2,7 @@
   @apply container
     mx-auto
     px-4
-    pt-4
+    py-4
     sm:px-6
     lg:px-8;
 }

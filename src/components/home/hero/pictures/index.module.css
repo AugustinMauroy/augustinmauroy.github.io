@@ -7,12 +7,12 @@
   @apply z-10
     rounded-full
     shadow-lg
-    shadow-cyan-500
+    shadow-teal-500
     transition-shadow
     duration-500
     hover:shadow-2xl
-    hover:shadow-cyan-700
-    hover:dark:shadow-cyan-300;
+    hover:shadow-teal-700
+    hover:dark:shadow-teal-300;
 }
 
 .background {

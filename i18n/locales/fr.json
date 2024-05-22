@@ -4,7 +4,8 @@
       "empty": "Aucun article pour le moment",
       "olders": "Articles plus anciens",
       "recents": "Articles récents",
-      "title": "Blog"
+      "title": "Blog",
+      "description": "Blog d'Augustin M., Vous trouverez des articles sur le développement web, l'open-source et plus encore."
     },
     "notFound": {
       "title": "Page non trouvée",
@@ -46,7 +47,7 @@
         "title": "Je suis Augustin Mauroy"
       },
       "findme": {
-        "title": "Trouvez-moi 🔎"
+        "title": "Retrouvez-moi  🔎"
       }
     },
     "common": {

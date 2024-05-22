@@ -36,7 +36,7 @@
       hover:dark:text-white;
 
     &.active {
-      @apply bg-cyan-500
+      @apply bg-teal-500
         text-white;
     }
   }

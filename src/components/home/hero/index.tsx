@@ -1,6 +1,6 @@
-"use client";
+'use client';
 import { useTranslations } from 'next-intl';
-import { getAge, isBirthday } from '@/utils/getAge';
+import { getAge, isBirthday } from '@/utils/dateUtils';
 import Pictures from './pictures';
 import styles from './index.module.css';
 import type { FC } from 'react';
@@ -13,8 +13,8 @@ const Hero: FC = () => {
       <Pictures />
       <div className={styles.content}>
         <h1>{t('title')}</h1>
-        <p>{t('description', { age: getAge(new Date(2006, 5, 18)) })}</p>
-        <p>{isBirthday(new Date(2006, 5, 18)) ? t('birthday') : null}</p>
+        <p>{t('description', { age: getAge(new Date(2006, 4, 18)) })}</p>
+        {isBirthday(new Date(2006, 4, 18)) && <p>{t('birthday')}</p>}
       </div>
     </section>
   );

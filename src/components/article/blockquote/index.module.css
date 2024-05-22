@@ -7,12 +7,12 @@
   gap-4
   self-stretch
   border-l-2
-  border-cyan-600
+  border-teal-600
   py-2
   pl-5
   text-lg
   font-semibold
   text-gray-900
-  dark:border-cyan-400
+  dark:border-teal-400
   dark:text-white;
 }

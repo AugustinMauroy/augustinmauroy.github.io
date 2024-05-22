@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-import { Open_Sans } from 'next/font/google';
 import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 import Footer from '@/components/sections/footer';
 import Header from '@/components/sections/header';
@@ -10,13 +8,6 @@ import type { Params } from '@/types/params';
 import type { Metadata } from 'next';
 import type { FC, PropsWithChildren } from 'react';
 import '@/styles/globals.css';
-
-const font = Open_Sans({
-  weight: ['300', '400', '600', '700'],
-  display: 'fallback',
-  subsets: ['latin'],
-  variable: '--font-open-sans',
-});
 
 type RootLayoutProps = PropsWithChildren<{
   params: Params;
@@ -43,7 +34,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children, params }) => {
 
   return (
     <html lang={params.locale} style={{ scrollBehavior: 'smooth' }}>
-      <body className={classNames('font-open-sans', font.variable)}>
+      <body>
         <LocaleProvider>
           <ThemeProviderWrapper>
             <Header />

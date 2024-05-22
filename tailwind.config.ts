@@ -3,9 +3,6 @@ import type { Config } from 'tailwindcss';
 export default {
   content: ['./src/**/*.tsx'],
   theme: {
-    fontFamily: {
-      'open-sans': ['var(--font-open-sans)'],
-    },
     extend: {
       keyframes: {
         slideInFromLeft: {

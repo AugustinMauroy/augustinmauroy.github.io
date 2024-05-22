@@ -12,6 +12,14 @@
       items-center
       justify-between;
 
+    p {
+      @apply w-3/4
+        text-lg
+        font-semibold
+        text-gray-700
+        dark:text-gray-300;
+    }
+
     svg {
       @apply size-8;
     }

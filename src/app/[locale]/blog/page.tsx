@@ -31,7 +31,10 @@ const Page: FC<PageProps> = async ({ params }) => {
   return (
     <div className={styles.page}>
       <header>
-        <h1>{t('title')}</h1>
+        <div>
+          <h1>{t('title')}</h1>
+          <p>{t('description')}</p>
+        </div>
         <Link href="/feed/blog.xml">
           <FaRss aria-label="RSS feed" />
         </Link>
