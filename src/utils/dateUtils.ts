@@ -22,7 +22,17 @@ export function isBirthday(birthday: Date): boolean {
   );
 }
 
-export const dateIsBetween = (startDate: string, endDate: string): boolean => {
+type DateRange = {
+  startDate: string;
+  endDate: string;
+  careAboutYear?: boolean;
+};
+
+export const dateIsBetween = ({
+  startDate,
+  endDate,
+  careAboutYear = true,
+}: DateRange): boolean => {
   const invalidDateStr = 'Invalid Date';
   const start = new Date(startDate);
   const end = new Date(endDate);
@@ -33,5 +43,13 @@ export const dateIsBetween = (startDate: string, endDate: string): boolean => {
 
   const now = new Date();
 
-  return start < now && now < end;
+  if (careAboutYear) {
+    return start <= now && now <= end;
+  }
+
+  return (
+    start.getMonth() === now.getMonth() &&
+    start.getDate() <= now.getDate() &&
+    now.getDate() <= end.getDate()
+  );
 };

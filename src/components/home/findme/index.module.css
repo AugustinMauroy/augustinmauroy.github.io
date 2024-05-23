@@ -13,15 +13,18 @@
   }
 
   .links {
-    @apply flex flex-row flex-wrap justify-center gap-6;
+    @apply flex
+      flex-row
+      flex-wrap
+      justify-center
+      gap-6;
 
     svg {
-      @apply h-16
-        w-16
-        transition-transform
-        duration-200
-        ease-in-out
-        hover:scale-125;
+      @apply size-16
+          transition-transform
+          duration-200
+          ease-in-out
+          hover:scale-125;
     }
   }
 }

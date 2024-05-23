@@ -1,6 +1,7 @@
 import { unstable_setRequestLocale } from 'next-intl/server';
 import FindMe from '@/components/home/findme';
 import Hero from '@/components/home/hero';
+import Pride from '@/components/home/pride';
 import type { Params } from '@/types/params';
 import type { FC } from 'react';
 
@@ -14,6 +15,7 @@ const Page: FC<PageProps> = ({ params }) => {
   return (
     <>
       <Hero />
+      <Pride />
       <hr />
       <FindMe />
     </>

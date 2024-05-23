@@ -21,7 +21,10 @@
     }
 
     svg {
-      @apply size-8;
+      @apply size-8
+        transition-transform
+        duration-200
+        hover:scale-125;
     }
   }
 

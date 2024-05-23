@@ -1,4 +1,4 @@
-.header {
+.nav {
   @apply sticky
     top-0
     z-10
@@ -29,16 +29,9 @@
       no-underline
       transition-colors
       duration-75
-      hover:bg-gray-300
       hover:text-gray-950
       dark:text-gray-50
-      dark:hover:bg-gray-600
       hover:dark:text-white;
-
-    &.active {
-      @apply bg-teal-500
-        text-white;
-    }
   }
 
   .links {

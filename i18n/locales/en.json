@@ -19,7 +19,7 @@
       "footer": {
         "title": "MIT License © 2023 Augustin Mauroy"
       },
-      "header": {
+      "nav": {
         "about": "About",
         "blog": "Blog",
         "projects": "Projects"
@@ -45,6 +45,10 @@
         "birthday": "It's my birthday 🎂!",
         "description": "Hi 👋, I'm Augustin. I'm {age} years old. I'm a web developer and an OSS enthusiast!",
         "title": "I am Augustin Mauroy"
+      },
+      "pride": {
+        "title": "Happy Pride Month 🏳️‍🌈",
+        "description": "I support the LGBTQ+ community. Love is love ❤️🧡💛💚💙💜"
       },
       "findme": {
         "title": "Find Me 🔎"

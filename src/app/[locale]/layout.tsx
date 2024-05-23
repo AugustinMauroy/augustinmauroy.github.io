@@ -1,12 +1,13 @@
 import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 import Footer from '@/components/sections/footer';
-import Header from '@/components/sections/header';
 import { LocaleProvider } from '@/provider/localeProvider';
 import ThemeProviderWrapper from '@/provider/themeProvider';
 import { availableLocales } from '@/utils/i18n';
+import Navbar from '@/components/sections/navbar';
 import type { Params } from '@/types/params';
 import type { Metadata } from 'next';
 import type { FC, PropsWithChildren } from 'react';
+import Header from '@/components/sections/header';
 import '@/styles/globals.css';
 
 type RootLayoutProps = PropsWithChildren<{
@@ -37,7 +38,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children, params }) => {
       <body>
         <LocaleProvider>
           <ThemeProviderWrapper>
-            <Header />
+            <Navbar />
             <main>{children}</main>
             <Footer />
           </ThemeProviderWrapper>

@@ -19,7 +19,7 @@ describe('dateUtils', () => {
       const startDate = '2022-01-01T00:00:00.000Z';
       const endDate = '2069-01-01T00:00:00.000Z';
 
-      const result = dateIsBetween(startDate, endDate);
+      const result = dateIsBetween({ startDate, endDate });
 
       expect(result).toBe(true);
     });
@@ -28,7 +28,7 @@ describe('dateUtils', () => {
       const startDate = '2010-01-01T00:00:00.000Z';
       const endDate = '2020-01-01T00:00:00.000Z';
 
-      const result = dateIsBetween(startDate, endDate);
+      const result = dateIsBetween({ startDate, endDate });
 
       expect(result).toBe(false);
     });
@@ -37,9 +37,9 @@ describe('dateUtils', () => {
       const invalidStartDate = 'Invalid Start Date';
       const validEndDate = '2024-01-01T00:00:00.000Z';
 
-      expect(() => dateIsBetween(invalidStartDate, validEndDate)).toThrow(
-        'dateIsBetween got called with invalid dates'
-      );
+      expect(() =>
+        dateIsBetween({ startDate: invalidStartDate, endDate: validEndDate })
+      ).toThrow('dateIsBetween got called with invalid dates');
     });
   });
 });

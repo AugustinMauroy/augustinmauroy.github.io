@@ -1,0 +1,20 @@
+.pride {
+  @apply mx-auto
+    w-3/4
+    rounded-lg
+    bg-gradient-to-r
+    from-purple-400
+    to-pink-400
+    p-4
+    shadow-lg
+    dark:from-purple-800
+    dark:to-pink-800
+    dark:shadow-none
+    lg:w-1/2;
+
+  h2,
+  p {
+    @apply text-white
+        drop-shadow-md;
+  }
+}
