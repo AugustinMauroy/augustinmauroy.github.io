@@ -31,7 +31,7 @@
     "react": "~18.3.1",
     "react-dom": "~18.3.1",
     "react-icons": "~5.2.1",
-    "turbo": "~1.13.3"
+    "turbo": "~2.0.9"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "~8.1.3",
