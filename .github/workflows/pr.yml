@@ -48,6 +48,49 @@ jobs:
             node_modules/.cache
           key: cache-${{ hashFiles('package-lock.json') }}
 
+  lint-css:
+    name: Lint-css
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Restore Cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+            .turbo/cache
+            node_modules/.cache
+          key: cache-${{ hashFiles('package-lock.json') }}-
+          restore-keys: cache-
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install NPM packages
+        run: npm ci
+
+      - name: Run Linting css
+        run: npx turbo lint:css
+
+      - name: Save Cache
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.npm
+            .next/cache
+            .turbo/cache
+            node_modules/.cache
+          key: cache-${{ hashFiles('package-lock.json') }}
+
   build:
     name: Build
     runs-on: ubuntu-latest
