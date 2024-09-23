@@ -1,3 +1,5 @@
+# See https://prettier.io/docs/en/ignore.html#ignoring-files-prettierignore for more about ignoring files.
+
 # dependencies
 /node_modules
 /.pnp
@@ -5,7 +7,6 @@
 
 # testing
 /coverage
-/.swc
 
 # next.js
 /.next/
@@ -33,13 +34,16 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Cache
+.eslintjscache
+.stylelintcache
+.prettiercache
+
 # Turbo
 .turbo
 
-# storybook
+# Storybook
 storybook-static
 
-# Cache
-.eslintcache
-.prettiercache
-.stylelintcache
+# Content
+/content

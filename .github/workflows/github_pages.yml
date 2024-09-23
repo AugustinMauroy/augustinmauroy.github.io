@@ -43,6 +43,7 @@ jobs:
         with:
           path: |
             .next/cache
+            .turbo/cache
             node_modules/.cache
           key: build-${{ hashFiles('**/package-lock.json') }}-
           restore-keys: |
@@ -57,15 +58,10 @@ jobs:
         with:
           path: |
             .next/cache
+            .turbo/cache
             node_modules/.cache
           key: build-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('node_modules/.cache') }}
           enableCrossOsArchive: true
-
-      - name: Fix i18n
-        run: |
-          cp out/en.html out/index.html
-          rm out/404.html
-          cp out/en/404.html out/404.html
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3

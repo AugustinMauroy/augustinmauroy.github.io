@@ -1,0 +1,32 @@
+.wrapper {
+  @apply my-4
+    flex
+    flex-col
+    gap-4
+    border-2
+    border-black
+    bg-white
+    p-2
+    shadow-neo-brutalism-xl-black
+    transition-shadow
+    dark:border-white
+    dark:bg-black
+    dark:shadow-neo-brutalism-xl-white;
+
+  & .wrapper {
+    @apply border-0
+    border-l-2
+    shadow-none;
+  }
+
+  & cite {
+    @apply block
+      text-base
+      font-light
+      not-italic;
+
+    &::before {
+      @apply content-['—_'];
+    }
+  }
+}

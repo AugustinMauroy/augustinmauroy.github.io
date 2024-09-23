@@ -1,0 +1,14 @@
+.container {
+  @apply my-4
+    flex
+    flex-row
+    flex-wrap
+    justify-between
+    gap-4;
+
+  .content {
+    @apply my-auto
+      h-full
+      w-1/2;
+  }
+}

@@ -1,0 +1,21 @@
+.image {
+  @apply hidden
+    size-80
+    rounded-full
+    border-2
+    border-black
+    object-cover
+    shadow-neo-brutalism-xl-black
+    transition-shadow
+    dark:border-white
+    dark:shadow-neo-brutalism-xl-white;
+
+  &:hover {
+    @apply shadow-neo-brutalism-2xl-black
+      dark:shadow-neo-brutalism-2xl-white;
+  }
+
+  &.selected {
+    @apply block;
+  }
+}

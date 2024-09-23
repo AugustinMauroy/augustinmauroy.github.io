@@ -1,80 +1,58 @@
 {
   "app": {
+    "home": {
+      "metadata": {
+        "title": "Augustin Mauroy - Développeur Web & Passionné de Logiciels Libres",
+        "description": "Je suis Augustin Mauroy, un développeur web et un passionné de logiciels libres. Bienvenue sur mon site personnel !"
+      }
+    },
     "blog": {
-      "empty": "Aucun article pour le moment",
-      "olders": "Articles plus anciens",
-      "recents": "Articles récents",
       "title": "Blog",
-      "description": "Blog d'Augustin M., Vous trouverez des articles sur le développement web, l'open-source et plus encore."
+      "description": "Bienvenue sur mon blog ! J'écris sur le développement web, l'open source et plus encore.",
+      "rss": "Flux RSS"
     },
     "notFound": {
-      "title": "Page non trouvée",
-      "home": "Renvoyez-moi à la page d'accueil",
-      "description": "La page que vous essayez d'atteindre n'existe pas. Retournez à la page d'accueil ou trouvez ce que vous cherchez dans le menu."
-    },
-    "projects": "Mes projets"
+      "title": "404 - Page non trouvée",
+      "message": "Désolé, la page que vous recherchez n'existe pas.",
+      "back": "Retour à l'accueil"
+    }
   },
   "components": {
-    "sections": {
-      "footer": {
-        "title": "Licence MIT © 2023 Augustin Mauroy"
+    "common": {
+      "copyButton": {
+        "copy": "Copier",
+        "copied": "Copié !"
       },
-      "nav": {
-        "about": "À propos",
-        "blog": "Blog",
-        "projects": "Projets"
-      }
-    },
-    "article": {
-      "codeBox": {
-        "copy": "{copied, select, true {copié} other {copier}}"
-      }
-    },
-    "blog": {
-      "authorsList": {
-        "author": "Auteur",
-        "authors": "Auteurs",
-        "githubLinkLabel": "{username} Github - s'ouvre dans un nouvel onglet"
+      "languageSelector": {
+        "ariaLabel": "Sélecteur de langue"
       },
-      "header": {
-        "posted": "Publié"
+      "pagination": {
+        "previous": "Précédent",
+        "next": "Suivant",
+        "page": "Page - {page}"
+      },
+      "postCard": {
+        "by": "Par {authors}",
+        "readMoreAbout": "En savoir plus sur {title}",
+        "readMore": "En savoir plus"
       }
     },
     "home": {
       "hero": {
-        "birthday": "C'est mon anniversaire 🎂!",
-        "description": "Salut 👋, je suis Augustin. J'ai {age} ans. Je suis développeur web et passionné d'open source!",
-        "title": "Je suis Augustin Mauroy"
-      },
-      "pride": {
-        "title": "Joyeux Mois des Fiertés 🏳️‍🌈",
-        "description": "Je soutiens la communauté LGBTQ+. L'amour est amour ❤️🧡💛💚💙💜"
-      },
-      "findme": {
-        "title": "Retrouvez-moi  🔎"
+        "title": "Salut 👋,<br></br> Je suis <highlight>Augustin</highlight>.",
+        "description": "J'ai {age} ans. Je suis un développeur web et un passionné de logiciels libres !",
+        "learnMore": "En savoir plus sur moi"
       }
     },
-    "common": {
-      "languageSelector": "Sélecteur de langue",
-      "themeSelector": "Sélecteur de thème"
-    }
-  },
-  "metadata": {
-    "root": {
-      "title": "Site web d'Augustin M.",
-      "description": "Site web personnel d'Augustin M."
-    },
-    "projects": {
-      "title": "Mes Projets",
-      "description": "Liste de mes projets"
-    },
-    "blog": {
-      "title": "Blog",
-      "description": "Blog d'Augustin M."
-    },
-    "notFound": {
-      "title": "Page non trouvée",
-      "description": "La page que vous essayez d'atteindre n'existe pas. Retournez à la page d'accueil ou trouvez ce que vous cherchez dans le menu."
+    "sections": {
+      "footer": {
+        "text": "Licence MIT Copyright (c) {date} Augustin Mauroy"
+      },
+      "topNav": {
+        "about": "À propos",
+        "blog": "Blog",
+        "projects": "Projets"
+      }
     }
   }
 }

@@ -1,0 +1,62 @@
+.codeBox {
+  @apply my-2
+    rounded-md
+    border-2
+    border-black
+    bg-white
+    dark:border-white
+    dark:bg-gray-800;
+
+  .header {
+    @apply flex
+      w-full
+      items-center
+      justify-between
+      border-b-2
+      border-b-black
+      dark:border-b-white;
+
+    .lang {
+      @apply min-w-20
+        border-r-2
+        border-r-black
+        bg-violet-50
+        px-4
+        py-2
+        text-center
+        font-extrabold
+        uppercase
+        dark:border-r-white
+        dark:bg-violet-500;
+    }
+
+    .fileName {
+      @apply inline-flex
+        items-center
+        gap-2
+        px-4
+        py-2
+        text-sm
+        font-bold;
+
+      svg {
+        @apply size-5;
+      }
+    }
+  }
+
+  .codeWrapper {
+    @apply relative
+      p-4;
+
+    pre {
+      @apply whitespace-pre-wrap;
+    }
+
+    .copyButton {
+      @apply absolute
+        bottom-2
+        right-2;
+    }
+  }
+}

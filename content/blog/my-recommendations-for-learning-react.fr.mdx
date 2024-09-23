@@ -1,0 +1,284 @@
+---
+title: Mes recommandations pour apprendre React
+description: Lors de mon apprentissage de React, j'ai souvent été confronté à des difficultés. Voici mes recommandations pour apprendre React efficacement.
+date: 2024-09-23
+authors: AugustinMauroy
+---
+
+## Comment j'aime apprendre
+
+Je suis un grand fan de la méthode de l'apprentissage par la pratique. J'ai besoin d'apprendre pour comprendre, et je comprends en faisant. C'est pourquoi j'ai toujours eu du mal à lire la documentation.
+
+Donc, c'est pourquoi j'ai eu besoin de choses plus concrètes pour apprendre React. Mais j'ai eu beaucoup de mal à trouver des ressources qui me correspondaient. C'est pourquoi je vous partage aujourd'hui mes recommandations pour apprendre React.
+
+Premièrement, je vous conseille de créer un ensemble de composants React. Cela vous permettra de vous familiariser avec la syntaxe de React et de comprendre comment les composants communiquent entre eux.
+
+## Les composants
+
+Voici une liste de composants que vous pouvez créer pour apprendre React. Chaque composant vous permettra de comprendre un concept spécifique de React.
+
+### Accordion
+
+Un composant Accordion est un composant qui permet d'afficher un contenu caché. Il est très utile pour afficher des informations supplémentaires sans surcharger la page.
+
+Il vous permettra de comprendre comment gérer l'état d'un composant et comment afficher ou cacher un contenu.
+
+<details>
+  <summary>Exemple de code</summary>
+  ```jsx
+  import React, { useState } from 'react';
+
+  const Accordion = ({ title, children }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleAccordion = () => {
+      setIsOpen(!isOpen);
+    };
+
+    return (
+      <div>
+        <button onClick={toggleAccordion}>{title}</button>
+        {isOpen && <div>{children}</div>}
+      </div>
+    );
+  };
+
+  export default Accordion;
+  ```
+</details>
+
+### Carousel
+
+Un composant Carousel est un composant qui permet d'afficher une liste d'éléments les uns à la suite des autres. Il est très utile pour afficher des images ou des vidéos.
+
+Il vous permettra de comprendre comment gérer un état complexe et comment afficher des éléments de manière dynamique.
+
+### Modal
+
+Un composant Modal est un composant qui permet d'afficher un contenu par-dessus le reste de la page. Il est très utile pour afficher des informations importantes.
+
+Il vous permettra de comprendre comment gérer un état global et comment afficher un contenu par-dessus le reste de la page.
+
+<details>
+  <summary>Exemple de code</summary>
+  ```jsx
+  import React, { useState } from 'react';
+
+  const Modal = ({ children }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = () => {
+      setIsOpen(true);
+    };
+
+    const closeModal = () => {
+      setIsOpen(false);
+    };
+
+    return (
+      <div>
+        <button onClick={openModal}>Open Modal</button>
+        {isOpen && (
+          <div>
+            <div>{children}</div>
+            <button onClick={closeModal}>Close Modal</button>
+          </div>
+        )}
+      </div>
+    );
+  };
+  ```
+</details>
+
+#### Pour aller plus loin
+
+Si vous souhaitez utiliser une modal, vous pouvez utiliser `@radix-ui/react-modal`. C'est une librairie qui vous permettra de créer des modals facilement. Et surtout très accessible.
+
+### Pagination
+
+Un composant Pagination est un composant qui permet de naviguer entre plusieurs pages de contenu. Il est très utile pour afficher des listes de contenu paginées.
+
+Il vous permettra de comprendre comment gérer un état global et comment afficher des éléments de manière paginée.
+
+### Tabs
+
+Un composant Tabs est un composant qui permet d'afficher plusieurs onglets de contenu. Il est très utile pour afficher des informations organisées.
+
+Il vous permettra de comprendre comment gérer un état global et comment afficher des éléments de manière organisée.
+
+#### Pour aller plus loin
+
+Si vous souhaitez utiliser des tabs, vous pouvez utiliser `@radix-ui/react-tabs`. C'est une librairie qui vous permettra de créer des tabs facilement. Et surtout très accessible.
+
+### Tooltip
+
+Un composant Tooltip est un composant qui permet d'afficher une information supplémentaire au survol d'un élément. Il est très utile pour afficher des informations contextuelles.
+
+Il vous permettra de comprendre comment gérer un état local et comment afficher un contenu au survol d'un élément.
+
+#### Pour aller plus loin
+
+Si vous souhaitez utiliser des tooltips, vous pouvez utiliser `@radix-ui/react-tooltip`. C'est une librairie qui vous permettra de créer des tooltips facilement. Et surtout très accessible.
+
+### CopyButton
+
+Un composant CopyButton est un composant qui permet de copier du contenu dans le presse-papier. Il est très utile pour copier des liens ou des codes.
+
+Il vous permettra de comprendre comment gérer un état local et comment copier du contenu dans le presse-papier. Il vous faudra créer un hook pour gérer la copie dans le presse-papier.
+
+<details>
+  <summary>Exemple de code</summary>
+  ```js fileName="useCopyToClipboard.js"
+  import { useEffect, useState } from 'react';
+
+  const copyToClipboard = (value) => {
+    if (!value || typeof navigator === 'undefined') {
+      return Promise.resolve(false);
+    }
+
+    return navigator.clipboard
+      .writeText(value)
+      .then(() => true)
+      .catch(() => false);
+  };
+
+  const useCopyToClipboard = () => {
+    const [copied, setCopied] = useState(false);
+
+    const copyText = (text) =>
+      copyToClipboard(text).then(setCopied);
+
+    useEffect(() => {
+      if (copied) {
+        const timerId = setTimeout(() => setCopied(false), 3000);
+
+        return () => clearTimeout(timerId);
+      }
+
+      return undefined;
+    }, [copied]);
+
+    return [copied, copyText] as const;
+  };
+
+  export default useCopyToClipboard;
+  ```
+
+  ```jsx
+  import React, { useState } from 'react';
+  import useCopyToClipboard from './useCopyToClipboard';
+
+  const CopyButton = ({ text }) => {
+    const [copied, copyText] = useCopyToClipboard();
+    const [buttonText, setButtonText] = useState('Copy');
+
+    const handleCopy = () => {
+      copyText(text);
+      setButtonText('Copied');
+    };
+
+    return (
+      <button onClick={handleCopy}>{copied ? 'Copied' : 'Copy'}</button>
+    );
+  };
+  ```
+</details>
+
+## Composant fonctionnel
+
+### TodoList
+
+Un composant TodoList est un composant qui permet d'afficher une liste de tâches à faire. Il est très utile pour organiser son travail.
+
+Il vous permettra de comprendre comment gérer un état global et comment afficher une liste de tâches.
+
+Il vous faudra avoir des sous-composants pour gérer les tâches :
+
+- **TodoItem** : Un composant pour afficher une tâche individuelle.
+- **TodoInput** : Un composant pour ajouter de nouvelles tâches.
+- **TodoFilter** : Un composant pour filtrer les tâches par statut (complétées, en attente, etc.).
+
+### Form
+
+Un composant Form est un composant qui permet de collecter des informations de l'utilisateur. Il est très utile pour créer des formulaires de contact, des formulaires d'inscription, etc.
+
+Il vous permettra de comprendre comment gérer les événements de formulaire et comment valider les données saisies par l'utilisateur.
+
+### SearchBar
+
+Un composant SearchBar est un composant qui permet de rechercher des éléments dans une liste. Il est très utile pour filtrer des données en temps réel.
+
+Il vous permettra de comprendre comment gérer les événements de saisie et comment filtrer des données dynamiquement.
+
+### Dropdown
+
+Un composant Dropdown est un composant qui permet de sélectionner une option parmi une liste déroulante. Il est très utile pour les menus de navigation ou les sélecteurs de catégories.
+
+Il vous permettra de comprendre comment gérer les événements de clic et comment afficher une liste déroulante.
+
+### Alert
+
+Un composant Alert est un composant qui permet d'afficher des messages d'alerte à l'utilisateur. Il est très utile pour informer l'utilisateur de succès, d'erreurs ou d'avertissements.
+
+Il vous permettra de comprendre comment gérer les événements de fermeture et comment afficher des messages conditionnels.
+
+## Un ensemble de petites applications pour apprendre
+
+### To-Do List
+
+Créer une application de liste de tâches est un excellent moyen de commencer avec React. Vous apprendrez à gérer l'état, à créer des composants réutilisables et à manipuler des événements utilisateur.
+
+#### Fonctionnalités :
+
+- Ajouter une nouvelle tâche
+- Marquer une tâche comme complétée
+- Supprimer une tâche
+- Filtrer les tâches par statut (complétées, en attente, etc.)
+
+### Weather App
+
+Une application météo est une autre excellente manière de pratiquer React. Vous apprendrez à faire des requêtes API pour obtenir des données météorologiques et à afficher ces données de manière dynamique.
+
+#### Fonctionnalités :
+
+- Rechercher la météo pour une ville spécifique
+- Afficher les prévisions météorologiques actuelles et futures
+- Gérer les erreurs de requête API
+
+### Quiz App
+
+Créer une application de quiz vous permettra de pratiquer la gestion de l'état et les événements utilisateur. Vous apprendrez également à gérer des données complexes et à afficher des résultats.
+
+#### Fonctionnalités :
+
+- Afficher une série de questions
+- Permettre à l'utilisateur de sélectionner des réponses
+- Calculer et afficher le score final
+
+### E-commerce Cart
+
+Une application de panier d'achat pour un site e-commerce est un excellent projet pour pratiquer la gestion de l'état global et les interactions utilisateur.
+
+#### Fonctionnalités :
+
+- Ajouter des produits au panier
+- Supprimer des produits du panier
+- Calculer le total du panier
+- Afficher un résumé du panier
+
+### Blog
+
+Créer un blog vous permettra de pratiquer la gestion de contenu dynamique et l'affichage de données. Vous apprendrez également à gérer les routes et les composants de navigation.
+
+#### Fonctionnalités :
+
+- Afficher une liste de posts
+- Afficher le contenu d'un post individuel
+- Ajouter de nouveaux posts
+- Supprimer des posts
+
+## Conclusion
+
+Apprendre React peut être un défi, mais en créant et en manipulant ces composants et petites applications, vous pourrez mieux comprendre les concepts fondamentaux de React. N'hésitez pas à explorer les librairies mentionnées pour faciliter votre apprentissage et rendre vos composants plus accessibles.
+
+Bon apprentissage !

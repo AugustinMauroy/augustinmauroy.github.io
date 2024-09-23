@@ -1,0 +1,37 @@
+.page {
+  @apply mx-auto
+    w-full
+    p-4
+    md:px-8
+    lg:w-3/4
+    lg:px-0;
+
+  .header {
+    @apply relative
+      mb-4
+      border-b-2
+      border-b-black
+      py-4
+      dark:border-b-white;
+
+    h1 {
+      @apply text-4xl
+        font-bold;
+    }
+
+    .rss {
+      @apply absolute
+        right-0
+        top-0
+        mr-4
+        mt-4;
+    }
+  }
+
+  .posts {
+    @apply mb-4
+      flex
+      flex-wrap
+      gap-4;
+  }
+}

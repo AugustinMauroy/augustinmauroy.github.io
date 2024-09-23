@@ -1,0 +1,26 @@
+.socialMediaList {
+  @apply flex
+    justify-center
+    border-t-2
+    border-black
+    bg-teal-100
+    dark:border-white
+    dark:bg-teal-300;
+
+  ul {
+    @apply flex
+      max-w-1/2
+      flex-wrap
+      justify-center
+      gap-10
+      py-20;
+  }
+
+  svg {
+    @apply size-20
+      transform
+      text-black
+      transition-transform
+      hover:scale-110;
+  }
+}

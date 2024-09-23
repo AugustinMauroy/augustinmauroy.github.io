@@ -1,0 +1,68 @@
+---
+title: Réécriture de etherpad-lite avec next.js
+description: Ce projet est une réécriture de etherpad-lite avec next.js et tailwindcss.
+date: 2024-03-21
+authors: AugustinMauroy, SamTV12345
+---
+
+> **Note:** Ce projet est en cours de développement et n'est pas prêt pour la production.
+> Faites donc attention à l'état actuel du projet lors de la publication de cet article.
+
+## Qu'est-ce que Etherpad-lite ?
+
+Etherpad est un éditeur en ligne Open Source hautement personnalisable qui permet l'édition collaborative en temps réel. C'est un éditeur web qui offre des fonctionnalités d'édition collaborative en temps réel.
+
+## Comment ça fonctionne actuellement ?
+
+Etherpad-lite est une application Node.js qui utilise le framework `express`. Il utilise la bibliothèque `socket.io` pour gérer la communication en temps réel entre les clients et le serveur. Le front-end est construit avec `jQuery`.
+
+## Pourquoi une réécriture ?
+
+Dans Etherpad-lite V2, [@SamTV12345](https://github.com/SamTV12345) a réécrit le back-end en TypeScript et a corrigé quelques bugs **félicitations à lui 🎉**. Mais le front-end est toujours en jQuery et la base de code n'est pas facile à maintenir.
+
+J'ai vu la PR en TypeScript et j'ai pensé que c'était une bonne opportunité d'aider. Alors je l'ai aidé à réviser le code.
+
+Ensuite, [Sam](https://github.com/SamTV12345) m'a contacté pour me proposer de réécrire le front-end en next.js. J'ai accepté parce que j'adore next.js et j'adore l'Open Source.
+
+Nous avons donc commencé à discuter du projet. La première recherche n'était pas sur la technologie, mais sur le nom du projet. La première idée que j'ai proposée était `etherpad-next`, mais j'ai aussi proposé `etherpad-under-steroid` (etherpad sous stéroïdes), mais nous avons finalement choisi `etherpad-next` pour des raisons logiques.
+
+Ensuite, j'ai mis en place les bases de l'infrastructure et du front-end. Et c'est à ce moment-là que nous avons sélectionné les technologies que nous allions utiliser.
+
+## Quelles technologies sont utilisées ?
+
+- [Next.js](https://nextjs.org/) comme méta-framework, ce qui nous permet de faire du back-end et du front-end dans le même framework.
+- [Tailwindcss](https://tailwindcss.com/) comme bibliothèque CSS. C'est un framework CSS basé sur les utilitaires.
+- [TypeScript](https://www.typescriptlang.org/) comme langage. C'est un sur-ensemble de JavaScript qui compile en JavaScript pur. Cela nous permet d'avoir une base de code lisible et maintenable.
+- [next-ws](https://github.com/apteryxxyz/next-ws) est un patch pour next.js qui nous permet d'utiliser les websockets sur les [gestionnaires de routes](https://nextjs.org/docs/app/building-your-application/routing/route-handlers). C'est génial parce que nous n'avons pas besoin d'utiliser express ou socket.io. Merci à [@apteryxxyz](https://github.com/apteryxxyz).
+- [Prisma](https://www.prisma.io/) comme ORM. Cela nous permet d'avoir une meilleure gestion de la base de données et une meilleure base de code. De plus, il crée des types TypeScript pour nous.
+
+Si vous souhaitez avoir une meilleure compréhension du projet, vous pouvez consulter la [documentation technique](https://github.com/ether/etherpad-next/blob/main/docs/Techincal.md).
+
+## ⚠️ Compatibilité ascendante ⚠️ ?
+
+Il est important de réduire les changements cassants entre etherpad-lite et etherpad-next.
+
+Nous essaierons de maintenir la compatibilité ascendante avec etherpad-lite. Mais ce n'est pas une priorité. Nous nous concentrerons sur les nouvelles fonctionnalités et le nouveau design.
+
+### Ce que je veux maintenir en compatibilité ascendante ?
+
+- Support de plusieurs bases de données pour le projet. Mais pour l'instant, Prisma ne supporte pas plusieurs bases de données. Donc nous devrons trouver une solution. Et pour le moment, nous ne supportons que MySQL.
+- Support des plugins. Nous essaierons de conserver le même système de plugins, mais nous ne savons pas si c'est possible.
+- Intégration avec Moodle. Moodle est un LMS populaire. Nous essaierons de conserver la même intégration, mais nous ne savons pas si c'est possible.
+
+## OpenSSF Scorecard
+
+Nous essaierons d'obtenir un bon score sur l'OpenSSF Scorecard. Il est important d'avoir un projet sécurisé. Nous essaierons d'obtenir un bon score.
+Il propose également un aperçu de la sécurité du projet.
+
+[OpenSSF Scorecard](https://github.com/ossf/scorecard)
+
+## Conclusion
+
+Je suis très heureux de travailler sur ce projet. Je pense que c'est une bonne opportunité d'apprendre de nouvelles technologies et d'aider la communauté Open Source.
+
+Un grand merci à [@SamTV12345](https://github.com/SamTV12345) pour l'opportunité de travailler sur ce projet. Et c'était un plaisir de le rencontrer.
+
+J'espère que ce projet sera un succès et qu'il sera utilisé par de nombreuses personnes.
+
+> **Note:** Votre retour est important pour nous. N'hésitez donc pas à ouvrir une issue sur le [dépôt GitHub](https://github.com/ether/etherpad-next). Nous serons heureux de discuter avec vous. De plus, si vous souhaitez contribuer au projet, vous pouvez ouvrir une PR. Nous serons heureux de la réviser.

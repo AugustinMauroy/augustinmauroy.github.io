@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: github-actions
     directory: '/'
     schedule:
-      interval: weekly
+      interval: monthly
     commit-message:
       prefix: meta
     open-pull-requests-limit: 10
@@ -11,11 +11,11 @@ updates:
     directory: '/'
     versioning-strategy: increase
     schedule:
-      interval: weekly
+      interval: monthly
     commit-message:
       prefix: meta
     groups:
-      fromat:
+      format:
         patterns:
           - 'prettier'
           - 'prettier-plugin-tailwindcss'
@@ -34,7 +34,7 @@ updates:
           - 'eslint-plugin-storybook'
       next-js:
         patterns:
-          - 'next'
+          - 'next*'
       react:
         patterns:
           - 'react'
@@ -44,6 +44,22 @@ updates:
       tailwind:
         patterns:
           - 'tailwindcss'
+      heroicons:
+        patterns:
+          - '@heroicons/react'
+      radix-ui:
+        patterns:
+          - '@radix-ui/*'
+      other:
+        patterns:
+          - 'classnames'
+          - 'feed'
+          - 'geist'
+          - 'rehype-autolink-headings'
+          - 'rehype-mdx-code-props'
+          - 'rehype-slug'
+          - 'shiki'
+          - 'turbo'
     ignore:
       # Manually update major versions of @types/node with the version specified within .nvmrc
       - dependency-name: '@types/node'

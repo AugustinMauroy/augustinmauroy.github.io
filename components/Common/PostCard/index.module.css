@@ -1,0 +1,45 @@
+.card {
+  @apply flex
+    w-80
+    flex-shrink
+    flex-col
+    justify-between
+    gap-2
+    rounded-sm
+    border-2
+    border-black
+    bg-violet-50
+    p-4
+    dark:border-white
+    dark:bg-violet-300;
+
+  h2 {
+    @apply text-3xl
+      font-bold
+      text-black;
+  }
+
+  .description {
+    /* max h 20 and truncate */
+    @apply truncate
+      text-base
+      text-gray-700;
+  }
+
+  time {
+    @apply text-sm
+      font-light
+      text-gray-700;
+  }
+
+  .authors {
+    @apply truncate
+      text-sm
+      text-gray-700;
+  }
+
+  &:has(a:hover) {
+    @apply shadow-neo-brutalism-black
+      dark:shadow-neo-brutalism-white;
+  }
+}
