@@ -1,1 +1,6 @@
 - open graph image (need to be designed)
+- add "events" card on the homepage
+  - pride month 1st june - 30th june
+  - bisexuality day 23rd september
+  - AIDS day 1st december
+- Add birday note on hero section
