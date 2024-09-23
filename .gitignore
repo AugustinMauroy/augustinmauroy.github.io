@@ -7,7 +7,6 @@
 
 # testing
 /coverage
-/.swc
 
 # next.js
 /.next/
@@ -35,13 +34,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Cache
+.eslintjscache
+.stylelintcache
+.prettiercache
+
 # Turbo
 .turbo
 
-# storybook
+# Storybook
 storybook-static
-
-# Cache
-.eslintcache
-.prettiercache
-.stylelintcache

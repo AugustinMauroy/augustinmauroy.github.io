@@ -1,0 +1,284 @@
+---
+title: My Recommendations for Learning React
+description: During my journey of learning React, I often encountered difficulties. Here are my recommendations for effectively learning React.
+date: 2024-09-23
+authors: AugustinMauroy
+---
+
+## How I Like to Learn
+
+I am a big fan of the learning-by-doing method. I need to learn to understand, and I understand by doing. That's why I have always struggled with reading documentation.
+
+So, that's why I needed more concrete things to learn React. But I had a hard time finding resources that suited me. That's why I am sharing my recommendations for learning React today.
+
+Firstly, I advise you to create a set of React components. This will allow you to familiarize yourself with React syntax and understand how components communicate with each other.
+
+## The Components
+
+Here is a list of components you can create to learn React. Each component will help you understand a specific concept of React.
+
+### Accordion
+
+An Accordion component is a component that allows you to display hidden content. It is very useful for displaying additional information without cluttering the page.
+
+It will help you understand how to manage the state of a component and how to show or hide content.
+
+<details>
+  <summary>Code Example</summary>
+  ```jsx
+  import React, { useState } from 'react';
+
+  const Accordion = ({ title, children }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleAccordion = () => {
+      setIsOpen(!isOpen);
+    };
+
+    return (
+      <div>
+        <button onClick={toggleAccordion}>{title}</button>
+        {isOpen && <div>{children}</div>}
+      </div>
+    );
+  };
+
+  export default Accordion;
+  ```
+</details>
+
+### Carousel
+
+A Carousel component is a component that allows you to display a list of elements one after the other. It is very useful for displaying images or videos.
+
+It will help you understand how to manage complex state and how to display elements dynamically.
+
+### Modal
+
+A Modal component is a component that allows you to display content on top of the rest of the page. It is very useful for displaying important information.
+
+It will help you understand how to manage global state and how to display content on top of the rest of the page.
+
+<details>
+  <summary>Code Example</summary>
+  ```jsx
+  import React, { useState } from 'react';
+
+  const Modal = ({ children }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = () => {
+      setIsOpen(true);
+    };
+
+    const closeModal = () => {
+      setIsOpen(false);
+    };
+
+    return (
+      <div>
+        <button onClick={openModal}>Open Modal</button>
+        {isOpen && (
+          <div>
+            <div>{children}</div>
+            <button onClick={closeModal}>Close Modal</button>
+          </div>
+        )}
+      </div>
+    );
+  };
+  ```
+</details>
+
+#### For Further Learning
+
+If you want to use a modal, you can use `@radix-ui/react-modal`. It is a library that will allow you to create modals easily. And most importantly, very accessible.
+
+### Pagination
+
+A Pagination component is a component that allows you to navigate between multiple pages of content. It is very useful for displaying paginated lists of content.
+
+It will help you understand how to manage global state and how to display elements in a paginated manner.
+
+### Tabs
+
+A Tabs component is a component that allows you to display multiple tabs of content. It is very useful for displaying organized information.
+
+It will help you understand how to manage global state and how to display elements in an organized manner.
+
+#### For Further Learning
+
+If you want to use tabs, you can use `@radix-ui/react-tabs`. It is a library that will allow you to create tabs easily. And most importantly, very accessible.
+
+### Tooltip
+
+A Tooltip component is a component that allows you to display additional information on hovering over an element. It is very useful for displaying contextual information.
+
+It will help you understand how to manage local state and how to display content on hovering over an element.
+
+#### For Further Learning
+
+If you want to use tooltips, you can use `@radix-ui/react-tooltip`. It is a library that will allow you to create tooltips easily. And most importantly, very accessible.
+
+### CopyButton
+
+A CopyButton component is a component that allows you to copy content to the clipboard. It is very useful for copying links or codes.
+
+It will help you understand how to manage local state and how to copy content to the clipboard. You will need to create a hook to manage copying to the clipboard.
+
+<details>
+  <summary>Code Example</summary>
+  ```js fileName="useCopyToClipboard.js"
+  import { useEffect, useState } from 'react';
+
+  const copyToClipboard = (value) => {
+    if (!value || typeof navigator === 'undefined') {
+      return Promise.resolve(false);
+    }
+
+    return navigator.clipboard
+      .writeText(value)
+      .then(() => true)
+      .catch(() => false);
+  };
+
+  const useCopyToClipboard = () => {
+    const [copied, setCopied] = useState(false);
+
+    const copyText = (text) =>
+      copyToClipboard(text).then(setCopied);
+
+    useEffect(() => {
+      if (copied) {
+        const timerId = setTimeout(() => setCopied(false), 3000);
+
+        return () => clearTimeout(timerId);
+      }
+
+      return undefined;
+    }, [copied]);
+
+    return [copied, copyText] as const;
+  };
+
+  export default useCopyToClipboard;
+  ```
+
+  ```jsx
+  import React, { useState } from 'react';
+  import useCopyToClipboard from './useCopyToClipboard';
+
+  const CopyButton = ({ text }) => {
+    const [copied, copyText] = useCopyToClipboard();
+    const [buttonText, setButtonText] = useState('Copy');
+
+    const handleCopy = () => {
+      copyText(text);
+      setButtonText('Copied');
+    };
+
+    return (
+      <button onClick={handleCopy}>{copied ? 'Copied' : 'Copy'}</button>
+    );
+  };
+  ```
+</details>
+
+## Functional Components
+
+### TodoList
+
+A TodoList component is a component that allows you to display a list of tasks to do. It is very useful for organizing your work.
+
+It will help you understand how to manage global state and how to display a list of tasks.
+
+You will need sub-components to manage tasks:
+
+- **TodoItem**: A component to display an individual task.
+- **TodoInput**: A component to add new tasks.
+- **TodoFilter**: A component to filter tasks by status (completed, pending, etc.).
+
+### Form
+
+A Form component is a component that allows you to collect information from the user. It is very useful for creating contact forms, registration forms, etc.
+
+It will help you understand how to handle form events and how to validate user-entered data.
+
+### SearchBar
+
+A SearchBar component is a component that allows you to search for elements in a list. It is very useful for filtering data in real-time.
+
+It will help you understand how to handle input events and how to filter data dynamically.
+
+### Dropdown
+
+A Dropdown component is a component that allows you to select an option from a dropdown list. It is very useful for navigation menus or category selectors.
+
+It will help you understand how to handle click events and how to display a dropdown list.
+
+### Alert
+
+An Alert component is a component that allows you to display alert messages to the user. It is very useful for informing the user of success, errors, or warnings.
+
+It will help you understand how to handle close events and how to display conditional messages.
+
+## A Set of Small Applications for Learning
+
+### To-Do List
+
+Creating a to-do list application is an excellent way to start with React. You will learn to manage state, create reusable components, and handle user events.
+
+#### Features:
+
+- Add a new task
+- Mark a task as completed
+- Delete a task
+- Filter tasks by status (completed, pending, etc.)
+
+### Weather App
+
+A weather application is another excellent way to practice React. You will learn to make API requests to obtain weather data and display this data dynamically.
+
+#### Features:
+
+- Search for the weather for a specific city
+- Display current and future weather forecasts
+- Handle API request errors
+
+### Quiz App
+
+Creating a quiz application will allow you to practice state management and user events. You will also learn to manage complex data and display results.
+
+#### Features:
+
+- Display a series of questions
+- Allow the user to select answers
+- Calculate and display the final score
+
+### E-commerce Cart
+
+An e-commerce cart application is an excellent project to practice global state management and user interactions.
+
+#### Features:
+
+- Add products to the cart
+- Remove products from the cart
+- Calculate the total of the cart
+- Display a cart summary
+
+### Blog
+
+Creating a blog will allow you to practice managing dynamic content and displaying data. You will also learn to manage routes and navigation components.
+
+#### Features:
+
+- Display a list of posts
+- Display the content of an individual post
+- Add new posts
+- Delete posts
+
+## Conclusion
+
+Learning React can be a challenge, but by creating and manipulating these components and small applications, you will better understand the fundamental concepts of React. Do not hesitate to explore the mentioned libraries to facilitate your learning and make your components more accessible.
+
+Happy learning!

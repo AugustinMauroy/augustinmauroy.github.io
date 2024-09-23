@@ -1,0 +1,49 @@
+.hero {
+  @apply flex
+    h-[calc(100vh-4rem)]
+    w-full
+    flex-col
+    items-center
+    justify-center
+    gap-8
+    md:flex-row
+    lg:gap-10;
+
+  .content {
+    @apply flex
+    max-w-80
+    flex-col
+    gap-4;
+
+    h1 {
+      @apply text-3xl
+        font-black
+        leading-10;
+
+      span {
+        @apply rotate-45
+          rounded-md
+          border-2
+          border-black
+          bg-teal-100
+          p-2
+          text-xl
+          dark:border-white
+          dark:bg-teal-400
+          dark:text-black;
+      }
+    }
+
+    p {
+      @apply mt-4
+        text-lg
+        text-gray-600
+        md:text-xl
+        dark:text-gray-400;
+    }
+
+    .button {
+      @apply w-full;
+    }
+  }
+}

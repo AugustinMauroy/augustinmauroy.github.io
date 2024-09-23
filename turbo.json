@@ -1,36 +1,42 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
-    "dev": {
-      "cache": false
-    },
+  "ui": "tui",
+  "tasks": {
     "build": {
-      "outputs": [".next/**", "!.next/cache/**"],
-      "cache": true
+      "cache": true,
+      "outputs": [".next/**", "!.next/cache/**"]
     },
-    "lint-css": {
-      "outputs": [".stylelintcache"],
-      "cache": true
+    "dev": {
+      "cache": false,
+      "persistent": true
     },
-    "lint-css:fix": {
-      "outputs": [".stylelintcache"],
-      "cache": true
+    "lint:js": {
+      "cache": true,
+      "outputs": [".eslintjscache"]
     },
-    "lint-js": {
-      "outputs": [".eslintcache"],
-      "cache": true
+    "lint:css": {
+      "cache": true,
+      "outputs": [".stylelintcache"]
     },
-    "lint-js:fix": {
-      "outputs": [".eslintcache"],
-      "cache": true
-    },
-    "prettier:write": {
-      "outputs": [".prettiercache"],
-      "cache": true
+    "prettier": {
+      "cache": true,
+      "outputs": [".prettiercache"]
     },
     "prettier:check": {
-      "outputs": [".prettiercache"],
-      "cache": true
+      "cache": true,
+      "outputs": [".prettiercache"]
+    },
+    "format": {
+      "cache": true,
+      "outputs": [".eslintjscache", ".stylelintcache", ".prettiercache"]
+    },
+    "type-check": {
+      "cache": true,
+      "outputs": ["tsconfig.tsbuildinfo"]
+    },
+    "storybook": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

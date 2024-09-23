@@ -1,9 +1,9 @@
 import React from 'react';
-import { NextIntlClientProvider } from 'next-intl';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
+import { IntlProvider } from 'next-intl';
 import messages from '../i18n/locales/en.json';
 import type { Preview, ReactRenderer } from '@storybook/react';
-import '../src/styles/globals.css';
+import '../styles/globals.css';
 
 const preview: Preview = {
   parameters: {
@@ -11,21 +11,9 @@ const preview: Preview = {
     actions: { argTypesRegex: '^on[A-Z].*' },
     nextjs: {
       appDirectory: true,
-      router: {
-        basePath: '',
-        pathname: '/en/',
-      },
-      navigation: {
-        segments: [['lang', 'en']],
-      },
     },
   },
   decorators: [
-    Story => (
-      <NextIntlClientProvider locale="en" messages={messages}>
-        <Story />
-      </NextIntlClientProvider>
-    ),
     withThemeByDataAttribute<ReactRenderer>({
       themes: {
         light: '',
@@ -34,6 +22,11 @@ const preview: Preview = {
       defaultTheme: 'light',
       attributeName: 'data-theme',
     }),
+    Story => (
+      <IntlProvider messages={messages} locale="en">
+        <Story />
+      </IntlProvider>
+    ),
   ],
 };
 

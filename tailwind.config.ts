@@ -1,25 +1,31 @@
 import type { Config } from 'tailwindcss';
 
 export default {
-  content: ['./src/**/*.tsx'],
+  content: ['./components/**/*.tsx', './app/**/*.tsx', './.storybook/**/*.ts'],
   theme: {
     extend: {
-      keyframes: {
-        slideInFromLeft: {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(0)' },
-        },
-        slideInFromTop: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(0)' },
-        },
+      fontFamily: {
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
       },
-      animation: {
-        'slide-in-left': 'slideInFromLeft 1.5s ease-out',
-        'slide-in-top': 'slideInFromTop 1.5s ease-out',
+      boxShadow: {
+        'neo-brutalism-sm-black': '1px 1px 0px rgba(0,0,0,1)',
+        'neo-brutalism-black': '2px 2px 0px rgba(0,0,0,1)',
+        'neo-brutalism-xl-black': '4px 4px 0px rgba(0,0,0,1)',
+        'neo-brutalism-2xl-black': '8px 8px 0px rgba(0,0,0,1)',
+        'neo-brutalism-sm-white': '1px 1px 0px rgba(255,255,255,1)',
+        'neo-brutalism-white': '2px 2px 0px rgba(255,255,255,1)',
+        'neo-brutalism-xl-white': '4px 4px 0px rgba(255,255,255,1)',
+        'neo-brutalism-2xl-white': '8px 8px 0px rgba(255,255,255,1)',
+      },
+      // max-w-1/2
+      spacing: {
+        '1/2': '50%',
       },
     },
   },
-  // darkmode of next-themes
-  darkMode: ['class', '[data-theme="dark"]'],
+  darkMode:
+    process.env.BUILD_ENV === 'storybook'
+      ? ['class', '[data-theme="dark"]']
+      : 'media',
 } as Config;

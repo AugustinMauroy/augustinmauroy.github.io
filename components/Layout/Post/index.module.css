@@ -1,0 +1,35 @@
+.article {
+  @apply mx-auto
+    w-full
+    px-4
+    pb-4
+    md:px-8
+    lg:w-3/4
+    lg:px-0;
+
+  .header {
+    @apply mb-8
+      border-b-2
+      border-b-black
+      py-4
+      dark:border-b-white;
+
+    h1 {
+      @apply text-4xl
+        font-semibold;
+    }
+
+    p {
+      @apply font-semibold
+        text-gray-600
+        dark:text-gray-400;
+    }
+
+    time {
+      @apply text-sm
+        font-light
+        text-gray-500
+        dark:text-gray-400;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.pagination {
+  @apply flex
+    w-full
+    justify-center
+    space-x-2;
+
+  .item {
+    @apply rounded-none
+      border-2
+      border-black
+      px-4
+      py-2
+      shadow-neo-brutalism-black
+      dark:border-white
+      dark:shadow-neo-brutalism-white;
+
+    &.active {
+      @apply bg-black
+        text-white
+        dark:bg-white
+        dark:text-black;
+    }
+
+    &.inactive {
+      @apply bg-white
+        text-black
+        dark:bg-black
+        dark:text-white;
+
+      &:hover {
+        @apply bg-black
+          text-white
+          dark:bg-white
+          dark:text-black;
+      }
+    }
+  }
+
+  .ellipsis {
+    @apply rounded-none
+      border-2
+      border-transparent
+      px-4
+      py-2
+      text-gray-500
+      dark:text-gray-400;
+  }
+}

@@ -1,0 +1,47 @@
+.button {
+  @apply inline-flex
+    justify-center
+    gap-2
+    border-2
+    border-black
+    bg-green-300
+    px-4
+    py-2
+    font-bold
+    !text-black
+    dark:border-white
+    dark:bg-green-700
+    dark:!text-white;
+
+  &:hover:not(&[aria-disabled='true']) {
+    @apply bg-green-400
+      !no-underline
+      shadow-neo-brutalism-black
+      dark:bg-green-600
+      dark:shadow-neo-brutalism-white;
+  }
+
+  &:active:not(&[aria-disabled='true']) {
+    @apply bg-green-500;
+  }
+
+  &:focus:not(&[aria-disabled='true']) {
+    @apply outline-none
+      ring-2
+      ring-green-500
+      ring-offset-2
+      ring-offset-white
+      dark:ring-offset-black;
+  }
+
+  &:disabled {
+    @apply cursor-not-allowed
+      border-gray-400
+      bg-gray-200
+      text-gray-400;
+  }
+
+  svg {
+    @apply size-6;
+  }
+}

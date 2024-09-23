@@ -1,9 +1,0 @@
-.inlineCode {
-  @apply rounded-sm
-    bg-teal-200
-    px-1
-    py-px
-    text-teal-600
-    dark:bg-teal-800
-    dark:text-teal-50;
-}

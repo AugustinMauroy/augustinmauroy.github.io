@@ -21,6 +21,7 @@ jobs:
           path: |
             ~/.npm
             .next/cache
+            .turbo/cache
             node_modules/.cache
           key: cache-${{ hashFiles('package-lock.json') }}-
           restore-keys: cache-
@@ -43,6 +44,7 @@ jobs:
           path: |
             ~/.npm
             .next/cache
+            .turbo/cache
             node_modules/.cache
           key: cache-${{ hashFiles('package-lock.json') }}
 
@@ -62,6 +64,7 @@ jobs:
           path: |
             ~/.npm
             .next/cache
+            .turbo/cache
             node_modules/.cache
           key: cache-${{ hashFiles('package-lock.json') }}-
           restore-keys: cache-
@@ -84,6 +87,7 @@ jobs:
           path: |
             ~/.npm
             .next/cache
+            .turbo/cache
             node_modules/.cache
           key: cache-${{ hashFiles('package-lock.json') }}
 
@@ -103,6 +107,7 @@ jobs:
           path: |
             ~/.npm
             .next/cache
+            .turbo/cache
             node_modules/.cache
           key: cache-${{ hashFiles('package-lock.json') }}-
           restore-keys: cache-
@@ -125,6 +130,7 @@ jobs:
           path: |
             ~/.npm
             .next/cache
+            .turbo/cache
             node_modules/.cache
           key: cache-${{ hashFiles('package-lock.json') }}
 
@@ -144,6 +150,7 @@ jobs:
           path: |
             ~/.npm
             .next/cache
+            .turbo/cache
             node_modules/.cache
           key: cache-${{ hashFiles('package-lock.json') }}-
           restore-keys: cache-
@@ -166,5 +173,6 @@ jobs:
           path: |
             ~/.npm
             .next/cache
+            .turbo/cache
             node_modules/.cache
           key: cache-${{ hashFiles('package-lock.json') }}

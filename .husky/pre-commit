@@ -1,0 +1,11 @@
+# Lint and format staged files
+npx lint-staged
+
+# Verify typescript staged files
+npm run type-check
+
+# Run tests
+npm run test
+
+# Build the app
+npx turbo build
