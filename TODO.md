@@ -4,3 +4,4 @@
   - bisexuality day 23rd september
   - AIDS day 1st december
 - Add birday note on hero section
+- Add lint-css to pr CI

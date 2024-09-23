@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
+  lint-js:
     name: Lint-js
     runs-on: ubuntu-latest
 
@@ -35,8 +35,8 @@ jobs:
       - name: Install NPM packages
         run: npm ci
 
-      - name: Run Linting
-        run: npx turbo lint-js
+      - name: Run Linting js
+        run: npx turbo lint:js
 
       - name: Save Cache
         uses: actions/cache/save@v4
@@ -165,7 +165,7 @@ jobs:
         run: npm ci
 
       - name: Run Format
-        run: npx turbo format
+        run: npx turbo prettier:check
 
       - name: Save Cache
         uses: actions/cache/save@v4
