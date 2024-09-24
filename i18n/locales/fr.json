@@ -41,7 +41,8 @@
       "hero": {
         "title": "Salut 👋,<br></br> Je suis <highlight>Augustin</highlight>.",
         "description": "J'ai {age} ans. Je suis un développeur web et un passionné de logiciels libres !",
-        "learnMore": "En savoir plus sur moi"
+        "learnMore": "En savoir plus sur moi",
+        "birthday": "Aujourd'hui, c'est mon anniversaire ! 🎉🎂 (18 mai)"
       }
     },
     "sections": {
@@ -53,6 +54,20 @@
         "blog": "Blog",
         "projects": "Projets"
       }
+    }
+  },
+  "events": {
+    "prideMonth": {
+      "title": "Mois des fiertés",
+      "description": "Célébrez le mois des fiertés du 1er au 30 juin."
+    },
+    "bisexualityDay": {
+      "title": "Journée de la bisexualité",
+      "description": "Célébrez la journée de la bisexualité le 23 septembre."
+    },
+    "aidsDay": {
+      "title": "Journée du SIDA",
+      "description": "Observez la journée mondiale du SIDA le 1er décembre."
     }
   }
 }

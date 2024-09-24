@@ -1,7 +1,29 @@
-import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest';
-import { getAge } from '../date';
+import { vi, describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { isInRange, isToday, isBirthday } from '../date';
 
-describe('getAge', () => {
+describe('isInRange', () => {
+  it('should return true if the date is within the range', () => {
+    expect(isInRange('2023-10-10', '2023-10-01', '2023-10-20')).toBe(true);
+  });
+
+  it('should return false if the date is before the range', () => {
+    expect(isInRange('2023-09-30', '2023-10-01', '2023-10-20')).toBe(false);
+  });
+
+  it('should return false if the date is after the range', () => {
+    expect(isInRange('2023-10-21', '2023-10-01', '2023-10-20')).toBe(false);
+  });
+
+  it('should return true if the date is exactly the start date', () => {
+    expect(isInRange('2023-10-01', '2023-10-01', '2023-10-20')).toBe(true);
+  });
+
+  it('should return true if the date is exactly the end date', () => {
+    expect(isInRange('2023-10-20', '2023-10-01', '2023-10-20')).toBe(true);
+  });
+});
+
+describe('isToday', () => {
   const mockDate = new Date('2023-10-10T00:00:00Z');
 
   beforeAll(() => {
@@ -13,23 +35,40 @@ describe('getAge', () => {
     vi.useRealTimers();
   });
 
-  it('should return 0 for a date that is today', () => {
-    const today = new Date('2023-10-10T00:00:00Z');
-    expect(getAge(today)).toBe(0);
+  it('should return true if the date is today', () => {
+    expect(isToday('2023-10-10')).toBe(true);
   });
 
-  it('should return 1 for a date that is exactly 1 year ago', () => {
-    const oneYearAgo = new Date('2022-10-10T00:00:00Z');
-    expect(getAge(oneYearAgo)).toBe(1);
+  it('should return false if the date is not today', () => {
+    expect(isToday('2023-10-09')).toBe(false);
+  });
+});
+
+describe('isBirthday', () => {
+  const mockDate = new Date('2023-10-10T00:00:00Z');
+
+  beforeAll(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(mockDate);
   });
 
-  it('should return 30 for a date that is exactly 30 years ago', () => {
-    const thirtyYearsAgo = new Date('1993-10-10T00:00:00Z');
-    expect(getAge(thirtyYearsAgo)).toBe(30);
+  afterAll(() => {
+    vi.useRealTimers();
   });
 
-  it('should handle a date in the future gracefully', () => {
-    const futureDate = new Date('2024-10-10T00:00:00Z');
-    expect(getAge(futureDate)).toBe(-1);
+  it('should return true if today is the birthday', () => {
+    expect(isBirthday('2023-10-10')).toBe(true);
+  });
+
+  it('should return true if today is within 3 days after the birthday', () => {
+    expect(isBirthday('2023-10-08')).toBe(true);
+  });
+
+  it('should return false if today is more than 3 days after the birthday', () => {
+    expect(isBirthday('2023-10-06')).toBe(false);
+  });
+
+  it('should return false if today is before the birthday', () => {
+    expect(isBirthday('2023-10-11')).toBe(false);
   });
 });

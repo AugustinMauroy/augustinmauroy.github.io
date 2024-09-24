@@ -39,9 +39,10 @@
     },
     "home": {
       "hero": {
-        "title": "Hi 👋,<br></br> I'm <highlight>Augstin</highlight>.",
+        "title": "Hi 👋,<br></br> I'm <highlight>Augustin</highlight>.",
         "description": "I'm {age} years old. I'm a web developer and an OSS enthusiast!",
-        "learnMore": "Learn more about me"
+        "learnMore": "Learn more about me",
+        "birthday": "Today is my birthday! 🎉🎂 (18 May)"
       }
     },
     "sections": {
@@ -53,6 +54,20 @@
         "blog": "Blog",
         "projects": "Projects"
       }
+    }
+  },
+  "events": {
+    "prideMonth": {
+      "title": "Pride Month",
+      "description": "Celebrate Pride Month from June 1st to June 30th."
+    },
+    "bisexualityDay": {
+      "title": "Bisexuality Day",
+      "description": "Celebrate Bisexuality Day on September 23rd."
+    },
+    "aidsDay": {
+      "title": "AIDS Day",
+      "description": "Observe World AIDS Day on December 1st."
     }
   }
 }

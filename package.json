@@ -10,6 +10,7 @@
     "start": "next start",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:snapshots": "vitest run --update",
     "test:coverage": "vitest run --coverage",
     "lint:js": "next lint --cache-strategy=content --cache-location=.eslintjscache",
     "lint:css": "stylelint \"**/*.css\" --cache --cache-strategy=content --cache-location=.stylelintcache",
