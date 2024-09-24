@@ -24,8 +24,9 @@ export const generateMetadata = async ({
   params,
 }: PageProps): Promise<Metadata | null> => {
   const rawSource = await getContent({
-    section: 'projects',
+    section: 'blog',
     lang: params.locale,
+    slug: params.post,
   });
 
   if (!rawSource) return null;
