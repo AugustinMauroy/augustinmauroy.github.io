@@ -1,6 +1,6 @@
 .card {
   @apply flex
-    w-80
+    w-full
     flex-shrink
     flex-col
     justify-between
@@ -10,6 +10,7 @@
     border-black
     bg-violet-50
     p-4
+    md:w-80
     dark:border-white
     dark:bg-violet-300;
 
