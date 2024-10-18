@@ -15,7 +15,10 @@ const LanguageSelector = () => {
     const newLocaleCode = availableLocales.find(
       locale => locale.name === newLocale
     )?.code;
-    const url = pathname.replace(`/${locale}`, `/${newLocaleCode}`);
+    const url =
+      pathname === '/'
+        ? `/${newLocaleCode}`
+        : pathname.replace(`/${locale}`, `/${newLocaleCode}`);
     router.push(url);
   };
 
