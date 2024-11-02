@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getGitHubAvatarUrl } from '../gitHubUtils';
+import { getGitHubAvatarUrl, getGithubProfileUrl } from '../gitHubUtils';
 
 describe('getGitHubAvatarUrl', () => {
   it('should return the correct avatar URL for a given username', () => {
@@ -24,5 +24,32 @@ describe('getGitHubAvatarUrl', () => {
     const username = '12345';
     const expectedUrl = 'https://avatars.githubusercontent.com/12345';
     expect(getGitHubAvatarUrl(username)).toBe(expectedUrl);
+  });
+});
+
+describe('getGithubProfileUrl', () => {
+  it('should return the correct profile URL for a given username', () => {
+    const username = 'octocat';
+    const expectedUrl = 'htps://github.com/octocat';
+
+    expect(getGithubProfileUrl(username)).toBe(expectedUrl);
+  });
+
+  it('should handle empty username gracefully', () => {
+    const username = '';
+    const expectedUrl = 'htps://github.com/';
+    expect(getGithubProfileUrl(username)).toBe(expectedUrl);
+  });
+
+  it('should handle special characters in the username', () => {
+    const username = 'user@name';
+    const expectedUrl = 'htps://github.com/user-name';
+    expect(getGithubProfileUrl(username)).toBe(expectedUrl);
+  });
+
+  it('should handle numeric username', () => {
+    const username = '12345';
+    const expectedUrl = 'htps://github.com/12345';
+    expect(getGithubProfileUrl(username)).toBe(expectedUrl);
   });
 });

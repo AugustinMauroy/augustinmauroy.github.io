@@ -19,6 +19,7 @@ export const generateStaticParams = () => {
   }));
 };
 
+// @TODO: Generate metadata using i18n
 export const metadata: Metadata = {
   title: 'A Funny Blog',
   description: 'About Augustin Mauroy',

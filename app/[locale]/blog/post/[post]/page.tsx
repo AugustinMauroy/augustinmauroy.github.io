@@ -3,6 +3,7 @@ import compileMDX from '~/lib/mdx';
 import { getContent, getSlugs } from '~/lib/content';
 import PostLayout from '~/components/Layout/Post';
 import { blogMdxComponents } from '~/lib/mdxComponents';
+import { getGithubProfileUrl } from '~/utils/gitHubUtils';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
 import type { BlogFrontmatter } from '~/types/frontmatter';
@@ -36,9 +37,14 @@ export const generateMetadata = async ({
     parseFrontmatter: true,
   });
 
+  const authors = frontmatter.authors
+    .split(', ')
+    .map(author => ({ name: author, url: getGithubProfileUrl(author) }));
+
   return {
     title: frontmatter.title,
     description: frontmatter.description,
+    authors,
   };
 };
 
