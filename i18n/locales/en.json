@@ -1,5 +1,9 @@
 {
   "app": {
+    "metadata": {
+      "title": "Augustin Mauroy - Web Developer & OSS Enthusiast",
+      "description": "I'm Augustin Mauroy, a web developer and an open source software enthusiast. Welcome to my personal website!"
+    },
     "home": {
       "metadata": {
         "title": "Augustin Mauroy - Web Developer & OSS Enthusiast",

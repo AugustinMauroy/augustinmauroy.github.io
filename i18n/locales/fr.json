@@ -1,5 +1,9 @@
 {
   "app": {
+    "metadata": {
+      "title": "Augustin Mauroy - Développeur Web & Passionné de Logiciels Libres",
+      "description": "Je suis Augustin Mauroy, un développeur web et un passionné de logiciels libres. Bienvenue sur mon site personnel !"
+    },
     "home": {
       "metadata": {
         "title": "Augustin Mauroy - Développeur Web & Passionné de Logiciels Libres",

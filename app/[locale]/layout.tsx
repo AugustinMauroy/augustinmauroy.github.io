@@ -1,4 +1,4 @@
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import classNames from 'classnames';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
@@ -20,11 +20,14 @@ export const generateStaticParams = () => {
 };
 
 // @TODO: Generate metadata using i18n
-export const metadata: Metadata = {
-  title: 'A Funny Blog',
-  description: 'About Augustin Mauroy',
-};
+export const generateMetadata = async (): Promise<Metadata | null> => {
+  const t = await getTranslations('app.metadata');
 
+  return {
+    title: t('title'),
+    description: t('description'),
+  };
+};
 const RootLayout: FC<RootLayoutProps> = ({ children, params }) => {
   unstable_setRequestLocale(params.locale);
 
