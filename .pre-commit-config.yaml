@@ -7,10 +7,10 @@ repos:
     rev: 3.0.0
     hooks:
       - id: shellcheck
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.38.0
+  - repo: https://github.com/biomejs/pre-commit
+    rev: 0.1.0
     hooks:
-      - id: eslint
+      - id: biome-check
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:

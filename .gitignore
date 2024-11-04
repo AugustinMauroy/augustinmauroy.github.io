@@ -34,11 +34,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Cache
-.eslintjscache
-.stylelintcache
-.prettiercache
-
 # Turbo
 .turbo
 

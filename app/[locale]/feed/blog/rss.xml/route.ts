@@ -12,7 +12,7 @@ type GETProps = {
   params: BaseParams;
 };
 
-export const GET = async (req: Request, { params }: GETProps) => {
+export const GET = async (_: Request, { params }: GETProps) => {
   const feed = await generateRssFeed({
     section: 'blog',
     lang: params.locale,

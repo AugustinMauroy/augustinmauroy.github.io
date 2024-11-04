@@ -13,7 +13,7 @@
     dark:bg-green-700
     dark:!text-white;
 
-  &:hover:not(&[aria-disabled='true']) {
+  &:hover:not(&[aria-disabled="true"]) {
     @apply bg-green-400
       !no-underline
       shadow-neo-brutalism-black
@@ -21,11 +21,11 @@
       dark:shadow-neo-brutalism-white;
   }
 
-  &:active:not(&[aria-disabled='true']) {
+  &:active:not(&[aria-disabled="true"]) {
     @apply bg-green-500;
   }
 
-  &:focus:not(&[aria-disabled='true']) {
+  &:focus:not(&[aria-disabled="true"]) {
     @apply outline-none
       ring-2
       ring-green-500

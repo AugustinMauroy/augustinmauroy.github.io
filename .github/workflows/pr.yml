@@ -5,91 +5,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint-js:
-    name: Lint-js
+  quality:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Git Checkout
+      - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
         with:
-          fetch-depth: 2
-
-      - name: Restore Cache
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            ~/.npm
-            .next/cache
-            .turbo/cache
-            node_modules/.cache
-          key: cache-${{ hashFiles('package-lock.json') }}-
-          restore-keys: cache-
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-
-      - name: Install NPM packages
-        run: npm ci
-
-      - name: Run Linting js
-        run: npx turbo lint:js
-
-      - name: Save Cache
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ~/.npm
-            .next/cache
-            .turbo/cache
-            node_modules/.cache
-          key: cache-${{ hashFiles('package-lock.json') }}
-
-  lint-css:
-    name: Lint-css
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Git Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-
-      - name: Restore Cache
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            ~/.npm
-            .next/cache
-            .turbo/cache
-            node_modules/.cache
-          key: cache-${{ hashFiles('package-lock.json') }}-
-          restore-keys: cache-
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-
-      - name: Install NPM packages
-        run: npm ci
-
-      - name: Run Linting css
-        run: npx turbo lint:css
-
-      - name: Save Cache
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ~/.npm
-            .next/cache
-            .turbo/cache
-            node_modules/.cache
-          key: cache-${{ hashFiles('package-lock.json') }}
+          version: latest
+      - name: Run Biome
+        run: biome ci .
 
   build:
     name: Build
@@ -166,49 +92,6 @@ jobs:
 
       - name: Run Unit Tests
         run: npx turbo test
-
-      - name: Save Cache
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ~/.npm
-            .next/cache
-            .turbo/cache
-            node_modules/.cache
-          key: cache-${{ hashFiles('package-lock.json') }}
-
-  format:
-    name: Code Format
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Git Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-
-      - name: Restore Cache
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            ~/.npm
-            .next/cache
-            .turbo/cache
-            node_modules/.cache
-          key: cache-${{ hashFiles('package-lock.json') }}-
-          restore-keys: cache-
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-
-      - name: Install NPM packages
-        run: npm ci
-
-      - name: Run Format
-        run: npx turbo prettier:check
 
       - name: Save Cache
         uses: actions/cache/save@v4

@@ -15,23 +15,10 @@ updates:
     commit-message:
       prefix: meta
     groups:
-      format:
-        patterns:
-          - 'prettier'
-          - 'prettier-plugin-tailwindcss'
-      lint:
-        patterns:
-          - 'eslint'
-          - 'eslint-*'
-          - 'stylelint'
-          - 'stylelint-*'
-        exclude-patterns:
-          - 'eslint-plugin-storybook'
       storybook:
         patterns:
           - 'storybook'
           - '@storybook/*'
-          - 'eslint-plugin-storybook'
       next-js:
         patterns:
           - 'next*'
