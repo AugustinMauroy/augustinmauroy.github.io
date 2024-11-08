@@ -1,0 +1,289 @@
+---
+title: How to use Node.js ESM loader
+description: With this article, you will understand Node.js loaders and how to use them.
+date: 2024-11-08
+authors: AugustinMauroy
+---
+
+### What is a loader?
+
+A loader in the context of Node.js is a mechanism that allows developers to customize the behavior of module resolution and loading. It provides hooks that can be used to intercept and modify how Node.js handles `import` statements and `require` calls. This customization can be particularly useful for tasks such as:
+
+- Loading non-JavaScript files (e.g., TypeScript, CoffeeScript)
+- Transpiling code on-the-fly
+- Implementing custom module formats
+- Overriding or extending the default module resolution logic
+
+By using loaders, developers can tailor the module system to better suit their specific needs, making it easier to work with different file types and module formats. This can be especially beneficial during development and testing phases, where flexibility and experimentation are key.
+
+### What a loader contains?
+
+A loader in Node.js is essentially a set of custom functions that allow you to control how modules are resolved and loaded. These functions, known as hooks, provide a way to intercept and modify the default behavior of Node.js when it processes `import` statements and `require` calls. The two main hooks that a loader contains are the `resolve` hook and the `load` hook.
+
+#### The `resolve` Hook
+
+The `resolve` hook is responsible for determining the location of a module given a specifier. A specifier is the string or URL that you pass to `import` or `require`. For example, when you write `import 'some-module'`, the `resolve` hook helps Node.js figure out where `some-module` is located.
+
+Here's a breakdown of what the `resolve` hook does:
+
+- **Function Signature**: `async function resolve(specifier, context, nextResolve)`
+- **Parameters**:
+  - `specifier`: The string or URL passed to `import` or `require`.
+  - `context`: An object containing information about the context in which the module is being resolved, such as the parent URL and export conditions.
+  - `nextResolve`: A function that calls the next `resolve` hook in the chain, or the default Node.js resolver if this is the last hook.
+- **Returns**: An object containing the resolved URL and optionally the format of the module (e.g., `'module'`, `'commonjs'`).
+
+The `resolve` hook allows you to customize how Node.js finds modules. For example, you could use it to map certain specifiers to different file paths or even to URLs on the web.
+
+#### The `load` Hook
+
+The `load` hook is responsible for loading the content of a module given its resolved URL. Once the `resolve` hook has determined where a module is located, the `load` hook takes over to actually load the module's code.
+
+Here's a breakdown of what the `load` hook does:
+
+- **Function Signature**: `async function load(url, context, nextLoad)`
+- **Parameters**:
+  - `url`: The URL returned by the `resolve` hook.
+  - `context`: An object containing information about the context in which the module is being loaded, such as the format and import attributes.
+  - `nextLoad`: A function that calls the next `load` hook in the chain, or the default Node.js loader if this is the last hook.
+- **Returns**: An object containing the format of the module and the source code to be evaluated.
+
+The `load` hook allows you to customize how Node.js loads modules. For example, you could use it to transpile code from one language to another (e.g., CoffeeScript to JavaScript) or to load modules from non-standard sources.
+
+### Example of a Loader
+
+Let's look at a simple example of a loader that handles `.coffee` files by transpiling them to JavaScript:
+
+```mjs
+// coffee-loader.mjs
+import { readFile } from 'node:fs/promises';
+import { dirname, extname, resolve as resolvePath } from 'node:path';
+import { cwd } from 'node:process';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import coffeescript from 'coffeescript';
+
+const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
+
+export async function load(url, context, nextLoad) {
+  if (extensionsRegex.test(url)) {
+    const format = await getPackageType(url);
+    const { source: rawSource } = await nextLoad(url, { ...context, format });
+    const transformedSource = coffeescript.compile(rawSource.toString(), url);
+
+    return {
+      format,
+      shortCircuit: true,
+      source: transformedSource,
+    };
+  }
+
+  return nextLoad(url);
+}
+
+async function getPackageType(url) {
+  const isFilePath = !!extname(url);
+  const dir = isFilePath ? dirname(fileURLToPath(url)) : url;
+  const packagePath = resolvePath(dir, 'package.json');
+  const type = await readFile(packagePath, { encoding: 'utf8' })
+    .then((filestring) => JSON.parse(filestring).type)
+    .catch((err) => {
+      if (err?.code !== 'ENOENT') console.error(err);
+    });
+
+  return dir.length > 1 && getPackageType(resolvePath(dir, '..'));
+}
+```
+
+In this example, the `load` hook checks if the file has a `.coffee` extension and, if so, transpiles the CoffeeScript code to JavaScript before returning it. The `resolve` hook is not shown here, but it would be responsible for resolving the specifier to the correct file URL.
+
+By defining these hooks, the loader can customize how Node.js handles different types of modules, making it a powerful tool for developers. This customization can be particularly useful for tasks such as:
+
+- Loading non-JavaScript files (e.g., TypeScript, CoffeeScript)
+- Transpiling code on-the-fly
+- Implementing custom module formats
+- Overriding or extending the default module resolution logic
+
+### How to use Node.js ESM loader
+
+Using the Node.js ESM loader involves creating custom hooks that intercept and modify the default behavior of module resolution and loading. These hooks allow you to handle non-JavaScript files, transpile code on-the-fly, and implement custom module formats. Here's a step-by-step guide on how to use the Node.js ESM loader:
+
+#### Step 1: Create a Loader Module
+
+First, you need to create a module that exports the custom hooks. This module will contain the `resolve` and `load` hooks that define how modules are resolved and loaded.
+
+Here's an example of a loader module that handles `.coffee` files by transpiling them to JavaScript:
+
+```mjs
+// coffee-loader.mjs
+import { readFile } from 'node:fs/promises';
+import { dirname, extname, resolve as resolvePath } from 'node:path';
+import { cwd } from 'node:process';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import coffeescript from 'coffeescript';
+
+const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
+
+export async function load(url, context, nextLoad) {
+  if (extensionsRegex.test(url)) {
+    const format = await getPackageType(url);
+    const { source: rawSource } = await nextLoad(url, { ...context, format });
+    const transformedSource = coffeescript.compile(rawSource.toString(), url);
+
+    return {
+      format,
+      shortCircuit: true,
+      source: transformedSource,
+    };
+  }
+
+  return nextLoad(url);
+}
+
+async function getPackageType(url) {
+  const isFilePath = !!extname(url);
+  const dir = isFilePath ? dirname(fileURLToPath(url)) : url;
+  const packagePath = resolvePath(dir, 'package.json');
+  const type = await readFile(packagePath, { encoding: 'utf8' })
+    .then((filestring) => JSON.parse(filestring).type)
+    .catch((err) => {
+      if (err?.code !== 'ENOENT') console.error(err);
+    });
+
+  return dir.length > 1 && getPackageType(resolvePath(dir, '..'));
+}
+```
+
+#### Step 2: Register the Loader
+
+Next, you need to register the loader module using the `register` method from `node:module`. This can be done using the `--import` flag when running your Node.js application.
+
+Here's an example of how to register the loader module:
+
+```bash
+node --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register(pathToFileURL("./coffee-loader.mjs"));' ./main.coffee
+```
+
+In this example, the `register` method is called with the path to the `coffee-loader.mjs` module. This ensures that the custom hooks are registered before any application files are imported.
+
+#### Step 3: Use the Loader in Your Application
+
+Once the loader is registered, you can use it in your application to handle non-JavaScript files. For example, you can import `.coffee` files directly in your JavaScript code:
+
+```coffee
+# main.coffee
+import { scream } from './scream.coffee'
+console.log scream 'hello, world'
+
+import { version } from 'node:process'
+console.log "Brought to you by Node.js version #{version}"
+```
+
+```coffee
+# scream.coffee
+export scream = (str) -> str.toUpperCase()
+```
+
+When you run the application with the registered loader, the `.coffee` files will be transpiled to JavaScript on-the-fly, and the transpiled code will be executed by Node.js.
+
+#### Step 4: Chain Multiple Loaders (Optional)
+
+You can also chain multiple loaders to create more complex module resolution and loading behaviors. To do this, simply call the `register` method multiple times with different loader modules:
+
+```mjs
+// entrypoint.mjs
+import { register } from 'node:module';
+
+register('./foo-loader.mjs', import.meta.url);
+register('./bar-loader.mjs', import.meta.url);
+await import('./my-app.mjs');
+```
+
+In this example, the `foo-loader.mjs` and `bar-loader.mjs` modules are registered in sequence. The registered hooks will form chains that run last-in, first-out (LIFO). This means that the hooks in `bar-loader.mjs` will be called first, followed by the hooks in `foo-loader.mjs`, and finally the default Node.js hooks.
+
+### Conclusion
+
+Using the Node.js ESM loader involves creating custom hooks that intercept and modify the default behavior of module resolution and loading. By registering these hooks, you can handle non-JavaScript files, transpile code on-the-fly, and implement custom module formats. This customization can be particularly useful for tasks such as loading TypeScript or CoffeeScript files, testing React components, and more.
+
+By following these steps, you can leverage the power of the Node.js ESM loader to tailor the module system to better suit your specific needs, making it easier to work with different file types and module formats.
+
+### What a loader can do?
+
+A loader in Node.js can significantly enhance the capabilities of the module system by allowing developers to customize how modules are resolved and loaded. This customization can be particularly useful for a variety of tasks, including:
+
+#### 1. Loading Non-JavaScript Files
+
+One of the most powerful features of a loader is the ability to handle non-JavaScript files. For example, you can create a loader that transpiles TypeScript, CoffeeScript, or other languages to JavaScript on-the-fly. This means you can write your code in a language that is more convenient or expressive for you, and the loader will take care of converting it to JavaScript before it is executed by Node.js.
+
+#### 2. Transpiling Code on-the-fly
+
+Loaders can be used to transpile code from one format to another. This is particularly useful during development and testing phases. For instance, you can use a loader to transpile modern JavaScript (ES6+) code to a version that is compatible with older environments. This allows you to use the latest features of the language without worrying about compatibility issues.
+
+#### 3. Implementing Custom Module Formats
+
+Loaders can also be used to implement custom module formats. For example, you might want to create a module format that supports additional metadata or a different syntax. By defining custom hooks, you can control how these modules are resolved and loaded, allowing you to extend the capabilities of the Node.js module system.
+
+#### 4. Overriding or Extending Default Module Resolution Logic
+
+Sometimes, the default module resolution logic provided by Node.js may not be sufficient for your needs. Loaders allow you to override or extend this logic to better suit your specific requirements. For example, you can create a loader that resolves modules from a remote server or a custom directory structure.
+
+#### 5. Handling Import Maps
+
+Loaders can be used to implement import maps, which allow you to define custom mappings for module specifiers. This can be useful for overriding the default behavior of `import` statements and `require` calls, making it easier to manage dependencies and module versions.
+
+#### 6. Enabling Hot Module Replacement (HMR)
+
+In development environments, loaders can be used to enable hot module replacement (HMR). This allows you to make changes to your code and see the results immediately without having to restart the application. This can significantly speed up the development process and improve productivity.
+
+#### 7. Integrating with Build Tools
+
+Loaders can be integrated with build tools like Webpack, Rollup, or Parcel. This allows you to use the same custom module resolution and loading logic in both your development environment and your production build. This can help ensure consistency and reduce the risk of errors.
+
+### Example: Transpiling CoffeeScript
+
+Here's an example of a loader that transpiles CoffeeScript files to JavaScript:
+
+```mjs
+// coffee-loader.mjs
+import { readFile } from 'node:fs/promises';
+import { dirname, extname, resolve as resolvePath } from 'node:path';
+import { cwd } from 'node:process';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import coffeescript from 'coffeescript';
+
+const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
+
+export async function load(url, context, nextLoad) {
+  if (extensionsRegex.test(url)) {
+    const format = await getPackageType(url);
+    const { source: rawSource } = await nextLoad(url, { ...context, format });
+    const transformedSource = coffeescript.compile(rawSource.toString(), url);
+
+    return {
+      format,
+      shortCircuit: true,
+      source: transformedSource,
+    };
+  }
+
+  return nextLoad(url);
+}
+
+async function getPackageType(url) {
+  const isFilePath = !!extname(url);
+  const dir = isFilePath ? dirname(fileURLToPath(url)) : url;
+  const packagePath = resolvePath(dir, 'package.json');
+  const type = await readFile(packagePath, { encoding: 'utf8' })
+    .then((filestring) => JSON.parse(filestring).type)
+    .catch((err) => {
+      if (err?.code !== 'ENOENT') console.error(err);
+    });
+
+  return dir.length > 1 && getPackageType(resolvePath(dir, '..'));
+}
+```
+
+In this example, the `load` hook checks if the file has a `.coffee` extension and, if so, transpiles the CoffeeScript code to JavaScript before returning it. This allows you to write your code in CoffeeScript and have it automatically converted to JavaScript when it is loaded by Node.js.
+
+### Conclusion
+
+A loader in Node.js can do a lot to enhance the capabilities of the module system. By defining custom hooks, you can handle non-JavaScript files, transpile code on-the-fly, implement custom module formats, override or extend the default module resolution logic, handle import maps, enable hot module replacement, and integrate with build tools. This customization can be particularly useful for tasks such as loading TypeScript or CoffeeScript files, testing React components, and more. By leveraging the power of loaders, you can tailor the module system to better suit your specific needs, making it easier to work with different file types and module formats.
