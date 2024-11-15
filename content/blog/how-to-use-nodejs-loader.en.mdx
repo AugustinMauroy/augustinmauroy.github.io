@@ -109,7 +109,7 @@ Using the Node.js ESM loader involves creating custom hooks that intercept and m
 
 ### Step 1: Create the Loader Module
 
-First, create the loader module that handles `.coffee` files by transpiling them to JavaScript:
+First, create the loader that handles `.coffee` files by transpiling them to JavaScript:
 
 ```mjs fileName="coffee-loader.mjs"
 import { readFile } from 'node:fs/promises';
