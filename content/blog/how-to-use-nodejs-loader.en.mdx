@@ -110,7 +110,7 @@ Using the Node.js ESM loader involves creating custom hooks that intercept and m
 
 ### Step 1: Create the Loader Module
 
-First, create the loader module that handles `.coffee` files by tranÒspiling them to JavaScript:
+First, create the loader module that handles `.coffee` files by transpiling them to JavaScript:
 
 ```mjs
 // coffee-loader.mjs
@@ -123,14 +123,26 @@ import { findPackageJSON } from 'node:module';
 
 const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
 
+export async function resolve(specifier, context, nextResolve) {
+  const resolvedUrl = new URL(specifier, context.parentURL).href;
+  if (extensionsRegex.test(resolvedUrl)) {
+    const format = await getPackageType(resolvedUrl);
+    return {
+      url: resolvedUrl,
+      format,
+      shortCircuit: true,
+    };
+  }
+  return nextResolve(specifier, context);
+}
+
 export async function load(url, context, nextLoad) {
   if (extensionsRegex.test(url)) {
-    const format = await getPackageType(url);
-    const { source: rawSource } = await nextLoad(url, { ...context, format });
+    const { source: rawSource } = await nextLoad(url, context);
     const transformedSource = coffeescript.compile(rawSource.toString(), url);
 
     return {
-      format,
+      format: context.format,
       shortCircuit: true,
       source: transformedSource,
     };
