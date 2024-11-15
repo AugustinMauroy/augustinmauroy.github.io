@@ -108,11 +108,9 @@ By defining these hooks, the loader can customize how Node.js handles different 
 
 Using the Node.js ESM loader involves creating custom hooks that intercept and modify the default behavior of module resolution and loading. These hooks allow you to handle non-JavaScript files, transpile code on-the-fly, and implement custom module formats. Here's a step-by-step guide on how to use the Node.js ESM loader:
 
-#### Step 1: Create a Loader Module
+### Step 1: Create the Loader Module
 
-First, you need to create a module that exports the custom hooks. This module will contain the `resolve` and `load` hooks that define how modules are resolved and loaded.
-
-Here's an example of a loader module that handles `.coffee` files by transpiling them to JavaScript:
+First, create the loader module that handles `.coffee` files by tranÒspiling them to JavaScript:
 
 ```mjs
 // coffee-loader.mjs
@@ -155,21 +153,29 @@ async function getPackageType(url) {
 }
 ```
 
-#### Step 2: Register the Loader
+### Step 2: Create the Registration Module
 
-Next, you need to register the loader module using the `register` method from `node:module`. This can be done using the `--import` flag when running your Node.js application.
+Next, create a separate registration module that registers the loader:
 
-Here's an example of how to register the loader module:
+```mjs
+// register-coffee-loader.mjs
+import { register } from 'node:module';
+import { pathToFileURL } from 'node:url';
 
-```bash
-node --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register(pathToFileURL("./coffee-loader.mjs"));' ./main.coffee
+register(pathToFileURL(new URL('./coffee-loader.mjs', import.meta.url)));
 ```
 
-In this example, the `register` method is called with the path to the `coffee-loader.mjs` module. This ensures that the custom hooks are registered before any application files are imported.
+### Step 3: Use the Registration Module with `--import`
 
-#### Step 3: Use the Loader in Your Application
+Now, you can use the `--import` flag to import the registration module when running your Node.js application:
 
-Once the loader is registered, you can use it in your application to handle non-JavaScript files. For example, you can import `.coffee` files directly in your JavaScript code:
+```bash
+node --import ./register-coffee-loader.mjs ./main.coffee
+```
+
+### Step 4: Create the Main Application File
+
+Create the main application file that imports `.coffee` files:
 
 ```coffee
 # main.coffee
@@ -185,22 +191,13 @@ console.log "Brought to you by Node.js version #{version}"
 export scream = (str) -> str.toUpperCase()
 ```
 
-When you run the application with the registered loader, the `.coffee` files will be transpiled to JavaScript on-the-fly, and the transpiled code will be executed by Node.js.
+### Step 5: Run the Application
 
-#### Step 4: Chain Multiple Loaders (Optional)
+Finally, run the application with the registered loader:
 
-You can also chain multiple loaders to create more complex module resolution and loading behaviors. To do this, simply call the `register` method multiple times with different loader modules:
-
-```mjs
-// entrypoint.mjs
-import { register } from 'node:module';
-
-register('./foo-loader.mjs', import.meta.url);
-register('./bar-loader.mjs', import.meta.url);
-await import('./my-app.mjs');
+```bash
+node --import ./register-coffee-loader.mjs ./main.coffee
 ```
-
-In this example, the `foo-loader.mjs` and `bar-loader.mjs` modules are registered in sequence. The registered hooks will form chains that run last-in, first-out (LIFO). This means that the hooks in `bar-loader.mjs` will be called first, followed by the hooks in `foo-loader.mjs`, and finally the default Node.js hooks.
 
 ### Conclusion
 
