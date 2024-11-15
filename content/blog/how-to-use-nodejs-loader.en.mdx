@@ -123,15 +123,15 @@ const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
 
 export async function resolve(specifier, context, nextResolve) {
   const resolvedUrl = new URL(specifier, context.parentURL).href;
-  if (extensionsRegex.test(resolvedUrl)) {
-    const format = await getPackageType(resolvedUrl);
-    return {
-      url: resolvedUrl,
-      format,
-      shortCircuit: true,
-    };
-  }
-  return nextResolve(specifier, context);
+  if (! extensionsRegex.test(resolvedUrl)) return nextResolve(specifier, context);
+  
+  const format = await getPackageType(resolvedUrl);
+
+  return {
+    url: resolvedUrl,
+    format,
+    shortCircuit: true,
+  };
 }
 
 export async function load(url, context, nextLoad) {
