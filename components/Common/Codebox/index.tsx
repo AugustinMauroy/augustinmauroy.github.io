@@ -15,7 +15,9 @@ const Codebox: FC<CodeboxProps> = async props => {
   if (!isValidElement(props.children)) return null;
 
   const code = props.children.props.children.trim();
-  const lang = props.children.props.className.replace('language-', '').replace('mjs', 'js');
+  const lang = props.children.props.className
+    .replace('language-', '')
+    .replace('mjs', 'js');
 
   const html = await codeToHtml(code, {
     theme: 'vitesse-light',
