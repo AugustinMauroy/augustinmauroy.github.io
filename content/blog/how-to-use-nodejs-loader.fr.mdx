@@ -1,0 +1,295 @@
+---
+title: Comment utiliser le chargeur ESM de Node.js
+description: Avec cet article, vous comprendrez les chargeurs de Node.js et comment les utiliser.
+date: 2024-11-08
+authors: AugustinMauroy
+---
+
+### Qu'est-ce qu'un chargeur (loader) ?
+
+Un chargeur dans le contexte de Node.js est un mécanisme qui permet aux développeurs de personnaliser le comportement de la résolution et du chargement des modules. Il fournit des hooks qui peuvent être utilisés pour intercepter et modifier la manière dont Node.js gère les instructions `import` et les appels `require`. Cette personnalisation peut être particulièrement utile pour des tâches telles que :
+
+- Charger des fichiers non-JavaScript (par exemple, TypeScript, CoffeeScript, CSS, yaml)
+- Transpiler du code à la volée
+- Implémenter des formats de modules personnalisés
+- Remplacer ou étendre la logique de résolution de modules par défaut
+
+En utilisant des chargeurs, les développeurs peuvent adapter le système de modules pour mieux répondre à leurs besoins spécifiques, facilitant ainsi le travail avec différents types de fichiers et formats de modules. Cela peut être particulièrement bénéfique pendant les phases de développement et de test, où la flexibilité et l'expérimentation sont essentielles.
+
+### Que contient un chargeur ?
+
+Un chargeur dans Node.js est essentiellement un ensemble de fonctions personnalisées qui permettent de contrôler la manière dont les modules sont résolus et chargés. Ces fonctions, appelées hooks, fournissent un moyen d'intercepter et de modifier le comportement par défaut de Node.js lorsqu'il traite les instructions `import` et les appels `require`. Les deux principaux hooks qu'un chargeur contient sont le hook `resolve` et le hook `load`.
+
+#### Le Hook `resolve`
+
+Le hook `resolve` est responsable de la détermination de l'emplacement d'un module, étant donné un spécificateur. Un spécificateur est la chaîne ou l'URL que vous passez à `import` ou `require`. Par exemple, lorsque vous écrivez `import 'some-module'`, le hook `resolve` aide Node.js à déterminer où se trouve `some-module`.
+
+Voici un aperçu de ce que fait le hook `resolve` :
+
+- **Signature de la fonction** : `async function resolve(specifier, context, nextResolve)`
+- **Paramètres** :
+  - `specifier` : La chaîne ou l'URL passée à `import` ou `require`.
+  - `context` : Un objet contenant des informations sur le contexte dans lequel le module est résolu, comme l'URL parente et les conditions d'exportation.
+  - `nextResolve` : Une fonction qui appelle le hook `resolve` suivant dans la chaîne, ou le résolveur par défaut de Node.js si c'est le dernier hook.
+- **Retourne** : Un objet contenant l'URL résolue et éventuellement le format du module (par exemple, `'module'`, `'commonjs'`).
+
+Le hook `resolve` permet de personnaliser la manière dont Node.js trouve les modules. Par exemple, vous pourriez l'utiliser pour mapper certains spécificateurs à différents chemins de fichiers ou même à des URL sur le web.
+
+#### Le Hook `load`
+
+Le hook `load` est responsable du chargement du contenu d'un module étant donné son URL résolue. Une fois que le hook `resolve` a déterminé où se trouve un module, le hook `load` prend le relais pour charger effectivement le code du module.
+
+Voici un aperçu de ce que fait le hook `load` :
+
+- **Signature de la fonction** : `async function load(url, context, nextLoad)`
+- **Paramètres** :
+  - `url` : L'URL retournée par le hook `resolve`.
+  - `context` : Un objet contenant des informations sur le contexte dans lequel le module est chargé, comme le format et les attributs d'importation.
+  - `nextLoad` : Une fonction qui appelle le hook `load` suivant dans la chaîne, ou le chargeur par défaut de Node.js si c'est le dernier hook.
+- **Retourne** : Un objet contenant le format du module et le code source à évaluer.
+
+Le hook `load` permet de personnaliser la manière dont Node.js charge les modules. Par exemple, vous pourriez l'utiliser pour transpiler du code d'un langage à un autre (par exemple, CoffeeScript en JavaScript) ou pour charger des modules à partir de sources non standard.
+
+### Exemple d'un Chargeur
+
+Regardons un exemple simple d'un chargeur qui gère les fichiers `.coffee` en les transpilant en JavaScript :
+
+```mjs fileName="coffee-loader.mjs"
+import { readFile } from 'node:fs/promises';
+import { dirname, extname, resolve as resolvePath } from 'node:path';
+import { cwd } from 'node:process';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import coffeescript from 'coffeescript';
+import { findPackageJSON } from 'node:module';
+
+const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
+
+export async function load(url, context, nextLoad) {
+  if (extensionsRegex.test(url)) {
+    const format = await getPackageType(url);
+    const { source: rawSource } = await nextLoad(url, { ...context, format });
+    const transformedSource = coffeescript.compile(rawSource.toString(), url);
+
+    return {
+      format,
+      shortCircuit: true,
+      source: transformedSource,
+    };
+  }
+
+  return nextLoad(url);
+}
+
+async function getPackageType(url) {
+  const packagePath = findPackageJSON('..', import.meta.url);
+  if (packagePath) {
+    const type = await readFile(packagePath, { encoding: 'utf8' })
+      .then((filestring) => JSON.parse(filestring).type)
+      .catch((err) => {
+        if (err?.code !== 'ENOENT') console.error(err);
+      });
+    return type;
+  }
+  return 'module'; // Par défaut à 'module' si aucun package.json n'est trouvé
+}
+```
+
+Dans cet exemple, le hook `load` vérifie si le fichier a une extension `.coffee` et, si c'est le cas, transpile le code CoffeeScript en JavaScript avant de le retourner. Le hook `resolve` n'est pas montré ici, mais il serait responsable de la résolution du spécificateur en URL de fichier correcte.
+
+En définissant ces hooks, le chargeur peut personnaliser la manière dont Node.js gère différents types de modules, en faisant de lui un outil puissant pour les développeurs. Cette personnalisation peut être particulièrement utile pour des tâches telles que :
+
+- Charger des fichiers non-JavaScript (par exemple, TypeScript, CoffeeScript)
+- Transpiler du code à la volée
+- Implémenter des formats de modules personnalisés
+- Remplacer ou étendre la logique de résolution de modules par défaut
+
+### Comment utiliser le chargeur ESM de Node.js
+
+L'utilisation du chargeur ESM de Node.js implique la création de hooks personnalisés qui interceptent et modifient le comportement par défaut de la résolution et du chargement des modules. Ces hooks permettent de gérer des fichiers non-JavaScript, de transpiler du code à la volée et d'implémenter des formats de modules personnalisés. Voici un guide étape par étape sur la manière d'utiliser le chargeur ESM de Node.js :
+
+### Étape 1 : Créer le Module de Chargeur
+
+Tout d'abord, créez le chargeur qui gère les fichiers `.coffee` en les transpilant en JavaScript :
+
+```mjs fileName="coffee-loader.mjs"
+import { readFile } from 'node:fs/promises';
+import { dirname, extname, resolve as resolvePath } from 'node:path';
+import { cwd } from 'node:process';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import coffeescript from 'coffeescript';
+import { findPackageJSON } from 'node:module';
+
+const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
+
+export async function resolve(specifier, context, nextResolve) {
+  const resolvedUrl = new URL(specifier, context.parentURL).href;
+  if (! extensionsRegex.test(resolvedUrl)) return nextResolve(specifier, context);
+
+  const format = await getPackageType(resolvedUrl);
+
+  return {
+    url: resolvedUrl,
+    format,
+    shortCircuit: true,
+  };
+}
+
+export async function load(url, context, nextLoad) {
+  if (extensionsRegex.test(url)) {
+    const { source: rawSource } = await nextLoad(url, context);
+    const transformedSource = coffeescript.compile(rawSource.toString(), url);
+
+    return {
+      format: context.format,
+      shortCircuit: true,
+      source: transformedSource,
+    };
+  }
+
+  return nextLoad(url);
+}
+
+async function getPackageType(url) {
+  const packagePath = findPackageJSON('..', import.meta.url);
+  if (packagePath) {
+    const type = await readFile(packagePath, { encoding: 'utf8' })
+      .then((filestring) => JSON.parse(filestring).type)
+      .catch((err) => {
+        if (err?.code !== 'ENOENT') console.error(err);
+      });
+    return type;
+  }
+  return 'module'; // Par défaut à 'module' si aucun package.json n'est trouvé
+}
+```
+
+### Étape 2 : Créer le Module d'Enregistrement (Register)
+
+Ensuite, créez un module d'enregistrement séparé qui enregistre le chargeur :
+
+```mjs fileName="register-coffee-loader.mjs"
+import { register } from 'node:module';
+import { pathToFileURL } from 'node:url';
+
+register(pathToFileURL(new URL('./coffee-loader.mjs', import.meta.url)));
+```
+
+### Étape 3 : Utiliser le Module d'Enregistrement avec `--import`
+
+Maintenant, vous pouvez utiliser le drapeau `--import` pour importer le module d'enregistrement lors de l'exécution de votre application Node.js :
+
+```bash
+node --import ./register-coffee-loader.mjs ./main.coffee
+```
+
+### Étape 4 : Créer le Fichier Principal de l'Application
+
+Créez le fichier principal de l'application qui importe des fichiers `.coffee` :
+
+```coffee fileName="main.coffee"
+import { scream } from './scream.coffee'
+console.log scream 'hello, world'
+
+import { version } from 'node:process'
+console.log "Brought to you by Node.js version #{version}"
+```
+
+```coffee fileName="scream.coffee"
+export scream = (str) -> str.toUpperCase()
+```
+
+### Étape 5 : Exécuter l'Application
+
+Enfin, exécutez l'application avec le chargeur enregistré :
+
+```bash
+node --import ./register-coffee-loader.mjs ./main.coffee
+```
+
+### Conclusion
+
+L'utilisation du chargeur ESM de Node.js implique la création de hooks personnalisés qui interceptent et modifient le comportement par défaut de la résolution et du chargement des modules. En enregistrant ces hooks, vous pouvez gérer des fichiers non-JavaScript, transpiler du code à la volée et implémenter des formats de modules personnalisés. Cette personnalisation peut être particulièrement utile pour des tâches telles que le chargement de fichiers TypeScript ou CoffeeScript, le test de composants React, et plus encore.
+
+En suivant ces étapes, vous pouvez tirer parti de la puissance du chargeur ESM de Node.js pour adapter le système de modules afin de mieux répondre à vos besoins spécifiques, facilitant ainsi le travail avec différents types de fichiers et formats de modules.
+
+### Que peut faire un chargeur ?
+
+Un chargeur dans Node.js peut considérablement améliorer les capacités du système de modules en permettant aux développeurs de personnaliser la manière dont les modules sont résolus et chargés. Cette personnalisation peut être particulièrement utile pour une variété de tâches, notamment :
+
+#### 1. Charger des Fichiers Non-JavaScript
+
+L'une des fonctionnalités les plus puissantes d'un chargeur est la capacité à gérer des fichiers non-JavaScript. Par exemple, vous pouvez créer un chargeur qui transpile TypeScript, CoffeeScript ou d'autres langages en JavaScript à la volée. Cela signifie que vous pouvez écrire votre code dans un langage qui est plus pratique ou expressif pour vous, et le chargeur s'occupera de le convertir en JavaScript avant qu'il ne soit exécuté par Node.js.
+
+#### 2. Transpiler du Code à la Volée
+
+Les chargeurs peuvent être utilisés pour transpiler du code d'un format à un autre. Cela est particulièrement utile pendant les phases de développement et de test. Par exemple, vous pouvez utiliser un chargeur pour transpiler du JavaScript moderne (ES6+) en une version compatible avec des environnements plus anciens. Cela vous permet d'utiliser les dernières fonctionnalités du langage sans vous soucier des problèmes de compatibilité.
+
+#### 3. Implémenter des Formats de Modules Personnalisés
+
+Les chargeurs peuvent également être utilisés pour implémenter des formats de modules personnalisés. Par exemple, vous pourriez vouloir créer un format de module qui prend en charge des métadonnées supplémentaires ou une syntaxe différente. En définissant des hooks personnalisés, vous pouvez contrôler la manière dont ces modules sont résolus et chargés, vous permettant d'étendre les capacités du système de modules de Node.js.
+
+#### 4. Remplacer ou Étendre la Logique de Résolution de Modules par Défaut
+
+Parfois, la logique de résolution de modules par défaut fournie par Node.js peut ne pas être suffisante pour vos besoins. Les chargeurs permettent de remplacer ou d'étendre cette logique pour mieux répondre à vos exigences spécifiques. Par exemple, vous pouvez créer un chargeur qui résout les modules à partir d'un serveur distant ou d'une structure de répertoires personnalisée.
+
+#### 5. Gérer les Import Maps
+
+Les chargeurs peuvent être utilisés pour implémenter des import maps, qui permettent de définir des mappages personnalisés pour les spécificateurs de modules. Cela peut être utile pour remplacer le comportement par défaut des instructions `import` et des appels `require`, facilitant ainsi la gestion des dépendances et des versions de modules.
+
+#### 6. Activer le Remplacement à Chaud de Modules (HMR)
+
+Dans les environnements de développement, les chargeurs peuvent être utilisés pour activer le remplacement à chaud de modules (HMR). Cela vous permet de faire des modifications à votre code et de voir les résultats immédiatement sans avoir à redémarrer l'application. Cela peut considérablement accélérer le processus de développement et améliorer la productivité.
+
+#### 7. Intégrer avec des Outils de Build
+
+Les chargeurs peuvent être intégrés avec des outils de build comme Webpack, Rollup ou Parcel. Cela vous permet d'utiliser la même logique de résolution et de chargement de modules personnalisée à la fois dans votre environnement de développement et dans votre build de production. Cela peut aider à garantir la cohérence et à réduire le risque d'erreurs.
+
+### Exemple : Transpiler CoffeeScript
+
+Voici un exemple de chargeur qui transpile les fichiers CoffeeScript en JavaScript :
+
+```mjs fileName="coffee-loader.mjs"
+import { readFile } from 'node:fs/promises';
+import { dirname, extname, resolve as resolvePath } from 'node:path';
+import { cwd } from 'node:process';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import coffeescript from 'coffeescript';
+import { findPackageJSON } from 'node:module';
+
+const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
+
+export async function load(url, context, nextLoad) {
+  if (extensionsRegex.test(url)) {
+    const format = await getPackageType(url);
+    const { source: rawSource } = await nextLoad(url, { ...context, format });
+    const transformedSource = coffeescript.compile(rawSource.toString(), url);
+
+    return {
+      format,
+      shortCircuit: true,
+      source: transformedSource,
+    };
+  }
+
+  return nextLoad(url);
+}
+
+async function getPackageType(url) {
+  const packagePath = findPackageJSON('..', import.meta.url);
+  if (packagePath) {
+    const type = await readFile(packagePath, { encoding: 'utf8' })
+      .then((filestring) => JSON.parse(filestring).type)
+      .catch((err) => {
+        if (err?.code !== 'ENOENT') console.error(err);
+      });
+    return type;
+  }
+  return 'module'; // Par défaut à 'module' si aucun package.json n'est trouvé
+}
+```
+
+Dans cet exemple, le hook `load` vérifie si le fichier a une extension `.coffee` et, si c'est le cas, transpile le code CoffeeScript en JavaScript avant de le retourner. Cela vous permet d'écrire votre code en CoffeeScript et de le voir automatiquement converti en JavaScript lorsqu'il est chargé par Node.js.
+
+### Conclusion
+
+Un chargeur dans Node.js peut faire beaucoup pour améliorer les capacités du système de modules. En définissant des hooks personnalisés, vous pouvez gérer des fichiers non-JavaScript, transpiler du code à la volée, implémenter des formats de modules personnalisés, remplacer ou étendre la logique de résolution de modules par défaut, gérer les import maps, activer le remplacement à chaud de modules, et intégrer avec des outils de build. Cette personnalisation peut être particulièrement utile pour des tâches telles que le chargement de fichiers TypeScript ou CoffeeScript, le test de composants React, et plus encore. En tirant parti de la puissance des chargeurs, vous pouvez adapter le système de modules pour mieux répondre à vos besoins spécifiques, facilitant ainsi le travail avec différents types de fichiers et formats de modules.

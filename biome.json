@@ -1,7 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "files": {
-    "include": ["**/*.{ts,tsx,js,jsx,mts,cts,css}"],
+    "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.css", "**/*.json"],
     "ignore": [
       "./node_modules",
       "./.pnp",
@@ -41,8 +41,7 @@
         "useSortedClasses": "error",
         "noCommonJs": "error",
         "noEnum": "error",
-        "noUnknownTypeSelector": "error",
-        "noDescendingSpecificity": "error"
+        "noUnknownTypeSelector": "error"
       },
       "recommended": false,
       "complexity": {
@@ -69,7 +68,8 @@
         "noUnsafeDeclarationMerging": "error",
         "useNamespaceKeyword": "error",
         "noEmptyBlock": "error",
-        "noDuplicateAtImportRules": "error"
+        "noDuplicateAtImportRules": "error",
+        "noDuplicateObjectKeys": "error"
       }
     }
   },
@@ -138,6 +138,15 @@
     },
     "parser": {
       "cssModules": true
+    }
+  },
+  "json": {
+    "formatter": {
+      "enabled": true,
+      "indentWidth": 2,
+      "lineEnding": "lf",
+      "lineWidth": 80,
+      "indentStyle": "space"
     }
   }
 }
