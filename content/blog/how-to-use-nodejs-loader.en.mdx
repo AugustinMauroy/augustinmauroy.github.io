@@ -61,6 +61,7 @@ import { dirname, extname, resolve as resolvePath } from 'node:path';
 import { cwd } from 'node:process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import coffeescript from 'coffeescript';
+import { findPackageJSON } from 'node:module';
 
 const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
 
@@ -81,16 +82,16 @@ export async function load(url, context, nextLoad) {
 }
 
 async function getPackageType(url) {
-  const isFilePath = !!extname(url);
-  const dir = isFilePath ? dirname(fileURLToPath(url)) : url;
-  const packagePath = resolvePath(dir, 'package.json');
-  const type = await readFile(packagePath, { encoding: 'utf8' })
-    .then((filestring) => JSON.parse(filestring).type)
-    .catch((err) => {
-      if (err?.code !== 'ENOENT') console.error(err);
-    });
-
-  return dir.length > 1 && getPackageType(resolvePath(dir, '..'));
+  const packagePath = findPackageJSON('..', import.meta.url);
+  if (packagePath) {
+    const type = await readFile(packagePath, { encoding: 'utf8' })
+      .then((filestring) => JSON.parse(filestring).type)
+      .catch((err) => {
+        if (err?.code !== 'ENOENT') console.error(err);
+      });
+    return type;
+  }
+  return 'module'; // Default to 'module' if no package.json is found
 }
 ```
 
@@ -120,6 +121,7 @@ import { dirname, extname, resolve as resolvePath } from 'node:path';
 import { cwd } from 'node:process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import coffeescript from 'coffeescript';
+import { findPackageJSON } from 'node:module';
 
 const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
 
@@ -140,16 +142,16 @@ export async function load(url, context, nextLoad) {
 }
 
 async function getPackageType(url) {
-  const isFilePath = !!extname(url);
-  const dir = isFilePath ? dirname(fileURLToPath(url)) : url;
-  const packagePath = resolvePath(dir, 'package.json');
-  const type = await readFile(packagePath, { encoding: 'utf8' })
-    .then((filestring) => JSON.parse(filestring).type)
-    .catch((err) => {
-      if (err?.code !== 'ENOENT') console.error(err);
-    });
-
-  return dir.length > 1 && getPackageType(resolvePath(dir, '..'));
+  const packagePath = findPackageJSON('..', import.meta.url);
+  if (packagePath) {
+    const type = await readFile(packagePath, { encoding: 'utf8' })
+      .then((filestring) => JSON.parse(filestring).type)
+      .catch((err) => {
+        if (err?.code !== 'ENOENT') console.error(err);
+      });
+    return type;
+  }
+  return 'module'; // Default to 'module' if no package.json is found
 }
 ```
 
@@ -249,6 +251,7 @@ import { dirname, extname, resolve as resolvePath } from 'node:path';
 import { cwd } from 'node:process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import coffeescript from 'coffeescript';
+import { findPackageJSON } from 'node:module';
 
 const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
 
@@ -269,16 +272,16 @@ export async function load(url, context, nextLoad) {
 }
 
 async function getPackageType(url) {
-  const isFilePath = !!extname(url);
-  const dir = isFilePath ? dirname(fileURLToPath(url)) : url;
-  const packagePath = resolvePath(dir, 'package.json');
-  const type = await readFile(packagePath, { encoding: 'utf8' })
-    .then((filestring) => JSON.parse(filestring).type)
-    .catch((err) => {
-      if (err?.code !== 'ENOENT') console.error(err);
-    });
-
-  return dir.length > 1 && getPackageType(resolvePath(dir, '..'));
+  const packagePath = findPackageJSON('..', import.meta.url);
+  if (packagePath) {
+    const type = await readFile(packagePath, { encoding: 'utf8' })
+      .then((filestring) => JSON.parse(filestring).type)
+      .catch((err) => {
+        if (err?.code !== 'ENOENT') console.error(err);
+      });
+    return type;
+  }
+  return 'module'; // Default to 'module' if no package.json is found
 }
 ```
 
