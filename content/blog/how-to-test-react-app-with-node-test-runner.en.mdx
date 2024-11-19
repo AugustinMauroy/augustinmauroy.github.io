@@ -1,0 +1,133 @@
+---
+title: How to test a React app with Node Test Runner
+description: You ever wanted to test your React app with Node Test Runner? Here's how you can do it.
+date: 2024-11-19
+authors: AugustinMauroy
+---
+
+## What is the node.js test Runner
+
+- link to https://nodejs.org/en/learn/test-runner/introduction
+
+## Writing the component needed to be tested
+
+```tsx fileName="src/components/Counter/index.tsx"
+'use client';
+import { usesState } from 'react';
+import styles from './index.module.css';
+import type { FC } from 'react';
+
+const Counter: FC = () => {
+  const [count, setCount] = usesState(0);
+
+  return (
+    <div className={styles.container}>
+      <p className={styles.count}>{count}</p>
+      <button onClick={() => setCount(count + 1)} className={styles.button}>
+        Increment
+      </button>
+    </div>
+  );
+};
+```
+
+<details>
+  <summary>`index.module.css`</summary>
+
+  ```css fileName="src/components/Counter/index.module.css"
+    .container {
+      @apply flex flex-col items-center justify-center;
+
+      .count {
+        @apply text-4xl;
+      }
+
+      .button {
+        @apply px-4 py-2 bg-blue-500 text-white rounded-md;
+      }
+    }
+  ```
+</details>
+
+## Register whole node.js loader we need
+
+```mjs fileName="node-hooks/react-test.js"
+import { register } from 'node:module';
+import { pathToFileURL } from 'node:url';
+import jsdom from 'jsdom';
+
+// Register the loaders
+register('nodejs-loaders/dev/tsx', pathToFileURL('./'));
+register('nodejs-loaders/testing/css-module', pathToFileURL('./'));
+
+// We doesn't need to load any html/css because it's handle by testing-library
+const { document } = new jsdom.JSDOM().window;
+
+/**
+ * Make the JSDOM global objects available to the Node.js environment.
+ */
+global.document = document;
+global.window = document.defaultView;
+```
+
+## Writing the test
+
+{/*
+  Note for writing this post:
+  never destructuring the assert module because in the test it must be easy to identify the assertion
+*/}
+
+```tsx fileName="src/components/Counter/index.test.tsx"
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
+import { render, fireEvent, screen } from '@testing-library/react';
+import Counter from './index.ts'; // ⚠️ We need to import the file with the .ts extension
+
+describe('Counter', () => {
+  it('should increment the count when the button is clicked', () => {
+    const { unmount } = render(<Counter />);
+
+    const button = screen.getByRole('button', { name: /increment/i });
+    const count = screen.getByText('0');
+
+    assert.strictEqual(count.textContent, '0');
+
+    fireEvent.click(button);
+
+    assert.strictEqual(count.textContent, '1');
+
+    // ⚠️ You must unmount the component instead the next test will still have the previous component in the "dom"
+    unmount();
+  });
+});
+```
+
+### The structure of a test file
+
+- import
+- test suit
+  - test case
+    - render the component
+    - do something
+    - assert it
+    - unmount the component
+
+## Running the test
+
+```bash
+node --test --import=\"./node-hooks/typescript.js\" --import=\"./node-hooks/react.js\" **/*.test.tsx
+```
+
+```json fileName="package.json"
+{
+  "scripts": {
+    "test:unit": "node --test --import=\"./node-hooks/typescript.js\" --import=\"./node-hooks/react.js\" **/*.test.tsx",
+    "test:watch": "node --run test:unit --watch"
+  }
+}
+```
+
+> **Note**: You can add more patterns to the glob pattern to test more files.
+> For example `**/*.test.ts` to test all typescript files.
+
+## Conclusion
