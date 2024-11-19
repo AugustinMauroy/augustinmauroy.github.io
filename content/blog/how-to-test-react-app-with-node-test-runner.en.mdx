@@ -9,6 +9,16 @@ authors: AugustinMauroy
 
 - link to https://nodejs.org/en/learn/test-runner/introduction
 
+## Installing the dependencies you need
+
+Theses dep is in addition of your React app dependencies
+
+```bash
+npm install --save-dev @testing-library/react @testing-library/dom jsdom
+```
+
+> **Note**: The rest of dependencies we will use come from your runtime (node.js).
+
 ## Writing the component needed to be tested
 
 ```tsx fileName="src/components/Counter/index.tsx"
