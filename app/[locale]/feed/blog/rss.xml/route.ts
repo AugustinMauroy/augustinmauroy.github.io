@@ -1,6 +1,6 @@
-import { generateRssFeed } from '~/lib/rss';
-import { availableLocales } from '~/utils/i18n';
-import type { BaseParams } from '~/types/params';
+import { generateRssFeed } from '~/lib/rss.ts';
+import { availableLocales } from '~/utils/i18n/index.ts';
+import type { BaseParams } from '~/types/params.ts';
 
 export const generateStaticParams = () => {
   return availableLocales.map(lang => ({

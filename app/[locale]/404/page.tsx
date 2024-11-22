@@ -1,10 +1,10 @@
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import ButtonLink from '~/components/Common/Button/Link';
+import ButtonLink from '~/components/Common/Button/Link/index.tsx';
 import styles from './page.module.css';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
-import type { BaseParams } from '~/types/params';
+import type { BaseParams } from '~/types/params.ts';
 
 type NotFoundProps = {
   params: BaseParams;

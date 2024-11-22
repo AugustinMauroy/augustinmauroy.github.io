@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'next-intl';
 import { vi, describe, it, expect } from 'vitest';
-import messages from '~/i18n/locales/en.json';
-import WithEventsCard from '../WithEnventsCard';
+import messages from '~/i18n/locales/en.json' with { type: 'json' };
+import WithEventsCard from '../WithEnventsCard.tsx';
 
 // Mocking the date utility functions
 vi.mock('~/utils/date', () => ({

@@ -1,6 +1,6 @@
 import { getGitHubAvatarUrl } from '~/utils/gitHubUtils';
-import { getAcronymFromString } from '~/utils/stringUtils';
-import { Avatar, AvatarImage, AvatarFallback } from '../Avatar';
+import { getAcronymFromString } from '~/utils/stringUtils.ts';
+import { Avatar, AvatarImage, AvatarFallback } from '../Avatar/index.tsx';
 import styles from './index.module.css';
 import type { FC } from 'react';
 

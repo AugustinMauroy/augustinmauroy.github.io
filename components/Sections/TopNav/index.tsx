@@ -1,8 +1,8 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import LocalizedLink from '~/components/Common/LocalizedLink';
-import { ActiveLink } from '~/components/Common/ActiveLink';
-import LanguageSelector from '~/components/Common/LanguageSelector';
+import LocalizedLink from '~/components/Common/LocalizedLink.tsx';
+import { ActiveLink } from '~/components/Common/ActiveLink.tsx';
+import LanguageSelector from '~/components/Common/LanguageSelector/index.tsx';
 import styles from './index.module.css';
 import type { FC } from 'react';
 

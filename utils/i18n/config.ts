@@ -1,5 +1,5 @@
 import { getRequestConfig } from 'next-intl/server';
-import { availableLocaleCodes } from '.';
+import { availableLocaleCodes } from './index.ts';
 
 // Loads the Application Locales/Translations Dynamically
 const loadLocaleDictionary = async (locale: string) => {

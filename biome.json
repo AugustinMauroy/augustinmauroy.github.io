@@ -52,14 +52,16 @@
         "noUnusedVariables": "error",
         "useArrayLiterals": "off",
         "noUnknownFunction": "error",
-        "noUnknownUnit": "error"
+        "noUnknownUnit": "error",
+        "useImportExtensions": "error"
       },
       "style": {
         "noNamespace": "error",
         "useAsConstAssertion": "error",
         "useBlockStatements": "off",
         "useNodeAssertStrict": "warn",
-        "useNodejsImportProtocol": "error"
+        "useNodejsImportProtocol": "error",
+        "useImportType": "error"
       },
       "suspicious": {
         "noExplicitAny": "error",

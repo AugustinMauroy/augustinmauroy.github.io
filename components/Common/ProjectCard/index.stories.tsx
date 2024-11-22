@@ -1,4 +1,4 @@
-import ProjectCardProps from '.';
+import ProjectCardProps from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
 
 type Story = StoryObj<typeof ProjectCardProps>;

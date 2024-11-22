@@ -1,4 +1,4 @@
-import AuthorsList from '.';
+import AuthorsList from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
 
 type Story = StoryObj<typeof AuthorsList>;

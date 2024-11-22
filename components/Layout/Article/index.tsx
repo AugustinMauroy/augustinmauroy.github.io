@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import BaseLayout from '~/components/Layout/Base';
+import BaseLayout from '~/components/Layout/Base/index.tsx';
 import styles from './index.module.css';
 import type { FC, PropsWithChildren } from 'react';
 

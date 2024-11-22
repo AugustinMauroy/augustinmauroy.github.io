@@ -1,5 +1,5 @@
-import BaseLayout from '~/components/Layout/Base';
-import AuthorsList from '~/components/Common/AuthorsList';
+import BaseLayout from '~/components/Layout/Base/index.tsx';
+import AuthorsList from '~/components/Common/AuthorsList/index.tsx';
 import styles from './index.module.css';
 import type { FC, PropsWithChildren } from 'react';
 

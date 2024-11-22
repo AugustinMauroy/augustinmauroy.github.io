@@ -1,9 +1,9 @@
-import Codebox from '~/components/Common/Codebox';
-import Blockquote from '~/components/Common/Blockquote';
-import ProjectCard from '~/components/Common/ProjectCard';
-import TextWithImages from '~/components/Common/TextWithImages';
-import Timeline from '~/components/Common/TimeLine';
-import LocalizedLink from '~/components/Common/LocalizedLink';
+import Codebox from '~/components/Common/Codebox/index.tsx';
+import Blockquote from '~/components/Common/Blockquote/index.tsx';
+import ProjectCard from '~/components/Common/ProjectCard/index.tsx';
+import TextWithImages from '~/components/Common/TextWithImages/index.tsx';
+import Timeline from '~/components/Common/TimeLine/index.tsx';
+import LocalizedLink from '~/components/Common/LocalizedLink.tsx';
 import type { MDXProvider } from '@mdx-js/react';
 import type { ComponentProps } from 'react';
 

@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import ButtonLink from '../Button/Link';
-import DotsIllustration from '../DotsIllustration';
+import ButtonLink from '../Button/Link/index.tsx';
+import DotsIllustration from '../DotsIllustration/index.tsx';
 import styles from './index.module.css';
 import type { FC } from 'react';
 

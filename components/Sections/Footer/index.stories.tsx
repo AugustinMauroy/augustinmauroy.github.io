@@ -1,4 +1,4 @@
-import Footer from '.';
+import Footer from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
 
 type Story = StoryObj<typeof Footer>;

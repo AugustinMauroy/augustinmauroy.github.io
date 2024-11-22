@@ -2,10 +2,10 @@
 npx lint-staged
 
 # Verify typescript staged files
-npm run type-check
+node --run type-check
 
 # Run tests
-npm run test
+node --run test
 
 # Build the app
 npx turbo build

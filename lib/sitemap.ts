@@ -1,7 +1,7 @@
-import { availableLocaleCodes } from '~/utils/i18n';
-import { getSlugs, getFrontmatter } from './content';
+import { availableLocaleCodes } from '~/utils/i18n/index.ts';
+import { getSlugs, getFrontmatter } from './content.ts';
 import type { MetadataRoute } from 'next';
-import type { BlogFrontmatter } from '~/types/frontmatter';
+import type { BlogFrontmatter } from '~/types/frontmatter.ts';
 
 type GenerateSitemapProps = {
   section: string;

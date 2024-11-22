@@ -1,7 +1,7 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import useCopyToClipboard from '~/hooks/useCopyToClipboard';
-import Button from '../Button';
+import useCopyToClipboard from '~/hooks/useCopyToClipboard.ts';
+import Button from '../Button/index.tsx';
 import type { FC } from 'react';
 
 type CopyButtonProps = {

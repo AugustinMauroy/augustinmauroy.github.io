@@ -2,7 +2,7 @@ import { compileMDX as _compileMDX } from 'next-mdx-remote/rsc';
 import rehypeMdxCodeProps from 'rehype-mdx-code-props';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import { defaultMdxComponents } from './mdxComponents';
+import { defaultMdxComponents } from './mdxComponents.ts';
 import type { MDXProvider } from '@mdx-js/react';
 import type { ComponentProps } from 'react';
 

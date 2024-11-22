@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getAcronymFromString, stringToSlug } from '../stringUtils';
+import { getAcronymFromString, stringToSlug } from '../stringUtils.ts';
 
 describe('getAcronymFromString', () => {
   it('should return the correct acronym for a multi-word string', () => {

@@ -1,4 +1,4 @@
-import TextWithImages from '.';
+import TextWithImages from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
 
 type Story = StoryObj<typeof TextWithImages>;

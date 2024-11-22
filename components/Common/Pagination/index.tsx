@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import ButtonLink from '../Button/Link';
+import ButtonLink from '../Button/Link/index.tsx';
 import styles from './index.module.css';
 import type { FC } from 'react';
 
