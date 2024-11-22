@@ -14,7 +14,7 @@
     "test:coverage": "vitest run --coverage",
     "biome:format": "biome format --write ./",
     "biome:lint": "biome lint --write ./",
-    "biome:ci": "biome ci",
+    "biome:ci": "biome ci ./",
     "format": "node --run biome:format && node --run biome:lint",
     "type-check": "tsc --noEmit",
     "storybook": "BUILD_ENV=storybook storybook dev -p 6006 --quiet --no-open",
