@@ -1,5 +1,9 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "organizeImports": {
+    // for now
+    "enabled": false
+  },
   "files": {
     "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.css", "**/*.json"],
     "ignore": [
