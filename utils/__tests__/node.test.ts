@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { isNodeError } from '../node';
+import { isNodeError } from '../node.ts';
 
 describe('isNodeError', () => {
   it('should return true for a NodeJS.ErrnoException', () => {

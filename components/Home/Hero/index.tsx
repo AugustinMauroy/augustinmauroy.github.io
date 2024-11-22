@@ -1,8 +1,8 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import { getAge, isBirthday } from '~/utils/date';
-import ButtonLink from '~/components/Common/Button/Link';
-import Images from './Images';
+import { getAge, isBirthday } from '~/utils/date.ts';
+import ButtonLink from '~/components/Common/Button/Link/index.tsx';
+import Images from './Images/index.tsx';
 import styles from './index.module.css';
 import type { FC } from 'react';
 

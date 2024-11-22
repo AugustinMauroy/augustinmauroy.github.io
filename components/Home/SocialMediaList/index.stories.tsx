@@ -1,4 +1,4 @@
-import SocialMediaList from '.';
+import SocialMediaList from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
 
 type Story = StoryObj<typeof SocialMediaList>;

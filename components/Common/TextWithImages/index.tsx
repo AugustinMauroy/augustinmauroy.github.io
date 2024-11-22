@@ -1,4 +1,4 @@
-import Images from './Images';
+import Images from './Images/index.tsx';
 import styles from './index.module.css';
 import type { FC, ReactNode } from 'react';
 

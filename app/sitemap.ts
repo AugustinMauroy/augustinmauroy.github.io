@@ -1,5 +1,5 @@
 import { generateSitemap } from '~/lib/sitemap';
-import { availableLocaleCodes } from '~/utils/i18n';
+import { availableLocaleCodes } from '~/utils/i18n/index.ts';
 import type { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

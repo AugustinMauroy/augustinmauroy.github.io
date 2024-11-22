@@ -1,16 +1,16 @@
 import { RssIcon } from '@heroicons/react/24/solid';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import BaseLayout from '~/components/Layout/Base';
-import ButtonLink from '~/components/Common/Button/Link';
-import PostCard from '~/components/Common/PostCard';
-import Pagination from '~/components/Common/Pagination';
-import { getSlugs, getFrontmatter } from '~/lib/content';
+import BaseLayout from '~/components/Layout/Base/index.tsx';
+import ButtonLink from '~/components/Common/Button/Link/index.tsx';
+import PostCard from '~/components/Common/PostCard/index.tsx';
+import Pagination from '~/components/Common/Pagination/index.tsx';
+import { getSlugs, getFrontmatter } from '~/lib/content.ts';
 import styles from './page.module.css';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
-import type { BlogFrontmatter } from '~/types/frontmatter';
-import type { BaseParams } from '~/types/params';
+import type { BlogFrontmatter } from '~/types/frontmatter.ts';
+import type { BaseParams } from '~/types/params.ts';
 
 const MAX_POSTS_PER_PAGE = 6;
 

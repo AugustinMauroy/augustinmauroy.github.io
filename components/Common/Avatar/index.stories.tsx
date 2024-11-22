@@ -1,6 +1,6 @@
 import { getGitHubAvatarUrl } from '~/utils/gitHubUtils';
 import { getAcronymFromString } from '~/utils/stringUtils';
-import { Avatar, AvatarImage, AvatarFallback } from '.';
+import { Avatar, AvatarImage, AvatarFallback } from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
 
 type Story = StoryObj<typeof Avatar>;

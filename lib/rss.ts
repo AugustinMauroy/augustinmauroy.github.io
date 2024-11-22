@@ -1,6 +1,6 @@
 import { Feed } from 'feed';
-import { getFrontmatter, getSlugs } from './content';
-import type { BlogFrontmatter } from '~/types/frontmatter';
+import { getFrontmatter, getSlugs } from './content.ts';
+import type { BlogFrontmatter } from '~/types/frontmatter.ts';
 
 type GenerateRssFeedProps = {
   section: string;

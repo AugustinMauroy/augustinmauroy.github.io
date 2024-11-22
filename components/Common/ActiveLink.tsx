@@ -1,7 +1,7 @@
 'use client';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
-import LocalizedLink from './LocalizedLink';
+import LocalizedLink from './LocalizedLink.tsx';
 import type { FC, PropsWithChildren } from 'react';
 
 type ActiveLinkProps = PropsWithChildren<{

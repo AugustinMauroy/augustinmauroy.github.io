@@ -1,6 +1,6 @@
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
 import classNames from 'classnames';
-import Button from '../Button';
+import Button from '../Button/index.tsx';
 import styles from './index.module.css';
 import type { FC, ReactNode } from 'react';
 

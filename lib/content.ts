@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { isNodeError } from '~/utils/node';
-import compileMDX from './mdx';
+import compileMDX from './mdx.ts';
 
 type GetContentProps = {
   section: string;

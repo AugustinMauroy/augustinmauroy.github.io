@@ -1,5 +1,5 @@
 import { vi, describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { isInRange, isToday, isBirthday } from '../date';
+import { isInRange, isToday, isBirthday } from '../date.ts';
 
 describe('isInRange', () => {
   it('should return true if the date is within the range', () => {

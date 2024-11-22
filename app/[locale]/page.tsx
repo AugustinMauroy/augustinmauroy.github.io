@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
-import BaseLayout from '~/components/Layout/Base';
-import LandingPage from '~/components/Home';
+import BaseLayout from '~/components/Layout/Base/index.tsx';
+import LandingPage from '~/components/Home/index.tsx';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
 

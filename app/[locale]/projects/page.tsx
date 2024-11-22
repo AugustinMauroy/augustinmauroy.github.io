@@ -1,12 +1,12 @@
 import { notFound } from 'next/navigation';
 import compileMDX from '~/lib/mdx';
-import { getContent } from '~/lib/content';
-import { projectsMdxComponents } from '~/lib/mdxComponents';
-import ArticleLayout from '~/components/Layout/Article';
+import { getContent } from '~/lib/content.ts';
+import { projectsMdxComponents } from '~/lib/mdxComponents.ts';
+import ArticleLayout from '~/components/Layout/Article/index.tsx';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
-import type { ProjectsFrontmatter } from '~/types/frontmatter';
-import type { BaseParams } from '~/types/params';
+import type { ProjectsFrontmatter } from '~/types/frontmatter.ts';
+import type { BaseParams } from '~/types/params.ts';
 
 type PageProps = {
   params: BaseParams;

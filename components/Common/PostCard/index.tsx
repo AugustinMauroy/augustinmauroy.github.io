@@ -1,5 +1,5 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
-import ButtonLink from '../Button/Link';
+import ButtonLink from '../Button/Link/index.tsx';
 import styles from './index.module.css';
 import type { FC } from 'react';
 

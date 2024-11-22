@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import Github from '~/components/Icons/Github';
-import Instagram from '~/components/Icons/Instagram';
-import LinkedIn from '~/components/Icons/Linkedin';
-import Mastodon from '~/components/Icons/Mastodon';
-import Twitch from '~/components/Icons/Twitch';
-import Twitter from '~/components/Icons/Twitter';
+import Github from '~/components/Icons/Github.tsx';
+import Instagram from '~/components/Icons/Instagram.tsx';
+import LinkedIn from '~/components/Icons/Linkedin.tsx';
+import Mastodon from '~/components/Icons/Mastodon.tsx';
+import Twitch from '~/components/Icons/Twitch.tsx';
+import Twitter from '~/components/Icons/Twitter.tsx';
 import styles from './index.module.css';
 import type { FC } from 'react';
 

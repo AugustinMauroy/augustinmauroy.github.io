@@ -1,7 +1,7 @@
 import { DocumentIcon } from '@heroicons/react/24/outline';
 import { isValidElement } from 'react';
 import { codeToHtml } from 'shiki/bundle/web';
-import CopyButton from '../CopyButton';
+import CopyButton from '../CopyButton/index.tsx';
 import styles from './index.module.css';
 import type { FC, ReactNode } from 'react';
 

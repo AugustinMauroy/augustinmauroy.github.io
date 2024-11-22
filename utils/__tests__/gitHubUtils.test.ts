@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getGitHubAvatarUrl, getGithubProfileUrl } from '../gitHubUtils';
+import { getGitHubAvatarUrl, getGithubProfileUrl } from '../gitHubUtils.ts';
 
 describe('getGitHubAvatarUrl', () => {
   it('should return the correct avatar URL for a given username', () => {

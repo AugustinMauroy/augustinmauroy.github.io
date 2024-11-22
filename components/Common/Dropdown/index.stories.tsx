@@ -1,5 +1,5 @@
 import { LanguageIcon } from '@heroicons/react/24/outline';
-import Dropdown from '.';
+import Dropdown from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
 
 type Story = StoryObj<typeof Dropdown>;

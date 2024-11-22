@@ -1,13 +1,13 @@
 import { notFound } from 'next/navigation';
-import compileMDX from '~/lib/mdx';
-import { getContent, getSlugs } from '~/lib/content';
-import PostLayout from '~/components/Layout/Post';
+import compileMDX from '~/lib/mdx.ts';
+import { getContent, getSlugs } from '~/lib/content.ts';
+import PostLayout from '~/components/Layout/Post/index.tsx';
 import { blogMdxComponents } from '~/lib/mdxComponents';
-import { getGithubProfileUrl } from '~/utils/gitHubUtils';
+import { getGithubProfileUrl } from '~/utils/gitHubUtils.ts';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
-import type { BlogFrontmatter } from '~/types/frontmatter';
-import type { BaseParams } from '~/types/params';
+import type { BlogFrontmatter } from '~/types/frontmatter.ts';
+import type { BaseParams } from '~/types/params.ts';
 
 type PageProps = {
   params: {
