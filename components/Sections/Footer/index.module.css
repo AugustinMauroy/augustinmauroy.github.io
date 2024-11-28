@@ -9,14 +9,14 @@
     border-t-black
     bg-white
     dark:border-t-white
-    dark:bg-black;
+    dark:bg-neutral-950;
 
   .hightlight {
     @apply inline-flex
       h-full
       items-center
       justify-center
-      bg-black
+      bg-neutral-950
       px-4
       font-semibold
       text-white

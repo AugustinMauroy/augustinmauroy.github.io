@@ -37,9 +37,9 @@
     p {
       @apply mt-4
         text-lg
-        text-gray-600
+        text-neutral-600
         md:text-xl
-        dark:text-gray-400;
+        dark:text-neutral-400;
     }
 
     .button {

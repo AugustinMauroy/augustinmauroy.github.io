@@ -12,7 +12,7 @@
     lg:flex-row
     lg:items-center
     dark:border-white
-    dark:bg-gray-800;
+    dark:bg-neutral-800;
 
   .image {
     @apply h-auto
@@ -40,8 +40,8 @@
     }
 
     p {
-      @apply text-gray-600
-        dark:text-gray-400;
+      @apply text-neutral-600
+        dark:text-neutral-400;
     }
 
     .button {

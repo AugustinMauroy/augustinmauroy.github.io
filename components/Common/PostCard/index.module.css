@@ -24,19 +24,19 @@
     /* max h 20 and truncate */
     @apply truncate
       text-base
-      text-gray-700;
+      text-neutral-700;
   }
 
   time {
     @apply text-sm
       font-light
-      text-gray-700;
+      text-neutral-700;
   }
 
   .authors {
     @apply truncate
       text-sm
-      text-gray-700;
+      text-neutral-700;
   }
 
   &:has(a:hover) {

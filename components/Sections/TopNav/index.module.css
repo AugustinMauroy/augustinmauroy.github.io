@@ -15,7 +15,7 @@
     md:gap-0
     md:pb-0
     dark:border-b-white
-    dark:bg-black;
+    dark:bg-neutral-950;
 
   .home {
     @apply inline-flex
