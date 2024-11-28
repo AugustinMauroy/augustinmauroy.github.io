@@ -1,4 +1,4 @@
-import { availableLocaleCodes } from '~/utils/i18n/index.ts';
+import { availableLocaleCodes } from './i18n/config.ts';
 import { getSlugs, getFrontmatter } from './content.ts';
 import type { MetadataRoute } from 'next';
 import type { BlogFrontmatter } from '~/types/frontmatter.ts';

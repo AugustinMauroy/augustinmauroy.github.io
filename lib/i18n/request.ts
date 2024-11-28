@@ -1,5 +1,6 @@
 import { getRequestConfig } from 'next-intl/server';
-import { availableLocaleCodes } from './index.ts';
+import { routing } from './routing.ts';
+import { availableLocaleCodes } from './config.ts';
 
 // Loads the Application Locales/Translations Dynamically
 const loadLocaleDictionary = async (locale: string) => {
@@ -18,10 +19,18 @@ const loadLocaleDictionary = async (locale: string) => {
   throw new Error(`Unsupported locale: ${locale}`);
 };
 
-// Provides `next-intl` configuration for RSC/SSR
-export default getRequestConfig(async ({ locale }) => ({
-  // This is the dictionary of messages to be loaded
-  messages: await loadLocaleDictionary(locale),
-  // We always define the App timezone as UTC
-  timeZone: 'Etc/UTC',
-}));
+export default getRequestConfig(async ({ requestLocale }) => {
+  // This typically corresponds to the `[locale]` segment
+  let locale = await requestLocale;
+
+  // Ensure that the incoming locale is valid
+  if (!locale || !routing.locales.includes(locale))
+    locale = routing.defaultLocale;
+
+  const messages = await loadLocaleDictionary(locale);
+
+  return {
+    locale,
+    messages,
+  };
+});
