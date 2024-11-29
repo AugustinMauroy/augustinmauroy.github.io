@@ -41,7 +41,6 @@ updates:
         patterns:
           - 'classnames'
           - 'feed'
-          - 'geist'
           - 'rehype-autolink-headings'
           - 'rehype-mdx-code-props'
           - 'rehype-slug'

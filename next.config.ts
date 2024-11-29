@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
   output: 'export',
   images: { unoptimized: true },
   trailingSlash: false,
-  transpilePackages: ['geist', 'next-mdx-remote'],
+  transpilePackages: ['next-mdx-remote'],
 };
 
 export default withNextIntl(nextConfig);
