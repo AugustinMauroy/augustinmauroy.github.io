@@ -1,6 +1,6 @@
 ---
 title: How to test a React app with Node Test Runner
-description: You ever wanted to test your React app with Node Test Runner? Here's how you can do it.
+description: Drastically simplify and speed up testing your React app by switching to Node Test Runner.
 date: 2024-11-19
 authors: AugustinMauroy
 ---
@@ -9,7 +9,7 @@ authors: AugustinMauroy
 
 Testing is a crucial part of software development, ensuring that your application behaves as expected. With the [Node.js Test Runner](https://nodejs.org/en/learn/test-runner/introduction), you can seamlessly integrate testing into your [React](https://react.dev) application. This guide will walk you through the process of setting up and running tests for a React app using the Node.js Test Runner.
 
-> I really recommend you to read the [Node.js Test Runner documentation](https://nodejs.org/en/learn/test-runner/introduction) to understand how node.js test runner works.
+> I really recommend you to read the [Node.js Test Runner guides](https://nodejs.org/en/learn/test-runner/introduction) to understand how node.js test runner works.
 > This guide assumes you have a basic understanding of React and testing.
 
 ## Installing the Dependencies
@@ -20,7 +20,7 @@ First, you need to install the necessary dependencies. In addition to your React
 npm install --save-dev @testing-library/react @testing-library/dom jsdom
 ```
 
-> **Note**: The rest of the dependencies we will use come from your runtime (Node.js).
+> **Note**: The rest of the dependencies we will use come from Node.js.
 
 ## Writing the Component to Be Tested
 
@@ -70,7 +70,7 @@ export default Counter;
 
 To handle TypeScript and CSS modules, you need to register the appropriate loaders. Create a file named `node-hooks/react-test.js` and add the following code:
 
-> If you want to understand what is a loader. You need to read [this post](/blog/post/how-to-use-nodejs-loader) I had written about loaders.
+> To understand what is a loader, check out [this post](/blog/post/how-to-use-nodejs-loader).
 
 ```mjs fileName="node-hooks/react-test.js"
 import { register } from 'node:module';
@@ -78,8 +78,8 @@ import { pathToFileURL } from 'node:url';
 import jsdom from 'jsdom';
 
 // Register the loaders
-register('nodejs-loaders/dev/tsx', pathToFileURL('./'));
-register('nodejs-loaders/testing/css-module', pathToFileURL('./'));
+register('@nodejs-loaders/tsx', pathToFileURL('./'));
+register('@nodejs-loaders/css-module', pathToFileURL('./'));
 
 // We don't need to load any HTML/CSS because it's handled by testing-library
 const { document } = new jsdom.JSDOM().window;
@@ -114,7 +114,7 @@ describe('Counter', () => {
 
     assert.strictEqual(count.textContent, '1');
 
-    // ⚠️ You must unmount the component instead the next test will still have the previous component in the "dom"
+    // ⚠️ It's a good idea to unmount the component to prevent it spilling over into the DOM of other tests
     unmount();
   });
 });
