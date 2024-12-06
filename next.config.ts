@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // We didn't use eslint
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -15,7 +16,7 @@ const nextConfig: NextConfig = {
   output: 'export',
   images: { unoptimized: true },
   trailingSlash: false,
-  transpilePackages: ['next-mdx-remote'],
+  transpilePackages: ['geist', 'next-mdx-remote'],
 };
 
 export default withNextIntl(nextConfig);

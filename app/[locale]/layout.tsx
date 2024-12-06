@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import classNames from 'classnames';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import { LocaleProvider } from '~/providers/localeProvider.tsx';
 import { routing } from '~/lib/i18n/routing';
 import type { FC, PropsWithChildren } from 'react';
@@ -11,14 +12,6 @@ import '~/styles/globals.css';
 type RootLayoutProps = PropsWithChildren<BaseParams>;
 
 export const dynamic = 'force-static';
-
-const GeistSans = Geist({
-  subsets: ['latin'],
-});
-
-const GeistMono = Geist_Mono({
-  subsets: ['latin'],
-});
 
 // Generate params for all available locales
 // It's allow us to build the website statically for all locales
