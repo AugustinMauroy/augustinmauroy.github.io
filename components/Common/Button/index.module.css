@@ -36,9 +36,9 @@
 
   &:disabled {
     @apply cursor-not-allowed
-      border-gray-400
-      bg-gray-200
-      text-gray-400;
+      border-neutral-400
+      bg-neutral-200
+      text-neutral-400;
   }
 
   svg {

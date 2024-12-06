@@ -12,7 +12,7 @@
     lg:mx-auto
     lg:max-w-3/4
     dark:border-white
-    dark:bg-gray-900
+    dark:bg-neutral-900
     dark:shadow-neo-brutalism-xl-white;
 
   .shapeTop {
@@ -43,7 +43,7 @@
 
   p {
     @apply text-lg
-    text-gray-500
-    dark:text-gray-400;
+    text-neutral-500
+    dark:text-neutral-400;
   }
 }

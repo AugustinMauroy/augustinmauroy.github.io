@@ -8,16 +8,16 @@ import type { Metadata } from 'next';
 import type { AboutFrontmatter } from '~/types/frontmatter.ts';
 import type { BaseParams } from '~/types/params.ts';
 
-type PageProps = {
-  params: BaseParams;
-};
+type PageProps = BaseParams;
+
+export const dynamic = 'force-static';
 
 export const generateMetadata = async ({
   params,
 }: PageProps): Promise<Metadata | null> => {
   const rawSource = await getContent({
     section: 'about',
-    lang: params.locale,
+    lang: (await params).locale,
   });
 
   if (!rawSource) return null;
@@ -36,7 +36,7 @@ export const generateMetadata = async ({
 const Page: FC<PageProps> = async ({ params }) => {
   const rawSource = await getContent({
     section: 'about',
-    lang: params.locale,
+    lang: (await params).locale,
   });
 
   if (!rawSource) notFound();

@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 
-function robots(): MetadataRoute.Robots {
+export const dynamic = 'force-static';
+
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
@@ -10,5 +12,3 @@ function robots(): MetadataRoute.Robots {
     sitemap: 'https://augustinmauroy.github.io/sitemap.xml',
   };
 }
-
-export default robots;

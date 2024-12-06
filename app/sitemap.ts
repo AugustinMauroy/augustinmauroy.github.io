@@ -1,6 +1,8 @@
 import { generateSitemap } from '~/lib/sitemap';
-import { availableLocaleCodes } from '~/utils/i18n/index.ts';
+import { availableLocaleCodes } from '~/lib/i18n/config.ts';
 import type { MetadataRoute } from 'next';
+
+export const dynamic = 'force-static';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sitemapEntries: MetadataRoute.Sitemap = [];

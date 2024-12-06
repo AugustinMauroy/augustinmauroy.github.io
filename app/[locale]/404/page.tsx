@@ -1,14 +1,14 @@
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import ButtonLink from '~/components/Common/Button/Link/index.tsx';
 import styles from './page.module.css';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
 import type { BaseParams } from '~/types/params.ts';
 
-type NotFoundProps = {
-  params: BaseParams;
-};
+type NotFoundProps = BaseParams;
+
+export const dynamic = 'force-static';
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const t = await getTranslations('app.notFound');
@@ -20,7 +20,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
 };
 
 const NotFound: FC<NotFoundProps> = async ({ params }) => {
-  unstable_setRequestLocale(params.locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations('app.notFound');
 
   return (
@@ -34,7 +35,5 @@ const NotFound: FC<NotFoundProps> = async ({ params }) => {
     </div>
   );
 };
-
-export const dynamic = 'error';
 
 export default NotFound;

@@ -3,12 +3,12 @@ import { LanguageIcon } from '@heroicons/react/24/outline';
 import { useTranslations } from 'next-intl';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import Dropdown from '~/components/Common/Dropdown';
-import { availableLocales } from '~/utils/i18n';
+import { availableLocales } from '~/lib/i18n/config.ts';
 
 const LanguageSelector = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const locale = useParams().locale;
+  const locale = useParams().locale ?? 'en';
   const t = useTranslations('components.common.languageSelector');
 
   const handleLocaleChange = (newLocale: string) => {

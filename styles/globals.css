@@ -13,9 +13,9 @@ body {
     min-h-screen
     flex-col
     bg-yellow-50
-    text-gray-950
-    dark:bg-gray-950
-    dark:text-gray-50;
+    text-neutral-950
+    dark:bg-neutral-900
+    dark:text-neutral-50;
 }
 
 .articleContent {
@@ -31,10 +31,10 @@ body {
       @apply absolute
         right-0
         top-0
-        text-gray-900
+        text-neutral-900
         no-underline
         content-["#"]
-        dark:text-gray-50;
+        dark:text-neutral-50;
     }
   }
 
@@ -45,8 +45,8 @@ body {
   h5,
   h6 {
     &[id] a {
-      @apply text-gray-900
-        dark:text-gray-50;
+      @apply text-neutral-900
+        dark:text-neutral-50;
 
       &:hover {
         @apply no-underline;
@@ -104,7 +104,7 @@ body {
       bg-teal-100
       px-1
       dark:bg-teal-600
-      dark:text-gray-900;
+      dark:text-neutral-900;
   }
 
   a {

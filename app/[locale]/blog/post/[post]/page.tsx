@@ -9,10 +9,8 @@ import type { Metadata } from 'next';
 import type { BlogFrontmatter } from '~/types/frontmatter.ts';
 import type { BaseParams } from '~/types/params.ts';
 
-type PageProps = {
-  params: {
-    post: string;
-  } & BaseParams;
+type PageProps = BaseParams & {
+  params: Promise<{ post: string }>;
 };
 
 const slugToParams = (slug: string) => {
@@ -26,8 +24,8 @@ export const generateMetadata = async ({
 }: PageProps): Promise<Metadata | null> => {
   const rawSource = await getContent({
     section: 'blog',
-    lang: params.locale,
-    slug: params.post,
+    lang: (await params).locale,
+    slug: (await params).post,
   });
 
   if (!rawSource) return null;
@@ -57,8 +55,8 @@ export const generateStaticParams = async () => {
 const Page: FC<PageProps> = async ({ params }) => {
   const rawSource = await getContent({
     section: 'blog',
-    slug: params.post,
-    lang: params.locale,
+    slug: (await params).post,
+    lang: (await params).locale,
   });
 
   if (!rawSource) notFound();

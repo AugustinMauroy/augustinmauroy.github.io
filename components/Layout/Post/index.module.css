@@ -21,15 +21,15 @@
 
     p {
       @apply font-semibold
-        text-gray-600
-        dark:text-gray-400;
+        text-neutral-600
+        dark:text-neutral-400;
     }
 
     time {
       @apply text-sm
         font-light
-        text-gray-500
-        dark:text-gray-400;
+        text-neutral-500
+        dark:text-neutral-400;
     }
   }
 }

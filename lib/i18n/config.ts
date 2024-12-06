@@ -1,4 +1,4 @@
-import localeConfig from '~/i18n/config.json' with { type: 'json' };
+import localeConfig from '~/i18n/config.json' assert { type: 'json' };
 
 // As set of available and enabled locales for the website
 // This is used for allowing us to redirect the user to any
@@ -10,7 +10,8 @@ const availableLocaleCodes = availableLocales.map(locale => locale.code);
 
 // This provides the default locale information for the Next.js Application
 // This is marked by the unique `locale.default` property on the `en` locale
-const defaultLocale = availableLocales.find(locale => locale.default);
+const defaultLocale =
+  availableLocales.find(locale => locale.default) || availableLocales[0];
 
 // Creates a Map of available locales for easy access
 const availableLocalesMap = Object.fromEntries(

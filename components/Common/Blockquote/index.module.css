@@ -10,7 +10,7 @@
     shadow-neo-brutalism-xl-black
     transition-shadow
     dark:border-white
-    dark:bg-black
+    dark:bg-neutral-950
     dark:shadow-neo-brutalism-xl-white;
 
   & .wrapper {

@@ -15,16 +15,18 @@ import type { BaseParams } from '~/types/params.ts';
 const MAX_POSTS_PER_PAGE = 6;
 
 type PageProps = {
-  params: {
+  params: Promise<{
     page?: string[];
-  } & BaseParams;
-};
+  }>;
+} & BaseParams;
 
 type StaticParams = {
   params: {
     locale: string;
   };
 };
+
+export const dynamic = 'force-static';
 
 export const generateMetadata = async (): Promise<Metadata | null> => {
   const t = await getTranslations('app.blog');
@@ -47,16 +49,20 @@ export const generateStaticParams = async ({ params }: StaticParams) => {
 };
 
 const Page: FC<PageProps> = async ({ params }) => {
+  const { page, locale } = await params;
   let pageNumbers = null;
-  if (params.page && params.page[0] === 'index') {
+  if (page && page[0] === 'index') {
     pageNumbers = 0;
-  } else if (params.page && Number.isInteger(parseInt(params.page[0], 10))) {
-    pageNumbers = parseInt(params.page[0], 10);
+  } else if (page && Number.isInteger(parseInt(page[0], 10))) {
+    pageNumbers = parseInt(page[0], 10);
   }
 
   if (pageNumbers === null) notFound();
 
-  const posts = await getSlugs({ section: 'blog', lang: params.locale });
+  const posts = await getSlugs({
+    section: 'blog',
+    lang: (await params).locale,
+  });
   const metadata = await Promise.all(
     posts
       .slice(
@@ -66,7 +72,7 @@ const Page: FC<PageProps> = async ({ params }) => {
       .map(slug =>
         getFrontmatter<BlogFrontmatter>({
           section: 'blog',
-          lang: params.locale,
+          lang: locale,
           slug,
         })
       )
