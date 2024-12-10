@@ -1,7 +1,7 @@
 ---
 title: How to test a React app with Node Test Runner
 description: Drastically simplify and speed up testing your React app by switching to Node Test Runner.
-date: 2024-11-19
+date: 2024-12-10
 authors: AugustinMauroy
 ---
 
@@ -17,7 +17,7 @@ Testing is a crucial part of software development, ensuring that your applicatio
 First, you need to install the necessary dependencies. In addition to your React app dependencies, you will need the following:
 
 ```bash
-npm install --save-dev @testing-library/react @testing-library/dom jsdom
+npm install --save-dev @testing-library/react @testing-library/dom jsdom global-jsdom
 ```
 
 > **Note**: The rest of the dependencies we will use come from Node.js.
@@ -72,23 +72,29 @@ To handle TypeScript and CSS modules, you need to register the appropriate loade
 
 > To understand what is a loader, check out [this post](/blog/post/how-to-use-nodejs-loader).
 
+You'll need to register the loaders for TypeScript and CSS modules:
+
+First let's install the loaders:
+
+```bash
+npm add -D @nodejs-loaders/tsx @nodejs-loaders/css-module
+```
+
+Then, create the registration file:
+
 ```mjs fileName="node-hooks/react-test.js"
 import { register } from 'node:module';
 import { pathToFileURL } from 'node:url';
-import jsdom from 'jsdom';
+import jsdom from 'global-jsdom';
 
 // Register the loaders
 register('@nodejs-loaders/tsx', pathToFileURL('./'));
 register('@nodejs-loaders/css-module', pathToFileURL('./'));
 
-// We don't need to load any HTML/CSS because it's handled by testing-library
-const { document } = new jsdom.JSDOM().window;
-
-/**
- * Make the JSDOM global objects available to the Node.js environment.
- */
-global.document = document;
-global.window = document.defaultView;
+jsdom(undefined, {
+  // ⚠️ Failing to specify this will likely lead to many 🤬
+  url: 'https://test.example.com',
+});
 ```
 
 ## Writing the Test

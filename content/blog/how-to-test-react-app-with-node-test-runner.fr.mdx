@@ -1,10 +1,170 @@
 ---
-title: How to test a React app with Node Test Runner
-description: You ever wanted to test your React app with Node Test Runner? Here's how you can do it.
-date: 2024-11-19
+title: Comment tester une application React avec Node Test Runner
+description: Simplifiez et accélérez drastiquement les tests de votre application React en passant à Node Test Runner.
+date: 2024-12-10
 authors: AugustinMauroy
 ---
 
-{/**
- * @augustinmauroy need to translate the content
-*/}
+## Introduction
+
+Les tests sont une partie cruciale du développement logiciel, garantissant que votre application se comporte comme prévu. Avec le [Node.js Test Runner](https://nodejs.org/en/learn/test-runner/introduction), vous pouvez intégrer facilement les tests dans votre application [React](https://react.dev). Ce guide vous accompagnera dans le processus de configuration et d'exécution des tests pour une application React en utilisant le Node.js Test Runner.
+
+> Je vous recommande vivement de lire les [guides du Node.js Test Runner](https://nodejs.org/en/learn/test-runner/introduction) pour comprendre comment fonctionne le test runner de Node.js.
+> Ce guide suppose que vous avez une compréhension de base de React et des tests.
+
+## Installation des Dépendances
+
+Tout d'abord, vous devez installer les dépendances nécessaires. En plus des dépendances de votre application React, vous aurez besoin des éléments suivants :
+
+```bash
+npm install --save-dev @testing-library/react @testing-library/dom jsdom global-jsdom
+```
+
+> **Note** : Les autres dépendances que nous utiliserons proviennent de Node.js.
+
+## Écriture du Composant à Tester
+
+Créons un composant React simple que nous allons tester. Ce composant sera un compteur qui incrémente une valeur lorsque l'on clique sur un bouton.
+
+```tsx fileName="src/components/Counter/index.tsx"
+'use client';
+import { useState } from 'react';
+import styles from './index.module.css';
+import type { FC } from 'react';
+
+const Counter: FC = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className={styles.container}>
+      <p className={styles.count}>{count}</p>
+      <button onClick={() => setCount(count + 1)} className={styles.button}>
+        Increment
+      </button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+<details>
+  <summary>`index.module.css`</summary>
+
+  ```css fileName="src/components/Counter/index.module.css"
+  .container {
+    @apply flex flex-col items-center justify-center;
+
+    .count {
+      @apply text-4xl;
+    }
+
+    .button {
+      @apply px-4 py-2 bg-blue-500 text-white rounded-md;
+    }
+  }
+  ```
+</details>
+
+## Enregistrement des Chargeurs Node.js
+
+Pour gérer TypeScript et les modules CSS, vous devez enregistrer les chargeurs appropriés. Créez un fichier nommé `node-hooks/react-test.js` et ajoutez le code suivant :
+
+> Pour comprendre ce qu'est un chargeur, consultez [cet article](/blog/post/how-to-use-nodejs-loader).
+
+Vous devrez enregistrer les chargeurs pour TypeScript et les modules CSS :
+
+Tout d'abord, installons les chargeurs :
+
+```bash
+npm add -D @nodejs-loaders/tsx @nodejs-loaders/css-module
+```
+
+Ensuite, créez le fichier d'enregistrement :
+
+```mjs fileName="node-hooks/react-test.js"
+import { register } from 'node:module';
+import { pathToFileURL } from 'node:url';
+import jsdom from 'global-jsdom';
+
+// Enregistrer les chargeurs
+register('@nodejs-loaders/tsx', pathToFileURL('./'));
+register('@nodejs-loaders/css-module', pathToFileURL('./'));
+
+jsdom(undefined, {
+  // ⚠️ Ne pas spécifier cela entraînera probablement de nombreux 🤬
+  url: 'https://test.example.com',
+});
+```
+
+## Écriture du Test
+
+Maintenant, écrivons un test pour le composant `Counter`. Créez un fichier nommé `index.test.tsx` dans le même répertoire que votre composant :
+
+```tsx fileName="src/components/Counter/index.test.tsx"
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
+import { render, fireEvent, screen } from '@testing-library/react';
+import Counter from './index.ts'; // ⚠️ Nous devons importer le fichier avec l'extension .ts
+
+describe('Counter', () => {
+  it('should increment the count when the button is clicked', () => {
+    const { unmount } = render(<Counter />);
+
+    const button = screen.getByRole('button', { name: /increment/i });
+    const count = screen.getByText('0');
+
+    assert.strictEqual(count.textContent, '0');
+
+    fireEvent.click(button);
+
+    assert.strictEqual(count.textContent, '1');
+
+    // ⚠️ Il est bon de démonter le composant pour éviter qu'il ne se propage dans le DOM d'autres tests
+    unmount();
+  });
+});
+```
+
+### Structure d'un Fichier de Test
+
+Une structure typique de fichier de test inclut :
+
+1. **Imports** : Importez les modules et composants nécessaires.
+2. **Suite de Tests** : Définissez une suite de tests en utilisant `describe`.
+3. **Cas de Test** : Définissez des cas de test individuels en utilisant `it`.
+4. **Rendu du Composant** : Rendez le composant à tester.
+5. **Actions** : Simulez les interactions utilisateur ou d'autres actions.
+6. **Assertions** : Faites des assertions pour vérifier le comportement attendu.
+7. **Démontage du Composant** : Nettoyez en démontant le composant.
+
+## Exécution du Test
+
+Pour exécuter le test, utilisez la commande suivante :
+
+```bash
+node --test --import="./node-hooks/typescript.js" --import="./node-hooks/react.js" **/*.test.tsx
+```
+
+Vous pouvez également ajouter un script à votre `package.json` pour simplifier l'exécution des tests :
+
+```json fileName="package.json"
+{
+  "scripts": {
+    "test:unit": "node --test --import=\"./node-hooks/typescript.js\" --import=\"./node-hooks/react.js\" **/*.test.tsx",
+    "test:watch": "node --run test:unit --watch"
+  }
+}
+```
+
+> **Note** : Vous pouvez ajouter plus de motifs au modèle de glob pour tester plus de fichiers. Par exemple, `**/*.test.ts` pour tester tous les fichiers TypeScript.
+
+Et ensuite pour appeler le script, vous pouvez utiliser `--run` :
+
+```bash
+node --run test:unit # ou node --run test:watch
+```
+
+## Conclusion
+
+Tester votre application React avec le Node.js Test Runner est un processus simple. En suivant les étapes décrites dans ce guide, vous pouvez vous assurer que vos composants se comportent comme prévu. Bon test !
