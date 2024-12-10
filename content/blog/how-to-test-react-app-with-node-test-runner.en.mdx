@@ -1,0 +1,170 @@
+---
+title: How to test a React app with Node Test Runner
+description: Drastically simplify and speed up testing your React app by switching to Node Test Runner.
+date: 2024-12-10
+authors: AugustinMauroy
+---
+
+## Introduction
+
+Testing is a crucial part of software development, ensuring that your application behaves as expected. With the [Node.js Test Runner](https://nodejs.org/en/learn/test-runner/introduction), you can seamlessly integrate testing into your [React](https://react.dev) application. This guide will walk you through the process of setting up and running tests for a React app using the Node.js Test Runner.
+
+> I really recommend you to read the [Node.js Test Runner guides](https://nodejs.org/en/learn/test-runner/introduction) to understand how node.js test runner works.
+> This guide assumes you have a basic understanding of React and testing.
+
+## Installing the Dependencies
+
+First, you need to install the necessary dependencies. In addition to your React app dependencies, you will need the following:
+
+```bash
+npm install --save-dev @testing-library/react @testing-library/dom jsdom global-jsdom
+```
+
+> **Note**: The rest of the dependencies we will use come from Node.js.
+
+## Writing the Component to Be Tested
+
+Let's create a simple React component that we will test. This component will be a counter that increments a value when a button is clicked.
+
+```tsx fileName="src/components/Counter/index.tsx"
+'use client';
+import { useState } from 'react';
+import styles from './index.module.css';
+import type { FC } from 'react';
+
+const Counter: FC = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className={styles.container}>
+      <p className={styles.count}>{count}</p>
+      <button onClick={() => setCount(count + 1)} className={styles.button}>
+        Increment
+      </button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+<details>
+  <summary>`index.module.css`</summary>
+
+  ```css fileName="src/components/Counter/index.module.css"
+  .container {
+    @apply flex flex-col items-center justify-center;
+
+    .count {
+      @apply text-4xl;
+    }
+
+    .button {
+      @apply px-4 py-2 bg-blue-500 text-white rounded-md;
+    }
+  }
+  ```
+</details>
+
+## Registering Node.js Loaders
+
+To handle TypeScript and CSS modules, you need to register the appropriate loaders. Create a file named `node-hooks/react-test.js` and add the following code:
+
+> To understand what is a loader, check out [this post](/blog/post/how-to-use-nodejs-loader).
+
+You'll need to register the loaders for TypeScript and CSS modules:
+
+First let's install the loaders:
+
+```bash
+npm add -D @nodejs-loaders/tsx @nodejs-loaders/css-module
+```
+
+Then, create the registration file:
+
+```mjs fileName="node-hooks/react-test.js"
+import { register } from 'node:module';
+import { pathToFileURL } from 'node:url';
+import jsdom from 'global-jsdom';
+
+// Register the loaders
+register('@nodejs-loaders/tsx', pathToFileURL('./'));
+register('@nodejs-loaders/css-module', pathToFileURL('./'));
+
+jsdom(undefined, {
+  // ⚠️ Failing to specify this will likely lead to many 🤬
+  url: 'https://test.example.com',
+});
+```
+
+## Writing the Test
+
+Now, let's write a test for the `Counter` component. Create a file named `index.test.tsx` in the same directory as your component:
+
+```tsx fileName="src/components/Counter/index.test.tsx"
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
+import { render, fireEvent, screen } from '@testing-library/react';
+import Counter from './index.ts'; // ⚠️ We need to import the file with the .ts extension
+
+describe('Counter', () => {
+  it('should increment the count when the button is clicked', () => {
+    const { unmount } = render(<Counter />);
+
+    const button = screen.getByRole('button', { name: /increment/i });
+    const count = screen.getByText('0');
+
+    assert.strictEqual(count.textContent, '0');
+
+    fireEvent.click(button);
+
+    assert.strictEqual(count.textContent, '1');
+
+    // ⚠️ It's a good idea to unmount the component to prevent it spilling over into the DOM of other tests
+    unmount();
+  });
+});
+```
+
+### Structure of a Test File
+
+A typical test file structure includes:
+
+1. **Imports**: Import the necessary modules and components.
+2. **Test Suite**: Define a test suite using `describe`.
+3. **Test Case**: Define individual test cases using `it`.
+4. **Render the Component**: Render the component to be tested.
+5. **Perform Actions**: Simulate user interactions or other actions.
+6. **Assertions**: Make assertions to verify the expected behavior.
+7. **Unmount the Component**: Clean up by unmounting the component.
+
+## Running the Test
+
+To run the test, use the following command:
+
+```bash
+node --test --import="./node-hooks/typescript.js" --import="./node-hooks/react.js" **/*.test.tsx
+```
+
+You can also add a script to your `package.json` to simplify running the tests:
+
+```json fileName="package.json"
+{
+  "scripts": {
+    "test:unit": "node --test --import=\"./node-hooks/typescript.js\" --import=\"./node-hooks/react.js\" **/*.test.tsx",
+    "test:watch": "node --run test:unit --watch"
+  }
+}
+```
+
+> **Note**: You can add more patterns to the glob pattern to test more files. For example, `**/*.test.ts` to test all TypeScript files.
+
+And then to call the script you can use `--run`:
+
+```bash
+node --run test:unit # or node --run test:watch
+```
+
+## Conclusion
+
+Testing your React app with the Node.js Test Runner is a straightforward process. By following the steps outlined in this guide, you can ensure that your components behave as expected. Happy testing!
