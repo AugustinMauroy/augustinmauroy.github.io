@@ -1,5 +1,5 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import { readFile, readdir } from 'node:fs/promises';
+import { join } from 'node:path';
 import { isNodeError } from '~/utils/node';
 import compileMDX from './mdx.ts';
 
@@ -9,34 +9,23 @@ type GetContentProps = {
   slug?: string;
 };
 
-const BASE_CONTENT_PATH = path.join(process.cwd(), 'content');
+const BASE_CONTENT_PATH = join(process.cwd(), 'content');
 
 export const getContent = async ({
   section,
   lang,
   slug = 'index',
 }: GetContentProps): Promise<string | null> => {
-  try {
-    const filePath = path.join(
-      BASE_CONTENT_PATH,
-      section,
-      `${slug}.${lang}.mdx`
-    );
+  let filePath = join(BASE_CONTENT_PATH, section, `${slug}.${lang}.mdx`);
 
-    return fs.readFile(filePath, 'utf8');
-  } catch {
-    try {
-      const defaultFilePath = path.join(
-        BASE_CONTENT_PATH,
-        section,
-        `${slug}.en.mdx`
-      );
-
-      return fs.readFile(defaultFilePath, 'utf8');
-    } catch {
-      return null;
+  return readFile(filePath, 'utf8').catch(() => {
+    if (lang !== 'en') {
+      filePath = join(BASE_CONTENT_PATH, section, `${slug}.en.mdx`);
+      return readFile(filePath, 'utf8').catch(() => null);
     }
-  }
+
+    return null;
+  });
 };
 
 type GetSlugsProps = {
@@ -48,8 +37,8 @@ export const getSlugs = async ({
   section,
   lang = 'en',
 }: GetSlugsProps): Promise<string[]> => {
-  const dirPath = path.join(BASE_CONTENT_PATH, section);
-  const files = await fs.readdir(dirPath);
+  const dirPath = join(BASE_CONTENT_PATH, section);
+  const files = await readdir(dirPath);
 
   return files
     .filter(file => file.endsWith(`.${lang}.mdx`))
