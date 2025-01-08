@@ -8,7 +8,7 @@
     "build": "next build",
     "postbuild": "node ./scripts/postbuild.js",
     "start": "next start",
-    "test:unit": "node --experimental-test-snapshots --test --import=\"./node-hooks/typescript.js\" --import=\"./node-hooks/react.js\" **/*.test.ts **/*.test.tsx",
+    "test:unit": "node --test --import=\"./node-hooks/react.ts\" **/*.test.ts **/*.test.tsx",
     "test:watch": "node --run test:unit -- --watch",
     "test": "node --run test:unit",
     "biome:format": "biome format --write ./",
@@ -40,6 +40,9 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@nodejs-loaders/alias": "~1.1.1",
+    "@nodejs-loaders/css-module": "~1.0.1",
+    "@nodejs-loaders/tsx": "~1.0.2",
     "@storybook/addon-a11y": "~8.4.7",
     "@storybook/addon-essentials": "~8.4.7",
     "@storybook/addon-interactions": "~8.4.7",
@@ -57,14 +60,13 @@
     "husky": "~9.1.7",
     "jsdom": "~25.0.1",
     "lint-staged": "~15.2.10",
-    "nodejs-loaders": "1.1.0",
     "postcss": "~8.4.49",
     "storybook": "~8.4.7",
     "tailwindcss": "~3.4.11",
     "typescript": "~5.7.2"
   },
   "engines": {
-    "node": "22.x",
+    "node": "23.x",
     "npm": "10.x"
   },
   "packageManager": "npm@10.0.0"
