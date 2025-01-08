@@ -84,18 +84,19 @@ Then, create the registration file:
 
 ```mjs fileName="node-hooks/react-test.js"
 import { register } from 'node:module';
-import { pathToFileURL } from 'node:url';
 import jsdom from 'global-jsdom';
 
 // Register the loaders
-register('@nodejs-loaders/tsx', pathToFileURL('./'));
-register('@nodejs-loaders/css-module', pathToFileURL('./'));
+register('@nodejs-loaders/tsx', import.meta.url);
+register('@nodejs-loaders/css-module', import.meta.url);
 
 jsdom(undefined, {
   // ⚠️ Failing to specify this will likely lead to many 🤬
   url: 'https://test.example.com',
 });
 ```
+
+> **NOTE:** You may need to use `@nodejs-loaders/alias` to allow Node.js to understand path aliases in your TypeScript files.
 
 ## Writing the Test
 

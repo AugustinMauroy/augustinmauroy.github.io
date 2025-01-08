@@ -84,18 +84,19 @@ Ensuite, créez le fichier d'enregistrement :
 
 ```mjs fileName="node-hooks/react-test.js"
 import { register } from 'node:module';
-import { pathToFileURL } from 'node:url';
 import jsdom from 'global-jsdom';
 
 // Enregistrer les chargeurs
-register('@nodejs-loaders/tsx', pathToFileURL('./'));
-register('@nodejs-loaders/css-module', pathToFileURL('./'));
+register('@nodejs-loaders/tsx', import.meta.url);
+register('@nodejs-loaders/css-module', import.meta.url);
 
 jsdom(undefined, {
   // ⚠️ Ne pas spécifier cela entraînera probablement de nombreux 🤬
   url: 'https://test.example.com',
 });
 ```
+
+> **Vous pouvez avoir besoin d'utiliser `@nodejs-loaders/alias` pour permettre à Node.js de comprendre les alias de chemin dans vos fichiers TypeScript.
 
 ## Écriture du Test
 
