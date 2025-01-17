@@ -34,8 +34,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Turbo
-.turbo
-
 # Storybook
 storybook-static

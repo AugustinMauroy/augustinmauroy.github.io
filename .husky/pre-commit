@@ -8,5 +8,4 @@ node --run type-check
 node --run test
 
 # Build the app
-npx turbo build
-
+node --run build

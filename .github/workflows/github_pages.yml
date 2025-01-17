@@ -43,7 +43,6 @@ jobs:
         with:
           path: |
             .next/cache
-            .turbo/cache
             node_modules/.cache
           key: build-${{ hashFiles('**/package-lock.json') }}-
           restore-keys: |
@@ -51,14 +50,13 @@ jobs:
           enableCrossOsArchive: true
 
       - name: Build Next.js
-        run: npx turbo build
+        run: node --run build
 
       - name: Save Cache
         uses: actions/cache/save@v4
         with:
           path: |
             .next/cache
-            .turbo/cache
             node_modules/.cache
           key: build-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('node_modules/.cache') }}
           enableCrossOsArchive: true

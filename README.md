@@ -12,3 +12,19 @@ This repository contains the source code of my personal website. It is built usi
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [MDX](https://mdxjs.com/)
+
+## Development
+
+```bash
+nvm use #or `fnm use` if you use fnm
+npm install
+node --run dev
+```
+
+## Build
+
+```bash
+nvm use #or `fnm use` if you use fnm
+npm ci
+node --run build
+```
