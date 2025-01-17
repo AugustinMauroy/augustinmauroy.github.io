@@ -47,7 +47,9 @@ jobs:
         run: npm ci
 
       - name: Build Next.js
-        run: node --run build
+        run: |
+          node --run build
+          node --run postbuild
 
       - name: Save Cache
         uses: actions/cache/save@v4

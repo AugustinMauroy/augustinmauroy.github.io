@@ -9,3 +9,4 @@ node --run test
 
 # Build the app
 node --run build
+node --run postbuild
