@@ -1,0 +1,98 @@
+---
+title: Introduction to Bench-Node
+description: Let's discover how to benchmark your Node.js code with Bench-Node
+date: 2025-01-29
+authors: AugustinMauroy
+---
+
+## What is `bench-node`?
+
+`bench-node` is a powerful benchmarking library for Node.js, designed to help developers measure the performance of their code. It allows you to run benchmarks on code blocks to determine operations per second, making it easier to identify bottlenecks and optimize your code for better performance. This guide is tailored for Node.js v22. It is also a library that I'm using in my projects.
+
+## When do you need to benchmark your code?
+
+Benchmarking is essential when you want to:
+
+- Compare different implementations of a function to determine which one is more efficient.
+- Identify performance bottlenecks in your application.
+- Ensure that optimizations and code changes have the desired performance impact.
+- Measure the impact of external libraries or dependencies on your code.
+
+## How to use `bench-node`?
+
+### Writing a benchmark
+
+To start using `bench-node`, you need to install the package as a development dependency in your project:
+
+```bash
+$ npm add -D bench-node
+```
+
+Once installed, you can create a benchmark suite and add benchmarks to it. Here's an example:
+
+```js
+import { Suite } from 'bench-node';
+
+const suite = new Suite();
+
+suite.add('Using delete property', () => {
+  const data = { x: 1, y: 2, z: 3 };
+  delete data.y;
+
+  data.x;
+  data.y;
+  data.z;
+});
+
+suite.run();
+```
+
+In this example, we create a new `Suite` and add a benchmark named "Using delete property". The benchmark function performs a simple operation of deleting a property from an object.
+
+### Running a benchmark(s)
+
+To run your benchmark, save the above code to a file (e.g., `my-benchmark.js`) and execute it using Node.js with the following command:
+
+```bash
+$ node --allow-natives-syntax my-benchmark.js
+```
+
+Alternatively, you can use the `bench-node-cli` tool to run benchmarks without installing the package locally:
+
+```bash
+$ npx bench-node-cli my-benchmark.js
+```
+
+### Analyzing the results
+
+After running the benchmark, you will see the results printed in the console. The output includes the number of operations per second, the number of runs sampled, and other statistical information. For example:
+
+```
+Using delete property x 3,326,913 ops/sec (11 runs sampled) v8-never-optimize=true min..max=(0ns ... 0ns) p75=0ns p99=0ns
+```
+
+You can customize the output format by using different reporters provided by `bench-node`. The available reporters include:
+
+- `textReport`: Provides simple statistical information (default).
+- `chartReport`: Displays a bar graph in the terminal. In my opinion, `chartReport` is a very good reporter to visualize which is the fastest method.
+- `htmlReport`: Generates an interactive HTML visualization.
+- `jsonReport`: Outputs benchmark results in JSON format.
+- `csvReport`: Outputs benchmark results in CSV format.
+
+To use a custom reporter, pass it as an option when creating the `Suite`:
+
+```js
+const { Suite, chartReport } = require('bench-node');
+
+const suite = new Suite({
+  reporter: chartReport,
+});
+```
+
+## Conclusion
+
+Benchmarking is a crucial step in optimizing your Node.js applications, and `bench-node` provides a robust and flexible solution for measuring code performance. By incorporating benchmarking into your development process, you can ensure that your code runs efficiently and identify areas for improvement. Whether you are comparing different implementations, measuring the impact of dependencies, or optimizing specific code blocks, `bench-node` makes it easy to get accurate and meaningful performance metrics.
+
+Happy benchmarking!
+
+Special thanks to [RafaelGSS](https://github.com/RafaelGSS) for making this possible. Additionally, note that the [nodejs-loaders](https://github.com/nodejs-loaders/nodejs-loaders) project, where I'm a maintainer, also uses `bench-node`.

@@ -1,0 +1,98 @@
+---
+title: Introduction à Bench-Node
+description: Découvrons comment benchmarker votre code Node.js avec Bench-Node
+date: 2025-01-29
+authors: AugustinMauroy
+---
+
+## Qu'est-ce que `bench-node`?
+
+`bench-node` est une puissante bibliothèque de benchmarking pour Node.js, conçue pour aider les développeurs à mesurer les performances de leur code. Elle permet d'exécuter des benchmarks sur des blocs de code pour déterminer les opérations par seconde, facilitant ainsi l'identification des goulots d'étranglement et l'optimisation du code pour de meilleures performances. Ce guide est adapté pour Node.js v22. C'est également une bibliothèque que j'utilise dans mes projets.
+
+## Quand avez-vous besoin de benchmarker votre code?
+
+Le benchmarking est essentiel lorsque vous souhaitez :
+
+- Comparer différentes implémentations d'une fonction pour déterminer laquelle est la plus efficace.
+- Identifier les goulots d'étranglement de performance dans votre application.
+- Vous assurer que les optimisations et les modifications de code ont l'impact de performance souhaité.
+- Mesurer l'impact des bibliothèques ou dépendances externes sur votre code.
+
+## Comment utiliser `bench-node`?
+
+### Écrire un benchmark
+
+Pour commencer à utiliser `bench-node`, vous devez installer le package en tant que dépendance de développement dans votre projet :
+
+```bash
+$ npm add -D bench-node
+```
+
+Une fois installé, vous pouvez créer une suite de benchmarks et y ajouter des benchmarks. Voici un exemple :
+
+```js
+import { Suite } from 'bench-node';
+
+const suite = new Suite();
+
+suite.add('Utilisation de la suppression de propriété', () => {
+  const data = { x: 1, y: 2, z: 3 };
+  delete data.y;
+
+  data.x;
+  data.y;
+  data.z;
+});
+
+suite.run();
+```
+
+Dans cet exemple, nous créons une nouvelle `Suite` et ajoutons un benchmark nommé "Utilisation de la suppression de propriété". La fonction de benchmark effectue une simple opération de suppression d'une propriété d'un objet.
+
+### Exécuter un ou des benchmarks
+
+Pour exécuter votre benchmark, enregistrez le code ci-dessus dans un fichier (par exemple, `mon-benchmark.js`) et exécutez-le avec Node.js en utilisant la commande suivante :
+
+```bash
+$ node --allow-natives-syntax mon-benchmark.js
+```
+
+Alternativement, vous pouvez utiliser l'outil `bench-node-cli` pour exécuter des benchmarks sans installer le package localement :
+
+```bash
+$ npx bench-node-cli mon-benchmark.js
+```
+
+### Analyser les résultats
+
+Après avoir exécuté le benchmark, vous verrez les résultats imprimés dans la console. La sortie inclut le nombre d'opérations par seconde, le nombre d'exécutions échantillonnées, et d'autres informations statistiques. Par exemple :
+
+```
+Utilisation de la suppression de propriété x 3,326,913 ops/sec (11 runs sampled) v8-never-optimize=true min..max=(0ns ... 0ns) p75=0ns p99=0ns
+```
+
+Vous pouvez personnaliser le format de sortie en utilisant différents reporters fournis par `bench-node`. Les reporters disponibles incluent :
+
+- `textReport` : Fournit des informations statistiques simples (par défaut).
+- `chartReport` : Affiche un graphique à barres dans le terminal. À mon avis, `chartReport` est un très bon reporter pour visualiser quelle est la méthode la plus rapide.
+- `htmlReport` : Génère une visualisation HTML interactive.
+- `jsonReport` : Sort les résultats de benchmark au format JSON.
+- `csvReport` : Sort les résultats de benchmark au format CSV.
+
+Pour utiliser un reporter personnalisé, passez-le en option lors de la création de la `Suite` :
+
+```js
+const { Suite, chartReport } = require('bench-node');
+
+const suite = new Suite({
+  reporter: chartReport,
+});
+```
+
+## Conclusion
+
+Le benchmarking est une étape cruciale dans l'optimisation de vos applications Node.js, et `bench-node` fournit une solution robuste et flexible pour mesurer les performances du code. En intégrant le benchmarking dans votre processus de développement, vous pouvez vous assurer que votre code s'exécute efficacement et identifier les domaines à améliorer. Que vous compariez différentes implémentations, mesuriez l'impact des dépendances, ou optimisiez des blocs de code spécifiques, `bench-node` facilite l'obtention de métriques de performance précises et significatives.
+
+Bon benchmarking !
+
+Un grand merci à [RafaelGSS](https://github.com/RafaelGSS) pour avoir rendu cela possible. De plus, notez que le projet [nodejs-loaders](https://github.com/nodejs-loaders/nodejs-loaders), dont je suis un mainteneur, utilise également `bench-node`.

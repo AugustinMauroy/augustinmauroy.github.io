@@ -17,7 +17,7 @@ Les tests sont une partie cruciale du développement logiciel, garantissant que 
 Tout d'abord, vous devez installer les dépendances nécessaires. En plus des dépendances de votre application React, vous aurez besoin des éléments suivants :
 
 ```bash
-npm install --save-dev @testing-library/react @testing-library/dom jsdom global-jsdom
+npm add --save-dev @testing-library/react @testing-library/dom jsdom global-jsdom
 ```
 
 > **Note** : Les autres dépendances que nous utiliserons proviennent de Node.js.
@@ -74,7 +74,7 @@ Pour gérer TypeScript et les modules CSS, vous devez enregistrer les chargeurs 
 
 Vous devrez enregistrer les chargeurs pour TypeScript et les modules CSS :
 
-Tout d'abord, installons les chargeurs :
+Tout d'abord, installons les chargeurs en temps que dépendances de développement :
 
 ```bash
 npm add -D @nodejs-loaders/tsx @nodejs-loaders/css-module
