@@ -124,7 +124,7 @@ const extensionsRegex = /\.(coffee|litcoffee|coffee\.md)$/;
 export async function resolve(specifier, context, nextResolve) {
   const resolvedUrl = new URL(specifier, context.parentURL).href;
   if (! extensionsRegex.test(resolvedUrl)) return nextResolve(specifier, context);
-  
+
   const format = await getPackageType(resolvedUrl);
 
   return {
@@ -293,3 +293,6 @@ In this example, the `load` hook checks if the file has a `.coffee` extension an
 ### Conclusion
 
 A loader in Node.js can do a lot to enhance the capabilities of the module system. By defining custom hooks, you can handle non-JavaScript files, transpile code on-the-fly, implement custom module formats, override or extend the default module resolution logic, handle import maps, enable hot module replacement, and integrate with build tools. This customization can be particularly useful for tasks such as loading TypeScript or CoffeeScript files, testing React components, and more. By leveraging the power of loaders, you can tailor the module system to better suit your specific needs, making it easier to work with different file types and module formats.
+
+> **NOTE**
+> This article is designed for node `>=v23.6.0`

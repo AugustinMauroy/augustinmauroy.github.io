@@ -17,7 +17,7 @@ Testing is a crucial part of software development, ensuring that your applicatio
 First, you need to install the necessary dependencies. In addition to your React app dependencies, you will need the following:
 
 ```bash
-npm install --save-dev @testing-library/react @testing-library/dom jsdom global-jsdom
+npm add --save-dev @testing-library/react @testing-library/dom jsdom global-jsdom
 ```
 
 > **Note**: The rest of the dependencies we will use come from Node.js.
@@ -74,7 +74,7 @@ To handle TypeScript and CSS modules, you need to register the appropriate loade
 
 You'll need to register the loaders for TypeScript and CSS modules:
 
-First let's install the loaders:
+First let's install the loaders as dev dependencies:
 
 ```bash
 npm add -D @nodejs-loaders/tsx @nodejs-loaders/css-module

@@ -38,6 +38,7 @@
         px-4
         py-2
         text-sm
+        truncate
         font-bold;
 
       svg {
