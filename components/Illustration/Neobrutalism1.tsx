@@ -1,6 +1,6 @@
 import type { FC, SVGProps } from 'react';
 
-const Neobrutalism1: FC<SVGProps<SVGSVGElement>> = props => (
+const Neobrutalism1: FC<SVGProps<SVGSVGElement> & { tw?: string }> = props => (
   <svg
     width="444"
     height="444"
