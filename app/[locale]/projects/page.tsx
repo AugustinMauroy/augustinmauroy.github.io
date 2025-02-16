@@ -51,7 +51,6 @@ const Page: FC<PageProps> = async ({ params }) => {
     <ArticleLayout
       title={frontmatter.title}
       description={frontmatter.description}
-      markdownContent={false}
     >
       {content}
     </ArticleLayout>

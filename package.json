@@ -14,8 +14,8 @@
     "biome:format": "biome format --write ./",
     "biome:lint": "biome lint --write ./",
     "biome:ci": "biome ci ./",
-    "format": "node --run biome:format && node --run biome:lint",
-    "type-check": "tsc --noEmit",
+    "pre-commit": "node --run biome:format && node --run biome:lint",
+    "types:check": "tsc --noEmit",
     "storybook": "BUILD_ENV=storybook storybook dev -p 6006 --quiet --no-open",
     "storybook:build": "BUILD_ENV=storybook storybook build",
     "prepare": "husky"

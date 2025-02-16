@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import BaseLayout from '~/components/Layout/Base/index.tsx';
 import styles from './index.module.css';
 import type { FC, PropsWithChildren } from 'react';
@@ -6,13 +5,11 @@ import type { FC, PropsWithChildren } from 'react';
 type ArticleLayoutProps = PropsWithChildren<{
   title: string;
   description?: string;
-  markdownContent?: boolean;
 }>;
 
 const ArticleLayout: FC<ArticleLayoutProps> = ({
   title,
   description,
-  markdownContent = true,
   children,
 }) => (
   <BaseLayout className={styles.article}>
@@ -20,9 +17,7 @@ const ArticleLayout: FC<ArticleLayoutProps> = ({
       <h1>{title}</h1>
       {description && <p>{description}</p>}
     </header>
-    <section className={classNames({ ['articleContent']: markdownContent })}>
-      {children}
-    </section>
+    <section className="articleContent">{children}</section>
   </BaseLayout>
 );
 

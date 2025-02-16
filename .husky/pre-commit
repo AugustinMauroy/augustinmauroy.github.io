@@ -2,7 +2,7 @@
 npx lint-staged
 
 # Verify typescript staged files
-node --run type-check
+node --run types:check
 
 # Run tests
 node --run test
