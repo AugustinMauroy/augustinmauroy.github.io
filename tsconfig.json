@@ -14,6 +14,7 @@
     "jsx": "preserve",
     "incremental": true,
     "target": "ESNext",
+    "erasableSyntaxOnly": true,
     "plugins": [
       {
         "name": "next"

@@ -12,7 +12,7 @@ const copyToClipboard = (value: string | undefined) => {
     .catch(() => false);
 };
 
-const useCopyToClipboard = () => {
+const useCopyToClipboard = (timeout = 3000) => {
   const [copied, setCopied] = useState(false);
 
   const copyText = (text: string | undefined) =>
@@ -20,7 +20,7 @@ const useCopyToClipboard = () => {
 
   useEffect(() => {
     if (copied) {
-      const timerId = setTimeout(() => setCopied(false), 3000);
+      const timerId = setTimeout(() => setCopied(false), timeout);
 
       return () => clearTimeout(timerId);
     }

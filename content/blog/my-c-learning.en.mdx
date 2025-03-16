@@ -1,0 +1,414 @@
+---
+title: My C Language Learning Roadmap
+description: In this article, I will share with you the roadmap I followed to learn the C language, along with code examples for each step.
+date: 2025-03-16
+authors: AugustinMauroy
+---
+
+## Why is C Important?
+
+The C language is a popular and widely used programming language in system software development, device drivers, video games, and embedded applications. It is known for its performance, portability, and flexibility. Learning C is an excellent way to understand fundamental programming concepts and become a better developer.
+
+## First Program
+
+The first program I wrote in C was the famous "Hello, World!". This program is a classic for starting with any programming language.
+
+<details>
+<summary>View the code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    printf("Hello, World!\n");
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+## Variables
+
+After understanding how to write a simple program, I learned to manipulate variables. Variables are containers for storing data.
+
+<details>
+<summary>View the code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int age = 25;
+    float height = 5.9;
+    char initial = 'J';
+
+    printf("Age: %d\n", age);
+    printf("Height: %.1f\n", height);
+    printf("Initial: %c\n", initial);
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+### Data Types
+
+The C language supports different data types, such as integers, floats, characters, and strings.
+
+<table>
+  <thead>
+    <tr>
+      <th>Data Type</th>
+      <th>Description</th>
+      <th>Size (in bytes)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>int</code></td>
+      <td>Integer</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td><code>float</code></td>
+      <td>Float</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td><code>double</code></td>
+      <td>Double Float</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td><code>char</code></td>
+      <td>Character</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><code>char[]</code></td>
+      <td>String</td>
+      <td>Variable</td>
+    </tr>
+    <tr>
+      <td><code>void</code></td>
+      <td>Void</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
+
+## Conditional Structures
+
+Conditional structures, such as `if`, `else if`, and `else` statements, allow you to make decisions in a program.
+
+<details>
+<summary>View the code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int number = 10;
+
+    if (number > 0) {
+        printf("The number is positive.\n");
+    } else if (number < 0) {
+        printf("The number is negative.\n");
+    } else {
+        printf("The number is zero.\n");
+    }
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+## Iterative Structures
+
+Iterative structures, such as `for`, `while`, and `do-while` loops, allow you to repeat blocks of code.
+
+<details>
+<summary>View the code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    for (int i = 0; i < 5; i++) {
+        printf("Iteration %d\n", i);
+    }
+
+    int j = 0;
+    while (j < 5) {
+        printf("Iteration %d\n", j);
+        j++;
+    }
+
+    int k = 0;
+    do {
+        printf("Iteration %d\n", k);
+        k++;
+    } while (k < 5);
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+## Arrays
+
+Arrays are collections of data of the same type. I learned to declare, initialize, and access elements of an array.
+
+You can declare an array as follows:
+
+```c
+int numbers[5];
+```
+
+You can initialize an array as follows:
+
+```c
+int numbers[5] = {1, 2, 3, 4, 5};
+```
+
+You can access the elements of an array as follows:
+
+```c
+printf("Element 0: %d\n", numbers[0]);
+```
+
+> **Note**: Array indices start at 0.
+
+<details>
+<summary>View the code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int numbers[5] = {1, 2, 3, 4, 5};
+
+    for (int i = 0; i < 5; i++) {
+        printf("Element %d: %d\n", i, numbers[i]);
+    }
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+### Getting the Size of an Array
+
+To get the size of an array, you can divide the total size of the array by the size of one element of the array.
+
+```c
+int size = sizeof(numbers)/sizeof(numbers[0]);
+```
+
+## Sorting
+
+I learned to sort arrays using sorting algorithms like bubble sort.
+
+<details>
+<summary>View the code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+int main(void) {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    bubbleSort(arr, n);
+
+    printf("Sorted array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+## String Manipulation
+
+String manipulation is essential for many applications. I learned to use functions like `strlen`, `strcpy`, and `strcat`.
+
+<details>
+<summary>View the code</summary>
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    char str1[50] = "Hello";
+    char str2[50] = "World";
+    char str3[50];
+
+    strcpy(str3, str1);
+    strcat(str3, " ");
+    strcat(str3, str2);
+
+    printf("Concatenated string: %s\n", str3);
+    printf("String length: %lu\n", strlen(str3));
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+## Files
+
+File manipulation is a common task in programming. I learned to read and write files using sequential access and direct access.
+
+### Creating a `FILE` Type Variable
+
+To manipulate files in C, you use a variable of type `FILE`. This variable is actually a pointer to a structure that contains information about the file. To create a `FILE` type variable, you use the `fopen` function with the following arguments:
+
+- `filename`: the name of the file.
+- `mode`: the opening mode (`r`, `w`, `a`, `r+`, `w+`, `a+`).
+  - `r`: read.
+  - `w`: write (creates a new file or overwrites the existing file).
+  - `a`: append (writes at the end of the file).
+  - `r+`: read and write (the file must exist).
+  - `w+`: read and write (creates a new file or overwrites the existing file).
+  - `a+`: read and append (writes at the end of the file).
+
+Adding the `b` symbol at the end of the opening mode allows you to open the file in binary mode.
+
+### Pointers
+
+A pointer is a variable that contains the memory address of another variable. In C, pointers are used to manipulate memory directly and to pass references to functions. In the context of files, a pointer of type `FILE` is used to reference an open file.
+
+### Sequential Access
+
+Sequential access allows you to read or write files linearly.
+
+<details>
+<summary>View the code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    FILE *file = fopen("example.txt", "w");
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return EXIT_FAILURE;
+    }
+
+    fprintf(file, "Hello, world!\n");
+    fclose(file);
+
+    file = fopen("example.txt", "r");
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return EXIT_FAILURE;
+    }
+
+    char buffer[100];
+    while (fgets(buffer, sizeof(buffer), file)) {
+        printf("%s", buffer);
+    }
+
+    fclose(file);
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+### Direct Access
+
+Direct access allows you to read or write files at specific positions.
+
+<details>
+<summary>View the code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    FILE *file = fopen("example.txt", "w+");
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return EXIT_FAILURE;
+    }
+
+    fputs("Hello, world!\n", file);
+    fseek(file, 0, SEEK_SET);
+
+    char buffer[100];
+    fgets(buffer, sizeof(buffer), file);
+    printf("%s", buffer);
+
+    fclose(file);
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+### Positioning in a File
+
+The `fseek` function allows you to move to a specific position in a file. You can move from the beginning, the end, or the current position. To do this, you use the `fseek` function with the following arguments:
+
+- `file`: the pointer to the file.
+- `offset`: the offset from the starting position.
+- `whence`: the starting position (`SEEK_SET`, `SEEK_CUR`, or `SEEK_END`).
+
+<table>
+  <thead>
+    <tr>
+      <th>Starting Position</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>SEEK_SET</code></td>
+      <td>Beginning of the file</td>
+    </tr>
+    <tr>
+      <td><code>SEEK_CUR</code></td>
+      <td>Current position</td>
+    </tr>
+    <tr>
+      <td><code>SEEK_END</code></td>
+      <td>End of the file</td>
+    </tr>
+  </tbody>
+</table>
+
+## Conclusion
+
+I hope this roadmap helps you learn the C language and become a better developer. Remember to practice regularly and work on concrete projects to strengthen your skills. Good luck!

@@ -91,12 +91,14 @@ body {
 
   ul {
     @apply ml-8
-      list-disc;
+      list-disc
+      my-4;
   }
 
   ol {
     @apply ml-8
-      list-decimal;
+      list-decimal
+      my-4;
   }
 
   :not(pre) > code {
@@ -113,5 +115,49 @@ body {
       hover:underline
       dark:text-blue-500
       dark:hover:text-blue-300;
+  }
+
+  table {
+    @apply w-full
+      table-auto
+      border-collapse;
+  }
+
+  th {
+    @apply bg-neutral-100
+      dark:bg-neutral-800
+      border
+      border-neutral-200
+      dark:border-neutral-700
+      px-4
+      py-2
+      text-left
+      text-neutral-900
+      dark:text-neutral-50;
+  }
+
+  td {
+    @apply border
+      border-neutral-200
+      dark:border-neutral-700
+      px-4
+      py-2;
+  }
+
+  details {
+    summary {
+      @apply cursor-pointer
+        font-bold
+        text-neutral-900
+        dark:text-neutral-50
+        border-b
+        border-transparent
+        transition-colors;
+    }
+
+    &:not([open]) summary:hover {
+      @apply border-neutral-900
+          dark:border-neutral-50;
+    }
   }
 }

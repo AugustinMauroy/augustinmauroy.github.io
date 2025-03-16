@@ -1,7 +1,12 @@
-// @ts-ignore not backported to 22 and we are on 23
-import { register, registerHooks } from 'node:module';
-import 'global-jsdom/register';
+import { register } from 'node:module';
+import { GlobalRegistrator } from '@happy-dom/global-registrator';
 
-registerHooks('nodejs-loaders/dev/alias', import.meta.url);
+register('@nodejs-loaders/alias', import.meta.url);
 register('@nodejs-loaders/tsx', import.meta.url);
 register('@nodejs-loaders/css-module', import.meta.url);
+
+GlobalRegistrator.register({
+  url: 'http://localhost:3000',
+  width: 1920,
+  height: 1080,
+});

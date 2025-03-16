@@ -1,61 +1,0 @@
-
-
-> augustinmauroy.github.io@1.0.0 build
-> next build
-
-[1G[0K   [1m[38;2;173;127;168m▲ Next.js 15.1.5[39m[22m
-
- [37m[1m [22m[39m Creating an optimized production build ...
- [32m[1m✓[22m[39m Compiled successfully
- [37m[1m [22m[39m Skipping validation of types
- [37m[1m [22m[39m Skipping linting
-[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data     [32m[1m✓[22m[39m Collecting page data 
-[?25l [37m[1m [22m[39m Generating static pages (0/29)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/29)  [36m[=   ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/29)  [36m[==  ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/29)  [36m[=== ][39m[2K[1G [37m[1m [22m[39m Generating static pages (8/29)  [36m[ ===][39m[2K[1G [37m[1m [22m[39m Generating static pages (8/29)  [36m[  ==][39m[2K[1G [37m[1m [22m[39m Generating static pages (8/29)  [36m[   =][39m[2K[1G [37m[1m [22m[39m Generating static pages (19/29)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (19/29)  [36m[   =][39m[2K[1G [37m[1m [22m[39m Generating static pages (23/29)  [36m[  ==][39m[2K[1G [37m[1m [22m[39m Generating static pages (23/29)  [36m[ ===][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (29/29)
-[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[?25l [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G[?25h [37m[1m [22m[39m Collecting build traces     [32m[1m✓[22m[39m Collecting build traces 
-[?25l [37m[1m [22m[39m Exporting (0/3)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Exporting (0/3)  [36m[=   ][39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Exporting (0/3)  [36m[==  ][39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G[?25h[2K[1G[?25h [32m[1m✓[22m[39m Exporting (3/3)
-[?25l [36m.[39m [2K[1G[?25h    [32m[1m✓[22m[39m Finalizing page optimization 
-
-[4mRoute (app)[24m                                                      [4mSize[24m     [4mFirst Load JS[24m
-┌ ○ /_not-found                                                  979 B           [37m[1m106 kB[22m[39m
-├ ● /[locale]                                                    4.69 kB         [37m[1m159 kB[22m[39m
-├   ├ /en
-├   └ /fr
-├ ● /[locale]/404                                                1.66 kB         [37m[1m111 kB[22m[39m
-├   ├ /en/404
-├   └ /fr/404
-├ ● /[locale]/about                                              2.59 kB         [37m[1m157 kB[22m[39m
-├   ├ /en/about
-├   └ /fr/about
-├ ● /[locale]/blog/[[...page]]                                   4.04 kB         [37m[1m159 kB[22m[39m
-├   ├ /en/blog/index
-├   ├ /en/blog/0
-├   ├ /fr/blog/index
-├   └ /fr/blog/0
-├ ● /[locale]/blog/post/[post]                                   3.25 kB         [37m[1m158 kB[22m[39m
-├   ├ /en/blog/post/etherpad-next
-├   ├ /en/blog/post/how-i-style-my-website
-├   ├ /en/blog/post/how-to-test-react-app-with-node-test-runner
-├   └ [+7 more paths]
-├ ● /[locale]/feed/blog/rss.xml                                  1.46 kB         [37m[1m132 kB[22m[39m
-├   ├ /en/feed/blog/rss.xml
-├   └ /fr/feed/blog/rss.xml
-├ ● /[locale]/projects                                           2.59 kB         [37m[1m157 kB[22m[39m
-├   ├ /en/projects
-├   └ /fr/projects
-├ ○ /robots.txt                                                  0 B                [37m[1m0 B[22m[39m
-└ ○ /sitemap.xml                                                 0 B                [37m[1m0 B[22m[39m
-+ First Load JS shared by all                                    [37m[1m105 kB[22m[39m
-  ├ chunks/4bd1b696-61a53374f0fe97c3.js                          52.9 kB
-  ├ chunks/517-c75a85370deebeae.js                               50.4 kB
-  └ other shared chunks (total)                                  1.9 kB
-
-
-○  (Static)  prerendered as static content
-●  (SSG)     prerendered as static HTML (uses [36mgenerateStaticParams[39m)
-
-[?25h[1G[0K⠙[1G[0K
-> augustinmauroy.github.io@1.0.0 postbuild
-> node ./scripts/postbuild.js
-
-[1G[0K⠙[1G[0K[32m✓[39m Post build script completed
-[1G[0K⠙[1G[0K

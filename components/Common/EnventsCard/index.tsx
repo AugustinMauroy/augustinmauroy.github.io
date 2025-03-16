@@ -1,4 +1,7 @@
-import { Neobrutalism1, Neobrutalism2 } from '~/components/Illustration';
+import {
+  Neobrutalism1,
+  Neobrutalism2,
+} from '~/components/Illustration/index.ts';
 import styles from './index.module.css';
 import type { FC } from 'react';
 

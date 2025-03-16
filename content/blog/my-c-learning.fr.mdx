@@ -1,0 +1,417 @@
+---
+title: Ma Roadmap d'Apprentissage du Langage C
+description: Dans cet article, je vais partager avec vous la roadmap que j'ai suivie pour apprendre le langage C, ainsi que des exemples de code pour chaque étape.
+date: 2025-03-16
+authors: AugustinMauroy
+---
+
+## Pourquoi le C est-il Important ?
+
+Le langage C est un langage de programmation populaire et largement utilisé dans le développement de logiciels système, de pilotes de périphériques, de jeux vidéo, et d'applications embarquées. Il est connu pour sa performance, sa portabilité, et sa flexibilité. Apprendre le C est un excellent moyen de comprendre les concepts fondamentaux de la programmation et de devenir un meilleur développeur.
+
+## Premier Programme
+
+Le premier programme que j'ai écrit en C est le célèbre "Hello, World!". Ce programme est un classique pour débuter avec n'importe quel langage de programmation.
+
+<details>
+<summary>Voir le code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    printf("Hello, World!\n");
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+## Variables
+
+Après avoir compris comment écrire un programme simple, j'ai appris à manipuler des variables. Les variables sont des conteneurs pour stocker des données.
+
+<details>
+<summary>Voir le code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int age = 25;
+    float height = 5.9;
+    char initial = 'J';
+
+    printf("Age: %d\n", age);
+    printf("Height: %.1f\n", height);
+    printf("Initial: %c\n", initial);
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+### Types de Données
+
+Le langage C prend en charge différents types de données, tels que les entiers, les flottants, les caractères, et les chaînes de caractères.
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Type de Donnée</th>
+      <th>Description</th>
+      <th>Taille (en octets)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>int</code></td>
+      <td>Entier</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td><code>float</code></td>
+      <td>Flottant</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td><code>double</code></td>
+      <td>Double Flottant</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td><code>char</code></td>
+      <td>Caractère</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><code>char[]</code></td>
+      <td>Chaîne de Caractères</td>
+      <td>Variable</td>
+    </tr>
+    <tr>
+      <td><code>void</code></td>
+      <td>Vide</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
+
+## Structures Alternatives
+
+Les structures alternatives, comme les instructions `if`, `else if`, et `else`, permettent de prendre des décisions dans un programme.
+
+<details>
+<summary>Voir le code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int number = 10;
+
+    if (number > 0) {
+        printf("Le nombre est positif.\n");
+    } else if (number < 0) {
+        printf("Le nombre est négatif.\n");
+    } else {
+        printf("Le nombre est zéro.\n");
+    }
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+## Structures Itératives
+
+Les structures itératives, comme les boucles `for`, `while`, et `do-while`, permettent de répéter des blocs de code.
+
+<details>
+<summary>Voir le code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    for (int i = 0; i < 5; i++) {
+        printf("Itération %d\n", i);
+    }
+
+    int j = 0;
+    while (j < 5) {
+        printf("Itération %d\n", j);
+        j++;
+    }
+
+    int k = 0;
+    do {
+        printf("Itération %d\n", k);
+        k++;
+    } while (k < 5);
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+## Tableaux
+
+Les tableaux sont des collections de données de même type. J'ai appris à déclarer, initialiser, et accéder aux éléments d'un tableau.
+
+On peut déclarer un tableau de la manière suivante :
+
+```c
+int numbers[5];
+```
+
+On peut initialiser un tableau de la manière suivante :
+
+```c
+int numbers[5] = {1, 2, 3, 4, 5};
+```
+
+On peut accéder aux éléments d'un tableau de la manière suivante :
+
+```c
+printf("Élément 0 : %d\n", numbers[0]);
+```
+
+> **Note** : Les indices des tableaux commencent à 0.
+
+<details>
+
+<summary>Voir le code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int numbers[5] = {1, 2, 3, 4, 5};
+
+    for (int i = 0; i < 5; i++) {
+        printf("Élément %d : %d\n", i, numbers[i]);
+    }
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+### Avoir la Taille d'un Tableau
+
+Pour obtenir la taille d'un tableau, on peut diviser la taille totale du tableau par la taille d'un élément du tableau.
+
+```c
+int size = sizeof(numbers)/sizeof(numbers[0]);
+```
+
+
+## Tri (Sorting)
+
+J'ai appris à trier des tableaux en utilisant des algorithmes de tri comme le tri à bulles (bubble sort).
+
+<details>
+<summary>Voir le code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+int main(void) {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    bubbleSort(arr, n);
+
+    printf("Tableau trié : ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+## Manipulation de Chaînes de Caractères
+
+La manipulation de chaînes de caractères est essentielle pour de nombreuses applications. J'ai appris à utiliser des fonctions comme `strlen`, `strcpy`, et `strcat`.
+
+<details>
+<summary>Voir le code</summary>
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    char str1[50] = "Hello";
+    char str2[50] = "World";
+    char str3[50];
+
+    strcpy(str3, str1);
+    strcat(str3, " ");
+    strcat(str3, str2);
+
+    printf("Chaîne concaténée : %s\n", str3);
+    printf("Longueur de la chaîne : %lu\n", strlen(str3));
+
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+## Fichiers
+
+La manipulation de fichiers est une tâche courante en programmation. J'ai appris à lire et à écrire des fichiers en utilisant l'accès séquentiel et l'accès direct.
+
+### Création d'une Variable de Type `FILE`
+
+Pour manipuler des fichiers en C, on utilise une variable de type `FILE`. Cette variable est en réalité un pointeur vers une structure qui contient des informations sur le fichier. Pour créer une variable de type `FILE`, on utilise la fonction `fopen` avec les arguments suivants :
+
+- `filename` : le nom du fichier.
+- `mode` : le mode d'ouverture (`r`, `w`, `a`, `r+`, `w+`, `a+`).
+  - `r` : lecture.
+  - `w` : écriture (crée un nouveau fichier ou écrase le fichier existant).
+  - `a` : ajout (écrit à la fin du fichier).
+  - `r+` : lecture et écriture (le fichier doit exister).
+  - `w+` : lecture et écriture (crée un nouveau fichier ou écrase le fichier existant).
+  - `a+` : lecture et ajout (écrit à la fin du fichier).
+
+L'ajout du symbole `b` à la fin du mode d'ouverture permet d'ouvrir le fichier en mode binaire.
+
+### Pointeurs
+
+Un pointeur est une variable qui contient l'adresse mémoire d'une autre variable. En C, les pointeurs sont utilisés pour manipuler directement la mémoire et pour passer des références à des fonctions. Dans le contexte des fichiers, un pointeur de type `FILE` est utilisé pour référencer un fichier ouvert.
+
+### Accès Séquentiel
+
+L'accès séquentiel permet de lire ou d'écrire des fichiers de manière linéaire.
+
+<details>
+<summary>Voir le code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    FILE *file = fopen("example.txt", "w");
+    if (file == NULL) {
+        printf("Erreur lors de l'ouverture du fichier.\n");
+        return EXIT_FAILURE;
+    }
+
+    fprintf(file, "Bonjour, monde!\n");
+    fclose(file);
+
+    file = fopen("example.txt", "r");
+    if (file == NULL) {
+        printf("Erreur lors de l'ouverture du fichier.\n");
+        return EXIT_FAILURE;
+    }
+
+    char buffer[100];
+    while (fgets(buffer, sizeof(buffer), file)) {
+        printf("%s", buffer);
+    }
+
+    fclose(file);
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+### Accès Direct
+
+L'accès direct permet de lire ou d'écrire des fichiers à des positions spécifiques.
+
+<details>
+<summary>Voir le code</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    FILE *file = fopen("example.txt", "w+");
+    if (file == NULL) {
+        printf("Erreur lors de l'ouverture du fichier.\n");
+        return EXIT_FAILURE;
+    }
+
+    fputs("Bonjour, monde!\n", file);
+    fseek(file, 0, SEEK_SET);
+
+    char buffer[100];
+    fgets(buffer, sizeof(buffer), file);
+    printf("%s", buffer);
+
+    fclose(file);
+    return EXIT_SUCCESS;
+}
+```
+
+</details>
+
+### Positionnement dans un Fichier
+
+La fonction `fseek` permet de se déplacer à une position spécifique dans un fichier. Il est possible de se déplacer à partir du début, de la fin, ou de la position actuelle. Pour cela, on utilise la fonction `fseek` avec les arguments suivants :
+
+- `file` : le pointeur vers le fichier.
+- `offset` : le décalage par rapport à la position de départ.
+- `whence` : la position de départ (`SEEK_SET`, `SEEK_CUR`, ou `SEEK_END`).
+
+<table>
+  <thead>
+    <tr>
+      <th>Position de Départ</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>SEEK_SET</code></td>
+      <td>Début du fichier</td>
+    </tr>
+    <tr>
+      <td><code>SEEK_CUR</code></td>
+      <td>Position actuelle</td>
+    </tr>
+    <tr>
+      <td><code>SEEK_END</code></td>
+      <td>Fin du fichier</td>
+    </tr>
+  </tbody>
+</table>
+
+## Conclusion
+
+J'espère que cette roadmap vous aidera à apprendre le langage C et à devenir un meilleur développeur. N'oubliez pas de pratiquer régulièrement et de travailler sur des projets concrets pour renforcer vos compétences. Bonne chance !
