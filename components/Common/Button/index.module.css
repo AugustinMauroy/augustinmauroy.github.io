@@ -34,11 +34,15 @@
       dark:ring-offset-black;
   }
 
+  &[aria-disabled="true"],
   &:disabled {
     @apply cursor-not-allowed
-      border-neutral-400
-      bg-neutral-200
-      text-neutral-400;
+      border-green-700
+      bg-green-200
+      text-green-600
+      dark:border-green-500
+      dark:bg-green-800
+      dark:text-green-300;
   }
 
   svg {

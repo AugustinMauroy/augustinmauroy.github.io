@@ -104,6 +104,18 @@ const Page: FC<PageProps> = async ({ params }) => {
             <PostCard key={post.slug} {...post} {...post.frontmatter} />
           ))}
       </section>
+      <pre>
+        {JSON.stringify(
+          {
+            pageNumbers,
+            totalPosts,
+            totalPages,
+            posts: metadata.map(post => post.slug),
+          },
+          null,
+          2
+        )}
+      </pre>
       {totalPages > 1 && (
         <Pagination currentPage={pageNumbers} totalPages={totalPages} />
       )}

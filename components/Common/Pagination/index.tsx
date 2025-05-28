@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import LocalizedLink from '../LocalizedLink.tsx';
 import ButtonLink from '../Button/Link/index.tsx';
 import styles from './index.module.css';
 import type { FC } from 'react';
@@ -9,7 +9,14 @@ import type { FC } from 'react';
 const MAX_ITEMS = 5;
 
 type PaginationProps = {
+  /**
+   * The current page number.
+   * 0 means the first page.
+   */
   currentPage: number;
+  /**
+   * The total number of pages.
+   */
   totalPages: number;
 };
 
@@ -28,7 +35,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages }) => {
     <div className={styles.pagination}>
       <ButtonLink
         href={`/blog/${currentPage - 1}`}
-        aria-disabled={currentPage === 1}
+        aria-disabled={currentPage === 0}
       >
         <ArrowLeftIcon aria-label={t('previous')} />
       </ButtonLink>
@@ -38,19 +45,19 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages }) => {
         </span>
       )}
       {pages.slice(start - 1, end).map(page => (
-        <Link
+        <LocalizedLink
           key={page}
-          href={`/blog/${page === 1 ? '' : page}`}
+          href={`/blog/${page === 0 ? '' : page - 1}`}
           className={classNames(styles.item, {
-            [styles.active]: currentPage === page,
+            [styles.active]: currentPage === page - 1,
             [styles.inactive]: currentPage !== page,
           })}
           aria-label={t('page', { page })}
           title={t('page', { page })}
-          tabIndex={currentPage === page ? -1 : undefined}
+          tabIndex={currentPage === page - 1 ? -1 : undefined}
         >
           {page}
-        </Link>
+        </LocalizedLink>
       ))}
       {end < totalPages && (
         <span role="presentation" className={styles.ellipsis}>
@@ -59,7 +66,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages }) => {
       )}
       <ButtonLink
         href={`/blog/${currentPage + 1}`}
-        aria-disabled={currentPage === totalPages}
+        aria-disabled={currentPage === totalPages - 1}
       >
         <ArrowRightIcon aria-label={t('next')} />
       </ButtonLink>
