@@ -6,7 +6,6 @@ import ButtonLink from '~/components/Common/Button/Link/index.tsx';
 import PostCard from '~/components/Common/PostCard/index.tsx';
 import Pagination from '~/components/Common/Pagination/index.tsx';
 import { getSlugs, getFrontmatter } from '~/lib/content.ts';
-import styles from './page.module.css';
 import type { FC } from 'react';
 import type { Metadata } from 'next';
 import type { BlogFrontmatter } from '~/types/frontmatter.ts';
@@ -82,18 +81,18 @@ const Page: FC<PageProps> = async ({ params }) => {
   const t = await getTranslations('app.blog');
 
   return (
-    <BaseLayout className={styles.page}>
-      <header className={styles.header}>
-        <h1>{t('title')}</h1>
+    <BaseLayout className="mx-auto w-full p-4 md:px-8 lg:w-3/4 lg:px-0">
+      <header className="relative mb-4 border-b-2 border-b-black py-4 dark:border-b-white">
+        <h1 className="text-4xl font-bold">{t('title')}</h1>
         <ButtonLink
           href="/feed/blog/rss.xml"
           aria-label={t('rss')}
-          className={styles.rss}
+          className="absolute right-0 top-0 mr-4 mt-4"
         >
           <RssIcon aria-label={t('rss')} />
         </ButtonLink>
       </header>
-      <section className={styles.posts}>
+      <section className="mb-4 flex flex-wrap gap-4">
         {metadata
           .sort(
             (a, b) =>

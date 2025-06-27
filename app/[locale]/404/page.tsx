@@ -25,9 +25,11 @@ const NotFound: FC<NotFoundProps> = async ({ params }) => {
   const t = await getTranslations('app.notFound');
 
   return (
-    <div className={styles.container}>
-      <h1>{t('title')}</h1>
-      <p>{t('message')}</p>
+    <div className="flex h-screen flex-col items-center justify-center">
+      <h1 className="mb-4 text-4xl font-bold">{t('title')}</h1>
+      <p className="mb-4 text-center text-lg text-neutral-600 dark:text-neutral-400">
+        {t('message')}
+      </p>
       <ButtonLink href="/">
         {t('back')}
         <ArrowRightIcon />
