@@ -1,4 +1,5 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+import withRspack from 'next-rspack';
 import type { NextConfig } from 'next';
 
 const withNextIntl = createNextIntlPlugin('./lib/i18n/request.ts');
@@ -31,4 +32,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withNextIntl(nextConfig);
+const configWithIntl = withNextIntl(nextConfig);
+
+export default process.env.NODE_ENV === 'production'
+  ? configWithIntl
+  : withRspack(configWithIntl);

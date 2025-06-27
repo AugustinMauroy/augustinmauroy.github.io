@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build --turbopack",
+    "build": "next build",
     "postbuild": "node ./scripts/postbuild.js",
     "start": "next start",
     "test:unit": "node --no-warnings --enable-source-maps --import ./node-hooks/react.ts --test **/tests/*.test.tsx **/tests/*.test.ts",
@@ -52,6 +52,7 @@
     "@types/react": "~19.1.8",
     "@types/react-dom": "~19.1.6",
     "autoprefixer": "~10.4.21",
+    "next-rspack": "^15.3.4",
     "postcss": "^8.5.3",
     "storybook": "~9.0.13",
     "tailwindcss": "~3.4.17",
