@@ -18,8 +18,7 @@
     "pre-commit": "node --run biome:format && node --run biome:lint",
     "types:check": "tsc --noEmit",
     "storybook": "BUILD_ENV=storybook storybook dev -p 6006 --quiet --no-open",
-    "storybook:build": "BUILD_ENV=storybook storybook build",
-    "prepare": "husky"
+    "storybook:build": "BUILD_ENV=storybook storybook build"
   },
   "dependencies": {
     "@heroicons/react": "~2.2.0",
@@ -39,34 +38,25 @@
     "shiki": "~3.2.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@happy-dom/global-registrator": "^17.4.4",
-    "@nodejs-loaders/alias": "~2.0.1",
+    "@biomejs/biome": "2.0.0",
+    "@happy-dom/global-registrator": "^18.0.1",
+    "@nodejs-loaders/alias": "~2.1.2",
     "@nodejs-loaders/css-module": "~1.1.0",
-    "@nodejs-loaders/tsx": "~1.1.1",
-    "@storybook/addon-a11y": "~8.6.6",
-    "@storybook/addon-essentials": "~8.6.6",
-    "@storybook/addon-interactions": "~8.6.6",
-    "@storybook/addon-links": "~8.6.6",
-    "@storybook/addon-themes": "~8.6.6",
-    "@storybook/nextjs": "~8.6.6",
-    "@storybook/react": "~8.6.6",
+    "@nodejs-loaders/tsx": "~1.1.2",
+    "@storybook/addon-a11y": "~9.0.13",
+    "@storybook/addon-links": "~9.0.13",
+    "@storybook/addon-themes": "~9.0.13",
+    "@storybook/nextjs": "~9.0.13",
+    "@storybook/react": "~9.0.13",
     "@testing-library/dom": "~10.4.0",
-    "@testing-library/react": "~16.2.0",
-    "@types/node": "~22.13.10",
-    "@types/react": "~19.0.10",
-    "@types/react-dom": "~19.0.4",
+    "@testing-library/react": "~16.3.0",
+    "@types/node": "~24.0.4",
+    "@types/react": "~19.1.8",
+    "@types/react-dom": "~19.1.6",
     "autoprefixer": "~10.4.21",
-    "husky": "~9.1.7",
-    "lint-staged": "~15.4.3",
     "postcss": "^8.5.3",
-    "storybook": "~8.6.6",
+    "storybook": "~9.0.13",
     "tailwindcss": "~3.4.17",
-    "typescript": "~5.8.2"
-  },
-  "engines": {
-    "node": "23.x",
-    "npm": "10.x"
-  },
-  "packageManager": "npm@10.0.0"
+    "typescript": "~5.8.3"
+  }
 }
