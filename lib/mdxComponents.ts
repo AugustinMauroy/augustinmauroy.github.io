@@ -1,5 +1,4 @@
 import Codebox from '~/components/Common/Codebox/index.tsx';
-import Blockquote from '~/components/Common/Blockquote/index.tsx';
 import ProjectCard from '~/components/Common/ProjectCard/index.tsx';
 import TextWithImages from '~/components/Common/TextWithImages/index.tsx';
 import Timeline from '~/components/Common/TimeLine/index.tsx';
@@ -10,7 +9,6 @@ import type { ComponentProps } from 'react';
 type Components = ComponentProps<typeof MDXProvider>['components'];
 
 export const defaultMdxComponents = {
-  blockquote: Blockquote,
   a: LocalizedLink,
 } as Components;
 

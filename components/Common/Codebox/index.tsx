@@ -2,7 +2,6 @@ import { DocumentIcon } from '@heroicons/react/24/outline';
 import { isValidElement } from 'react';
 import { codeToHtml } from 'shiki/bundle/web';
 import CopyButton from '../CopyButton/index.tsx';
-import styles from './index.module.css';
 import type { FC, ReactNode } from 'react';
 
 type CodeboxProps = {
@@ -23,27 +22,30 @@ const Codebox: FC<CodeboxProps> = async props => {
       ?.replace('mjs', 'js') ?? 'plaintext';
 
   const html = await codeToHtml(code, {
-    theme: 'vitesse-light',
+    theme: 'vitesse-dark',
     lang,
   });
 
   return (
-    <div className={styles.codeBox}>
-      <div className={styles.header}>
-        <span className={styles.lang}>{lang}</span>
+    <div className="mt-2 mb-4 rounded-md border-2 border-neutral-700 bg-neutral-800">
+      <div className="flex w-full items-center justify-between border-b-2 dark:border-b-white">
+        <span className="min-w-20 border-r-2 border-r-white px-4 py-2 text-center font-extrabold uppercase bg-violet-500">
+          {lang}
+        </span>
         {props?.fileName && (
-          <span className={styles.fileName}>
-            {props.fileName} <DocumentIcon />
+          <span className="inline-flex items-center gap-2 px-4 py-2 text-sm truncate font-bold">
+            {props.fileName} <DocumentIcon className="size-5" />
           </span>
         )}
       </div>
-      <div className={styles.codeWrapper}>
+      <div className="relative p-4">
         <pre
+          className="whitespace-pre-wrap"
           dangerouslySetInnerHTML={{
             __html: html.match(/<code>(.+?)<\/code>/s)![1],
           }}
         />
-        <CopyButton className={styles.copyButton} text={code} />
+        <CopyButton className="absolute bottom-2 right-2" text={code} />
       </div>
     </div>
   );

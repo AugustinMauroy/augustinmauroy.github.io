@@ -1,6 +1,5 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
 import ButtonLink from '../Button/Link/index.tsx';
-import styles from './index.module.css';
 import type { FC } from 'react';
 
 type PostCardProps = {
@@ -23,18 +22,21 @@ const PostCard: FC<PostCardProps> = async ({
   const format = await getFormatter();
 
   return (
-    <div className={styles.card}>
+    <div className="flex w-full flex-shrink flex-col justify-between gap-2 rounded-sm border-2 border-black bg-violet-50 p-4 md:w-80 dark:border-white dark:bg-violet-300 transition-all has-[a:hover]:shadow-neo-brutalism-black dark:has-[a:hover]:shadow-neo-brutalism-white">
       <div>
-        <h2>{title}</h2>
-        <p className={styles.description}>{description}</p>
-        <time>
+        <h2 className="text-3xl font-bold text-black">{title}</h2>
+        <p className="truncate text-base text-neutral-700">{description}</p>
+        <time className="text-sm font-light text-neutral-700">
           {format.dateTime(new Date(date), {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
           })}
         </time>
-        <p className={styles.authors}>{t('by', { authors })}</p>
+        <p className="truncate text-sm text-neutral-700">
+          {' '}
+          {authors && t('by', { authors })}
+        </p>
       </div>
       <ButtonLink
         title={t('readMoreAbout', { title })}

@@ -31,13 +31,17 @@ const Dropdown: FC<DropdownProps> = ({
     </RadixDropdownMenu.Trigger>
 
     <RadixDropdownMenu.Portal>
-      <RadixDropdownMenu.Content className={styles.content}>
+      <RadixDropdownMenu.Content className="m-2.5 border-2 border-black bg-white shadow-neo-brutalism-black dark:border-white dark:bg-neutral-950 dark:shadow-neo-brutalism-white">
         {options.map(option => (
           <RadixDropdownMenu.Item
             key={option}
-            className={classNames(styles.item, {
-              [styles.active]: option === activeOption,
-            })}
+            className={classNames(
+              'cursor-pointer px-4 py-2 hover:bg-green-300 focus:outline-none dark:hover:bg-green-700',
+              {
+                ['bg-green-300 font-bold dark:bg-green-700']:
+                  option === activeOption,
+              }
+            )}
             onSelect={() => onOptionSelect?.(option)}
           >
             {option}

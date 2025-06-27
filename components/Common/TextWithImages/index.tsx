@@ -1,5 +1,4 @@
 import Images from './Images/index.tsx';
-import styles from './index.module.css';
 import type { FC, ReactNode } from 'react';
 
 type TextWithImagesProps = {
@@ -12,8 +11,8 @@ type TextWithImagesProps = {
 };
 
 const TextWithImages: FC<TextWithImagesProps> = ({ description, images }) => (
-  <section className={styles.container}>
-    <div className={styles.content}>{description}</div>
+  <section className="my-4 flex flex-row flex-wrap justify-between gap-4">
+    <div className="my-auto h-full w-1/2">{description}</div>
     <Images images={images} />
   </section>
 );

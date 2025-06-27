@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import classNames from 'classnames';
 import { useState, useEffect } from 'react';
-import styles from './index.module.css';
 import type { FC } from 'react';
 
 const MAX_IMAGES = 4;
@@ -19,13 +18,17 @@ const Images: FC = () => {
   }, []);
 
   return (
-    <div className={styles.images}>
+    <div>
       {Array.from({ length: MAX_IMAGES }, (_, i) => (
         <Image
           key={i}
-          className={classNames(styles.image, {
-            [styles.selected]: i === selectedImage,
-          })}
+          className={classNames(
+            'size-80 rounded-full border-2 border-black object-cover shadow-neo-brutalism-xl-black transition-shadow dark:border-white dark:shadow-neo-brutalism-xl-white hover:shadow-neo-brutalism-2xl-black hover:dark:shadow-neo-brutalism-2xl-white',
+            {
+              hidden: i !== selectedImage,
+              block: i === selectedImage,
+            }
+          )}
           src={`/static/hero-${i + 1}.webp`}
           width={320}
           height={320}

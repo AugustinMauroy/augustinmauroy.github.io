@@ -9,7 +9,7 @@ const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, disabled, className, ...props }, ref) => (
     <button
       ref={ref}
-      className={classNames(styles.button, className)}
+      className={classNames('button', className)}
       disabled={disabled}
       aria-disabled={disabled}
       {...props}

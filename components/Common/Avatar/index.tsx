@@ -2,7 +2,6 @@
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import classNames from 'classnames';
 import { forwardRef } from 'react';
-import styles from './index.module.css';
 import type { ComponentPropsWithoutRef, ElementRef } from 'react';
 
 const Avatar = forwardRef<
@@ -11,7 +10,10 @@ const Avatar = forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Root
     ref={ref}
-    className={classNames(className, styles.root)}
+    className={classNames(
+      'relative flex size-10 shrink-0 overflow-hidden rounded-full outline outline-2 outline-black dark:outline-white',
+      className
+    )}
     {...props}
   />
 ));
@@ -24,7 +26,7 @@ const AvatarImage = forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
     ref={ref}
-    className={classNames(styles.image, className)}
+    className={classNames('aspect-square size-full', className)}
     {...props}
   />
 ));
@@ -37,7 +39,10 @@ const AvatarFallback = forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Fallback
     ref={ref}
-    className={classNames(styles.fallback, className)}
+    className={classNames(
+      'flex size-full items-center justify-center rounded-full bg-white text-base font-bold dark:bg-neutral-950 dark:text-white',
+      className
+    )}
     {...props}
   />
 ));

@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import classNames from 'classnames';
 import { useState, useEffect, useMemo } from 'react';
-import styles from './index.module.css';
 import type { FC } from 'react';
 
 type ImagesProps = {
@@ -41,9 +40,13 @@ const Images: FC<ImagesProps> = ({ images }) => {
       {Array.from({ length: MAX_IMAGES }, (_, i) => (
         <Image
           key={i}
-          className={classNames(styles.image, {
-            [styles.selected]: i === selectedImage,
-          })}
+          className={classNames(
+            'h-auto w-80 rounded-xl border-2 border-black object-cover shadow-neo-brutalism-black transition-shadow dark:border-white dark:shadow-neo-brutalism-white hover:shadow-neo-brutalism-xl-black hover:dark:shadow-neo-brutalism-xl-white',
+            {
+              block: i === selectedImage,
+              hidden: i !== selectedImage,
+            }
+          )}
           src={images[i].src}
           width={width}
           height={height}
