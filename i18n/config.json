@@ -1,22 +1,22 @@
 [
   {
     "code": "en",
-    "localName": "English",
-    "name": "English",
-    "langDir": "ltr",
     "dateFormat": "MM.DD.YYYY",
-    "hrefLang": "en-US",
+    "default": true,
     "enabled": true,
-    "default": true
+    "hrefLang": "en-US",
+    "langDir": "ltr",
+    "localName": "English",
+    "name": "English"
   },
   {
     "code": "fr",
-    "localName": "Français",
-    "name": "French",
-    "langDir": "ltr",
     "dateFormat": "DD.MM.YYYY",
-    "hrefLang": "fr",
+    "default": false,
     "enabled": true,
-    "default": false
+    "hrefLang": "fr",
+    "langDir": "ltr",
+    "localName": "Français",
+    "name": "French"
   }
 ]

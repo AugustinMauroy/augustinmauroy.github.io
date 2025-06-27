@@ -1,5 +1,5 @@
-import SocialMediaList from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
+import SocialMediaList from './index.tsx';
 
 type Story = StoryObj<typeof SocialMediaList>;
 type Meta = MetaObj<typeof SocialMediaList>;

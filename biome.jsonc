@@ -1,6 +1,35 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
-  "assist": { "actions": { "source": { "organizeImports": "off" } } },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              ":NODE:",
+              ":PACKAGE:",
+              ":ALIAS:",
+              ":PATH:",
+              { "type": true }
+            ]
+          }
+        },
+        "useSortedAttributes": "on",
+        "useSortedKeys": "on",
+        "useSortedProperties": "on"
+      }
+    },
+    "enabled": true
+  },
+  "css": {
+    "formatter": {
+      "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    }
+  },
   "files": {
     "includes": [
       "**/*.ts",
@@ -8,126 +37,39 @@
       "**/*.js",
       "**/*.css",
       "**/*.json",
-      "!coverage",
-      "!out/",
-      "!build",
-      "!**/*.tsbuildinfo",
-      "!**/next-env.d.ts",
-      "!**/storybook-static",
-      "!content"
+      "!out/**",
+      "!.next"
     ]
   },
   "formatter": {
     "enabled": true,
     "useEditorconfig": true
   },
-  "linter": {
-    "rules": {
-      "nursery": {
-        "useSortedClasses": "error"
-      },
-      "recommended": false,
-      "complexity": {
-        "noUselessThisAlias": "error",
-        "noUselessTypeConstraint": "error"
-      },
-      "correctness": {
-        "noUnusedVariables": "error",
-        "noUnknownFunction": "error",
-        "noUnknownUnit": "error",
-        "useImportExtensions": "error",
-        "noUnknownTypeSelector": "error"
-      },
-      "style": {
-        "noNamespace": "error",
-        "useAsConstAssertion": "error",
-        "useBlockStatements": "off",
-        "useNodeAssertStrict": "warn",
-        "useNodejsImportProtocol": "error",
-        "useImportType": "error",
-        "noCommonJs": "error",
-        "noEnum": "error",
-        "useArrayLiterals": "off"
-      },
-      "suspicious": {
-        "noExplicitAny": "error",
-        "noExtraNonNullAssertion": "error",
-        "noMisleadingInstantiator": "error",
-        "noUnsafeDeclarationMerging": "error",
-        "useNamespaceKeyword": "error",
-        "noEmptyBlock": "error",
-        "noDuplicateAtImportRules": "error",
-        "noDuplicateObjectKeys": "error"
-      }
-    }
-  },
   "javascript": {
     "formatter": {
       "jsxQuoteStyle": "double",
-      "quoteProperties": "asNeeded",
-      "trailingCommas": "es5",
-      "semicolons": "always",
-      "arrowParentheses": "asNeeded",
-      "bracketSameLine": false,
       "quoteStyle": "single",
-      "attributePosition": "auto",
-      "bracketSpacing": true
-    }
-  },
-  "overrides": [
-    {
-      "includes": ["**/*.stories.tsx"],
-      "linter": { "rules": { "correctness": { "useHookAtTopLevel": "off" } } }
-    },
-    {
-      "includes": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-      "linter": {
-        "rules": {
-          "correctness": {
-            "noConstAssign": "off",
-            "noGlobalObjectCalls": "off",
-            "noInvalidBuiltinInstantiation": "off",
-            "noInvalidConstructorSuper": "off",
-            "noSetterReturn": "off",
-            "noUndeclaredVariables": "off",
-            "noUnreachable": "off",
-            "noUnreachableSuper": "off"
-          },
-          "style": {
-            "useConst": "error"
-          },
-          "suspicious": {
-            "noDuplicateClassMembers": "off",
-            "noDuplicateObjectKeys": "off",
-            "noDuplicateParameters": "off",
-            "noFunctionAssign": "off",
-            "noImportAssign": "off",
-            "noRedeclare": "off",
-            "noUnsafeNegation": "off",
-            "useGetterReturn": "off",
-            "noVar": "error"
-          },
-          "complexity": {
-            "noArguments": "error"
-          }
-        }
-      }
-    }
-  ],
-  "css": {
-    "linter": {
-      "enabled": true
-    },
-    "formatter": {
-      "enabled": true
-    },
-    "parser": {
-      "cssModules": true
+      "semicolons": "always"
     }
   },
   "json": {
     "formatter": {
       "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    }
+  },
+  "linter": {
+    "rules": {
+      "a11y": {
+        "noSvgWithoutTitle": "off"
+      },
+      "recommended": true,
+      "style": {
+        "noDescendingSpecificity": "off",
+        "useNodeAssertStrict": "error"
+      }
     }
   }
 }

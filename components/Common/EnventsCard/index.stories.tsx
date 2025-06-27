@@ -1,13 +1,13 @@
-import EventsCard from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
+import EventsCard from './index.tsx';
 
 type Story = StoryObj<typeof EventsCard>;
 type Meta = MetaObj<typeof EventsCard>;
 
 export const Default: Story = {
   args: {
-    title: 'Bisexuality Day',
     description: "It's 13th September, the day to celebrate bisexuality.",
+    title: 'Bisexuality Day',
   },
 };
 

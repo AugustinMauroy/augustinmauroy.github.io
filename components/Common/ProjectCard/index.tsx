@@ -1,7 +1,7 @@
 import Image from 'next/image';
+import type { FC } from 'react';
 import ButtonLink from '../Button/Link/index.tsx';
 import DotsIllustration from '../DotsIllustration/index.tsx';
-import type { FC } from 'react';
 
 type ProjectCardProps = {
   title: string;
@@ -25,20 +25,20 @@ const ProjectCard: FC<ProjectCardProps> = ({
   <figure className="mb-4 flex w-full flex-col items-start justify-start rounded-lg border-2 border-black bg-white lg:flex-row lg:items-center dark:border-white dark:bg-neutral-800">
     {image ? (
       <Image
-        src={image}
         alt={title}
-        width={160}
-        height={90}
         className={imageClassName}
+        height={90}
+        src={image}
+        width={160}
       />
     ) : (
       <DotsIllustration className={imageClassName} />
     )}
     <figcaption className="flex flex-col justify-between gap-2 p-4 lg:max-w-1/2">
-      <h3 className="text-xl font-semibold">{title}</h3>
+      <h3 className="font-semibold text-xl">{title}</h3>
       <p className="text-neutral-600 dark:text-neutral-400">{description}</p>
       {link && (
-        <ButtonLink href={link.href} className="w-fit">
+        <ButtonLink className="w-fit" href={link.href}>
           {link.label}
         </ButtonLink>
       )}

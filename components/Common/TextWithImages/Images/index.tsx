@@ -1,8 +1,8 @@
 'use client';
-import Image from 'next/image';
 import classNames from 'classnames';
-import { useState, useEffect, useMemo } from 'react';
+import Image from 'next/image';
 import type { FC } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type ImagesProps = {
   images: Array<{
@@ -22,14 +22,14 @@ const Images: FC<ImagesProps> = ({ images }) => {
     const [ratioWidth, ratioHeight] = ratio.split(':').map(Number);
 
     return {
-      width: (ratioWidth / ratioHeight) * 100,
       height: (ratioHeight / ratioWidth) * 100,
+      width: (ratioWidth / ratioHeight) * 100,
     };
   }, [images, selectedImage]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSelectedImage(prev => (prev + 1) % MAX_IMAGES);
+      setSelectedImage((prev) => (prev + 1) % MAX_IMAGES);
     }, 2000);
 
     return () => clearInterval(interval);
@@ -39,21 +39,21 @@ const Images: FC<ImagesProps> = ({ images }) => {
     <div>
       {Array.from({ length: MAX_IMAGES }, (_, i) => (
         <Image
-          key={i}
+          alt="Augustin"
           className={classNames(
-            'h-auto w-80 rounded-xl border-2 border-black object-cover shadow-neo-brutalism-black transition-shadow dark:border-white dark:shadow-neo-brutalism-white hover:shadow-neo-brutalism-xl-black dark:hover:shadow-neo-brutalism-xl-white',
+            'h-auto w-80 rounded-xl border-2 border-black object-cover shadow-neo-brutalism-black transition-shadow hover:shadow-neo-brutalism-xl-black dark:border-white dark:shadow-neo-brutalism-white dark:hover:shadow-neo-brutalism-xl-white',
             {
               block: i === selectedImage,
               hidden: i !== selectedImage,
-            }
+            },
           )}
-          src={images[i].src}
-          width={width}
+          fetchPriority={i === selectedImage ? 'high' : 'low'}
           height={height}
           hidden={i !== selectedImage}
-          alt="Augustin"
-          fetchPriority={i === selectedImage ? 'high' : 'low'}
+          key={`${i}-text-with-images ${crypto.randomUUID()}`}
           onClick={() => setSelectedImage((i + 1) % MAX_IMAGES)}
+          src={images[i].src}
+          width={width}
         />
       ))}
     </div>

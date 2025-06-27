@@ -1,8 +1,8 @@
 'use client';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
-import LocalizedLink from './LocalizedLink.tsx';
 import type { FC, PropsWithChildren } from 'react';
+import LocalizedLink from './LocalizedLink.tsx';
 
 type ActiveLinkProps = PropsWithChildren<{
   href: string;
@@ -21,10 +21,10 @@ export const ActiveLink: FC<ActiveLinkProps> = ({
 
   return (
     <LocalizedLink
-      href={href}
       className={classNames(className, {
         [activeClassName]: isActive,
       })}
+      href={href}
     >
       {children}
     </LocalizedLink>

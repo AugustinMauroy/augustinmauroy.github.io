@@ -1,9 +1,8 @@
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
-import ButtonLink from '~/components/Common/Button/Link/index.tsx';
-import styles from './page.module.css';
-import type { FC } from 'react';
 import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import type { FC } from 'react';
+import ButtonLink from '~/components/Common/Button/Link/index.tsx';
 import type { BaseParams } from '~/types/params.ts';
 
 type NotFoundProps = BaseParams;
@@ -14,8 +13,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
   const t = await getTranslations('app.notFound');
 
   return {
-    title: t('title'),
     description: t('message'),
+    title: t('title'),
   };
 };
 
@@ -26,7 +25,7 @@ const NotFound: FC<NotFoundProps> = async ({ params }) => {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center">
-      <h1 className="mb-4 text-4xl font-bold">{t('title')}</h1>
+      <h1 className="mb-4 font-bold text-4xl">{t('title')}</h1>
       <p className="mb-4 text-center text-lg text-neutral-600 dark:text-neutral-400">
         {t('message')}
       </p>

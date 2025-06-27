@@ -1,5 +1,5 @@
-import { Neobrutalism1 } from './index.ts';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
+import { Neobrutalism1 } from './index.ts';
 
 type Story = StoryObj<typeof Neobrutalism1>;
 type Meta = MetaObj<typeof Neobrutalism1>;

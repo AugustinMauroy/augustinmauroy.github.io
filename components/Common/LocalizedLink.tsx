@@ -2,8 +2,8 @@
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import type {
-  FC,
   AnchorHTMLAttributes,
+  FC,
   HTMLAttributeAnchorTarget,
 } from 'react';
 
@@ -28,10 +28,10 @@ const LocalizedLink: FC<LocalizedLinkProps> = ({
 
   return (
     <Link
-      href={path}
       className={className}
-      target={target}
+      href={path}
       rel={rel}
+      target={target}
       {...props}
     >
       {children}

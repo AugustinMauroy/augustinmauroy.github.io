@@ -7,9 +7,9 @@ describe('isNodeError', () => {
     const error = {
       code: 'ENOENT',
       errno: -2,
-      syscall: 'open',
-      path: '/some/path',
       message: 'File not found',
+      path: '/some/path',
+      syscall: 'open',
     };
 
     assert.strictEqual(isNodeError(error), true);

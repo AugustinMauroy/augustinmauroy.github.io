@@ -1,5 +1,5 @@
-import { useFormatter } from 'next-intl';
 import type { DateTimeFormatOptions } from 'next-intl';
+import { useFormatter } from 'next-intl';
 import type { FC } from 'react';
 
 type FormattedTimeProps = {
@@ -17,11 +17,11 @@ const FormattedTime: FC<FormattedTimeProps> = ({ date, format }) => {
       {formatter.dateTime(
         dateObject,
         format ?? {
+          day: 'numeric',
+          month: 'long',
           weekday: 'long',
           year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        }
+        },
       )}
     </time>
   );

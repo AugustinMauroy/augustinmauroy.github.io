@@ -1,6 +1,6 @@
 import { Feed } from 'feed';
-import { getFrontmatter, getSlugs } from './content.ts';
 import type { BlogFrontmatter } from '~/types/frontmatter.ts';
+import { getFrontmatter, getSlugs } from './content.ts';
 
 type GenerateRssFeedProps = {
   section: string;
@@ -12,29 +12,29 @@ export const generateRssFeed = async ({
   lang,
 }: GenerateRssFeedProps): Promise<string> => {
   const feed = new Feed({
-    title: `Augustin M - ${section}`,
+    copyright: `Licence MIT Copyright (c) ${new Date().getFullYear} Augustin Mauroy`,
     description: `Augustin M Website - ${section}`,
     id: 'https://augustinmauroy.github.io/',
-    link: 'https://augustinmauroy.github.io/',
     language: lang,
-    copyright: `Licence MIT Copyright (c) ${new Date().getFullYear} Augustin Mauroy`,
+    link: 'https://augustinmauroy.github.io/',
+    title: `Augustin M - ${section}`,
   });
 
-  const slugs = await getSlugs({ section, lang });
+  const slugs = await getSlugs({ lang, section });
 
   for (const slug of slugs) {
     const { frontmatter } = await getFrontmatter<BlogFrontmatter>({
-      section,
       lang,
+      section,
       slug,
     });
 
     feed.addItem({
-      title: frontmatter.title,
+      date: new Date(frontmatter.date),
+      description: frontmatter.description,
       id: `https://augustinmauroy.github.io/${lang}/${section}/${slug}`,
       link: `https://augustinmauroy.github.io/${lang}/${section}/${slug}`,
-      description: frontmatter.description,
-      date: new Date(frontmatter.date),
+      title: frontmatter.title,
     });
   }
 

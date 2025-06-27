@@ -1,6 +1,6 @@
 import classNames from 'classnames';
+import type { AnchorHTMLAttributes, FC } from 'react';
 import LocalizedLink from '~/components/Common/LocalizedLink';
-import type { FC, AnchorHTMLAttributes } from 'react';
 
 type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 

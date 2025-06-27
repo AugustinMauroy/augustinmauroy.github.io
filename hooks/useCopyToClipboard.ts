@@ -26,7 +26,7 @@ const useCopyToClipboard = (timeout = 3000) => {
     }
 
     return undefined;
-  }, [copied]);
+  }, [copied, timeout]);
 
   return [copied, copyText] as const;
 };

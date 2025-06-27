@@ -1,38 +1,11 @@
-import TextWithImages from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
+import TextWithImages from './index.tsx';
 
 type Story = StoryObj<typeof TextWithImages>;
 type Meta = MetaObj<typeof TextWithImages>;
 
 export const Default: Story = {
   args: {
-    images: [
-      {
-        src: '/static/about/rammstien-1.jpeg',
-        alt: 'Rammstein concert',
-        ratio: '9:16',
-      },
-      {
-        src: '/static/about/rammstien-2.jpeg',
-        alt: 'Rammstein concert',
-        ratio: '3:4',
-      },
-      {
-        src: '/static/about/rammstien-3.jpeg',
-        alt: 'Rammstein concert',
-        ratio: '3:4',
-      },
-      {
-        src: '/static/about/rammstien-4.jpeg',
-        alt: 'Rammstein concert',
-        ratio: '9:16',
-      },
-      {
-        src: '/static/about/rammstien-5.jpeg',
-        alt: 'Rammstein concert',
-        ratio: '9:16',
-      },
-    ],
     description: (
       <>
         Another of my great interests is music. I&apos;m an avid fan of
@@ -42,6 +15,33 @@ export const Default: Story = {
         to music, and I have a Spotify playlist that goes with me everywhere.
       </>
     ),
+    images: [
+      {
+        alt: 'Rammstein concert',
+        ratio: '9:16',
+        src: '/static/about/rammstien-1.jpeg',
+      },
+      {
+        alt: 'Rammstein concert',
+        ratio: '3:4',
+        src: '/static/about/rammstien-2.jpeg',
+      },
+      {
+        alt: 'Rammstein concert',
+        ratio: '3:4',
+        src: '/static/about/rammstien-3.jpeg',
+      },
+      {
+        alt: 'Rammstein concert',
+        ratio: '9:16',
+        src: '/static/about/rammstien-4.jpeg',
+      },
+      {
+        alt: 'Rammstein concert',
+        ratio: '9:16',
+        src: '/static/about/rammstien-5.jpeg',
+      },
+    ],
   },
 };
 

@@ -1,13 +1,13 @@
 import { RssIcon } from '@heroicons/react/24/solid';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import BaseLayout from '~/components/Layout/Base/index.tsx';
-import ButtonLink from '~/components/Common/Button/Link/index.tsx';
-import PostCard from '~/components/Common/PostCard/index.tsx';
-import Pagination from '~/components/Common/Pagination/index.tsx';
-import { getSlugs, getFrontmatter } from '~/lib/content.ts';
 import type { FC } from 'react';
-import type { Metadata } from 'next';
+import ButtonLink from '~/components/Common/Button/Link/index.tsx';
+import Pagination from '~/components/Common/Pagination/index.tsx';
+import PostCard from '~/components/Common/PostCard/index.tsx';
+import BaseLayout from '~/components/Layout/Base/index.tsx';
+import { getFrontmatter, getSlugs } from '~/lib/content.ts';
 import type { BlogFrontmatter } from '~/types/frontmatter.ts';
 import type { BaseParams } from '~/types/params.ts';
 
@@ -31,13 +31,13 @@ export const generateMetadata = async (): Promise<Metadata | null> => {
   const t = await getTranslations('app.blog');
 
   return {
-    title: t('title'),
     description: t('description'),
+    title: t('title'),
   };
 };
 
 export const generateStaticParams = async ({ params }: StaticParams) => {
-  const posts = await getSlugs({ section: 'blog', lang: params.locale });
+  const posts = await getSlugs({ lang: params.locale, section: 'blog' });
   const totalPages = Math.ceil(posts.length / MAX_POSTS_PER_PAGE);
 
   const result = Array.from({ length: totalPages }, (_, i) => ({
@@ -59,22 +59,22 @@ const Page: FC<PageProps> = async ({ params }) => {
   if (pageNumbers === null) notFound();
 
   const posts = await getSlugs({
-    section: 'blog',
     lang: (await params).locale,
+    section: 'blog',
   });
   const metadata = await Promise.all(
     posts
       .slice(
         pageNumbers * MAX_POSTS_PER_PAGE,
-        (pageNumbers + 1) * MAX_POSTS_PER_PAGE
+        (pageNumbers + 1) * MAX_POSTS_PER_PAGE,
       )
-      .map(slug =>
+      .map((slug) =>
         getFrontmatter<BlogFrontmatter>({
-          section: 'blog',
           lang: locale,
+          section: 'blog',
           slug,
-        })
-      )
+        }),
+      ),
   );
   const totalPosts = posts.length;
   const totalPages = Math.ceil(totalPosts / MAX_POSTS_PER_PAGE);
@@ -83,11 +83,11 @@ const Page: FC<PageProps> = async ({ params }) => {
   return (
     <BaseLayout className="mx-auto w-full p-4 md:px-8 lg:w-3/4 lg:px-0">
       <header className="relative mb-4 border-b-2 border-b-black py-4 dark:border-b-white">
-        <h1 className="text-4xl font-bold">{t('title')}</h1>
+        <h1 className="font-bold text-4xl">{t('title')}</h1>
         <ButtonLink
-          href="/feed/blog/rss.xml"
           aria-label={t('rss')}
-          className="absolute right-0 top-0 mr-4 mt-4"
+          className="absolute top-0 right-0 mt-4 mr-4"
+          href="/feed/blog/rss.xml"
         >
           <RssIcon aria-label={t('rss')} />
         </ButtonLink>
@@ -97,9 +97,9 @@ const Page: FC<PageProps> = async ({ params }) => {
           .sort(
             (a, b) =>
               new Date(b.frontmatter.date).getTime() -
-              new Date(a.frontmatter.date).getTime()
+              new Date(a.frontmatter.date).getTime(),
           )
-          .map(post => (
+          .map((post) => (
             <PostCard key={post.slug} {...post} {...post.frontmatter} />
           ))}
       </section>

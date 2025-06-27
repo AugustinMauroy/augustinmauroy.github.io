@@ -1,9 +1,9 @@
+import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
-import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import ButtonLink from '../Button/Link/index.tsx';
 import type { FC } from 'react';
+import ButtonLink from '../Button/Link/index.tsx';
 
 const MAX_ITEMS = 5;
 
@@ -35,36 +35,36 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages }) => {
   return (
     <div className="flex w-full justify-center space-x-2">
       <ButtonLink
-        href={`/blog/${currentPage - 1}`}
         aria-disabled={currentPage === 1}
+        href={`/blog/${currentPage - 1}`}
       >
         <ArrowLeftIcon aria-label={t('previous')} />
       </ButtonLink>
       {start > 1 && <Ellipsis />}
-      {pages.slice(start - 1, end).map(page => (
+      {pages.slice(start - 1, end).map((page) => (
         <Link
-          key={page}
-          href={`/blog/${page === 1 ? '' : page}`}
+          aria-label={t('page', { page })}
           className={classNames(
             'rounded-none border-2 border-black px-4 py-2 shadow-neo-brutalism-black dark:border-white dark:shadow-neo-brutalism-white',
             {
-              ['bg-neutral-950 text-white dark:bg-white dark:text-black']:
+              'bg-neutral-950 text-white dark:bg-white dark:text-black':
                 currentPage === page,
-              ['bg-white text-black dark:bg-neutral-950 dark:text-white hover:bg-neutral-950 hover:text-white dark:hover:bg-white dark:hover:text-black']:
+              'bg-white text-black hover:bg-neutral-950 hover:text-white dark:bg-neutral-950 dark:text-white dark:hover:bg-white dark:hover:text-black':
                 currentPage !== page,
-            }
+            },
           )}
-          aria-label={t('page', { page })}
-          title={t('page', { page })}
+          href={`/blog/${page === 1 ? '' : page}`}
+          key={page}
           tabIndex={currentPage === page ? -1 : undefined}
+          title={t('page', { page })}
         >
           {page}
         </Link>
       ))}
       {end < totalPages && <Ellipsis />}
       <ButtonLink
-        href={`/blog/${currentPage + 1}`}
         aria-disabled={currentPage === totalPages}
+        href={`/blog/${currentPage + 1}`}
       >
         <ArrowRightIcon aria-label={t('next')} />
       </ButtonLink>

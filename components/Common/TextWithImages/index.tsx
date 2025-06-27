@@ -1,5 +1,5 @@
-import Images from './Images/index.tsx';
 import type { FC, ReactNode } from 'react';
+import Images from './Images/index.tsx';
 
 type TextWithImagesProps = {
   description: ReactNode;

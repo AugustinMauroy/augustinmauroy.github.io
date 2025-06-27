@@ -1,7 +1,7 @@
 import classNames from 'classnames';
+import type { FC, PropsWithChildren } from 'react';
 import Footer from '~/components/Sections/Footer/index.tsx';
 import TopNav from '~/components/Sections/TopNav/index.tsx';
-import type { FC, PropsWithChildren } from 'react';
 
 type BaseLayoutProps = PropsWithChildren<{
   className?: string;

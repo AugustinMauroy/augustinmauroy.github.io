@@ -5,7 +5,7 @@ register('@nodejs-loaders/alias', import.meta.url);
 register('@nodejs-loaders/tsx', import.meta.url);
 
 GlobalRegistrator.register({
+  height: 1080,
   url: 'http://localhost:3000',
   width: 1920,
-  height: 1080,
 });

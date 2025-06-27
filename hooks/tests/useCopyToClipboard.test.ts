@@ -1,6 +1,6 @@
-import { describe, it, mock } from 'node:test';
 import assert from 'node:assert/strict';
-import { renderHook, act } from '@testing-library/react';
+import { describe, it, mock } from 'node:test';
+import { act, renderHook } from '@testing-library/react';
 import useCopyToClipboard from '../useCopyToClipboard.ts';
 
 describe('useCopyToClipboard', () => {

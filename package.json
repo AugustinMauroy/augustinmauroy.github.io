@@ -1,25 +1,4 @@
 {
-  "name": "augustinmauroy.github.io",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "postbuild": "node ./scripts/postbuild.js",
-    "start": "next start",
-    "test:unit": "node --no-warnings --enable-source-maps --import ./node-hooks/react.ts --test **/tests/*.test.tsx **/tests/*.test.ts",
-    "test:unit-coverage": "node --no-warnings --import ./node-hooks/react.ts --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=./coverage.lcov --test-reporter=spec --test-reporter-destination=stdout **/tests/*.test.tsx **/tests/*.test.ts",
-    "test:watch": "node --no-warnings --enable-source-maps --import ./node-hooks/react.js --test --watch **/tests/*.test.tsx **/tests/*.test.ts",
-    "test": "node --run test:unit",
-    "biome:format": "biome format --write ./",
-    "biome:lint": "biome lint --write ./",
-    "biome:ci": "biome ci ./",
-    "pre-commit": "node --run biome:format && node --run biome:lint",
-    "types:check": "tsc --noEmit",
-    "storybook": "BUILD_ENV=storybook storybook dev -p 6006 --quiet --no-open",
-    "storybook:build": "BUILD_ENV=storybook storybook build"
-  },
   "dependencies": {
     "@heroicons/react": "~2.2.0",
     "@radix-ui/react-avatar": "~1.1.10",
@@ -57,5 +36,23 @@
     "storybook": "~9.0.13",
     "tailwindcss": "^4.1.11",
     "typescript": "~5.8.3"
-  }
+  },
+  "scripts": {
+    "biome:ci": "biome ci ./",
+    "biome:format": "biome format --write ./",
+    "biome:lint": "biome lint --write ./",
+    "build": "next build",
+    "dev": "next dev",
+    "postbuild": "node ./scripts/postbuild.js",
+    "pre-commit": "node --run biome:format && node --run biome:lint",
+    "start": "next start",
+    "storybook": "BUILD_ENV=storybook storybook dev -p 6006 --quiet --no-open",
+    "storybook:build": "BUILD_ENV=storybook storybook build",
+    "test": "node --run test:unit",
+    "test:unit": "node --no-warnings --enable-source-maps --import ./node-hooks/react.ts --test **/tests/*.test.tsx **/tests/*.test.ts",
+    "test:unit-coverage": "node --no-warnings --import ./node-hooks/react.ts --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=./coverage.lcov --test-reporter=spec --test-reporter-destination=stdout **/tests/*.test.tsx **/tests/*.test.ts",
+    "test:watch": "node --no-warnings --enable-source-maps --import ./node-hooks/react.js --test --watch **/tests/*.test.tsx **/tests/*.test.ts",
+    "types:check": "tsc --noEmit"
+  },
+  "type": "module"
 }

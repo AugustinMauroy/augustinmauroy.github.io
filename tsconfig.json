@@ -1,29 +1,30 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
     "allowImportingTsExtensions": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
+    "allowJs": true,
+    "erasableSyntaxOnly": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
+    "incremental": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "target": "ESNext",
-    "erasableSyntaxOnly": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "paths": {
+      "~/*": ["./*"]
+    },
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "paths": {
-      "~/*": ["./*"]
-    }
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext"
   },
+  "exclude": ["node_modules"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -31,6 +32,5 @@
     ".next/types/**/*.ts",
     "./.storybook/**/*.ts",
     ".storybook/preview.tsx"
-  ],
-  "exclude": ["node_modules"]
+  ]
 }
