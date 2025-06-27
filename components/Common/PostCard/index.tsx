@@ -22,7 +22,7 @@ const PostCard: FC<PostCardProps> = async ({
   const format = await getFormatter();
 
   return (
-    <div className="flex w-full flex-shrink flex-col justify-between gap-2 rounded-sm border-2 border-black bg-violet-50 p-4 md:w-80 dark:border-white dark:bg-violet-300 transition-all has-[a:hover]:shadow-neo-brutalism-black dark:has-[a:hover]:shadow-neo-brutalism-white">
+    <div className="flex w-full shrink flex-col justify-between gap-2 rounded-xs border-2 border-black bg-violet-50 p-4 md:w-80 dark:border-white dark:bg-violet-300 transition-all has-[a:hover]:shadow-neo-brutalism-black dark:has-[a:hover]:shadow-neo-brutalism-white">
       <div>
         <h2 className="text-3xl font-bold text-black">{title}</h2>
         <p className="truncate text-base text-neutral-700">{description}</p>

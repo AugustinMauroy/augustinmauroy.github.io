@@ -41,7 +41,7 @@ const Images: FC<ImagesProps> = ({ images }) => {
         <Image
           key={i}
           className={classNames(
-            'h-auto w-80 rounded-xl border-2 border-black object-cover shadow-neo-brutalism-black transition-shadow dark:border-white dark:shadow-neo-brutalism-white hover:shadow-neo-brutalism-xl-black hover:dark:shadow-neo-brutalism-xl-white',
+            'h-auto w-80 rounded-xl border-2 border-black object-cover shadow-neo-brutalism-black transition-shadow dark:border-white dark:shadow-neo-brutalism-white hover:shadow-neo-brutalism-xl-black dark:hover:shadow-neo-brutalism-xl-white',
             {
               block: i === selectedImage,
               hidden: i !== selectedImage,

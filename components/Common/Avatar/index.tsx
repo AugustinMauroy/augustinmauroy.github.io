@@ -11,7 +11,7 @@ const Avatar = forwardRef<
   <AvatarPrimitive.Root
     ref={ref}
     className={classNames(
-      'relative flex size-10 shrink-0 overflow-hidden rounded-full outline outline-2 outline-black dark:outline-white',
+      'relative flex size-10 shrink-0 overflow-hidden rounded-full outline-solid outline-2 outline-black dark:outline-white',
       className
     )}
     {...props}

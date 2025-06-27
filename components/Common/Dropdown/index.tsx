@@ -35,7 +35,7 @@ const Dropdown: FC<DropdownProps> = ({
           <RadixDropdownMenu.Item
             key={option}
             className={classNames(
-              'cursor-pointer px-4 py-2 hover:bg-green-300 focus:outline-none dark:hover:bg-green-700',
+              'cursor-pointer px-4 py-2 hover:bg-green-300 focus:outline-hidden dark:hover:bg-green-700',
               {
                 ['bg-green-300 font-bold dark:bg-green-700']:
                   option === activeOption,

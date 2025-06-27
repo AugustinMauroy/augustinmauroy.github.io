@@ -23,7 +23,7 @@ const Images: FC = () => {
         <Image
           key={i}
           className={classNames(
-            'size-80 rounded-full border-2 border-black object-cover shadow-neo-brutalism-xl-black transition-shadow dark:border-white dark:shadow-neo-brutalism-xl-white hover:shadow-neo-brutalism-2xl-black hover:dark:shadow-neo-brutalism-2xl-white',
+            'size-80 rounded-full border-2 border-black object-cover shadow-neo-brutalism-xl-black transition-shadow dark:border-white dark:shadow-neo-brutalism-xl-white hover:shadow-neo-brutalism-2xl-black dark:hover:shadow-neo-brutalism-2xl-white',
             {
               hidden: i !== selectedImage,
               block: i === selectedImage,

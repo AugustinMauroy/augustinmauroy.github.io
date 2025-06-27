@@ -50,7 +50,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages }) => {
             {
               ['bg-neutral-950 text-white dark:bg-white dark:text-black']:
                 currentPage === page,
-              ['bg-white text-black dark:bg-neutral-950 dark:text-white hover:bg-neutral-950 hover:text-white hover:dark:bg-white hover:dark:text-black']:
+              ['bg-white text-black dark:bg-neutral-950 dark:text-white hover:bg-neutral-950 hover:text-white dark:hover:bg-white dark:hover:text-black']:
                 currentPage !== page,
             }
           )}
