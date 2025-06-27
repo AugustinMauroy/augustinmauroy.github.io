@@ -1,7 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import classNames from 'classnames';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { Geist, Geist_Mono } from 'next/font/google';
 import { LocaleProvider } from '~/providers/localeProvider.tsx';
 import { routing } from '~/lib/i18n/routing';
 import type { FC, PropsWithChildren } from 'react';
@@ -10,6 +9,18 @@ import type { BaseParams } from '~/types/params.ts';
 import '~/styles/globals.css';
 
 type RootLayoutProps = PropsWithChildren<BaseParams>;
+
+const GeistSans = Geist({
+  subsets: ['latin'],
+  variable: '--geist-sans',
+  display: 'swap',
+});
+
+const GeistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--geist-mono',
+  display: 'swap',
+});
 
 export const dynamic = 'force-static';
 
