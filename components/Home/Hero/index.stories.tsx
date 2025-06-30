@@ -1,5 +1,5 @@
-import Hero from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
+import Hero from './index.tsx';
 
 type Story = StoryObj<typeof Hero>;
 type Meta = MetaObj<typeof Hero>;

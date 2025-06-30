@@ -1,5 +1,5 @@
 import { copyFile } from 'node:fs/promises';
-import { resolve, join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { styleText } from 'node:util';
 
 const buildDir = resolve('out');

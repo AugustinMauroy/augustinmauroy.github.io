@@ -15,7 +15,7 @@ export const isInRange = (
   date: string,
   startDate: string,
   endDate: string,
-  careAboutYear = false
+  careAboutYear = false,
 ): boolean => {
   const currentDate = new Date(date);
   const currentStartDate = new Date(startDate);
@@ -69,6 +69,6 @@ export const isBirthday = (date: string): boolean => {
   return isInRange(
     currentDate.toISOString(),
     currentStartDate.toISOString(),
-    currentEndDate.toISOString()
+    currentEndDate.toISOString(),
   );
 };

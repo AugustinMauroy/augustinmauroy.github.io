@@ -1,10 +1,10 @@
+import type { MDXProvider } from '@mdx-js/react';
 import { compileMDX as _compileMDX } from 'next-mdx-remote/rsc';
+import type { ComponentProps } from 'react';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeMdxCodeProps from 'rehype-mdx-code-props';
 import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { defaultMdxComponents } from './mdxComponents.ts';
-import type { MDXProvider } from '@mdx-js/react';
-import type { ComponentProps } from 'react';
 
 type Components = ComponentProps<typeof MDXProvider>['components'];
 
@@ -22,14 +22,12 @@ const compileMDX = async <TFrontmatter>({
   withoutPlugins = false,
 }: CompileMDXProps) =>
   _compileMDX<TFrontmatter>({
-    source,
     components: {
       ...defaultMdxComponents,
       ...components,
     },
     options: {
       mdxOptions: {
-        remarkPlugins: withoutPlugins ? [] : [],
         rehypePlugins: withoutPlugins
           ? []
           : [
@@ -39,9 +37,11 @@ const compileMDX = async <TFrontmatter>({
               // Automatically add anchor links to headings (H1, ...)
               [rehypeAutolinkHeadings, { behavior: 'wrap' }],
             ],
+        remarkPlugins: withoutPlugins ? [] : [],
       },
       parseFrontmatter,
     },
+    source,
   });
 
 export default compileMDX;

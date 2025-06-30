@@ -4,11 +4,11 @@ export const dynamic = 'force-static';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-    },
     host: 'https://augustinmauroy.github.io',
+    rules: {
+      allow: '/',
+      userAgent: '*',
+    },
     sitemap: 'https://augustinmauroy.github.io/sitemap.xml',
   };
 }

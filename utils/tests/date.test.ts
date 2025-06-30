@@ -1,40 +1,40 @@
 import assert from 'node:assert/strict';
-import { describe, it, mock, beforeEach, afterEach } from 'node:test';
-import { isInRange, isToday, isBirthday } from '../date.ts';
+import { afterEach, beforeEach, describe, it, mock } from 'node:test';
+import { isBirthday, isInRange, isToday } from '../date.ts';
 
 describe('isInRange', () => {
   it('should return true if the date is within the range', () => {
     assert.strictEqual(
       isInRange('2023-10-10', '2023-10-01', '2023-10-20'),
-      true
+      true,
     );
   });
 
   it('should return false if the date is before the range', () => {
     assert.strictEqual(
       isInRange('2023-09-30', '2023-10-01', '2023-10-20'),
-      false
+      false,
     );
   });
 
   it('should return false if the date is after the range', () => {
     assert.strictEqual(
       isInRange('2023-10-21', '2023-10-01', '2023-10-20'),
-      false
+      false,
     );
   });
 
   it('should return true if the date is exactly the start date', () => {
     assert.strictEqual(
       isInRange('2023-10-01', '2023-10-01', '2023-10-20'),
-      true
+      true,
     );
   });
 
   it('should return true if the date is exactly the end date', () => {
     assert.strictEqual(
       isInRange('2023-10-20', '2023-10-01', '2023-10-20'),
-      true
+      true,
     );
   });
 });
@@ -43,7 +43,7 @@ describe('isToday', () => {
   const mockDate = new Date('2023-10-10T00:00:00Z');
 
   beforeEach(() => {
-    mock.timers.enable({ now: mockDate, apis: ['Date'] });
+    mock.timers.enable({ apis: ['Date'], now: mockDate });
   });
 
   afterEach(() => {
@@ -63,7 +63,7 @@ describe('isBirthday', () => {
   const mockDate = new Date('2023-10-10T00:00:00Z');
 
   beforeEach(() => {
-    mock.timers.enable({ now: mockDate, apis: ['Date'] });
+    mock.timers.enable({ apis: ['Date'], now: mockDate });
   });
 
   afterEach(() => {

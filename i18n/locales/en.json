@@ -1,52 +1,52 @@
 {
   "app": {
-    "metadata": {
-      "title": "Augustin Mauroy - Web Developer & OSS Enthusiast",
-      "description": "I'm Augustin Mauroy, a web developer and an open source software enthusiast. Welcome to my personal website!"
+    "blog": {
+      "description": "Welcome to my blog! I write about web development, open source, and more.",
+      "rss": "RSS Feed",
+      "title": "Blog"
     },
     "home": {
       "metadata": {
-        "title": "Augustin Mauroy - Web Developer & OSS Enthusiast",
-        "description": "I'm Augustin Mauroy, a web developer and an open source software enthusiast. Welcome to my personal website!"
+        "description": "I'm Augustin Mauroy, a web developer and an open source software enthusiast. Welcome to my personal website!",
+        "title": "Augustin Mauroy - Web Developer & OSS Enthusiast"
       }
     },
-    "blog": {
-      "title": "Blog",
-      "description": "Welcome to my blog! I write about web development, open source, and more.",
-      "rss": "RSS Feed"
+    "metadata": {
+      "description": "I'm Augustin Mauroy, a web developer and an open source software enthusiast. Welcome to my personal website!",
+      "title": "Augustin Mauroy - Web Developer & OSS Enthusiast"
     },
     "notFound": {
-      "title": "404 - Page Not Found",
+      "back": "Back to Home",
       "message": "Sorry, the page you were looking for does not exist.",
-      "back": "Back to Home"
+      "title": "404 - Page Not Found"
     }
   },
   "components": {
     "common": {
       "copyButton": {
-        "copy": "Copy",
-        "copied": "Copied !"
+        "copied": "Copied !",
+        "copy": "Copy"
       },
       "languageSelector": {
         "ariaLabel": "Language Selector"
       },
       "pagination": {
-        "previous": "Previous",
         "next": "Next",
-        "page": "Page - {page}"
+        "page": "Page - {page}",
+        "previous": "Previous"
       },
       "postCard": {
         "by": "By {authors}",
-        "readMoreAbout": "Read more about {title}",
-        "readMore": "Read more"
+        "readMore": "Read more",
+        "readMoreAbout": "Read more about {title}"
       }
     },
     "home": {
       "hero": {
-        "title": "Hi 👋,<br></br> I'm <highlight>Augustin</highlight>.",
+        "birthday": "Today is my birthday! 🎉🎂 (18 May)",
         "description": "I'm {age} years old. I'm a web developer and an OSS enthusiast!",
         "learnMore": "Learn more about me",
-        "birthday": "Today is my birthday! 🎉🎂 (18 May)"
+        "title": "Hi 👋,<br></br> I'm <highlight>Augustin</highlight>."
       }
     },
     "sections": {
@@ -61,17 +61,17 @@
     }
   },
   "events": {
-    "prideMonth": {
-      "title": "Pride Month",
-      "description": "Celebrate Pride Month from June 1st to June 30th."
+    "aidsDay": {
+      "description": "Observe World AIDS Day on December 1st.",
+      "title": "AIDS Day"
     },
     "bisexualityDay": {
-      "title": "Bisexuality Day",
-      "description": "Celebrate Bisexuality Day on September 23rd."
+      "description": "Celebrate Bisexuality Day on September 23rd.",
+      "title": "Bisexuality Day"
     },
-    "aidsDay": {
-      "title": "AIDS Day",
-      "description": "Observe World AIDS Day on December 1st."
+    "prideMonth": {
+      "description": "Celebrate Pride Month from June 1st to June 30th.",
+      "title": "Pride Month"
     }
   }
 }

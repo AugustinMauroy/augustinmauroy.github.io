@@ -1,5 +1,5 @@
-import Images from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
+import Images from './index.tsx';
 
 type Story = StoryObj<typeof Images>;
 type Meta = MetaObj<typeof Images>;

@@ -1,13 +1,11 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import EventsCard from '~/components/Common/EnventsCard/index.tsx';
-import { isToday, isInRange } from '~/utils/date.ts';
 import type { FC } from 'react';
+import EventsCard from '~/components/Common/EnventsCard/index.tsx';
+import { isInRange, isToday } from '~/utils/date.ts';
 
 type Event = {
   key: string;
-  title: string;
-  description: string;
   date?: string;
   startDate?: string;
   endDate?: string;
@@ -15,23 +13,17 @@ type Event = {
 
 const EVENTS: Event[] = [
   {
-    key: 'prideMonth',
-    title: 'Pride Month',
-    description: 'Celebrate Pride Month from June 1st to June 30th.',
-    startDate: '2023-06-01',
     endDate: '2023-06-30',
+    key: 'prideMonth',
+    startDate: '2023-06-01',
   },
   {
-    key: 'bisexualityDay',
-    title: 'Bisexuality Day',
-    description: 'Celebrate Bisexuality Day on September 23rd.',
     date: '2023-09-23',
+    key: 'bisexualityDay',
   },
   {
-    key: 'aidsDay',
-    title: 'AIDS Day',
-    description: 'Observe World AIDS Day on December 1st.',
     date: '2023-12-01',
+    key: 'aidsDay',
   },
 ];
 
@@ -50,8 +42,8 @@ const WithEventsCard: FC = () => {
 
   return (
     <EventsCard
-      title={t(`${currentEvents[0]?.key}.title`) || ''}
       description={t(`${currentEvents[0]?.key}.description`) || ''}
+      title={t(`${currentEvents[0]?.key}.title`) || ''}
     />
   );
 };

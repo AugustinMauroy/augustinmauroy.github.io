@@ -1,7 +1,6 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
-import ButtonLink from '../Button/Link/index.tsx';
-import styles from './index.module.css';
 import type { FC } from 'react';
+import ButtonLink from '../Button/Link/index.tsx';
 
 type PostCardProps = {
   title: string;
@@ -23,23 +22,26 @@ const PostCard: FC<PostCardProps> = async ({
   const format = await getFormatter();
 
   return (
-    <div className={styles.card}>
+    <div className="flex w-full shrink flex-col justify-between gap-2 rounded-xs border-2 border-black bg-violet-50 p-4 transition-all has-[a:hover]:shadow-neo-brutalism-black md:w-80 dark:border-white dark:bg-violet-300 dark:has-[a:hover]:shadow-neo-brutalism-white">
       <div>
-        <h2>{title}</h2>
-        <p className={styles.description}>{description}</p>
-        <time>
+        <h2 className="font-bold text-3xl text-black">{title}</h2>
+        <p className="truncate text-base text-neutral-700">{description}</p>
+        <time className="font-light text-neutral-700 text-sm">
           {format.dateTime(new Date(date), {
-            year: 'numeric',
-            month: 'long',
             day: 'numeric',
+            month: 'long',
+            year: 'numeric',
           })}
         </time>
-        <p className={styles.authors}>{t('by', { authors })}</p>
+        <p className="truncate text-neutral-700 text-sm">
+          {' '}
+          {authors && t('by', { authors })}
+        </p>
       </div>
       <ButtonLink
-        title={t('readMoreAbout', { title })}
         aria-label={t('readMoreAbout', { title })}
         href={`/blog/post/${slug}`}
+        title={t('readMoreAbout', { title })}
       >
         {t('readMore')}
       </ButtonLink>

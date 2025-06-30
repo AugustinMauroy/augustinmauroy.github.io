@@ -1,7 +1,7 @@
-import { availableLocaleCodes } from './i18n/config.ts';
-import { getSlugs, getFrontmatter } from './content.ts';
 import type { MetadataRoute } from 'next';
 import type { BlogFrontmatter } from '~/types/frontmatter.ts';
+import { getFrontmatter, getSlugs } from './content.ts';
+import { availableLocaleCodes } from './i18n/config.ts';
 
 type GenerateSitemapProps = {
   section: string;
@@ -12,15 +12,15 @@ export const generateSitemap = async ({
   section,
   lang,
 }: GenerateSitemapProps): Promise<MetadataRoute.Sitemap> => {
-  const slugs = await getSlugs({ section, lang });
+  const slugs = await getSlugs({ lang, section });
 
   const sitemap: MetadataRoute.Sitemap = [];
 
   for (const slug of slugs) {
     try {
       const { frontmatter } = await getFrontmatter<BlogFrontmatter>({
-        section,
         lang,
+        section,
         slug,
       });
 
@@ -34,16 +34,16 @@ export const generateSitemap = async ({
 
             return acc;
           },
-          {} as Record<string, string>
+          {} as Record<string, string>,
         ),
       };
 
       sitemap.push({
-        url,
-        lastModified: frontmatter.date,
-        changeFrequency: 'weekly',
-        priority: 0.7,
         alternates,
+        changeFrequency: 'weekly',
+        lastModified: frontmatter.date,
+        priority: 0.7,
+        url,
       });
     } catch (error) {
       console.error(`Error generating sitemap for ${slug}:`, error);

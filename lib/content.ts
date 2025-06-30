@@ -1,4 +1,4 @@
-import { readFile, readdir } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { isNodeError } from '~/utils/node';
 import compileMDX from './mdx.ts';
@@ -41,8 +41,8 @@ export const getSlugs = async ({
   const files = await readdir(dirPath);
 
   return files
-    .filter(file => file.endsWith(`.${lang}.mdx`))
-    .map(file => file.replace(`.${lang}.mdx`, ''));
+    .filter((file) => file.endsWith(`.${lang}.mdx`))
+    .map((file) => file.replace(`.${lang}.mdx`, ''));
 };
 
 type GetFrontmatterProps = {
@@ -60,15 +60,15 @@ export const getFrontmatter = async <TFrontmatter>({
   slug: string;
 }> => {
   try {
-    const content = await getContent({ section, lang, slug });
+    const content = await getContent({ lang, section, slug });
 
     if (!content) {
       throw new Error(`Content not found for ${section}/${slug}.${lang}.mdx`);
     }
 
     const { frontmatter } = await compileMDX<TFrontmatter>({
-      source: content,
       parseFrontmatter: true,
+      source: content,
     });
 
     return { frontmatter, slug: slug || 'index' };
@@ -76,7 +76,7 @@ export const getFrontmatter = async <TFrontmatter>({
     if (isNodeError(error) && error.code === 'ENOENT') {
       // File not found, try the default language
       if (lang !== 'en') {
-        return getFrontmatter({ section, lang: 'en', slug });
+        return getFrontmatter({ lang: 'en', section, slug });
       }
     }
     throw error;

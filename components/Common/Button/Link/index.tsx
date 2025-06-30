@@ -1,14 +1,13 @@
 import classNames from 'classnames';
-import LocalizedLink from '~/components/Common/LocalizedLink';
-import styles from '../index.module.css';
-import type { FC, AnchorHTMLAttributes } from 'react';
+import type { ComponentProps, FC } from 'react';
+import { Link } from '~/lib/i18n/routing.ts';
 
-type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+type ButtonLinkProps = ComponentProps<typeof Link>;
 
 const ButtonLink: FC<ButtonLinkProps> = ({ children, className, ...props }) => (
-  <LocalizedLink className={classNames(className, styles.button)} {...props}>
+  <Link className={classNames('button', className)} {...props}>
     {children}
-  </LocalizedLink>
+  </Link>
 );
 
 export default ButtonLink;

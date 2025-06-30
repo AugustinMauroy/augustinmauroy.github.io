@@ -1,4 +1,4 @@
-import { useMessages, NextIntlClientProvider, useTimeZone } from 'next-intl';
+import { NextIntlClientProvider, useMessages, useTimeZone } from 'next-intl';
 import type { FC, PropsWithChildren } from 'react';
 
 type LocaleProviderProps = PropsWithChildren<{
@@ -14,9 +14,9 @@ export const LocaleProvider: FC<LocaleProviderProps> = ({
 
   return (
     <NextIntlClientProvider
+      locale={locale}
       messages={messages}
       timeZone={timezone}
-      locale={locale}
     >
       {children}
     </NextIntlClientProvider>

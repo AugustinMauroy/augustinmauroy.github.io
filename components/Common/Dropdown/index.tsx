@@ -1,8 +1,7 @@
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
 import classNames from 'classnames';
-import Button from '../Button/index.tsx';
-import styles from './index.module.css';
 import type { FC, ReactNode } from 'react';
+import Button from '../Button/index.tsx';
 
 type DropdownProps = {
   trigger: ReactNode;
@@ -22,22 +21,26 @@ const Dropdown: FC<DropdownProps> = ({
   <RadixDropdownMenu.Root>
     <RadixDropdownMenu.Trigger asChild>
       <Button
-        aria-label={triggerAriaLabel}
-        aria-haspopup="menu"
         aria-expanded={false}
+        aria-haspopup="menu"
+        aria-label={triggerAriaLabel}
       >
         {trigger}
       </Button>
     </RadixDropdownMenu.Trigger>
 
     <RadixDropdownMenu.Portal>
-      <RadixDropdownMenu.Content className={styles.content}>
-        {options.map(option => (
+      <RadixDropdownMenu.Content className="m-2.5 border-2 border-black bg-white shadow-neo-brutalism-black dark:border-white dark:bg-neutral-950 dark:shadow-neo-brutalism-white">
+        {options.map((option) => (
           <RadixDropdownMenu.Item
+            className={classNames(
+              'cursor-pointer px-4 py-2 hover:bg-green-300 focus:outline-hidden dark:hover:bg-green-700',
+              {
+                'bg-green-300 font-bold dark:bg-green-700':
+                  option === activeOption,
+              },
+            )}
             key={option}
-            className={classNames(styles.item, {
-              [styles.active]: option === activeOption,
-            })}
             onSelect={() => onOptionSelect?.(option)}
           >
             {option}

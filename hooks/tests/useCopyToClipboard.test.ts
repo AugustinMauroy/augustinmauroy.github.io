@@ -1,17 +1,17 @@
-import { describe, it, mock } from 'node:test';
 import assert from 'node:assert/strict';
-import { renderHook, act } from '@testing-library/react';
+import { describe, it, mock } from 'node:test';
+import { act, renderHook } from '@testing-library/react';
 import useCopyToClipboard from '../useCopyToClipboard.ts';
 
 describe('useCopyToClipboard', () => {
   it('should return initial state as false', () => {
-    const { result } = renderHook(() => useCopyToClipboard());
+    const { result } = renderHook(() => useCopyToClipboard(5));
     const [copied] = result.current;
     assert.strictEqual(copied, false);
   });
 
   it('should copy text to clipboard and set copied to true', async () => {
-    const { result } = renderHook(() => useCopyToClipboard());
+    const { result } = renderHook(() => useCopyToClipboard(5));
     const [, copyText] = result.current;
 
     await act(async () => {
@@ -22,8 +22,8 @@ describe('useCopyToClipboard', () => {
     assert.strictEqual(copied, true);
   });
 
-  it('should reset copied to false after 1 seconds', () => {
-    const { result } = renderHook(() => useCopyToClipboard(1000));
+  it('should reset copied to false after 5 ms', () => {
+    const { result } = renderHook(() => useCopyToClipboard(5));
     const [, copyText] = result.current;
 
     act(() => {
@@ -32,7 +32,7 @@ describe('useCopyToClipboard', () => {
 
     mock.timers.enable();
     act(() => {
-      mock.timers.tick(1000);
+      mock.timers.tick(5);
     });
     mock.timers.reset();
 
@@ -41,7 +41,7 @@ describe('useCopyToClipboard', () => {
   });
 
   it('should not copy text if value is undefined', async () => {
-    const { result } = renderHook(() => useCopyToClipboard());
+    const { result } = renderHook(() => useCopyToClipboard(5));
     const [, copyText] = result.current;
 
     await act(async () => {
@@ -58,7 +58,7 @@ describe('useCopyToClipboard', () => {
       throw new Error('Clipboard write failed');
     };
 
-    const { result } = renderHook(() => useCopyToClipboard());
+    const { result } = renderHook(() => useCopyToClipboard(5));
     const [, copyText] = result.current;
 
     await act(async () => {

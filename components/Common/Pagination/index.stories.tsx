@@ -1,5 +1,5 @@
-import Pagination from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
+import Pagination from './index.tsx';
 
 type Story = StoryObj<typeof Pagination>;
 type Meta = MetaObj<typeof Pagination>;

@@ -1,11 +1,11 @@
 import type { FC, SVGProps } from 'react';
 
-const Neobrutalism2: FC<SVGProps<SVGSVGElement>> = props => (
+const Neobrutalism2: FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg
-    width="454"
+    fill="none"
     height="454"
     viewBox="0 0 454 454"
-    fill="none"
+    width="454"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >

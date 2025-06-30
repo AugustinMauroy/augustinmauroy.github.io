@@ -1,6 +1,6 @@
 import { ArrowDownIcon } from '@heroicons/react/20/solid';
-import Button from './index.tsx';
 import type { Meta as MetaObj, StoryObj } from '@storybook/react';
+import Button from './index.tsx';
 
 type Story = StoryObj<typeof Button>;
 type Meta = MetaObj<typeof Button>;
