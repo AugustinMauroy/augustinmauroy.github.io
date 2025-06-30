@@ -10,7 +10,7 @@ type TextWithImagesProps = {
 };
 
 const TextWithImages: FC<TextWithImagesProps> = ({ description, images }) => (
-  <section className="my-4 flex flex-row flex-wrap justify-between gap-4">
+  <section className="my-4 flex flex-row flex-wrap lg:justify-between justify-center items-center gap-4">
     <div className="my-auto h-full w-1/2">{description}</div>
     <Images images={images} />
   </section>

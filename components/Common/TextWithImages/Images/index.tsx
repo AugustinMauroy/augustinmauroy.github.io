@@ -1,14 +1,12 @@
 'use client';
 import classNames from 'classnames';
-import Image from 'next/image';
 import type { FC } from 'react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type ImagesProps = {
   images: Array<{
     src: string;
     alt?: string;
-    ratio?: string;
   }>;
 };
 
@@ -16,44 +14,35 @@ const Images: FC<ImagesProps> = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const MAX_IMAGES = images.length;
 
-  // calculate the width and height of the image
-  const { width, height } = useMemo(() => {
-    const ratio = images[selectedImage].ratio || '16:9';
-    const [ratioWidth, ratioHeight] = ratio.split(':').map(Number);
-
-    return {
-      height: (ratioHeight / ratioWidth) * 100,
-      width: (ratioWidth / ratioHeight) * 100,
-    };
-  }, [images, selectedImage]);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setSelectedImage((prev) => (prev + 1) % MAX_IMAGES);
-    }, 2000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [MAX_IMAGES]);
 
   return (
-    <div>
+    <div
+      className={classNames(
+        'relative size-96 flex flex-col',
+        'items-center justify-center md:items-end md:justify-end',
+      )}
+    >
       {Array.from({ length: MAX_IMAGES }, (_, i) => (
-        <Image
-          alt="Augustin"
+        // biome-ignore lint/performance/noImgElement: don't care we don't know size of images
+        <img
+          alt={images[i].alt || 'Image'}
           className={classNames(
-            'h-auto w-80 rounded-xl border-2 border-black object-cover shadow-neo-brutalism-black transition-shadow hover:shadow-neo-brutalism-xl-black dark:border-white dark:shadow-neo-brutalism-white dark:hover:shadow-neo-brutalism-xl-white',
+            'absolute top-0 left-0 h-96 w-auto rounded-xl border-2 border-black object-cover shadow-neo-brutalism-black transition-opacity duration-500 dark:border-white dark:shadow-neo-brutalism-white ',
             {
-              block: i === selectedImage,
-              hidden: i !== selectedImage,
+              'opacity-0': i !== selectedImage,
+              'opacity-100': i === selectedImage,
             },
           )}
           fetchPriority={i === selectedImage ? 'high' : 'low'}
-          height={height}
-          hidden={i !== selectedImage}
           key={`${i}-text-with-images ${crypto.randomUUID()}`}
-          onClick={() => setSelectedImage((i + 1) % MAX_IMAGES)}
           src={images[i].src}
-          width={width}
         />
       ))}
     </div>
