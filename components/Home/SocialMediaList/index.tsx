@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { FC } from 'react';
+import { Bluesky } from '~/components/Icons/BlueSky';
 import Github from '~/components/Icons/Github.tsx';
 import Instagram from '~/components/Icons/Instagram.tsx';
 import LinkedIn from '~/components/Icons/Linkedin.tsx';
@@ -11,6 +12,16 @@ const LIST = [
     href: 'https://www.github.com/AugustinMauroy',
     icon: Github,
     name: 'Github',
+  },
+  {
+    href: 'https://x.com/_August1_',
+    icon: Twitter,
+    name: 'Twitter',
+  },
+  {
+    href: 'https://bsky.app/profile/augustin-mauroy.bsky.social',
+    icon: Bluesky,
+    name: 'Bluesky',
   },
   {
     href: 'https://www.instagram.com/augustin_mauroy/',
@@ -26,11 +37,6 @@ const LIST = [
     href: 'https://www.twitch.tv/augustin_ma',
     icon: Twitch,
     name: 'Twitch',
-  },
-  {
-    href: 'https://x.com/_August1_',
-    icon: Twitter,
-    name: 'Twitter',
   },
 ];
 
