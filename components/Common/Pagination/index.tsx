@@ -36,7 +36,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages }) => {
     <div className="flex w-full justify-center space-x-2">
       <ButtonLink
         aria-disabled={currentPage === 1}
-        href={`/blog/${currentPage - 1}`}
+        href={currentPage === 1 ? '/blog/1' : `/blog/${currentPage - 1}`}
       >
         <ArrowLeftIcon aria-label={t('previous')} />
       </ButtonLink>
@@ -53,7 +53,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages }) => {
                 currentPage !== page,
             },
           )}
-          href={`/blog/${page - 1}`}
+          href={`/blog/${page}`}
           key={page}
           tabIndex={currentPage === page ? -1 : undefined}
           title={t('page', { page })}
@@ -63,8 +63,12 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages }) => {
       ))}
       {end < totalPages && <Ellipsis />}
       <ButtonLink
-        aria-disabled={currentPage === totalPages}
-        href={`/blog/${currentPage + 1}`}
+        aria-disabled={currentPage + 1 === totalPages}
+        href={
+          currentPage === totalPages
+            ? `/blog/${totalPages}`
+            : `/blog/${currentPage + 1}`
+        }
       >
         <ArrowRightIcon aria-label={t('next')} />
       </ButtonLink>

@@ -1,6 +1,5 @@
 import { RssIcon } from '@heroicons/react/24/solid';
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import type { FC } from 'react';
 import ButtonLink from '~/components/Common/Button/Link/index.tsx';
@@ -39,7 +38,7 @@ export const generateStaticParams = async ({ params }: StaticParams) => {
   const totalPages = Math.ceil(posts.length / MAX_POSTS_PER_PAGE);
 
   const result = Array.from({ length: totalPages }, (_, i) => ({
-    page: [i.toString()],
+    page: [(i + 1).toString()],
   }));
 
   return [{ page: ['index'] }, ...result];
@@ -47,35 +46,38 @@ export const generateStaticParams = async ({ params }: StaticParams) => {
 
 const Page: FC<PageProps> = async ({ params }) => {
   const { page, locale } = await params;
-  let pageNumbers = null;
-  if (page && page[0] === 'index') {
-    pageNumbers = 0;
-  } else if (page && Number.isInteger(parseInt(page[0], 10))) {
-    pageNumbers = parseInt(page[0], 10);
-  }
 
-  if (pageNumbers === null) notFound();
+  if ((page?.[0] !== 'index' && Number.isNaN(Number(page?.[0]))) || !page)
+    throw new Error(`Invalid page parameter ${JSON.stringify(page)}`);
+
+  const pageNumbers = page[0] === 'index' ? 1 : Number(page[0]);
 
   const posts = await getSlugs({
-    lang: (await params).locale,
+    lang: locale,
     section: 'blog',
   });
+
   const metadata = await Promise.all(
-    posts
-      .slice(
-        pageNumbers * MAX_POSTS_PER_PAGE,
-        (pageNumbers + 1) * MAX_POSTS_PER_PAGE,
-      )
-      .map((slug) =>
-        getFrontmatter<BlogFrontmatter>({
-          lang: locale,
-          section: 'blog',
-          slug,
-        }),
-      ),
+    posts.map((slug) =>
+      getFrontmatter<BlogFrontmatter>({
+        lang: locale,
+        section: 'blog',
+        slug,
+      }),
+    ),
   );
+  metadata.sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).getTime() -
+      new Date(a.frontmatter.date).getTime(),
+  );
+
+  const startIndex = (pageNumbers - 1) * MAX_POSTS_PER_PAGE;
+  const endIndex = startIndex + MAX_POSTS_PER_PAGE;
+  const postsToShow = metadata.slice(startIndex, endIndex);
   const totalPosts = posts.length;
   const totalPages = Math.ceil(totalPosts / MAX_POSTS_PER_PAGE);
+
   const t = await getTranslations('app.blog');
 
   return (
@@ -91,18 +93,12 @@ const Page: FC<PageProps> = async ({ params }) => {
         </ButtonLink>
       </header>
       <section className="mb-4 flex flex-wrap gap-4">
-        {metadata
-          .sort(
-            (a, b) =>
-              new Date(b.frontmatter.date).getTime() -
-              new Date(a.frontmatter.date).getTime(),
-          )
-          .map((post) => (
-            <PostCard key={post.slug} {...post} {...post.frontmatter} />
-          ))}
+        {postsToShow.map((post) => (
+          <PostCard key={post.slug} {...post} {...post.frontmatter} />
+        ))}
       </section>
       {totalPages > 1 && (
-        <Pagination currentPage={pageNumbers + 1} totalPages={totalPages} />
+        <Pagination currentPage={pageNumbers} totalPages={totalPages} />
       )}
     </BaseLayout>
   );
