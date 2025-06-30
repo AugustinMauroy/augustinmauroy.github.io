@@ -3,7 +3,6 @@ import type { FC } from 'react';
 import Github from '~/components/Icons/Github.tsx';
 import Instagram from '~/components/Icons/Instagram.tsx';
 import LinkedIn from '~/components/Icons/Linkedin.tsx';
-import Mastodon from '~/components/Icons/Mastodon.tsx';
 import Twitch from '~/components/Icons/Twitch.tsx';
 import Twitter from '~/components/Icons/Twitter.tsx';
 
@@ -22,11 +21,6 @@ const LIST = [
     href: 'https://www.linkedin.com/in/augustin-mauroy/',
     icon: LinkedIn,
     name: 'LinkedIn',
-  },
-  {
-    href: 'https://mastodon.social/@augustin_mauroy',
-    icon: Mastodon,
-    name: 'Mastodon',
   },
   {
     href: 'https://www.twitch.tv/augustin_ma',
