@@ -22,7 +22,6 @@ export const Default: Story = {
       },
       {
         alt: 'Rammstein concert',
-        ratio: '3:4',
         src: '/static/about/rammstien-2.jpeg',
       },
       {
