@@ -102,7 +102,7 @@ const Page: FC<PageProps> = async ({ params }) => {
           ))}
       </section>
       {totalPages > 1 && (
-        <Pagination currentPage={pageNumbers} totalPages={totalPages} />
+        <Pagination currentPage={pageNumbers + 1} totalPages={totalPages} />
       )}
     </BaseLayout>
   );

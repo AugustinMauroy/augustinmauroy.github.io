@@ -1,8 +1,8 @@
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import type { FC } from 'react';
+import { Link } from '~/lib/i18n/routing.ts';
 import ButtonLink from '../Button/Link/index.tsx';
 
 const MAX_ITEMS = 5;
@@ -53,7 +53,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages }) => {
                 currentPage !== page,
             },
           )}
-          href={`/blog/${page === 1 ? '' : page}`}
+          href={`/blog/${page - 1}`}
           key={page}
           tabIndex={currentPage === page ? -1 : undefined}
           title={t('page', { page })}
