@@ -6,8 +6,6 @@ import { isInRange, isToday } from '~/utils/date.ts';
 
 type Event = {
   key: string;
-  title: string;
-  description: string;
   date?: string;
   startDate?: string;
   endDate?: string;
@@ -15,23 +13,17 @@ type Event = {
 
 const EVENTS: Event[] = [
   {
-    description: 'Celebrate Pride Month from June 1st to June 30th.',
     endDate: '2023-06-30',
     key: 'prideMonth',
     startDate: '2023-06-01',
-    title: 'Pride Month',
   },
   {
     date: '2023-09-23',
-    description: 'Celebrate Bisexuality Day on September 23rd.',
     key: 'bisexualityDay',
-    title: 'Bisexuality Day',
   },
   {
     date: '2023-12-01',
-    description: 'Observe World AIDS Day on December 1st.',
     key: 'aidsDay',
-    title: 'AIDS Day',
   },
 ];
 

@@ -18,7 +18,6 @@ export const Default: Story = {
     images: [
       {
         alt: 'Rammstein concert',
-        ratio: '9:16',
         src: '/static/about/rammstien-1.jpeg',
       },
       {
@@ -28,17 +27,14 @@ export const Default: Story = {
       },
       {
         alt: 'Rammstein concert',
-        ratio: '3:4',
         src: '/static/about/rammstien-3.jpeg',
       },
       {
         alt: 'Rammstein concert',
-        ratio: '9:16',
         src: '/static/about/rammstien-4.jpeg',
       },
       {
         alt: 'Rammstein concert',
-        ratio: '9:16',
         src: '/static/about/rammstien-5.jpeg',
       },
     ],

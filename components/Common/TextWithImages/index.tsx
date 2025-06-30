@@ -6,7 +6,6 @@ type TextWithImagesProps = {
   images: Array<{
     src: string;
     alt?: string;
-    ratio?: string;
   }>;
 };
 
