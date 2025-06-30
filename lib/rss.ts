@@ -12,8 +12,9 @@ export const generateRssFeed = async ({
   lang,
 }: GenerateRssFeedProps): Promise<string> => {
   const feed = new Feed({
-    copyright: `Licence MIT Copyright (c) ${new Date().getFullYear} Augustin Mauroy`,
+    copyright: `Licence MIT Copyright (c) ${new Date().getFullYear()} Augustin Mauroy`,
     description: `Augustin M Website - ${section}`,
+    generator: '',
     id: 'https://augustinmauroy.github.io/',
     language: lang,
     link: 'https://augustinmauroy.github.io/',
