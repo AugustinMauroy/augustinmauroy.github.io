@@ -14,7 +14,7 @@ export const Default: Story = {
 export const WithImage: Story = {
   args: {
     description: 'Project description.',
-    image: 'https://via.placeholder.com/160x90',
+    image: '/static/projects/nodejs.svg',
     title: 'Project Title',
   },
 };

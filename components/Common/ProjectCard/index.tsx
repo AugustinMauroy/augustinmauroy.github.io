@@ -34,7 +34,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
     ) : (
       <DotsIllustration className={imageClassName} />
     )}
-    <figcaption className="flex flex-col justify-between gap-2 p-4 lg:max-w-1/2">
+    <figcaption className="flex flex-col justify-between gap-1 p-4 lg:max-w-1/2">
       <h3 className="font-semibold text-xl">{title}</h3>
       <p className="text-neutral-600 dark:text-neutral-400">{description}</p>
       {link && (
