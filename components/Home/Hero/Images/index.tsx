@@ -4,17 +4,15 @@ import Image from 'next/image';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 
-const MAX_IMAGES = 4;
+const MAX_IMAGES = 5;
 
 const Images: FC = () => {
   const [selectedImage, setSelectedImage] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    setInterval(() => {
       setSelectedImage((prev) => (prev + 1) % MAX_IMAGES);
-    }, 2000);
-
-    return () => clearInterval(interval);
+    }, 4000);
   }, []);
 
   return (
@@ -33,7 +31,7 @@ const Images: FC = () => {
           height={320}
           key={`${i}-hero ${crypto.randomUUID()}`}
           onClick={() => setSelectedImage((i + 1) % MAX_IMAGES)}
-          src={`/static/hero-${i + 1}.webp`}
+          src={`/static/hero-${i + 1}.jpeg`}
           width={320}
         />
       ))}
