@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { setRequestLocale } from 'next-intl/server';
 import type { FC } from 'react';
 import ArticleLayout from '~/components/Layout/Article/index.tsx';
 import { getContent } from '~/lib/content.ts';
@@ -9,8 +10,6 @@ import type { ProjectsFrontmatter } from '~/types/frontmatter.ts';
 import type { BaseParams } from '~/types/params.ts';
 
 type PageProps = BaseParams;
-
-export const dynamic = 'force-static';
 
 export const generateMetadata = async ({
   params,
@@ -34,12 +33,14 @@ export const generateMetadata = async ({
 };
 
 const Page: FC<PageProps> = async ({ params }) => {
+  const { locale } = await params;
   const rawSource = await getContent({
-    lang: (await params).locale,
+    lang: locale,
     section: 'projects',
   });
 
   if (!rawSource) notFound();
+  setRequestLocale(locale);
 
   const { content, frontmatter } = await compileMDX<ProjectsFrontmatter>({
     components: projectsMdxComponents,

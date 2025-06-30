@@ -7,10 +7,14 @@ import type { BaseParams } from '~/types/params.ts';
 
 type NotFoundProps = BaseParams;
 
-export const dynamic = 'force-static';
-
-export const generateMetadata = async (): Promise<Metadata> => {
-  const t = await getTranslations('app.notFound');
+export const generateMetadata = async ({
+  params,
+}: NotFoundProps): Promise<Metadata> => {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: 'app.notFound',
+  });
 
   return {
     description: t('message'),

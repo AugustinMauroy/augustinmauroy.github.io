@@ -1,11 +1,20 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { FC } from 'react';
 import LandingPage from '~/components/Home/index.tsx';
 import BaseLayout from '~/components/Layout/Base/index.tsx';
+import type { BaseParams } from '~/types/params.ts';
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  const t = await getTranslations('app.home.metadata');
+type PageProps = BaseParams;
+
+export const generateMetadata = async ({
+  params,
+}: PageProps): Promise<Metadata> => {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: 'app.home.metadata',
+  });
 
   return {
     description: t('description'),
@@ -13,10 +22,16 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
-const Page: FC = () => (
-  <BaseLayout>
-    <LandingPage />
-  </BaseLayout>
-);
+const Page: FC<PageProps> = async ({ params }) => {
+  const { locale } = await params;
+
+  setRequestLocale(locale);
+
+  return (
+    <BaseLayout>
+      <LandingPage />
+    </BaseLayout>
+  );
+};
 
 export default Page;

@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { notFound } from 'next/navigation';
+import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { FC, PropsWithChildren } from 'react';
 import { routing } from '~/lib/i18n/routing';
@@ -40,6 +42,9 @@ export const generateMetadata = async (): Promise<Metadata | null> => {
 
 const RootLayout: FC<RootLayoutProps> = async ({ children, params }) => {
   const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
   setRequestLocale(locale);
 
   return (

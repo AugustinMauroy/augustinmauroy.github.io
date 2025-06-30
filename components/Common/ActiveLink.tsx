@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 import type { FC, PropsWithChildren } from 'react';
-import LocalizedLink from './LocalizedLink.tsx';
+import { Link } from '~/lib/i18n/routing.ts';
 
 type ActiveLinkProps = PropsWithChildren<{
   href: string;
@@ -20,13 +20,13 @@ export const ActiveLink: FC<ActiveLinkProps> = ({
   const isActive = pathname.includes(href);
 
   return (
-    <LocalizedLink
+    <Link
       className={classNames(className, {
         [activeClassName]: isActive,
       })}
       href={href}
     >
       {children}
-    </LocalizedLink>
+    </Link>
   );
 };

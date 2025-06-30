@@ -1,18 +1,16 @@
-import { availableLocales } from '~/lib/i18n/config.ts';
+import { routing } from '~/lib/i18n/routing';
 import { generateRssFeed } from '~/lib/rss.ts';
 import type { BaseParams } from '~/types/params.ts';
 
 export const dynamic = 'force-static';
 
-export const generateStaticParams = () => {
-  return availableLocales.map((lang) => ({
-    locale: lang.code,
-  }));
-};
+export const generateStaticParams = () =>
+  routing.locales.map((locale) => ({ locale }));
 
 export const GET = async (_: Request, { params }: BaseParams) => {
+  const { locale } = await params;
   const feed = await generateRssFeed({
-    lang: (await params).locale,
+    lang: locale,
     section: 'blog',
   });
 

@@ -25,8 +25,6 @@ type StaticParams = {
   };
 };
 
-export const dynamic = 'force-static';
-
 export const generateMetadata = async (): Promise<Metadata | null> => {
   const t = await getTranslations('app.blog');
 

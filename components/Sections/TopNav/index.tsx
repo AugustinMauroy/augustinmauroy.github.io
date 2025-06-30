@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import type { FC } from 'react';
 import { ActiveLink } from '~/components/Common/ActiveLink.tsx';
 import LanguageSelector from '~/components/Common/LanguageSelector/index.tsx';
-import LocalizedLink from '~/components/Common/LocalizedLink.tsx';
+import { Link } from '~/lib/i18n/routing.ts';
 
 const RIGHT_LINKS = [
   {
@@ -21,12 +21,12 @@ const TopNav: FC = async () => {
 
   return (
     <nav className="flex h-fit w-full flex-col items-center justify-between gap-4 border-b-2 border-b-black bg-white pb-2 md:h-16 md:flex-row md:gap-0 md:pb-0 dark:border-b-white dark:bg-neutral-950">
-      <LocalizedLink
+      <Link
         className="inline-flex size-full items-center justify-center bg-teal-100 px-4 font-semibold shadow-sm shadow-teal-100 hover:underline md:w-fit md:border-r-2 md:border-r-black dark:bg-teal-400 dark:text-black dark:shadow-teal-500 md:dark:border-r-white"
         href="/"
       >
         Augustin M.
-      </LocalizedLink>
+      </Link>
       <ul className="flex flex-row items-center gap-2 px-4 lg:gap-8 lg:px-8">
         <li>
           <LanguageSelector />
