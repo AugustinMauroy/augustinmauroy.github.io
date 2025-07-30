@@ -34,6 +34,4 @@ const nextConfig: NextConfig = {
 
 const configWithIntl = withNextIntl(nextConfig);
 
-export default process.env.NODE_ENV === 'production'
-  ? configWithIntl
-  : withRspack(configWithIntl);
+export default withRspack(configWithIntl);
