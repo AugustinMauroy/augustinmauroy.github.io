@@ -39,6 +39,13 @@ const PostLayout: FC<PostLayoutProps> = ({
       {authors && <AuthorsList authors={authors} />}
     </header>
     <section className="articleContent">{children}</section>
+    <iframe
+      className="mx-auto border-0"
+      height="225"
+      src="https://github.com/sponsors/AugustinMauroy/card"
+      title="Sponsor AugustinMauroy"
+      width="600"
+    />
   </BaseLayout>
 );
 
