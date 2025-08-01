@@ -6,7 +6,7 @@
     "classnames": "~2.5.1",
     "feed": "~5.1.0",
     "next": "~15.4.5",
-    "next-intl": "~4.3.2",
+    "next-intl": "~4.3.4",
     "next-mdx-remote": "~5.0.0",
     "react": "~19.1.1",
     "react-dom": "~19.1.1",
