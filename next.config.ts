@@ -1,12 +1,9 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
-import withRspack from 'next-rspack';
 
 const withNextIntl = createNextIntlPlugin('./lib/i18n/request.ts');
 
 const nextConfig: NextConfig = {
-  // We didn't use eslint
-  eslint: { ignoreDuringBuilds: true },
   experimental: {
     // A list of packages that Next.js should automatically evaluate and optimise the imports for.
     // @see https://vercel.com/blog/how-we-optimized-package-imports-in-next-js
@@ -32,6 +29,4 @@ const nextConfig: NextConfig = {
   typescript: { ignoreBuildErrors: true },
 };
 
-const configWithIntl = withNextIntl(nextConfig);
-
-export default withRspack(configWithIntl);
+export default withNextIntl(nextConfig);

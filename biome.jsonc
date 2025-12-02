@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -28,6 +28,9 @@
     },
     "linter": {
       "enabled": true
+    },
+    "parser": {
+      "tailwindDirectives": true
     }
   },
   "files": {
@@ -37,7 +40,7 @@
       "**/*.js",
       "**/*.css",
       "**/*.json",
-      "!out/**",
+      "!out",
       "!.next"
     ]
   },

@@ -13,10 +13,10 @@ type CodeboxProps = {
 const Codebox: FC<CodeboxProps> = async (props) => {
   if (!isValidElement(props.children)) return null;
 
-  // @ts-ignore
+  // @ts-expect-error
   const code = props.children.props.children.trim();
   const lang =
-    // @ts-ignore
+    // @ts-expect-error
     props.children.props?.className
       ?.replace('language-', '')
       ?.replace('mjs', 'js') ?? 'plaintext';
