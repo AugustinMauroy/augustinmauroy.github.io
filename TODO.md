@@ -1,4 +1,2 @@
 - open graph image (need to be designed)
-- remove deprecated `forwardRef`
-- Write unit test for:
-  - `WithEnventsCard`
+

@@ -1,13 +1,13 @@
 'use client';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import classNames from 'classnames';
-import type { ComponentPropsWithoutRef, ElementRef } from 'react';
-import { forwardRef } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 
-const Avatar = forwardRef<
-  ElementRef<typeof AvatarPrimitive.Root>,
-  ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
->(({ className, ...props }, ref) => (
+const Avatar = ({
+  className,
+  ref,
+  ...props
+}: ComponentPropsWithRef<typeof AvatarPrimitive.Root>) => (
   <AvatarPrimitive.Root
     className={classNames(
       'relative flex size-10 shrink-0 overflow-hidden rounded-full outline-2 outline-black outline-solid dark:outline-white',
@@ -16,27 +16,29 @@ const Avatar = forwardRef<
     ref={ref}
     {...props}
   />
-));
+);
 
 Avatar.displayName = AvatarPrimitive.Root.displayName;
 
-const AvatarImage = forwardRef<
-  ElementRef<typeof AvatarPrimitive.Image>,
-  ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
->(({ className, ...props }, ref) => (
+const AvatarImage = ({
+  className,
+  ref,
+  ...props
+}: ComponentPropsWithRef<typeof AvatarPrimitive.Image>) => (
   <AvatarPrimitive.Image
     className={classNames('aspect-square size-full', className)}
     ref={ref}
     {...props}
   />
-));
+);
 
 AvatarImage.displayName = AvatarPrimitive.Image.displayName;
 
-const AvatarFallback = forwardRef<
-  ElementRef<typeof AvatarPrimitive.Fallback>,
-  ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
->(({ className, ...props }, ref) => (
+const AvatarFallback = ({
+  className,
+  ref,
+  ...props
+}: ComponentPropsWithRef<typeof AvatarPrimitive.Fallback>) => (
   <AvatarPrimitive.Fallback
     className={classNames(
       'flex size-full items-center justify-center rounded-full bg-white font-bold text-base dark:bg-neutral-950 dark:text-white',
@@ -45,7 +47,7 @@ const AvatarFallback = forwardRef<
     ref={ref}
     {...props}
   />
-));
+);
 
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
 
