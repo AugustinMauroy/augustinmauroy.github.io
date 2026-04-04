@@ -4,5 +4,5 @@
 // add way to extend base params
 
 export type BaseParams = {
-  params: Promise<{ locale: string }>;
+	params: Promise<{ locale: string }>;
 };

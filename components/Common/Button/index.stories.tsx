@@ -1,31 +1,31 @@
-import { ArrowDownIcon } from '@heroicons/react/20/solid';
-import type { Meta as MetaObj, StoryObj } from '@storybook/react';
-import Button from './index.tsx';
+import { ArrowDownIcon } from "@heroicons/react/20/solid";
+import type { Meta as MetaObj, StoryObj } from "@storybook/nextjs";
+import Button from "./index.tsx";
 
 type Story = StoryObj<typeof Button>;
 type Meta = MetaObj<typeof Button>;
 
 export const Default: Story = {
-  args: {
-    children: 'Button Link',
-  },
+	args: {
+		children: "Button Link",
+	},
 };
 
 export const WithIcon: Story = {
-  args: {
-    children: (
-      <>
-        Button Link <ArrowDownIcon className="h-4 w-4" />
-      </>
-    ),
-  },
+	args: {
+		children: (
+			<>
+				Button Link <ArrowDownIcon className="h-4 w-4" />
+			</>
+		),
+	},
 };
 
 export const Disabled: Story = {
-  args: {
-    children: 'Button Link',
-    disabled: true,
-  },
+	args: {
+		children: "Button Link",
+		disabled: true,
+	},
 };
 
 export default { component: Button } as Meta;

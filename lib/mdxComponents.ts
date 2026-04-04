@@ -1,26 +1,24 @@
-import type { MDXProvider } from '@mdx-js/react';
-import type { ComponentProps } from 'react';
-import Codebox from '~/components/Common/Codebox/index.tsx';
-import ProjectCard from '~/components/Common/ProjectCard/index.tsx';
-import TextWithImages from '~/components/Common/TextWithImages/index.tsx';
-import Timeline from '~/components/Common/TimeLine/index.tsx';
-import { Link } from '~/lib/i18n/routing.ts';
+import type { MDXProvider } from "@mdx-js/react";
+import type { ComponentProps } from "react";
+import Codebox from "~/components/Common/Codebox/index.tsx";
+import ProjectCard from "~/components/Common/ProjectCard/index.tsx";
+import TextWithImages from "~/components/Common/TextWithImages/index.tsx";
+import { Link } from "~/lib/i18n/routing.ts";
 
-type Components = ComponentProps<typeof MDXProvider>['components'];
+type Components = ComponentProps<typeof MDXProvider>["components"];
 
 export const defaultMdxComponents = {
-  a: Link,
+	a: Link,
 } as Components;
 
 export const aboutMdxComponents = {
-  TextWithImages,
-  Timeline,
+	TextWithImages,
 } as Components;
 
 export const projectsMdxComponents = {
-  ProjectCard,
+	ProjectCard,
 };
 
 export const blogMdxComponents = {
-  pre: Codebox,
+	pre: Codebox,
 } as Components;

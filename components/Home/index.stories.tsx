@@ -1,5 +1,5 @@
-import type { Meta as MetaObj, StoryObj } from '@storybook/react';
-import LandingPage from './index.tsx';
+import type { Meta as MetaObj, StoryObj } from "@storybook/nextjs";
+import LandingPage from "./index.tsx";
 
 type Story = StoryObj<typeof LandingPage>;
 type Meta = MetaObj<typeof LandingPage>;
