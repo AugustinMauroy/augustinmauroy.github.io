@@ -35,12 +35,10 @@
   },
   "scripts": {
     "biome:ci": "biome ci ./",
-    "biome:format": "biome format --write ./",
-    "biome:lint": "biome lint --write ./",
     "build": "next build",
     "dev": "next dev",
     "postbuild": "node ./scripts/postbuild.js",
-    "pre-commit": "node --run biome:format && node --run biome:lint",
+    "pre-commit": "biome check ./ --write && node --run types:check && node --run test",
     "start": "next start",
     "storybook": "BUILD_ENV=storybook storybook dev -p 6006 --quiet --no-open",
     "storybook:build": "BUILD_ENV=storybook storybook build",

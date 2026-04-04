@@ -19,8 +19,8 @@ const availableLocalesMap = Object.fromEntries(
 );
 
 export {
-	availableLocales,
 	availableLocaleCodes,
+	availableLocales,
 	availableLocalesMap,
 	defaultLocale,
 };
