@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.10",
-    "@happy-dom/global-registrator": "^20.8.9",
+    "@happy-dom/global-registrator": "^20.9.0",
     "@nodejs-loaders/alias": "~2.1.2",
     "@nodejs-loaders/tsx": "~1.2.0",
     "@storybook/nextjs": "~10.3.4",
