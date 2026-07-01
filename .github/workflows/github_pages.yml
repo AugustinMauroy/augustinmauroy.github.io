@@ -39,7 +39,7 @@ jobs:
         uses: actions/configure-pages@v6
 
       - name: Restore Cache
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: |
             .next/cache
@@ -55,7 +55,7 @@ jobs:
           node --run postbuild
 
       - name: Save Cache
-        uses: actions/cache/save@v5
+        uses: actions/cache/save@v6
         with:
           path: |
             .next/cache
