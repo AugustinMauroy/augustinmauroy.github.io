@@ -16,7 +16,7 @@
     "shiki": "~4.3.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.10",
+    "@biomejs/biome": "2.5.2",
     "@happy-dom/global-registrator": "^20.10.6",
     "@nodejs-loaders/alias": "~2.1.2",
     "@nodejs-loaders/tsx": "~1.2.0",
