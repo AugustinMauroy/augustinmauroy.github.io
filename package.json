@@ -20,7 +20,7 @@
     "@happy-dom/global-registrator": "^20.10.6",
     "@nodejs-loaders/alias": "~2.1.2",
     "@nodejs-loaders/tsx": "~1.2.0",
-    "@storybook/nextjs": "~10.3.4",
+    "@storybook/nextjs": "~10.4.6",
     "@tailwindcss/postcss": "^4.3.2",
     "@testing-library/dom": "~10.4.1",
     "@testing-library/react": "~16.3.2",
@@ -29,7 +29,7 @@
     "@types/react-dom": "~19.2.3",
     "next-themes": "^0.4.6",
     "postcss": "^8.5.13",
-    "storybook": "~10.3.4",
+    "storybook": "~10.4.6",
     "tailwindcss": "^4.3.2",
     "typescript": "~6.0.3"
   },
