@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { render } from "@testing-library/react";
 import { IntlProvider } from "next-intl";
-import WithEventsCard from "~/components/Logic/WithEventsCard.tsx";
-import messages from "~/i18n/locales/en.json" with { type: "json" };
+import WithEventsCard from "#/components/Logic/WithEventsCard.tsx";
+import messages from "#/i18n/locales/en.json" with { type: "json" };
 
 describe("WithEventsCard", () => {
 	it("renders the Pride Month event", (t) => {

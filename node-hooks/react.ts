@@ -1,8 +1,9 @@
-import { register } from "node:module";
+import { registerHooks } from "node:module";
 import { GlobalRegistrator } from "@happy-dom/global-registrator";
+import * as tsxLoader from "@nodejs-loaders/tsx/tsx.loader.mjs";
 
-register("@nodejs-loaders/alias", import.meta.url);
-register("@nodejs-loaders/tsx", import.meta.url);
+// @ts-expect-error IDK
+registerHooks(tsxLoader);
 
 GlobalRegistrator.register({
 	height: 1080,

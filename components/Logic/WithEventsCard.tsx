@@ -1,8 +1,8 @@
 "use client";
 import { useTranslations } from "next-intl";
 import type { FC } from "react";
-import EventsCard from "~/components/Common/EnventsCard/index.tsx";
-import { isInRange, isToday } from "~/utils/date.ts";
+import EventsCard from "#/components/Common/EnventsCard/index.tsx";
+import { isInRange, isToday } from "#/utils/date.ts";
 
 type Event = {
 	key: string;

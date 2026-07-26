@@ -10,7 +10,7 @@ const Avatar = ({
 }: ComponentPropsWithRef<typeof AvatarPrimitive.Root>) => (
 	<AvatarPrimitive.Root
 		className={classNames(
-			"relative flex size-10 shrink-0 overflow-hidden rounded-full outline-2 outline-black outline-solid dark:outline-white",
+			"relative flex size-10 shrink-0 overflow-hidden outline-2 outline-black outline-solid dark:outline-white shadow-neo-brutalism-sm-black dark:shadow-neo-brutalism-sm-white",
 			className,
 		)}
 		ref={ref}

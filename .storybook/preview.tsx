@@ -4,7 +4,7 @@ import { ThemeProvider } from "next-themes";
 import messages from "../i18n/locales/en.json";
 import "../styles/globals.css";
 
-const preview: Preview = {
+export default {
 	decorators: [
 		(Story, context) => {
 			const theme = context.globals.theme;
@@ -42,6 +42,4 @@ const preview: Preview = {
 			appDirectory: true,
 		},
 	},
-};
-
-export default preview;
+} as Preview;

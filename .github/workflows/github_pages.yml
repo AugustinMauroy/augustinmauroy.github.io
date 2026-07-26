@@ -18,7 +18,7 @@ concurrency:
 jobs:
   build:
     name: Build for GitHub Pages
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Git Checkout
@@ -26,42 +26,16 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: '.nvmrc'
-          cache: npm
-
       - name: Install NPM packages
         run: npm ci
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v6
 
-      - name: Restore Cache
-        uses: actions/cache/restore@v6
-        with:
-          path: |
-            .next/cache
-            node_modules/.cache
-          key: build-${{ hashFiles('**/package-lock.json') }}-
-          restore-keys: |
-            build-${{ hashFiles('**/package-lock.json') }}-
-          enableCrossOsArchive: true
-
       - name: Build Next.js
         run: |
           node --run build
           node --run postbuild
-
-      - name: Save Cache
-        uses: actions/cache/save@v6
-        with:
-          path: |
-            .next/cache
-            node_modules/.cache
-          key: build-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('node_modules/.cache') }}
-          enableCrossOsArchive: true
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v5
@@ -70,7 +44,7 @@ jobs:
 
   deploy:
     name: Deploy to GitHub Pages
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     needs: build
 
     environment:

@@ -11,9 +11,6 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "noEmit": true,
-    "paths": {
-      "~/*": ["./*"]
-    },
     "plugins": [
       {
         "name": "next"
@@ -22,7 +19,11 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "types": ["node", "react", "react-dom"],
+    "paths": {
+      "#/*": ["./*"]
+    }
   },
   "exclude": ["node_modules"],
   "include": [

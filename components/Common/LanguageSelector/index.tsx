@@ -3,8 +3,8 @@ import { LanguageIcon } from "@heroicons/react/24/outline";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import type { FC } from "react";
-import Dropdown from "~/components/Common/Dropdown";
-import { availableLocales } from "~/lib/i18n/config.ts";
+import Dropdown from "#/components/Common/Dropdown/index.tsx";
+import { availableLocales } from "#/lib/i18n/config.ts";
 
 const LanguageSelector: FC = () => {
 	const router = useRouter();

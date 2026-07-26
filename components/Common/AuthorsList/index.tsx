@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import { getGitHubAvatarUrl } from "~/utils/gitHubUtils";
-import { getAcronymFromString } from "~/utils/stringUtils.ts";
+import { getGitHubAvatarUrl } from "#/utils/gitHubUtils.ts";
+import { getAcronymFromString } from "#/utils/stringUtils.ts";
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/index.tsx";
 
 type AuthorsListProps = {

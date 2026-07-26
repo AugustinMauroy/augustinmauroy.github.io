@@ -1,6 +1,6 @@
 import type { Meta as MetaObj, StoryObj } from "@storybook/nextjs";
-import { getGitHubAvatarUrl } from "~/utils/gitHubUtils";
-import { getAcronymFromString } from "~/utils/stringUtils";
+import { getGitHubAvatarUrl } from "#/utils/gitHubUtils.ts";
+import { getAcronymFromString } from "#/utils/stringUtils.ts";
 import { Avatar, AvatarFallback, AvatarImage } from "./index.tsx";
 
 type Story = StoryObj<typeof Avatar>;

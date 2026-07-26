@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import type { FC } from "react";
-import ArticleLayout from "~/components/Layout/Article/index.tsx";
-import { getContent } from "~/lib/content.ts";
-import compileMDX from "~/lib/mdx";
-import { aboutMdxComponents } from "~/lib/mdxComponents.ts";
-import type { AboutFrontmatter } from "~/types/frontmatter.ts";
-import type { BaseParams } from "~/types/params.ts";
+import ArticleLayout from "#/components/Layout/Article/index.tsx";
+import { getContent } from "#/lib/content.ts";
+import compileMDX from "#/lib/mdx.ts";
+import { aboutMdxComponents } from "#/lib/mdxComponents.ts";
+import type { AboutFrontmatter } from "#/types/frontmatter.ts";
+import type { BaseParams } from "#/types/params.ts";
 
 type PageProps = BaseParams;
 

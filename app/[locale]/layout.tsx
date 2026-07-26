@@ -4,10 +4,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { FC, PropsWithChildren } from "react";
-import { routing } from "~/lib/i18n/routing";
-import { LocaleProvider } from "~/providers/localeProvider.tsx";
-import type { BaseParams } from "~/types/params.ts";
-import "~/styles/globals.css";
+import { routing } from "#/lib/i18n/routing.ts";
+import { LocaleProvider } from "#/providers/localeProvider.tsx";
+import type { BaseParams } from "#/types/params.ts";
+import "#/styles/globals.css";
 
 type RootLayoutProps = PropsWithChildren<BaseParams>;
 

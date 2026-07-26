@@ -1,11 +1,11 @@
 import Link from "next/link";
 import type { FC } from "react";
-import { Bluesky } from "~/components/Icons/BlueSky";
-import Github from "~/components/Icons/Github.tsx";
-import Instagram from "~/components/Icons/Instagram.tsx";
-import LinkedIn from "~/components/Icons/Linkedin.tsx";
-import Twitch from "~/components/Icons/Twitch.tsx";
-import Twitter from "~/components/Icons/Twitter.tsx";
+import { Bluesky } from "#/components/Icons/BlueSky.tsx";
+import Github from "#/components/Icons/Github.tsx";
+import Instagram from "#/components/Icons/Instagram.tsx";
+import LinkedIn from "#/components/Icons/Linkedin.tsx";
+import Twitch from "#/components/Icons/Twitch.tsx";
+import Twitter from "#/components/Icons/Twitter.tsx";
 
 const LIST = [
 	{

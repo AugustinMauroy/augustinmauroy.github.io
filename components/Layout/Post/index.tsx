@@ -1,6 +1,6 @@
 import type { FC, PropsWithChildren } from "react";
-import AuthorsList from "~/components/Common/AuthorsList/index.tsx";
-import BaseLayout from "~/components/Layout/Base/index.tsx";
+import AuthorsList from "#/components/Common/AuthorsList/index.tsx";
+import BaseLayout from "#/components/Layout/Base/index.tsx";
 
 type PostLayoutProps = PropsWithChildren<{
 	title: string;

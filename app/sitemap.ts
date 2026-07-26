@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { availableLocaleCodes } from "~/lib/i18n/config.ts";
-import { generateSitemap } from "~/lib/sitemap";
+import { availableLocaleCodes } from "#/lib/i18n/config.ts";
+import { generateSitemap } from "#/lib/sitemap.ts";
 
 export const dynamic = "force-static";
 

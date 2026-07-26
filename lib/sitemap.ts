@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import type { BlogFrontmatter } from "~/types/frontmatter.ts";
+import type { BlogFrontmatter } from "#/types/frontmatter.ts";
 import { getFrontmatter, getSlugs } from "./content.ts";
 import { availableLocaleCodes } from "./i18n/config.ts";
 

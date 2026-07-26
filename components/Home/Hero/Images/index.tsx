@@ -53,7 +53,7 @@ const Images: FC = () => {
 				<Image
 					alt="Augustin"
 					className={classNames(
-						"absolute inset-0 size-80 rounded-full border-2 border-black object-cover shadow-neo-brutalism-xl-black transition-all duration-500 hover:shadow-neo-brutalism-2xl-black dark:border-white dark:shadow-neo-brutalism-xl-white dark:hover:shadow-neo-brutalism-2xl-white",
+						"absolute inset-0 size-80 rounded-md border-2 border-black object-cover shadow-neo-brutalism-xl-black transition-all duration-500 hover:shadow-neo-brutalism-2xl-black dark:border-white dark:shadow-neo-brutalism-xl-white dark:hover:shadow-neo-brutalism-2xl-white",
 						{
 							"opacity-0 z-0": i !== selectedImage || !imagesLoaded[i],
 							"opacity-100 z-10": i === selectedImage && imagesLoaded[i],

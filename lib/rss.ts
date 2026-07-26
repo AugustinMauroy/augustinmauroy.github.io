@@ -1,5 +1,5 @@
 import { Feed } from "feed";
-import type { BlogFrontmatter } from "~/types/frontmatter.ts";
+import type { BlogFrontmatter } from "#/types/frontmatter.ts";
 import { getFrontmatter, getSlugs } from "./content.ts";
 
 type GenerateRssFeedProps = {

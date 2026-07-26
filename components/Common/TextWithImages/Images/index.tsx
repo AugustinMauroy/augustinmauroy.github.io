@@ -28,7 +28,7 @@ const Images: FC<ImagesProps> = ({ images = [] }) => {
 	}, [MAX_IMAGES]);
 
 	return (
-		<div className="relative h-96 w-96 overflow-hidden rounded-xl border-2 border-black shadow-neo-brutalism-black dark:border-white dark:shadow-neo-brutalism-white">
+		<div className="relative size-96 overflow-hidden border-2 border-black shadow-neo-brutalism-black dark:border-white dark:shadow-neo-brutalism-white cursor-pointer">
 			{images.map((image, i) => (
 				// biome-ignore lint/performance/noImgElement: don't care we don't know size of images
 				<img

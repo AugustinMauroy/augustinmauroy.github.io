@@ -1,6 +1,6 @@
 import type { StorybookConfig } from "@storybook/nextjs";
 
-const config: StorybookConfig = {
+export default {
 	core: {
 		disableTelemetry: true,
 		disableWhatsNewNotifications: true,
@@ -18,5 +18,4 @@ const config: StorybookConfig = {
 	staticDirs: ["../public"],
 	stories: ["../**/*.stories.tsx"],
 	typescript: { check: false, reactDocgen: false },
-};
-export default config;
+} as StorybookConfig;

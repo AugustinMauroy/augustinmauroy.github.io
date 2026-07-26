@@ -2,13 +2,13 @@ import { RssIcon } from "@heroicons/react/24/solid";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { FC } from "react";
-import ButtonLink from "~/components/Common/Button/Link/index.tsx";
-import Pagination from "~/components/Common/Pagination/index.tsx";
-import PostCard from "~/components/Common/PostCard/index.tsx";
-import BaseLayout from "~/components/Layout/Base/index.tsx";
-import { getFrontmatter, getSlugs } from "~/lib/content.ts";
-import type { BlogFrontmatter } from "~/types/frontmatter.ts";
-import type { BaseParams } from "~/types/params.ts";
+import ButtonLink from "#/components/Common/Button/Link/index.tsx";
+import Pagination from "#/components/Common/Pagination/index.tsx";
+import PostCard from "#/components/Common/PostCard/index.tsx";
+import BaseLayout from "#/components/Layout/Base/index.tsx";
+import { getFrontmatter, getSlugs } from "#/lib/content.ts";
+import type { BlogFrontmatter } from "#/types/frontmatter.ts";
+import type { BaseParams } from "#/types/params.ts";
 
 const MAX_POSTS_PER_PAGE = 6;
 

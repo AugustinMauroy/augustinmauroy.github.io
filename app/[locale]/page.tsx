@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { FC } from "react";
-import LandingPage from "~/components/Home/index.tsx";
-import BaseLayout from "~/components/Layout/Base/index.tsx";
-import type { BaseParams } from "~/types/params.ts";
+import LandingPage from "#/components/Home/index.tsx";
+import BaseLayout from "#/components/Layout/Base/index.tsx";
+import type { BaseParams } from "#/types/params.ts";
 
 type PageProps = BaseParams;
 

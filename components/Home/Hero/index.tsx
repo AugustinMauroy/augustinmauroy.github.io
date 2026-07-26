@@ -1,8 +1,8 @@
 "use client";
 import { useTranslations } from "next-intl";
 import type { FC } from "react";
-import ButtonLink from "~/components/Common/Button/Link/index.tsx";
-import { getAge, isBirthday } from "~/utils/date.ts";
+import ButtonLink from "#/components/Common/Button/Link/index.tsx";
+import { getAge, isBirthday } from "#/utils/date.ts";
 import Images from "./Images/index.tsx";
 
 const Hero: FC = () => {
@@ -12,13 +12,12 @@ const Hero: FC = () => {
 
 	return (
 		<section className="flex h-[calc(100vh-4rem)] w-full flex-col items-center justify-center gap-8 md:flex-row lg:gap-10">
-			<Images />
 			<div className="flex max-w-80 flex-col gap-4">
 				<h1 className="font-black text-3xl leading-10">
 					{t.rich("title", {
 						br: () => <br />,
 						highlight: (chunks) => (
-							<span className="rotate-45 rounded-md border-2 border-black bg-teal-100 p-2 text-xl dark:border-white dark:bg-teal-400 dark:text-black">
+							<span className="rotate-45 rounded-md border-2 border-black bg-teal-100 p-1.5 text-xl dark:border-white dark:bg-teal-400 dark:text-black shadow-neo-brutalism-sm-black dark:shadow-neo-brutalism-sm-white">
 								{chunks}
 							</span>
 						),
@@ -32,6 +31,7 @@ const Hero: FC = () => {
 					{t("learnMore")}
 				</ButtonLink>
 			</div>
+			<Images />
 		</section>
 	);
 };

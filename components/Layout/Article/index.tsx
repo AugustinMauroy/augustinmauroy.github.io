@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from "react";
-import BaseLayout from "~/components/Layout/Base/index.tsx";
+import BaseLayout from "#/components/Layout/Base/index.tsx";
 
 type ArticleLayoutProps = PropsWithChildren<{
 	title: string;

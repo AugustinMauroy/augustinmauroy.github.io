@@ -33,7 +33,7 @@ export const WithLink: Story = {
 export const WithImageAndLink: Story = {
 	args: {
 		description: "Project description.",
-		image: "https://via.placeholder.com/160x90",
+		image: "/static/projects/nodejs.svg",
 		link: {
 			href: "#",
 			label: "View Project",

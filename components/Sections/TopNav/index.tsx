@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import type { FC } from "react";
-import { ActiveLink } from "~/components/Common/ActiveLink.tsx";
-import LanguageSelector from "~/components/Common/LanguageSelector/index.tsx";
-import { Link } from "~/lib/i18n/routing.ts";
+import { ActiveLink } from "#/components/Common/ActiveLink.tsx";
+import LanguageSelector from "#/components/Common/LanguageSelector/index.tsx";
+import { Link } from "#/lib/i18n/routing.ts";
 
 const RIGHT_LINKS = [
 	{

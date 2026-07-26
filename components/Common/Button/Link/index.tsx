@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import type { ComponentProps, FC } from "react";
-import { Link } from "~/lib/i18n/routing.ts";
+import { Link } from "#/lib/i18n/routing.ts";
 
 type ButtonLinkProps = ComponentProps<typeof Link>;
 

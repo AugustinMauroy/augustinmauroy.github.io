@@ -6,7 +6,7 @@ on:
 
 jobs:
   quality:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -19,29 +19,13 @@ jobs:
 
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Git Checkout
         uses: actions/checkout@v7
         with:
           fetch-depth: 2
-
-      - name: Restore Cache
-        uses: actions/cache/restore@v6
-        with:
-          path: |
-            ~/.npm
-            .next/cache
-            node_modules/.cache
-          key: cache-${{ hashFiles('package-lock.json') }}-
-          restore-keys: cache-
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
 
       - name: Install NPM packages
         run: npm ci
@@ -51,18 +35,9 @@ jobs:
           node --run build
           node --run postbuild
 
-      - name: Save Cache
-        uses: actions/cache/save@v6
-        with:
-          path: |
-            ~/.npm
-            .next/cache
-            node_modules/.cache
-          key: cache-${{ hashFiles('package-lock.json') }}
-
   unit-test:
     name: Unit Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Git Checkout
@@ -70,33 +45,8 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Restore Cache
-        uses: actions/cache/restore@v6
-        with:
-          path: |
-            ~/.npm
-            .next/cache
-            node_modules/.cache
-          key: cache-${{ hashFiles('package-lock.json') }}-
-          restore-keys: cache-
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-
       - name: Install NPM packages
         run: npm ci
 
       - name: Run Unit Tests
         run: node --run test
-
-      - name: Save Cache
-        uses: actions/cache/save@v6
-        with:
-          path: |
-            ~/.npm
-            .next/cache
-            node_modules/.cache
-          key: cache-${{ hashFiles('package-lock.json') }}

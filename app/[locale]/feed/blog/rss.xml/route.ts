@@ -1,6 +1,6 @@
-import { routing } from "~/lib/i18n/routing";
-import { generateRssFeed } from "~/lib/rss.ts";
-import type { BaseParams } from "~/types/params.ts";
+import { routing } from "#/lib/i18n/routing.ts";
+import { generateRssFeed } from "#/lib/rss.ts";
+import type { BaseParams } from "#/types/params.ts";
 
 export const dynamic = "force-static";
 

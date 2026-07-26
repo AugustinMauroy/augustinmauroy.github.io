@@ -1,6 +1,6 @@
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { isNodeError } from "~/utils/node";
+import { isNodeError } from "#/utils/node.ts";
 import compileMDX from "./mdx.ts";
 
 type GetContentProps = {

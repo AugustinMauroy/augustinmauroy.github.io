@@ -2,8 +2,8 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { FC } from "react";
-import ButtonLink from "~/components/Common/Button/Link/index.tsx";
-import type { BaseParams } from "~/types/params.ts";
+import ButtonLink from "#/components/Common/Button/Link/index.tsx";
+import type { BaseParams } from "#/types/params.ts";
 
 type NotFoundProps = BaseParams;
 
