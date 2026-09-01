@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.5",
-    "@happy-dom/global-registrator": "^20.11.1",
+    "@happy-dom/global-registrator": "^20.11.15",
     "@nodejs-loaders/tsx": "~1.2.1",
     "@storybook/nextjs": "~10.4.6",
     "@tailwindcss/postcss": "~4.3.3",
